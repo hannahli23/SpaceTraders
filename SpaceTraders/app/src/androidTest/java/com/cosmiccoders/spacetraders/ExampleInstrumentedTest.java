@@ -1,4 +1,4 @@
-package com.example.spacetrader;
+package com.cosmiccoders.spacetraders;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.spacetrader", appContext.getPackageName());
+        assertEquals("com.cosmiccoders.spacetraders", appContext.getPackageName());
     }
 }
