@@ -64,5 +64,30 @@ public class Person {
         this.difficulty = difficulty;
     }
 
+    public String getName() { return name; }
 
+    public String getShip() { return ship; }
+
+    public int getCurrency() { return currency; }
+
+    public String getDifficulty() { return difficulty; }
+
+    public int getSkill(Skills skill) { return skillsPoints.get(skill); }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setShip(String ship) { this.ship = ship; }
+
+    public void setCurrency(int curr) { currency = curr; }
+
+    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+
+    public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
+
+    public boolean checkSkillPointsInitial() {
+        int currTotal = skillsPoints.get("pilot") + skillsPoints.get("figher")
+                + skillsPoints.get("trader") + skillsPoints.get("engineer");
+
+        return currTotal == 16;
+    }
 }
