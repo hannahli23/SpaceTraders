@@ -12,7 +12,7 @@ public class Person {
     private String name;
     private int currency;
     private String ship;
-    private String difficulty;
+    private Difficulty difficulty;
 
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
@@ -22,7 +22,7 @@ public class Person {
      */
     public Person(String name) {
         this(name, 0, 0, 0, 0,
-                1000, "Gnat", "easy");
+                1000, "Gnat", Difficulty.EASY);
     }
 
     /**
@@ -35,7 +35,7 @@ public class Person {
      * @param difficulty is the difficulty the player choses to play at
      */
     public Person(String name, int pilot, int fighter, int trader, int engineer,
-                  String difficulty) {
+                  Difficulty difficulty) {
         this(name, pilot, fighter, trader, engineer, 1000, "Gnat", difficulty);
     }
 
@@ -51,7 +51,7 @@ public class Person {
      * @param difficulty is the difficulty the player choses to play at
      */
     public Person(String name, int pilot, int fighter, int trader, int engineer,
-                  int currency, String ship, String difficulty) {
+                  int currency, String ship, Difficulty difficulty) {
         this.name = name;
 
         skillsPoints.put(Skills.PILOT, pilot);
@@ -70,7 +70,7 @@ public class Person {
 
     public int getCurrency() { return currency; }
 
-    public String getDifficulty() { return difficulty; }
+    public Difficulty getDifficulty() { return difficulty; }
 
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
 
@@ -80,12 +80,12 @@ public class Person {
 
     public void setCurrency(int curr) { currency = curr; }
 
-    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+    public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
 
     public boolean checkSkillPointsInitial() {
-        int currTotal = skillsPoints.get("pilot") + skillsPoints.get("figher")
+        int currTotal = skillsPoints.get("pilot") + skillsPoints.get("fighter")
                 + skillsPoints.get("trader") + skillsPoints.get("engineer");
 
         return currTotal == 16;
