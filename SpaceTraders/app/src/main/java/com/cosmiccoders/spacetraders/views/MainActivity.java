@@ -1,7 +1,9 @@
-package com.cosmiccoders.spacetraders;
+package com.cosmiccoders.spacetraders.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.cosmiccoders.spacetraders.R;
 
 public class MainActivity extends AppCompatActivity {
 

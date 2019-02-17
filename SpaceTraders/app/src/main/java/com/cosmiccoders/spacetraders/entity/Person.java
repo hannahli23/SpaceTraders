@@ -11,8 +11,7 @@ public class Person {
      **/
     private String name;
     private int currency;
-    private String ship;
-    private String difficulty;
+    private Difficulty difficulty;
 
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
@@ -22,7 +21,7 @@ public class Person {
      */
     public Person(String name) {
         this(name, 0, 0, 0, 0,
-                1000, "Gnat", "easy");
+                1000, Difficulty.EASY);
     }
 
     /**
@@ -35,8 +34,8 @@ public class Person {
      * @param difficulty is the difficulty the player choses to play at
      */
     public Person(String name, int pilot, int fighter, int trader, int engineer,
-                  String difficulty) {
-        this(name, pilot, fighter, trader, engineer, 1000, "Gnat", difficulty);
+                  Difficulty difficulty) {
+        this(name, pilot, fighter, trader, engineer, 1000, difficulty);
     }
 
     /**
@@ -47,11 +46,10 @@ public class Person {
      * @param trader is the skill points in that category
      * @param engineer is the skill points in that category
      * @param currency is the amount of money the person currently has
-     * @param ship is the name of the ship of the person
      * @param difficulty is the difficulty the player choses to play at
      */
     public Person(String name, int pilot, int fighter, int trader, int engineer,
-                  int currency, String ship, String difficulty) {
+                  int currency, Difficulty difficulty) {
         this.name = name;
 
         skillsPoints.put(Skills.PILOT, pilot);
@@ -60,34 +58,23 @@ public class Person {
         skillsPoints.put(Skills.ENGINEER, engineer);
 
         this.currency = currency;
-        this.ship = ship;
         this.difficulty = difficulty;
     }
 
     public String getName() { return name; }
 
-    public String getShip() { return ship; }
-
     public int getCurrency() { return currency; }
 
-    public String getDifficulty() { return difficulty; }
+    public Difficulty getDifficulty() { return difficulty; }
 
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
 
     public void setName(String name) { this.name = name; }
 
-    public void setShip(String ship) { this.ship = ship; }
-
     public void setCurrency(int curr) { currency = curr; }
 
-    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+    public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
 
-    public boolean checkSkillPointsInitial() {
-        int currTotal = skillsPoints.get("pilot") + skillsPoints.get("figher")
-                + skillsPoints.get("trader") + skillsPoints.get("engineer");
-
-        return currTotal == 16;
-    }
 }
