@@ -20,11 +20,11 @@ import android.widget.ArrayAdapter;
 import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.ShipTypes;
 import com.cosmiccoders.spacetraders.entity.Skills;
-import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerModel;
+import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditAddPlayerModel viewModel;
+    private EditAddPlayerViewModel viewModel;
 
     private TextView pilotSkills;
     private TextView fighterSkills;

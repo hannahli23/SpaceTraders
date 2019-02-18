@@ -37,7 +37,7 @@ public class Person {
      * @param fighter is the skill points in that category
      * @param trader is the skill points in that category
      * @param engineer is the skill points in that category
-     * @param difficulty is the difficulty the player choses to play at
+     * @param difficulty is the difficulty the player chooses to play at
      */
     public Person(String name, int pilot, int fighter, int trader, int engineer,
                   Difficulty difficulty) {
