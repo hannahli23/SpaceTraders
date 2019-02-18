@@ -22,29 +22,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edittext"
+        android:id="@+id/name_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
-        app:layout_constraintLeft_toLeftOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/create_button"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <EditText
-        android:id="@+id/edittext2"
+        android:id="@+id/ship_name_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:ems="10"
         android:inputType="text"
         android:text="Ship Name"
-        app:layout_constraintLeft_toLeftOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/create_button"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="false"
@@ -113,6 +113,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
         android:layout_marginTop="232dp"
+        android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,6 +126,7 @@
         android:layout_marginTop="232dp"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
+        android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,12 +136,13 @@
         android:id="@+id/add_fighter"
         android:layout_width="38dp"
         android:layout_height="42dp"
+        android:layout_marginStart="268dp"
+        android:layout_marginLeft="268dp"
         android:layout_marginTop="312dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -149,6 +152,7 @@
         android:layout_marginTop="374dp"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
+        android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,6 +165,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
         android:layout_marginTop="448dp"
+        android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -173,6 +178,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
         android:layout_marginTop="304dp"
+        android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,6 +191,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
         android:layout_marginTop="374dp"
+        android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -197,9 +204,54 @@
         android:layout_marginTop="448dp"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
+        android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pilot_points"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginTop="244dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fighter_points"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="316dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/trader_points"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="388dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/engineer_points"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="464dp"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
