@@ -123,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.add_engineer:
                 temp = R.id.engineer_points;
         }
+
         final TextView changeText = (TextView) findViewById(temp);
+        
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
