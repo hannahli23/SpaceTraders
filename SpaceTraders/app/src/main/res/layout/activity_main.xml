@@ -54,8 +54,8 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="155dp"
         android:layout_marginTop="516dp"
         android:onClick="onCreatePressed"
         android:text="Create!"
@@ -222,45 +222,49 @@
         tools:layout_editor_absoluteX="43dp"
         tools:layout_editor_absoluteY="162dp" />
 
-        <RadioButton
-            android:id="@+id/radio_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Easy"
-            app:layout_constraintBottom_toBottomOf="@+id/radio_two"
-            app:layout_constraintEnd_toStartOf="@+id/radio_two"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+    <RadioButton
+        android:id="@+id/radio_one"
+        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onRadioButtonClicked"
+        android:text="Easy"
+        app:layout_constraintBottom_toBottomOf="@+id/radio_two"
+        app:layout_constraintEnd_toStartOf="@+id/radio_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <RadioButton
-            android:id="@+id/radio_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Medium"
-            app:layout_constraintBottom_toBottomOf="@+id/radio_three"
-            app:layout_constraintEnd_toStartOf="@+id/radio_three"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/radio_one"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+    <RadioButton
+        android:id="@+id/radio_two"
+        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onRadioButtonClicked"
+        android:text="Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/radio_three"
+        app:layout_constraintEnd_toStartOf="@+id/radio_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radio_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <RadioButton
-            android:id="@+id/radio_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Hard"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/radio_two"
-            app:layout_constraintTop_toTopOf="parent" />
+    <RadioButton
+        android:id="@+id/radio_three"
+        style="@android:style/Widget.CompoundButton.RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:checked="false"
+        android:onClick="onRadioButtonClicked"
+        android:text="Hard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radio_two"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_view_selected"
@@ -271,57 +275,51 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="6dp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
-        android:onClick="onAddPressed"
-        android:text="Apply"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="307dp" />
-
     <TextView
         android:id="@+id/pilot_points"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginLeft="164dp"
-        android:layout_marginTop="244dp"
+        android:layout_width="39dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="240dp"
         android:text="0"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fighter_points"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
+        android:layout_width="29dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="190dp"
         android:layout_marginTop="316dp"
         android:text="0"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/trader_points"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginLeft="168dp"
+        android:layout_width="37dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="190dp"
         android:layout_marginTop="388dp"
         android:text="0"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/engineer_points"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="190dp"
         android:layout_marginTop="464dp"
         android:text="0"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

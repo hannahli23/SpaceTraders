@@ -89,12 +89,12 @@ public class Person {
 
     public String toString() {
         String ans = "You are " + name + " who travels on the " + ship.getShipName()
-                + " which is a " + ship.getShipType() + " type ship. You have "
+                + " which is a " + ship.getShipType() + " type ship. \n You have "
                 + getSkill(Skills.PILOT) + "points, "
                 + getSkill(Skills.ENGINEER) + "points, "
                 + getSkill(Skills.FIGHTER) + "points, and "
                 + getSkill(Skills.TRADER) + "points in the skills "
-                + "pilot, engineer, fighter, trader respectively. You currently have $"
+                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
                 + getCurrency() + " and you are playing on " + getDifficulty() + " mode.";
 
         return ans;

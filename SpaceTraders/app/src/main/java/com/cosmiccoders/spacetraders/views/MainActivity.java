@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCreatePressed(View view) {
+        person = new Person();
         person.setCurrency(1000);
         person.setDifficulty(Difficulty.EASY);
         person.setName(nameField.getText().toString());
@@ -259,8 +260,6 @@ public class MainActivity extends AppCompatActivity {
         person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
 
         Log.i("MyActivity", person.toString());
-
-        finish();
     }
 
 }
