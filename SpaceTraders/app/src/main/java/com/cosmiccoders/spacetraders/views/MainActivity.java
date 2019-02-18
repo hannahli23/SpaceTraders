@@ -55,12 +55,6 @@ public class MainActivity extends AppCompatActivity {
         majorSpinner = findViewById(R.id.spinner);
         majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values()));
 
-
-
-
-
-        //addListenerOnButton();
-
         shipField = findViewById(R.id.ship_field);
         nameField = findViewById(R.id.name_field);
 
@@ -180,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int total = ts + ps + fs + es;
                 Log.i("MyActivity", "" + total);
+                total = ts + ps + fs + es;
                 if(total < 16) {
                     switch(v.getId()) {
                         case R.id.add_pilot:
