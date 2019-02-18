@@ -15,6 +15,11 @@ public class Person {
 
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
+    public Person() {
+        this("name", 0, 0, 0, 0,
+                1000, Difficulty.EASY);
+    }
+
     /**
      * One param constructor for the player
      * @param name is the name of the person
