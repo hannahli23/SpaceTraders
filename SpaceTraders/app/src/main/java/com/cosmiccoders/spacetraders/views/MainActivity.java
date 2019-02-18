@@ -14,6 +14,8 @@ import com.cosmiccoders.spacetraders.entity.Person;
 import com.cosmiccoders.spacetraders.entity.Ship;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
 
 import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.ShipTypes;
@@ -43,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton radioButton;
     private TextView textView;
 
+    private Spinner majorSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //addListenerOnButton();
+        majorSpinner = findViewById(R.id.spinner);
+        majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values()));
 
         shipField = findViewById(R.id.ship_field);
         nameField = findViewById(R.id.name_field);
@@ -169,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int total = ts + ps + fs + es;
                 Log.i("MyActivity", "" + total);
+                total = ts + ps + fs + es;
                 if(total < 16) {
                     switch(v.getId()) {
                         case R.id.add_pilot:
@@ -217,6 +223,8 @@ public class MainActivity extends AppCompatActivity {
             person.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
             person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
             person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+            //casting to difficulty
+            person.setDifficulty((Difficulty)majorSpinner.getSelectedItem());
 
             Log.i("MyActivity", person.toString());
         } else {
