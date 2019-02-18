@@ -1,5 +1,6 @@
 package com.cosmiccoders.spacetraders.views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Selected Radio Button: " + radioButton.getText(), Toast.LENGTH_SHORT);
             }
         });
-    }
+    } */
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
-    }*/
+    }
 
     public void onSubtractPressed(View view) {
         Button change = (Button) findViewById(view.getId());
@@ -260,6 +261,13 @@ public class MainActivity extends AppCompatActivity {
         person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
 
         Log.i("MyActivity", person.toString());
+    }
+
+    public void onExitPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

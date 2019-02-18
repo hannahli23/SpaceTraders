@@ -54,7 +54,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
-        android:layout_marginStart="155dp"
+        android:layout_marginStart="230dp"
         android:layout_marginLeft="155dp"
         android:layout_marginTop="516dp"
         android:onClick="onCreatePressed"
@@ -62,6 +62,22 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="155dp"
+        android:layout_marginTop="516dp"
+        android:onClick="onExitPressed"
+        android:text="Exit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />exit
 
     <TextView
         android:id="@+id/pilot"
@@ -219,52 +235,55 @@
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="162dp" />
+        android:layout_below="@+id/name_field"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="130dp">
 
-    <RadioButton
-        android:id="@+id/radio_one"
-        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="onRadioButtonClicked"
-        android:text="Easy"
-        app:layout_constraintBottom_toBottomOf="@+id/radio_two"
-        app:layout_constraintEnd_toStartOf="@+id/radio_two"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <RadioButton
+            android:id="@+id/radio_one"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Easy"
+            app:layout_constraintBottom_toBottomOf="@+id/radio_two"
+            app:layout_constraintEnd_toStartOf="@+id/radio_two"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <RadioButton
-        android:id="@+id/radio_two"
-        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="onRadioButtonClicked"
-        android:text="Medium"
-        app:layout_constraintBottom_toBottomOf="@+id/radio_three"
-        app:layout_constraintEnd_toStartOf="@+id/radio_three"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/radio_one"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <RadioButton
+            android:id="@+id/radio_two"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Medium"
+            app:layout_constraintBottom_toBottomOf="@+id/radio_three"
+            app:layout_constraintEnd_toStartOf="@+id/radio_three"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/radio_one"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <RadioButton
-        android:id="@+id/radio_three"
-        style="@android:style/Widget.CompoundButton.RadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:checked="false"
-        android:onClick="onRadioButtonClicked"
-        android:text="Hard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/radio_two"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radio_three"
+            style="@android:style/Widget.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="156dp"
+            android:checked="false"
+            android:onClick="onRadioButtonClicked"
+            android:text="Hard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/radio_two"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/text_view_selected"
