@@ -62,49 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ts = Integer.parseInt(traderSkills.getText().toString());
         fs = Integer.parseInt(fighterSkills.getText().toString());
         es = Integer.parseInt(engineerSkills.getText().toString());
-        System.out.println(ps);
-
-        //pilotSkills =
-        //Button button = findViewById(R.id.create_button);
     }
-
-    /*public void addListenerOnButton() {
-        radioGroup= findViewById(R.id.radioGroup);
-        textView= findViewById(R.id.text_view_selected);
-        Button apply = findViewById(R.id.create_button);
-        apply.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View t) {
-                int radioID = radioGroup.getCheckedRadioButtonId();
-
-                radioButton = findViewById(radioID);
-
-                Toast.makeText(getApplicationContext(), "Selected Radio Button: " + radioButton.getText(), Toast.LENGTH_SHORT);
-            }
-        });
-    }
-
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_one:
-                if (checked) {
-
-                }
-                break;
-            case R.id.radio_two:
-                if (checked) {
-                }
-                break;
-            case R.id.radio_three:
-                if (checked) {
-                }
-                break;
-        }
-    }*/
 
     public void onSubtractPressed(View view) {
         Button change = (Button) findViewById(view.getId());
@@ -247,19 +205,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCreatePressed(View view) {
-        person = new Person();
-        person.setCurrency(1000);
-        person.setDifficulty(Difficulty.EASY);
-        person.setName(nameField.getText().toString());
-        person.getShip().setName(shipField.getText().toString());
-        person.getShip().setShipType(ShipTypes.GNAT);
+        if((ps + ts + es + fs) == 16 ) {
+            person = new Person();
+            person.setCurrency(1000);
+            person.setDifficulty(Difficulty.EASY);
+            person.setName(nameField.getText().toString());
+            person.getShip().setName(shipField.getText().toString());
+            person.getShip().setShipType(ShipTypes.GNAT);
 
-        person.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
-        person.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
-        person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
-        person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+            person.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
+            person.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
+            person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
+            person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
 
-        Log.i("MyActivity", person.toString());
+            Log.i("MyActivity", person.toString());
+        } else {
+            Log.i("MyActivity", ":((((((");
+        }
     }
 
 }
