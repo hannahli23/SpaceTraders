@@ -10,7 +10,7 @@
     android:paddingBottom="10dp">
 
     <EditText
-        android:id="@+id/EditTextName"
+        android:id="@+id/name_field"
         android:layout_width="121dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
@@ -24,7 +24,7 @@
     </EditText>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/EditTextShipName"
+        android:id="@+id/ship_field"
         android:layout_width="161dp"
         android:layout_height="42dp"
         android:layout_marginTop="80dp"
@@ -54,9 +54,10 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="576dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginLeft="144dp"
+        android:layout_marginTop="516dp"
+        android:onClick="onCreatePressed"
         android:text="Create!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -226,9 +227,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:onClick="checkButton"
+            android:onClick="onRadioButtonClicked"
             android:text="Easy"
-            android:checked="true"
             app:layout_constraintBottom_toBottomOf="@+id/radio_two"
             app:layout_constraintEnd_toStartOf="@+id/radio_two"
             app:layout_constraintHorizontal_bias="0.5"
@@ -241,7 +241,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:onClick="checkButton"
+            android:onClick="onRadioButtonClicked"
             android:text="Medium"
             app:layout_constraintBottom_toBottomOf="@+id/radio_three"
             app:layout_constraintEnd_toStartOf="@+id/radio_three"
@@ -255,7 +255,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="156dp"
-            android:onClick="checkButton"
+            android:onClick="onRadioButtonClicked"
             android:text="Hard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -276,6 +276,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="184dp"
+        android:onClick="onAddPressed"
         android:text="Apply"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="307dp" />
