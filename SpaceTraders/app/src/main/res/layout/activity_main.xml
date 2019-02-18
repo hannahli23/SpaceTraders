@@ -9,39 +9,43 @@
     android:paddingRight="10dp"
     android:paddingBottom="10dp">
 
+    <EditText
+        android:id="@+id/EditTextName"
+        android:layout_width="121dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
+        android:hint="Your name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </EditText>
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="18dp"
-        android:text="Some Info"
+        android:layout_marginTop="16dp"
+        android:text="Please fill in the fields to proceed with the game. Be sure to use all of your skill points!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/name_field"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        app:layout_constraintLeft_toLeftOf="@+id/create_button"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        android:id="@+id/EditTextShipName"
+        android:layout_width="161dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Ship Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/ship_name_field"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Ship Name"
-        app:layout_constraintLeft_toLeftOf="@+id/create_button"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+    </EditText>
 
     <Button
         android:id="@+id/create_button"
@@ -209,6 +213,57 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="162dp" />
+
+    <RadioButton
+        android:id="@+id/radio_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="checkButton"
+        android:text="Easy"
+        app:layout_constraintBottom_toBottomOf="@+id/radio_two"
+        app:layout_constraintEnd_toStartOf="@+id/radio_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radio_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="checkButton"
+        android:text="Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/radio_three"
+        app:layout_constraintEnd_toStartOf="@+id/radio_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radio_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radio_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:onClick="checkButton"
+        android:text="Hard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radio_two"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id=
+        android:layout_width=""
+        android:layout_height="" />
 
     <TextView
         android:id="@+id/pilot_points"
