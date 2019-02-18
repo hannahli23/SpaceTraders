@@ -215,55 +215,70 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="43dp"
         tools:layout_editor_absoluteY="162dp" />
 
-    <RadioButton
-        android:id="@+id/radio_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="checkButton"
-        android:text="Easy"
-        app:layout_constraintBottom_toBottomOf="@+id/radio_two"
-        app:layout_constraintEnd_toStartOf="@+id/radio_two"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <RadioButton
+            android:id="@+id/radio_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="checkButton"
+            android:text="Easy"
+            android:checked="true"
+            app:layout_constraintBottom_toBottomOf="@+id/radio_two"
+            app:layout_constraintEnd_toStartOf="@+id/radio_two"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <RadioButton
-        android:id="@+id/radio_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="checkButton"
-        android:text="Medium"
-        app:layout_constraintBottom_toBottomOf="@+id/radio_three"
-        app:layout_constraintEnd_toStartOf="@+id/radio_three"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/radio_one"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <RadioButton
+            android:id="@+id/radio_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="checkButton"
+            android:text="Medium"
+            app:layout_constraintBottom_toBottomOf="@+id/radio_three"
+            app:layout_constraintEnd_toStartOf="@+id/radio_three"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/radio_one"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <RadioButton
-        android:id="@+id/radio_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:onClick="checkButton"
-        android:text="Hard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/radio_two"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radio_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="156dp"
+            android:onClick="checkButton"
+            android:text="Hard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/radio_two"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id=
-        android:layout_width=""
-        android:layout_height="" />
+        android:id="@+id/text_view_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="196dp"
+        android:text="You selected: "
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="6dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:text="Apply"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="307dp" />
 
     <TextView
         android:id="@+id/pilot_points"
