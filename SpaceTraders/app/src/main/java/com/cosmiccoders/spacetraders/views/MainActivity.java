@@ -6,14 +6,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
-
+import android.view.View.OnClickListener;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Person;
 import com.cosmiccoders.spacetraders.entity.Ship;
-
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
 
 import com.cosmiccoders.spacetraders.R;
+import com.cosmiccoders.spacetraders.entity.ShipTypes;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerModel;
 
@@ -36,14 +41,27 @@ public class MainActivity extends AppCompatActivity {
 
     private Person person;
     private Ship ship;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private TextView textView;
+
+    private Spinner majorSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         //shipField = findViewById(R.id.ship_name_field);
         //nameField = findViewById(R.id.name_field);
+=======
+        majorSpinner = findViewById(R.id.spinner);
+        majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values()));
+
+        shipField = findViewById(R.id.ship_field);
+        nameField = findViewById(R.id.name_field);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
 
         pilotSkills = findViewById(R.id.pilot_points);
         traderSkills = findViewById(R.id.trader_points);
@@ -54,10 +72,6 @@ public class MainActivity extends AppCompatActivity {
         ts = Integer.parseInt(traderSkills.getText().toString());
         fs = Integer.parseInt(fighterSkills.getText().toString());
         es = Integer.parseInt(engineerSkills.getText().toString());
-        System.out.println(ps);
-
-        //pilotSkills =
-        Button button = findViewById(R.id.create_button);
     }
 
     public void onSubtractPressed(View view) {
@@ -81,27 +95,73 @@ public class MainActivity extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int total = ts + ps + fs + es;
+                Log.i("MyActivity", "" + total);
                 switch(v.getId()) {
                     case R.id.subtract_pilot:
                         if (ps > 0) {
                             ps--;
                             changeText.setText("" + ps);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("PS", "" + ps);
+                            Log.i("MyActivity", "" + total);
+                        } else {
+                            ps = 0;
+                            Log.i("PS", "" + ps);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                         }
+                        break;
                     case R.id.subtract_trader:
                         if(ts > 0) {
                             ts--;
                             changeText.setText("" + ts);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("TS", "" + ts);
+                            Log.i("MyActivity", "" + total);
+                        } else {
+                            ts = 0;
+                            Log.i("TS", "" + ts);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                         }
+                        break;
                     case R.id.subtract_fighter:
                         if(fs > 0) {
                             fs--;
                             changeText.setText("" + fs);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("FS", "" + fs);
+                            Log.i("MyActivity", "" + total);
+                        } else {
+                            fs = 0;
+                            Log.i("FS", "" + fs);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                         }
+                        break;
                     case R.id.subtract_engineer:
                         if(es > 0) {
                             es--;
                             changeText.setText("" + es);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("ES", "" + es);
+                            Log.i("MyActivity", "" + total);
+                        } else {
+                            es = 0;
+                            Log.i("ES", "" + es);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                         }
+                        break;
                 }
             }
         });
@@ -123,41 +183,90 @@ public class MainActivity extends AppCompatActivity {
             case R.id.add_engineer:
                 temp = R.id.engineer_points;
         }
+<<<<<<< HEAD
         final TextView changeText = (TextView) findViewById(temp);
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final int total = ts + ps + fs + es;
+=======
+
+        final TextView changeText = (TextView) findViewById(temp);
+        
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int total = ts + ps + fs + es;
+                Log.i("MyActivity", "" + total);
+                total = ts + ps + fs + es;
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                 if(total < 16) {
                     switch(v.getId()) {
                         case R.id.add_pilot:
                             ps++;
                             changeText.setText("" + ps);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("PS", "" + ps);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                             break;
                         case R.id.add_trader:
                             ts++;
                             changeText.setText("" + ts);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("TS", "" + ts);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                             break;
                         case R.id.add_fighter:
                             fs++;
                             changeText.setText("" + fs);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("FS", "" + fs);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                             break;
                         case R.id.add_engineer:
                             es++;
                             changeText.setText("" + es);
+<<<<<<< HEAD
+=======
+                            total = ts + ps + fs + es;
+                            Log.i("ES", "" + es);
+                            Log.i("MyActivity", "" + total);
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
                     }
                 }
             }
         });
     }
 
-    public void onCreatPressed(View view) {
-        person.setCurrency(1000);
-        person.setDifficulty(Difficulty.EASY);
-        person.setName(nameField.getText().toString());
-        person.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
-        person.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
-        person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
-        person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+    public void onCreatePressed(View view) {
+        if((ps + ts + es + fs) == 16 ) {
+            person = new Person();
+            person.setCurrency(1000);
+            person.setDifficulty(Difficulty.EASY);
+            person.setName(nameField.getText().toString());
+            person.getShip().setName(shipField.getText().toString());
+            person.getShip().setShipType(ShipTypes.GNAT);
+
+            person.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
+            person.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
+            person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
+            person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+            //casting to difficulty
+            person.setDifficulty((Difficulty)majorSpinner.getSelectedItem());
+
+            Log.i("MyActivity", person.toString());
+        } else {
+            Log.i("MyActivity", ":((((((");
+        }
     }
+
 }
