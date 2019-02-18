@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
-
+import android.view.View.OnClickListener;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Person;
 import com.cosmiccoders.spacetraders.entity.Ship;
-
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Skills;
@@ -36,14 +38,38 @@ public class MainActivity extends AppCompatActivity {
 
     private Person person;
     private Ship ship;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        shipField = findViewById(R.id.ship_name_field);
-        nameField = findViewById(R.id.name_field);
+        addListenerOnButton();
+    }
+    public void addListenerOnButton() {
+        radioGroup= findViewById(R.id.radioGroup);
+        textView= findViewById(R.id.text_view_selected);
+        Button apply = findViewById(R.id.create_button);
+        apply.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View t) {
+                int radioID = radioGroup.getCheckedRadioButtonId();
+
+                radioButton = findViewById(radioID);
+
+                Toast.makeText(this, "Selected Radio Button: " + radioButton.getText(), Toast.LENGTH_SHORT);
+            }
+        });
+
+
+
+
+
+        //shipField = findViewById(R.id.ship_name_field);
+        //nameField = findViewById(R.id.name_field);
 
         pilotSkills = findViewById(R.id.pilot_points);
         traderSkills = findViewById(R.id.trader_points);
@@ -59,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
         //pilotSkills =
         Button button = findViewById(R.id.create_button);
     }
+
+
+
+
+
 
     public void onSubtractPressed(View view) {
         Button change = (Button) findViewById(view.getId());
@@ -120,4 +151,5 @@ public class MainActivity extends AppCompatActivity {
         person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
         person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
     }
+
 }
