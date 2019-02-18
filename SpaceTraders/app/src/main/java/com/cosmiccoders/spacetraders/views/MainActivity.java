@@ -93,35 +93,45 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSubtractPressed(View view) {
         Button change = (Button) findViewById(view.getId());
-        final TextView changeText = pilotSkills;
+        int temp = 0;
+        switch(view.getId()) {
+            case R.id.subtract_pilot:
+                temp = R.id.pilot_points;
+                break;
+            case R.id.subtract_trader:
+                temp = R.id.trader_points;
+                break;
+            case R.id.subtract_fighter:
+                temp = R.id.fighter_points;
+                break;
+            case R.id.subtract_engineer:
+                temp = R.id.engineer_points;
+        }
+        final TextView changeText = (TextView) findViewById(temp);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch(v.getId()) {
                     case R.id.subtract_pilot:
-                        Log.d("Edit", "Subtracted");
-                        if (ps != 0) {
+                        if (ps > 0) {
                             ps--;
-                            changeText.setText(ps);
+                            changeText.setText("" + ps);
                         }
                     case R.id.subtract_trader:
-                        if(ts != 0) {
-                            Log.d("Edit", "Subtracted");
+                        if(ts > 0) {
                             ts--;
-                            traderSkills.setText(ts);
+                            changeText.setText("" + ts);
                         }
                     case R.id.subtract_fighter:
-                        if(fs != 0) {
-                            Log.d("Edit", "Subtracted");
+                        if(fs > 0) {
                             fs--;
-                            fighterSkills.setText(fs);
+                            changeText.setText("" + fs);
                         }
                     case R.id.subtract_engineer:
-                        Log.d("Edit", "Subtracted");
-                        if(es != 0) {
+                        if(es > 0) {
                             es--;
-                            engineerSkills.setText(ps);
+                            changeText.setText("" + es);
                         }
                 }
             }
@@ -129,15 +139,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAddPressed(View view) {
-        final int total = ts + ps + fs + es;
         Button change = (Button) findViewById(view.getId());
-        final TextView changeText = (TextView) findViewById(R.id.pilot_points);
+        int temp = 0;
+        switch(view.getId()) {
+            case R.id.add_pilot:
+                temp = R.id.pilot_points;
+                break;
+            case R.id.add_trader:
+                temp = R.id.trader_points;
+                break;
+            case R.id.add_fighter:
+                temp = R.id.fighter_points;
+                break;
+            case R.id.add_engineer:
+                temp = R.id.engineer_points;
+        }
 
+        final TextView changeText = (TextView) findViewById(temp);
+        
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ps++;
-                changeText.setText("Yay!");
+                final int total = ts + ps + fs + es;
+                if(total < 16) {
+                    switch(v.getId()) {
+                        case R.id.add_pilot:
+                            ps++;
+                            changeText.setText("" + ps);
+                            break;
+                        case R.id.add_trader:
+                            ts++;
+                            changeText.setText("" + ts);
+                            break;
+                        case R.id.add_fighter:
+                            fs++;
+                            changeText.setText("" + fs);
+                            break;
+                        case R.id.add_engineer:
+                            es++;
+                            changeText.setText("" + es);
+                    }
+                }
             }
         });
     }
