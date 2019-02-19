@@ -1,4 +1,6 @@
 package com.cosmiccoders.spacetraders.viewmodels;
 
-public class EditAddPlayerViewModel {
+import android.arch.lifecycle.AndroidViewModel;
+
+public class EditAddPlayerViewModel extends AndroidViewModel {
 }
