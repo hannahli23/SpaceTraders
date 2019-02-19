@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final TextView changeText = (TextView) findViewById(temp);
-        
+
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
