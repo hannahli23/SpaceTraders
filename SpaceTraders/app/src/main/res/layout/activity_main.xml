@@ -266,6 +266,7 @@
 
     <TextView
         android:id="@+id/pilot_points"
+<<<<<<< Updated upstream
         android:layout_width="35dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -277,10 +278,20 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/add_pilot"
         app:layout_constraintStart_toEndOf="@+id/subtract_pilot"
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginTop="244dp"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
+>>>>>>> Stashed changes
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fighter_points"
+<<<<<<< Updated upstream
         android:layout_width="29dp"
         android:layout_height="28dp"
         android:layout_marginStart="8dp"
@@ -316,6 +327,27 @@
         app:layout_constraintStart_toStartOf="@+id/subtract_trader"
         app:layout_constraintTop_toBottomOf="@+id/pilot_points"
         app:layout_constraintVertical_bias="0.18" />
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="316dp"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/trader_points"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="388dp"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> Stashed changes
 
     <TextView
         android:id="@+id/engineer_points"

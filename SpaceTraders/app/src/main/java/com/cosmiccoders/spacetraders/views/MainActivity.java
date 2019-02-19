@@ -55,6 +55,24 @@ public class MainActivity extends AppCompatActivity {
 
         majorSpinner = findViewById(R.id.spinner);
         majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values()));
+        addListenerOnButton();
+    }
+    public void addListenerOnButton() {
+        radioGroup= findViewById(R.id.radioGroup);
+        textView= findViewById(R.id.text_view_selected);
+        Button apply = findViewById(R.id.create_button);
+        apply.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View t) {
+                int radioID = radioGroup.getCheckedRadioButtonId();
+
+                radioButton = findViewById(radioID);
+
+                Toast.makeText(getApplicationContext(), "Selected Radio Button: " + radioButton.getText(), Toast.LENGTH_SHORT);
+            }
+        });
+
+
 
         shipField = findViewById(R.id.ship_field);
         nameField = findViewById(R.id.name_field);
@@ -176,6 +194,11 @@ public class MainActivity extends AppCompatActivity {
                 int total = ts + ps + fs + es;
                 Log.i("MyActivity", "" + total);
                 total = ts + ps + fs + es;
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int total = ts + ps + fs + es;
                 if(total < 16) {
                     switch(v.getId()) {
                         case R.id.add_pilot:
