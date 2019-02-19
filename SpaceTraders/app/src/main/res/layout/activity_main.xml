@@ -13,9 +13,9 @@
         android:id="@+id/name_field"
         android:layout_width="121dp"
         android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="60dp"
         android:hint="Your name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,13 +37,13 @@
         android:id="@+id/ship_field"
         android:layout_width="161dp"
         android:layout_height="42dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="4dp"
         android:hint="Ship Name"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="@+id/name_field"
+        app:layout_constraintEnd_toEndOf="parent">
 
     </EditText>
 
@@ -83,9 +83,9 @@
         android:id="@+id/pilot"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginLeft="168dp"
-        android:layout_marginTop="205dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="188dp"
         android:text="PILOT"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,9 +131,7 @@
         android:id="@+id/subtract_pilot"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="208dp"
         android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
@@ -144,14 +142,13 @@
         android:id="@+id/add_pilot"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginEnd="252dp"
+        android:layout_marginRight="252dp"
         android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/subtract_pilot"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/add_fighter"
@@ -231,76 +228,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name_field"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="130dp">
-
-        <RadioButton
-            android:id="@+id/radio_one"
-            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Easy"
-            app:layout_constraintBottom_toBottomOf="@+id/radio_two"
-            app:layout_constraintEnd_toStartOf="@+id/radio_two"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <RadioButton
-            android:id="@+id/radio_two"
-            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Medium"
-            app:layout_constraintBottom_toBottomOf="@+id/radio_three"
-            app:layout_constraintEnd_toStartOf="@+id/radio_three"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/radio_one"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <RadioButton
-            android:id="@+id/radio_three"
-            style="@android:style/Widget.CompoundButton.RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
-            android:checked="false"
-            android:onClick="onRadioButtonClicked"
-            android:text="Hard"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/radio_two"
-            app:layout_constraintTop_toTopOf="parent" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/text_view_selected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:text="You selected: "
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="6dp" />
 
     <TextView
         android:id="@+id/pilot_points"
         android:layout_width="39dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="240dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="208dp"
         android:text="0"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -341,5 +276,21 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="312dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="49dp" />
+
+    <TextView
+        android:id="@+id/spinner_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the difficulty you would like to play on."
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="126dp" />
 
 </android.support.constraint.ConstraintLayout>
