@@ -13,13 +13,17 @@
         android:id="@+id/name_field"
         android:layout_width="121dp"
         android:layout_height="41dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
         android:hint="Your name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/spinner_textview"
+        app:layout_constraintEnd_toStartOf="@+id/ship_field"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent">
 
     </EditText>
 
@@ -27,22 +31,27 @@
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Please fill in the fields to proceed with the game. Be sure to use all of your skill points!"
+        app:layout_constraintBottom_toTopOf="@+id/name_field"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/ship_field"
         android:layout_width="161dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="12dp"
         android:hint="Ship Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/name_field"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_textview"
         app:layout_constraintEnd_toEndOf="parent">
 
     </EditText>
@@ -54,12 +63,14 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
-        android:layout_marginStart="230dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="516dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="392dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:onClick="onCreatePressed"
         android:text="Create!"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,39 +88,45 @@
         android:text="Exit"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />exit
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pilot"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="208dp"
         android:text="PILOT"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fighter"
         android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="280dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="52dp"
         android:text="FIGHTER"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/engineer"
+        app:layout_constraintEnd_toEndOf="@+id/add_fighter"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="@+id/subtract_fighter" />
 
     <TextView
         android:id="@+id/trader"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="349dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="280dp"
         android:text="TRADER"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,19 +136,21 @@
         android:id="@+id/engineer"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginLeft="212dp"
+        android:layout_marginTop="8dp"
         android:text="ENGINEER"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/add_fighter" />
 
     <Button
         android:id="@+id/subtract_pilot"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="232dp"
         android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
@@ -142,73 +161,78 @@
         android:id="@+id/add_pilot"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginRight="268dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/subtract_pilot"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/create_button"
+        app:layout_constraintEnd_toEndOf="@+id/add_trader"
+        app:layout_constraintStart_toEndOf="@+id/subtract_pilot"
+        app:layout_constraintTop_toTopOf="@+id/name_field"
+        app:layout_constraintVertical_bias="0.522" />
 
     <Button
         android:id="@+id/add_fighter"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginStart="268dp"
-        android:layout_marginLeft="268dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="180dp"
         android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/subtract_fighter"
+        app:layout_constraintTop_toTopOf="@+id/ship_field" />
 
     <Button
         android:id="@+id/add_trader"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginTop="374dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
         android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/subtract_trader"
+        app:layout_constraintStart_toEndOf="@+id/subtract_trader" />
 
     <Button
         android:id="@+id/subtract_engineer"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="448dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="40dp"
         android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/add_trader"
+        app:layout_constraintTop_toBottomOf="@+id/subtract_fighter" />
 
     <Button
         android:id="@+id/subtract_fighter"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/add_fighter"
+        app:layout_constraintStart_toEndOf="@+id/add_pilot" />
 
     <Button
         android:id="@+id/subtract_trader"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="374dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="312dp"
         android:onClick="onSubtractPressed"
         android:text="-"
         android:textSize="18sp"
@@ -219,78 +243,112 @@
         android:id="@+id/add_engineer"
         android:layout_width="38dp"
         android:layout_height="42dp"
-        android:layout_marginTop="448dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="40dp"
         android:onClick="onAddPressed"
         android:text="+"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/subtract_engineer"
+        app:layout_constraintTop_toBottomOf="@+id/add_fighter" />
 
 
     <TextView
         android:id="@+id/pilot_points"
-        android:layout_width="29dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="216dp"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="0"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_pilot"
+        app:layout_constraintStart_toEndOf="@+id/subtract_pilot"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fighter_points"
         android:layout_width="29dp"
         android:layout_height="28dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="0"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/engineer"
+        app:layout_constraintEnd_toStartOf="@+id/add_fighter"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/subtract_fighter"
+        app:layout_constraintTop_toTopOf="@+id/fighter"
+        app:layout_constraintVertical_bias="0.828" />
 
     <TextView
         android:id="@+id/trader_points"
         android:layout_width="37dp"
         android:layout_height="31dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="0"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/create_button"
+        app:layout_constraintEnd_toStartOf="@+id/add_trader"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintStart_toStartOf="@+id/subtract_trader"
+        app:layout_constraintTop_toBottomOf="@+id/pilot_points"
+        app:layout_constraintVertical_bias="0.18" />
 
     <TextView
         android:id="@+id/engineer_points"
         android:layout_width="35dp"
         android:layout_height="33dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="0"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/add_engineer"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/subtract_engineer"
+        app:layout_constraintTop_toTopOf="@+id/engineer" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="312dp"
         android:layout_height="24dp"
-        android:layout_marginTop="152dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="49dp" />
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/spinner_textview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="252dp"
         android:text="Select the difficulty you would like to play on."
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="126dp" />
+        app:layout_constraintBottom_toTopOf="@+id/create_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
