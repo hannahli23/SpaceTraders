@@ -63,6 +63,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+<<<<<<< HEAD
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="392dp"
@@ -71,6 +72,32 @@
         android:onClick="onCreatePressed"
         android:text="Create!"
         app:layout_constraintEnd_toEndOf="parent"
+=======
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:onClick="onCreatePressed"
+        android:text="Create!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="155dp"
+        android:layout_marginTop="390dp"
+        android:onClick="onExitPressed"
+        android:text="Exit"
+        app:layout_constraintLeft_toLeftOf="parent"
+>>>>>>> cfdfaf9e1caff405abe1b77c34cfec527bb3a6a1
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

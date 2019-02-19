@@ -1,5 +1,6 @@
 package com.cosmiccoders.spacetraders.views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,11 +21,11 @@ import android.widget.ArrayAdapter;
 import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.ShipTypes;
 import com.cosmiccoders.spacetraders.entity.Skills;
-import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerModel;
+import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditAddPlayerModel viewModel;
+    private EditAddPlayerViewModel viewModel;
 
     private TextView pilotSkills;
     private TextView fighterSkills;
@@ -230,6 +231,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.i("MyActivity", ":((((((");
         }
+    }
+
+    public void onExitPressed(View view) {
+        Button changeButton = (Button) findViewById(R.id.exit_button);
+        changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
 }
