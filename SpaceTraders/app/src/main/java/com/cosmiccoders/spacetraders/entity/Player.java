@@ -2,13 +2,14 @@ package com.cosmiccoders.spacetraders.entity;
 
 import java.util.EnumMap;
 
-public class Person {
+public class Player {
     /**
      * Creating all the necessary fields for a player
      * String name = name of player
      * All int values refer to the skills of the player
      * Difficulty refers the the difficulty level that the player selected
      **/
+    private int id;
     private String name;
     private int currency;
     private Difficulty difficulty;
@@ -16,45 +17,45 @@ public class Person {
 
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
-    public Person() {
+    public Player() {
         this("name", 0, 0, 0, 0,
                 1000, Difficulty.EASY, new Ship("Grancypher"));
     }
 
     /**
-     * One param constructor for the player
-     * @param name is the name of the person
+     * One param constructor for the Player
+     * @param name is the name of the Player
      */
-    public Person(String name) {
+    public Player(String name) {
         this(name, 0, 0, 0, 0,
                 1000, Difficulty.EASY, new Ship("Grancypher"));
     }
 
     /**
-     * Parameter for every attribute of the person
-     * @param name is the name of the person
+     * Parameter for every attribute of the Player
+     * @param name is the name of the Player
      * @param pilot is the skill points in that category
      * @param fighter is the skill points in that category
      * @param trader is the skill points in that category
      * @param engineer is the skill points in that category
      * @param difficulty is the difficulty the player chooses to play at
      */
-    public Person(String name, int pilot, int fighter, int trader, int engineer,
+    public Player(String name, int pilot, int fighter, int trader, int engineer,
                   Difficulty difficulty) {
         this(name, pilot, fighter, trader, engineer, 1000, difficulty, new Ship("Grancypher"));
     }
 
     /**
-     * Parameter for every attribute of the person
-     * @param name is the name of the person
+     * Parameter for every attribute of the Player
+     * @param name is the name of the Player
      * @param pilot is the skill points in that category
      * @param fighter is the skill points in that category
      * @param trader is the skill points in that category
      * @param engineer is the skill points in that category
-     * @param currency is the amount of money the person currently has
-     * @param difficulty is the difficulty the player choses to play at
+     * @param currency is the amount of money the Player currently has
+     * @param difficulty is the difficulty the player chooses to play at
      */
-    public Person(String name, int pilot, int fighter, int trader, int engineer,
+    public Player(String name, int pilot, int fighter, int trader, int engineer,
                   int currency, Difficulty difficulty, Ship ship) {
         this.name = name;
 
@@ -98,6 +99,10 @@ public class Person {
                 + getCurrency() + " and you are playing on " + getDifficulty() + " mode.";
 
         return ans;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

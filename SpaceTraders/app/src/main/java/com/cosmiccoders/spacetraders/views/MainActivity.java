@@ -11,7 +11,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
-import com.cosmiccoders.spacetraders.entity.Person;
+import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ship;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText nameField;
     private EditText shipField;
 
-    private Person person;
+    private Player player;
     private Ship ship;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
@@ -213,21 +213,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
-            person = new Person();
-            person.setCurrency(1000);
-            person.setDifficulty(Difficulty.EASY);
-            person.setName(nameField.getText().toString());
-            person.getShip().setName(shipField.getText().toString());
-            person.getShip().setShipType(ShipTypes.GNAT);
+            player = new Player();
+            player.setCurrency(1000);
+            player.setDifficulty(Difficulty.EASY);
+            player.setName(nameField.getText().toString());
+            player.getShip().setName(shipField.getText().toString());
+            player.getShip().setShipType(ShipTypes.GNAT);
 
-            person.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
-            person.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
-            person.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
-            person.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+            player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
+            player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
+            player.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
+            player.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
             //casting to difficulty
-            person.setDifficulty((Difficulty)majorSpinner.getSelectedItem());
+            player.setDifficulty((Difficulty)majorSpinner.getSelectedItem());
 
-            Log.i("MyActivity", person.toString());
+            Log.i("MyActivity", player.toString());
         } else {
             Log.i("MyActivity", ":((((((");
         }

@@ -1,6 +1,6 @@
 package com.cosmiccoders.spacetraders.model;
 
-import com.cosmiccoders.spacetraders.entity.Person;
+import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ship;
 
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ public class Game {
         return next_id++;
     }
 
-    private Person person;
+    private Player player;
 
-    private List<Person> players;
+    private List<Player> players;
 
     public Game() {
         players = new ArrayList<>();
     }
 
-    public void addPlayer(Person p) {
+    public void addPlayer(Player p) {
         players.add(p);
     }
 }
