@@ -1,6 +1,6 @@
 package com.cosmiccoders.spacetraders.entity;
 
-abstract class PlanetTemp {
+public abstract class PlanetTemp {
     private String name;
     private int[] location;
     private TechLevel techLevel;
