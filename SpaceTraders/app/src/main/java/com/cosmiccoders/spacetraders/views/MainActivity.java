@@ -210,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             player = new Player();
@@ -255,5 +254,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
