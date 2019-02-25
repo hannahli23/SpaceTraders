@@ -6,8 +6,16 @@ public abstract class PlanetTemp {
     private TechLevel techLevel;
     private PlanetResources planetResources;
 
-    public void setName(String name) {this.name = name;}
-    public void setLocation(int[] location) {this.location = location;}
-    public void setTechLevel(TechLevel techLevel) {this.techLevel = techLevel;}
-    public void setPlanetResources(PlanetResources planetResources) {this.planetResources = planetResources;}
+    protected PlanetTemp(String name, int[] location, TechLevel techLevel,
+                       PlanetResources planetResources) {
+        this.name = name;
+        this.location = location;
+        this.techLevel = techLevel;
+        this.planetResources = planetResources;
+    }
+
+    public String getName(String name) {return name;}
+    public int[] getLocation(int[] location) {return location;}
+    public TechLevel getTechLevel(TechLevel techLevel) {return techLevel;}
+    public PlanetResources getPlanetResources(PlanetResources planetResources) {return planetResources;}
 }
