@@ -216,20 +216,30 @@ public class MainActivity extends AppCompatActivity {
             player = new Player();
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
-            player.setName(nameField.getText().toString());
-            player.getShip().setName(shipField.getText().toString());
+
+            String name = nameField.getText().toString();
+            String shipName = shipField.getText().toString();
+            if (!name.isEmpty() && !shipName.isEmpty()) {
+                player.setName(name);
+                player.getShip().setName(shipName);
+            } else if(name.isEmpty() && !shipName.isEmpty()) {
+                player.getShip().setName(shipName);
+            } else if(!name.isEmpty() && shipName.isEmpty()) {
+                player.setName(name);
+            }
+
             player.getShip().setShipType(ShipTypes.GNAT);
 
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
             player.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
             player.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
-            //casting to difficulty
-            player.setDifficulty((Difficulty)majorSpinner.getSelectedItem());
+
+            player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
             Log.i("MyActivity", player.toString());
         } else {
-            Log.i("MyActivity", ":((((((");
+            Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }
     }
 

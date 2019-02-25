@@ -18,8 +18,8 @@ public class Player {
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
     public Player() {
-        this("name", 0, 0, 0, 0,
-                1000, Difficulty.EASY, new Ship("Grancypher"));
+        this("Gran", 0, 0, 0, 0,
+                1000, Difficulty.EASY, new Ship("Grandcypher"));
     }
 
     /**
@@ -28,7 +28,7 @@ public class Player {
      */
     public Player(String name) {
         this(name, 0, 0, 0, 0,
-                1000, Difficulty.EASY, new Ship("Grancypher"));
+                1000, Difficulty.EASY, new Ship("Grandcypher"));
     }
 
     /**
@@ -70,6 +70,7 @@ public class Player {
         this.ship = ship;
     }
 
+    public int getId() { return id; }
     public String getName() { return name; }
 
     public int getCurrency() { return currency; }
@@ -87,6 +88,8 @@ public class Player {
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
+
+    public void setShip(Ship ship) { this.ship = ship; }
 
     public String toString() {
         String ans = "You are " + name + " who travels on the " + ship.getShipName()
