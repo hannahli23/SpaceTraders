@@ -4,10 +4,10 @@ import com.cosmiccoders.spacetraders.entity.PlanetResources;
 import com.cosmiccoders.spacetraders.entity.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.TechLevel;
 
-public class Planet3 extends PlanetTemp{
+public class Planet4 extends PlanetTemp{
 
-    public Planet3(int[] location) {
-        super("Titikaka", location, TechLevel.ARGICULTURE,
-                PlanetResources.RichSoil);
+    public Planet4(int[] location) {
+        super("Baratas", location, TechLevel.HITECH,
+                PlanetResources.WarLike);
     }
 }

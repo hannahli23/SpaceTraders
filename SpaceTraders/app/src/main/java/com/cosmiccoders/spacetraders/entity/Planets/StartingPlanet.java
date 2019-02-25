@@ -4,10 +4,10 @@ import com.cosmiccoders.spacetraders.entity.PlanetResources;
 import com.cosmiccoders.spacetraders.entity.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.TechLevel;
 
-public class Planet3 extends PlanetTemp{
+public class StartingPlanet extends PlanetTemp{
 
-    public Planet3(int[] location) {
-        super("Titikaka", location, TechLevel.ARGICULTURE,
-                PlanetResources.RichSoil);
+    public StartingPlanet(int[] location) {
+        super("Rolling Hills", location, TechLevel.ARGICULTURE,
+                PlanetResources.NoSpecialResources);
     }
 }
