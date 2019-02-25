@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         majorSpinner = findViewById(R.id.spinner);
-        majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values()));
+        majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this,
+                android.R.layout.simple_spinner_item, Difficulty.values()));
 
         shipField = findViewById(R.id.ship_field);
         nameField = findViewById(R.id.name_field);
