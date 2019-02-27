@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/go_market"
+        android:title="Market" />
+    <item android:id="@+id/go_bank"
+        android:title="Bank" />
+    <item android:id="@+id/go_ship"
+        android:title="Another Ship" />
+    <item android:id="@+id/go_police"
+        android:title="Police" />
+</menu>
