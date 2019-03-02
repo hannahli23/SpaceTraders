@@ -6,8 +6,8 @@ import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public class Titikaka extends PlanetTemp{
 
-    public Titikaka(int[] location) {
-        super("Titikaka", location, TechLevel.ARGICULTURE,
+    public Titikaka() {
+        super("Titikaka", 100, 100, TechLevel.ARGICULTURE,
                 PlanetResources.RichSoil);
     }
 }

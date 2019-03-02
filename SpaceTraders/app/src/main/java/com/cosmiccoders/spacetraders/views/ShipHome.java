@@ -15,7 +15,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 import android.view.MenuInflater;
 import android.R;
-
+import com.cosmiccoders.spacetraders.viewmodels.EditShipHomeViewModel;
 
 public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
@@ -29,7 +29,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ship_home);
+        /*setContentView(R.layout.ship_home);
         Button btn = (Button) findViewById(R.id.go_places_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,12 +39,12 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 popup.inflate(R.menu.go_places_menu);
                 popup.show();
             }
-        });
+        });*/
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.go_market:
                 // do your code
@@ -60,7 +60,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 return true;
             default:
                 return false;
-        }
+        }*/
+        return true;
     }
 
 

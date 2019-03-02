@@ -238,6 +238,16 @@ public class MainActivity extends AppCompatActivity {
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
             Log.i("MyActivity", player.toString());
+
+            Button btn = (Button) findViewById(R.id.create_button);
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, GeneratingUniverse.class));
+                }
+            });
+
         } else {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }

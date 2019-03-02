@@ -6,8 +6,8 @@ import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public class Cornholio extends PlanetTemp{
 
-    public Cornholio(int[] location) {
-        super("Cornholio", location, TechLevel.RENAISSANCE,
+    public Cornholio() {
+        super("Cornholio", 10, 110, TechLevel.RENAISSANCE,
                 PlanetResources.Artistic);
     }
 }

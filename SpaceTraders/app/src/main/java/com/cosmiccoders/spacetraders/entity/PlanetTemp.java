@@ -6,10 +6,11 @@ public abstract class PlanetTemp {
     private TechLevel techLevel;
     private PlanetResources planetResources;
 
-    protected PlanetTemp(String name, int[] location, TechLevel techLevel,
+    protected PlanetTemp(String name, int x, int y, TechLevel techLevel,
                          PlanetResources planetResources) {
         this.name = name;
-        this.location = location;
+        int[] temp = {x, y};
+        this.location = temp;
         this.techLevel = techLevel;
         this.planetResources = planetResources;
     }

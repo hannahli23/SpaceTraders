@@ -19,6 +19,9 @@
         <activity
             android:name=".views.GeneratingUniverse">
         </activity>
+        <activity
+            android:name=".views.ShipHome">
+        </activity>
     </application>
 
 </manifest>

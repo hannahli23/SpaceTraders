@@ -6,8 +6,8 @@ import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public class StartingPlanet extends PlanetTemp{
 
-    public StartingPlanet(int[] location) {
-        super("Rolling Hills", location, TechLevel.ARGICULTURE,
+    public StartingPlanet() {
+        super("Rolling Hills", 75, 75, TechLevel.ARGICULTURE,
                 PlanetResources.NoSpecialResources);
     }
 }
