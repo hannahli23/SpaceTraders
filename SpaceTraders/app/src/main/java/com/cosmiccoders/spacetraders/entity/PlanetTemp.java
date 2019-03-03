@@ -22,7 +22,8 @@ public abstract class PlanetTemp {
 
     public String toString() {
         return "This is planet " + getName() + " which is located at (" + getLocation()[0] + ", "
-                + getLocation()[1]+").";
+                + getLocation()[1]+"). It is has a tech level of " + getTechLevel()
+                + " and its planet resources are " + getPlanetResources();
     }
 
 }

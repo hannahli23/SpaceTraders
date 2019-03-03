@@ -28,7 +28,7 @@ public class GeneratingUniverse extends AppCompatActivity {
         Iterator it = solarSystem.getPlanetMap().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            Log.i("Generating Solar System",
+            Log.d("Generating Solar System",
                     solarSystem.getPlanet((String) pair.getKey()).toString());
             it.remove();
         }
