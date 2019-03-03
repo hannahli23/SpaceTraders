@@ -7,13 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
+import android.arch.lifecycle.ViewModelProviders;
 import android.widget.TextView;
 
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ship;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
@@ -67,6 +66,9 @@ public class PlayerCreation extends AppCompatActivity {
         ts = Integer.parseInt(traderSkills.getText().toString());
         fs = Integer.parseInt(fighterSkills.getText().toString());
         es = Integer.parseInt(engineerSkills.getText().toString());
+
+        playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
+        shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
     }
 
     public void onSubtractPressed(View view) {
@@ -212,6 +214,7 @@ public class PlayerCreation extends AppCompatActivity {
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             player = new Player();
+            ship = new Ship();
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
 
@@ -240,7 +243,7 @@ public class PlayerCreation extends AppCompatActivity {
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
 
-            Log.i("MyActivity", player.toString());
+            Log.i("MyActivity", playerViewModel.getPlayer().toString());
 
             Button btn = (Button) findViewById(R.id.create_button);
 

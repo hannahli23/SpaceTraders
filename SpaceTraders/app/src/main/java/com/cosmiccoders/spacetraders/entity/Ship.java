@@ -5,6 +5,10 @@ public class Ship {
     private ShipTypes shipType;
     private int id;
 
+    public Ship() {
+        this("Grancypher");
+    }
+
     public Ship(String name) {
         this(name, ShipTypes.GNAT);
     }
