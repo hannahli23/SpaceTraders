@@ -34,8 +34,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(MainActivity.this, v);
-                popup.setOnMenuItemClickListener(MainActivity.this);
+                PopupMenu popup = new PopupMenu(PlayerCreation.this, v);
+                popup.setOnMenuItemClickListener(PlayerCreation.this);
                 popup.inflate(R.menu.go_places_menu);
                 popup.show();
             }

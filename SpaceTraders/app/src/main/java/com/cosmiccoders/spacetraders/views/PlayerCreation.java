@@ -9,12 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
+
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ship;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
@@ -22,10 +21,12 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.ShipTypes;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class PlayerCreation extends AppCompatActivity {
 
-    private EditAddPlayerViewModel viewModel;
+    private EditAddPlayerViewModel playerViewModel;
+    private EditShipViewModel shipViewModel;
 
     private TextView pilotSkills;
     private TextView fighterSkills;
@@ -42,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Player player;
     private Ship ship;
-    private RadioGroup radioGroup;
-    private RadioButton radioButton;
-    private TextView textView;
 
     private Spinner majorSpinner;
 
@@ -221,14 +219,14 @@ public class MainActivity extends AppCompatActivity {
             String shipName = shipField.getText().toString();
             if (!name.isEmpty() && !shipName.isEmpty()) {
                 player.setName(name);
-                player.getShip().setName(shipName);
+                ship.setName(shipName);
             } else if(name.isEmpty() && !shipName.isEmpty()) {
-                player.getShip().setName(shipName);
+                ship.setName(shipName);
             } else if(!name.isEmpty() && shipName.isEmpty()) {
                 player.setName(name);
             }
 
-            player.getShip().setShipType(ShipTypes.GNAT);
+            ship.setShipType(ShipTypes.GNAT);
 
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
@@ -237,6 +235,11 @@ public class MainActivity extends AppCompatActivity {
 
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
+            player.setShip(ship);
+
+            playerViewModel.addPlayer(player);
+            shipViewModel.addShip(ship);
+
             Log.i("MyActivity", player.toString());
 
             Button btn = (Button) findViewById(R.id.create_button);
@@ -244,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, GeneratingUniverse.class));
+                    startActivity(new Intent(PlayerCreation.this, GeneratingUniverse.class));
                 }
             });
 
