@@ -1,5 +1,6 @@
 package com.cosmiccoders.spacetraders.entity;
 
+import com.cosmiccoders.spacetraders.entity.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Planets.*;
 
 import java.util.HashMap;
@@ -22,4 +23,11 @@ public class SolarSystem {
         solarSystem.put("Titikaka", new Titikaka());
     }
 
+    public PlanetTemp getPlanet(String name) {
+        return solarSystem.get(name);
+    }
+
+    public Map<String, PlanetTemp> getPlanetMap() {
+        return solarSystem;
+    }
 }

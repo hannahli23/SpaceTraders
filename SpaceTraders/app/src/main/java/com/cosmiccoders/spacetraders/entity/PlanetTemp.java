@@ -15,8 +15,14 @@ public abstract class PlanetTemp {
         this.planetResources = planetResources;
     }
 
-    public String getName(String name) {return name;}
-    public int[] getLocation(int[] location) {return location;}
-    public TechLevel getTechLevel(TechLevel techLevel) {return techLevel;}
-    public PlanetResources getPlanetResources(PlanetResources planetResources) {return planetResources;}
+    public String getName() {return name;}
+    public int[] getLocation() {return location;}
+    public TechLevel getTechLevel() {return techLevel;}
+    public PlanetResources getPlanetResources() {return planetResources;}
+
+    public String toString() {
+        return "This is planet " + getName() + " which is located at (" + getLocation()[0] + ", "
+                + getLocation()[1]+").";
+    }
+
 }
