@@ -14,7 +14,8 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import android.view.MenuInflater;
-import android.R;
+
+import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipHomeViewModel;
 
 public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
@@ -29,8 +30,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*setContentView(R.layout.ship_home);
-        Button btn = (Button) findViewById(R.id.go_places_button);
+        setContentView(R.layout.ship_home);
+        /*Button btn = (Button) findViewById(R.id.go_places_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
