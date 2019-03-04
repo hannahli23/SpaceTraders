@@ -10,13 +10,9 @@ public abstract class PlanetTemp {
     private TechLevel techLevel;
     private PlanetResources planetResources;
 
-<<<<<<< HEAD:SpaceTraders/app/src/main/java/com/cosmiccoders/spacetraders/entity/Planets/PlanetTemp.java
     private Market market;
 
-    protected PlanetTemp(String name, int[] location, TechLevel techLevel,
-=======
     protected PlanetTemp(String name, int x, int y, TechLevel techLevel,
->>>>>>> 39e1555dd0cb192a268bc4777c25c09780a4b4d8:SpaceTraders/app/src/main/java/com/cosmiccoders/spacetraders/entity/PlanetTemp.java
                          PlanetResources planetResources) {
         this.name = name;
         int[] temp = {x, y};
