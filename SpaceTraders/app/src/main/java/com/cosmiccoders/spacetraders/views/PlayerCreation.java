@@ -183,29 +183,29 @@ public class PlayerCreation extends AppCompatActivity {
                             ps++;
                             changeText.setText("" + ps);
                             total = ts + ps + fs + es;
-                            Log.i("PS", "" + ps);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("PS", "" + ps);
+                            //Log.i("MyActivity", "" + total);
                             break;
                         case R.id.add_trader:
                             ts++;
                             changeText.setText("" + ts);
                             total = ts + ps + fs + es;
-                            Log.i("TS", "" + ts);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("TS", "" + ts);
+                            //Log.i("MyActivity", "" + total);
                             break;
                         case R.id.add_fighter:
                             fs++;
                             changeText.setText("" + fs);
                             total = ts + ps + fs + es;
-                            Log.i("FS", "" + fs);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("FS", "" + fs);
+                            //Log.i("MyActivity", "" + total);
                             break;
                         case R.id.add_engineer:
                             es++;
                             changeText.setText("" + es);
                             total = ts + ps + fs + es;
-                            Log.i("ES", "" + es);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("ES", "" + es);
+                            //Log.i("MyActivity", "" + total);
                     }
                 }
             }
@@ -243,7 +243,7 @@ public class PlayerCreation extends AppCompatActivity {
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
 
-            //Log.i("MyActivity", playerViewModel.getPlayer().toString());
+            Log.i("MyActivity", playerViewModel.getPlayer().toString());
 
             Button btn = (Button) findViewById(R.id.create_button);
 
