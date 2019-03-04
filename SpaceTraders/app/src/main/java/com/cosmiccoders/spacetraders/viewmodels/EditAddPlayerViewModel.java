@@ -25,4 +25,6 @@ public class EditAddPlayerViewModel extends AndroidViewModel {
         interactor.addPlayer(player);
     }
 
+    public Player getPlayer(){ return interactor.getPlayer(); }
+
 }

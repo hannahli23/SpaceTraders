@@ -23,7 +23,7 @@ class Repository {
     }
 
     /** all the players known in the application */
-    private List<Player> allPlayers;
+    private Player player;
 
     /** all the ships in the game */
     private List<Ship> allShips;
@@ -32,15 +32,14 @@ class Repository {
      * Make a new Repository object
      */
     public Repository() {
-        allPlayers = new ArrayList<>();
         allShips = new ArrayList<>();
     }
 
     /**
-     * get all the players in the system
-     * @return list of all players
+     * get the player
+     * @return the player of the game
      */
-    public List<Player> getAllPlayers() { return allPlayers;}
+    public Player getPlayer() { return player;}
 
     /**
      * get all the ships in the system
@@ -53,23 +52,18 @@ class Repository {
      */
     public void addPlayer(Player player) {
         int id = Repository.getNextUniqueID();
-        player.setId(id);
-        allPlayers.add(player);
+        this.player = player;
     }
 
     public void updatePlayer(Player p) {
-        for (Player player: allPlayers) {
-            if (player.getId() == p.getId()) {
-                player.setName(p.getName());
-                player.setCurrency(p.getCurrency());
-                player.setDifficulty(p.getDifficulty());
-                player.setSkills(Skills.PILOT, p.getSkill(Skills.PILOT));
-                player.setSkills(Skills.ENGINEER, p.getSkill(Skills.ENGINEER));
-                player.setSkills(Skills.FIGHTER, p.getSkill(Skills.FIGHTER));
-                player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));
-                player.setShip(p.getShip());
-            }
-        }
+        player.setName(p.getName());
+        player.setCurrency(p.getCurrency());
+        player.setDifficulty(p.getDifficulty());
+        player.setSkills(Skills.PILOT, p.getSkill(Skills.PILOT));
+        player.setSkills(Skills.ENGINEER, p.getSkill(Skills.ENGINEER));
+        player.setSkills(Skills.FIGHTER, p.getSkill(Skills.FIGHTER));
+        player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));
+        player.setShip(p.getShip());
     }
 
     public void addShip(Ship ship) {
