@@ -1,10 +1,16 @@
-package com.cosmiccoders.spacetraders.entity;
+package com.cosmiccoders.spacetraders.entity.Planets;
+
+import com.cosmiccoders.spacetraders.entity.Market;
+import com.cosmiccoders.spacetraders.entity.PlanetResources;
+import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public abstract class PlanetTemp {
     private String name;
     private int[] location;
     private TechLevel techLevel;
     private PlanetResources planetResources;
+
+    private Market market;
 
     protected PlanetTemp(String name, int[] location, TechLevel techLevel,
                          PlanetResources planetResources) {
