@@ -243,7 +243,7 @@ public class PlayerCreation extends AppCompatActivity {
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
 
-            Log.i("MyActivity", playerViewModel.getPlayer().toString());
+            //Log.i("MyActivity", playerViewModel.getPlayer().toString());
 
             Button btn = (Button) findViewById(R.id.create_button);
 

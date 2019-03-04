@@ -21,6 +21,8 @@ public class SolarSystem {
         solarSystem.put("Kravat", new Kravat());
         solarSystem.put("Omphalos", new Omphalos());
         solarSystem.put("Titikaka", new Titikaka());
+        solarSystem.put("Red Dwarf", new RedDwarf());
+        solarSystem.put("Blue Dwarf", new BlueDwarf());
     }
 
     public PlanetTemp getPlanet(String name) {
