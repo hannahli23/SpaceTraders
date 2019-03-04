@@ -1,6 +1,7 @@
 package com.cosmiccoders.spacetraders.entity;
 
 import java.util.EnumMap;
+import java.util.List;
 
 public class Player {
     /**
@@ -14,6 +15,8 @@ public class Player {
     private int currency;
     private Difficulty difficulty;
     private Ship ship;
+
+    private List<TradeGood> tradeGoods;
 
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
