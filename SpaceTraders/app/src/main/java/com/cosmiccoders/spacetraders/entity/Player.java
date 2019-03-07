@@ -1,5 +1,7 @@
 package com.cosmiccoders.spacetraders.entity;
 
+import com.cosmiccoders.spacetraders.entity.Ships.Ship;
+
 import java.util.EnumMap;
 import java.util.List;
 

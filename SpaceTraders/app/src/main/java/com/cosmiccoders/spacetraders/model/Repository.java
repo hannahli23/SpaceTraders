@@ -2,7 +2,7 @@ package com.cosmiccoders.spacetraders.model;
 
 
 import com.cosmiccoders.spacetraders.entity.Player;
-import com.cosmiccoders.spacetraders.entity.Ship;
+import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
 
 import java.util.ArrayList;
@@ -75,7 +75,6 @@ class Repository {
     public void updateShip(Ship s) {
         for (Ship ship: allShips) {
             if (ship.getId() == s.getId()) {
-                ship.setShipType(s.getShipType());
                 ship.setName(s.getShipName());
             }
         }

@@ -2,7 +2,7 @@ package com.cosmiccoders.spacetraders.model;
 
 import java.util.List;
 
-import com.cosmiccoders.spacetraders.entity.Ship;
+import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 
 public class ShipInteractor extends Interactor{
 

@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.cosmiccoders.spacetraders.model.Model;
 import com.cosmiccoders.spacetraders.model.ShipInteractor;
-import com.cosmiccoders.spacetraders.entity.Ship;
+import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 
 public class EditShipViewModel extends AndroidViewModel {
 
