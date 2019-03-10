@@ -6,14 +6,15 @@ import java.util.Map;
 public class CargoHold {
     private int max;
     private Map<TradeGood, Integer> inventory;
+    private int currSize;
 
     public CargoHold(int max) {
         this.max = max;
         inventory = new HashMap<>();
     }
 
-    public void putItem(TradeGood good) {
-        if (inventory.size() == max) {
+    public void putItem(TradeGood good, int amount) {
+        if ((currSize + amount) >= max) {
             //place some error here
             return;
         }
@@ -23,6 +24,7 @@ public class CargoHold {
         } else {
             inventory.put(good, 1);
         }
+        currSize += amount;
     }
 
     public void takeItem(TradeGood good, int amount) {
@@ -30,8 +32,10 @@ public class CargoHold {
             int temp = inventory.get(good);
             if(amount < temp) {
                 inventory.put(good, temp - amount);
+                currSize -= amount;
             } else if (amount == temp) {
                 inventory.remove(good);
+                currSize -= amount;
             } else {
                 // error message for when you don't have enough items
                 return;
