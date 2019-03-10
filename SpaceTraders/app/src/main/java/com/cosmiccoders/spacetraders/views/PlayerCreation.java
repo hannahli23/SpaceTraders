@@ -229,8 +229,6 @@ public class PlayerCreation extends AppCompatActivity {
                 player.setName(name);
             }
 
-//            ship.setShipType(ShipTypes.GNAT);
-
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
             player.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
@@ -238,12 +236,12 @@ public class PlayerCreation extends AppCompatActivity {
 
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
-            player.setShip(ship);
+            shipViewModel.setMainShip(ship);
 
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
 
-            Log.i("MyActivity", playerViewModel.getPlayer().toString());
+            Log.i("MyActivity", playerViewModel.toString());
 
             Button btn = (Button) findViewById(R.id.create_button);
 

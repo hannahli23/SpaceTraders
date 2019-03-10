@@ -82,8 +82,6 @@ public class Player {
 
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
 
-    public Ship getShip() { return ship; }
-
     public void setName(String name) { this.name = name; }
 
     public void setCurrency(int curr) { currency = curr; }
@@ -91,21 +89,6 @@ public class Player {
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
-
-    public void setShip(Ship ship) { this.ship = ship; }
-
-    public String toString() {
-        String ans = "You are " + name + " who travels on the " + ship.getShipName()
-                + " which is a " + ship.getShipType() + " type ship. \n You have "
-                + getSkill(Skills.PILOT) + "points, "
-                + getSkill(Skills.ENGINEER) + "points, "
-                + getSkill(Skills.FIGHTER) + "points, and "
-                + getSkill(Skills.TRADER) + "points in the skills "
-                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
-                + getCurrency() + " and you are playing on " + getDifficulty() + " mode.";
-
-        return ans;
-    }
 
     public void setId(int id) {
         this.id = id;

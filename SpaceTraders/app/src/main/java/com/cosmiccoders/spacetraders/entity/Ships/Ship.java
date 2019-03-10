@@ -1,11 +1,14 @@
 package com.cosmiccoders.spacetraders.entity.Ships;
 
+import com.cosmiccoders.spacetraders.entity.CargoHold;
+
 public class Ship {
     private String name;
     private String shipType;
     private int id;
     private int hullStrength; // 1 = Weak, 2 = Medium, 3 = Strong
-    private int numOfCargoBays; // 0-60
+    //private int numOfCargoBays; // 0-60
+    private CargoHold cargoHold;
     private int numOfWeaponSlots; // 0-3
     private int numOfShieldSlots; // 0-3
     private int numOfGadgetSlots; // 0-3
@@ -18,13 +21,14 @@ public class Ship {
                 int numOfCrewQuarters, int maxTravelRange, boolean escapePod) {
         this.shipType = shipType;
         this.hullStrength = hullStrength;
-        this.numOfCargoBays = numOfCargoBays;
         this.numOfWeaponSlots = numOfWeaponSlots;
         this.numOfShieldSlots = numOfShieldSlots;
         this.numOfGadgetSlots = numOfGadgetSlots;
         this.numOfCrewQuarters = numOfCrewQuarters;
         this.maxTravelRange = maxTravelRange;
         this.escapePod = escapePod;
+
+        cargoHold = new CargoHold(numOfCargoBays);
     }
 
     public String getShipName() { return name; }
@@ -35,7 +39,7 @@ public class Ship {
 
     public int getHullStrength() { return hullStrength; }
 
-    public int getNumOfCargoBays() { return numOfCargoBays; }
+    //public int getNumOfCargoBays() { return numOfCargoBays; }
 
     public int getNumOfWeaponSlots() { return numOfWeaponSlots; }
 
@@ -47,6 +51,8 @@ public class Ship {
 
     public int getMaxTravelRange() { return maxTravelRange; }
 
+    public CargoHold getCargoHold() { return cargoHold; }
+
     public void setName(String name) { this.name = name; }
 
     public void setId(int id) {this.id = id; }
@@ -55,9 +61,7 @@ public class Ship {
         this.hullStrength = hullStrength;
     }
 
-    public void setNumOfCargoBays(int numOfCargoBays) {
-        this.numOfCargoBays = numOfCargoBays;
-    }
+    // public void setNumOfCargoBays(int numOfCargoBays) { this.numOfCargoBays = numOfCargoBays; }
 
     public void setNumOfWeaponSlots(int numOfWeaponSlots) {
         this.numOfWeaponSlots = numOfWeaponSlots;
