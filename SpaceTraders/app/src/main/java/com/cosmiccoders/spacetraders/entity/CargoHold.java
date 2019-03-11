@@ -50,5 +50,7 @@ public class CargoHold {
 
     public int getMax() { return max; }
 
+    public int getCurrSize() { return currSize; }
+
     public Map<TradeGood, Integer> getInventory() { return inventory; }
 }
