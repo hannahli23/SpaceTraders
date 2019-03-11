@@ -1,4 +1,6 @@
-package com.cosmiccoders.spacetraders.entity;
+package com.cosmiccoders.spacetraders.entity.TradeGoods;
+
+import com.cosmiccoders.spacetraders.entity.PlanetResources;
 
 public class TradeGood {
 
@@ -26,4 +28,18 @@ public class TradeGood {
     private int mtl; // Min price offered in space trade with random trader (not on a planet)
 
     private int mth; // Max price offered in space trade with random trader (not on a planet)
+
+    public TradeGood(int mtlp, int mtlu, int ttp, int ipl, int var, int ie, PlanetResources cr,
+                     PlanetResources er, int mtl, int mth) {
+        this.mtlp = mtl;
+        this.mtlu = mtlu;
+        this.ttp = ttp;
+        this.ipl = ipl;
+        this.var = var;
+        this.ie = ie;
+        this.cr = cr;
+        this.er = er;
+        this.mtl = mtl;
+        this.mth = mth;
+    }
 }
