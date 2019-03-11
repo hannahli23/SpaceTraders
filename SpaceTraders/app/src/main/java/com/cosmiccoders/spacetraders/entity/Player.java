@@ -1,6 +1,7 @@
 package com.cosmiccoders.spacetraders.entity;
 
 import java.util.EnumMap;
+import java.util.List;
 
 public class Player {
     /**
@@ -15,11 +16,13 @@ public class Player {
     private Difficulty difficulty;
     private Ship ship;
 
+    private List<TradeGood> tradeGoods;
+
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
     public Player() {
         this("Gran", 0, 0, 0, 0,
-                1000, Difficulty.EASY, new Ship("Grandcypher"));
+                1000, Difficulty.EASY);
     }
 
     /**
@@ -28,7 +31,7 @@ public class Player {
      */
     public Player(String name) {
         this(name, 0, 0, 0, 0,
-                1000, Difficulty.EASY, new Ship("Grandcypher"));
+                1000, Difficulty.EASY);
     }
 
     /**
@@ -42,7 +45,7 @@ public class Player {
      */
     public Player(String name, int pilot, int fighter, int trader, int engineer,
                   Difficulty difficulty) {
-        this(name, pilot, fighter, trader, engineer, 1000, difficulty, new Ship("Grancypher"));
+        this(name, pilot, fighter, trader, engineer, 1000, difficulty);
     }
 
     /**
@@ -56,7 +59,7 @@ public class Player {
      * @param difficulty is the difficulty the player chooses to play at
      */
     public Player(String name, int pilot, int fighter, int trader, int engineer,
-                  int currency, Difficulty difficulty, Ship ship) {
+                  int currency, Difficulty difficulty) {
         this.name = name;
 
         skillsPoints.put(Skills.PILOT, pilot);
@@ -66,8 +69,6 @@ public class Player {
 
         this.currency = currency;
         this.difficulty = difficulty;
-
-        this.ship = ship;
     }
 
     public int getId() { return id; }

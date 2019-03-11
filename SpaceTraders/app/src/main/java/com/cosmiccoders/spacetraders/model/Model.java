@@ -10,7 +10,12 @@ public class Model {
 
     private Map<String, Object> interactorMap;
 
-    private static  Model instance = new Model();
+    /** Singleton Pattern Code
+     *  this allows us to get access to this class
+     *  anywhere, which will allow our View models to access
+     *  the "back end"  more easily
+     */
+    private static Model instance = new Model();
 
     public static Model getInstance() { return instance; }
 

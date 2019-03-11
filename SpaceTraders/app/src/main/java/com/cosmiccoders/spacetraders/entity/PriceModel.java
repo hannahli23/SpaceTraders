@@ -38,5 +38,7 @@ public interface PriceModel {
             put("Narcotics", NarcoticsList);
             put("Robots", RobotsList);
         }
-    }
+    };
+
+
 }

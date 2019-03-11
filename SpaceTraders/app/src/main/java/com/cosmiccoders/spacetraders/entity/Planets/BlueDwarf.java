@@ -3,9 +3,9 @@ package com.cosmiccoders.spacetraders.entity.Planets;
 import com.cosmiccoders.spacetraders.entity.PlanetResources;
 import com.cosmiccoders.spacetraders.entity.TechLevel;
 
-public class Andromeda extends PlanetTemp {
-    public Andromeda() {
-        super("Andromeda", 99, 99, TechLevel.RENAISSANCE,
-                PlanetResources.LOTS_OF_WATER);
+public class BlueDwarf extends PlanetTemp{
+    public BlueDwarf() {
+        super("Blue Dwarf", 63, 36, TechLevel.PINDUSTRIAL,
+                PlanetResources.LOTS_OF_HERBS);
     }
 }

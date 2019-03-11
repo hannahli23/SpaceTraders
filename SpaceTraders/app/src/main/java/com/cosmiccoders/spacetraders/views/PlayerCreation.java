@@ -7,14 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
+import android.arch.lifecycle.ViewModelProviders;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
+
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ship;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
@@ -22,10 +20,12 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.ShipTypes;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class PlayerCreation extends AppCompatActivity {
 
-    private EditAddPlayerViewModel viewModel;
+    private EditAddPlayerViewModel playerViewModel;
+    private EditShipViewModel shipViewModel;
 
     private TextView pilotSkills;
     private TextView fighterSkills;
@@ -42,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Player player;
     private Ship ship;
-    private RadioGroup radioGroup;
-    private RadioButton radioButton;
-    private TextView textView;
 
     private Spinner majorSpinner;
 
@@ -69,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         ts = Integer.parseInt(traderSkills.getText().toString());
         fs = Integer.parseInt(fighterSkills.getText().toString());
         es = Integer.parseInt(engineerSkills.getText().toString());
+
+        playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
+        shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
     }
 
     public void onSubtractPressed(View view) {
@@ -183,29 +183,29 @@ public class MainActivity extends AppCompatActivity {
                             ps++;
                             changeText.setText("" + ps);
                             total = ts + ps + fs + es;
-                            Log.i("PS", "" + ps);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("PS", "" + ps);
+                            //Log.i("MyActivity", "" + total);
                             break;
                         case R.id.add_trader:
                             ts++;
                             changeText.setText("" + ts);
                             total = ts + ps + fs + es;
-                            Log.i("TS", "" + ts);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("TS", "" + ts);
+                            //Log.i("MyActivity", "" + total);
                             break;
                         case R.id.add_fighter:
                             fs++;
                             changeText.setText("" + fs);
                             total = ts + ps + fs + es;
-                            Log.i("FS", "" + fs);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("FS", "" + fs);
+                            //Log.i("MyActivity", "" + total);
                             break;
                         case R.id.add_engineer:
                             es++;
                             changeText.setText("" + es);
                             total = ts + ps + fs + es;
-                            Log.i("ES", "" + es);
-                            Log.i("MyActivity", "" + total);
+                            //Log.i("ES", "" + es);
+                            //Log.i("MyActivity", "" + total);
                     }
                 }
             }
@@ -214,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             player = new Player();
+            ship = new Ship();
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
 
@@ -221,14 +222,14 @@ public class MainActivity extends AppCompatActivity {
             String shipName = shipField.getText().toString();
             if (!name.isEmpty() && !shipName.isEmpty()) {
                 player.setName(name);
-                player.getShip().setName(shipName);
+                ship.setName(shipName);
             } else if(name.isEmpty() && !shipName.isEmpty()) {
-                player.getShip().setName(shipName);
+                ship.setName(shipName);
             } else if(!name.isEmpty() && shipName.isEmpty()) {
                 player.setName(name);
             }
 
-            player.getShip().setShipType(ShipTypes.GNAT);
+            ship.setShipType(ShipTypes.GNAT);
 
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
@@ -237,7 +238,22 @@ public class MainActivity extends AppCompatActivity {
 
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
-            Log.i("MyActivity", player.toString());
+            player.setShip(ship);
+
+            playerViewModel.addPlayer(player);
+            shipViewModel.addShip(ship);
+
+            Log.i("MyActivity", playerViewModel.getPlayer().toString());
+
+            Button btn = (Button) findViewById(R.id.create_button);
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(PlayerCreation.this, GeneratingUniverse.class));
+                }
+            });
+
         } else {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }

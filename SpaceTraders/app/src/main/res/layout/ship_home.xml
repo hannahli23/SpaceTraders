@@ -28,13 +28,14 @@
         android:layout_alignParentTop="false"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="640dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:text="View Map!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/exit_button"
@@ -43,7 +44,9 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
-        android:layout_marginTop="664dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="636dp"
         android:onClick="onExitPressed"
         android:text="Exit"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -82,9 +85,12 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="276dp"
         android:text="View Goods"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="277dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/view_stats_button"
