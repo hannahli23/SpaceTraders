@@ -2,7 +2,7 @@ package com.cosmiccoders.spacetraders.model;
 
 
 import com.cosmiccoders.spacetraders.entity.Player;
-import com.cosmiccoders.spacetraders.entity.Ship;
+import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
 
 import java.util.ArrayList;
@@ -27,6 +27,9 @@ class Repository {
 
     /** all the ships in the game */
     private List<Ship> allShips;
+
+    /** gets the main ship you're using now **/
+    private Ship mainShip;
 
     /**
      * Make a new Repository object
@@ -63,7 +66,6 @@ class Repository {
         player.setSkills(Skills.ENGINEER, p.getSkill(Skills.ENGINEER));
         player.setSkills(Skills.FIGHTER, p.getSkill(Skills.FIGHTER));
         player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));
-        player.setShip(p.getShip());
     }
 
     public void addShip(Ship ship) {
@@ -75,9 +77,25 @@ class Repository {
     public void updateShip(Ship s) {
         for (Ship ship: allShips) {
             if (ship.getId() == s.getId()) {
-                ship.setShipType(s.getShipType());
                 ship.setName(s.getShipName());
             }
         }
+    }
+
+    public void setMainShip(Ship ship) { mainShip = ship; }
+
+    public Ship getMainShip() { return mainShip; }
+
+    public String toString() {
+        String ans = "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
+                + " which is a " + mainShip.getShipType() + " type ship. \n You have "
+                + player.getSkill(Skills.PILOT) + "points, "
+                + player.getSkill(Skills.ENGINEER) + "points, "
+                + player.getSkill(Skills.FIGHTER) + "points, and "
+                + player.getSkill(Skills.TRADER) + "points in the skills "
+                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
+                + player.getCurrency() + " and you are playing on " + player.getDifficulty() + " mode.";
+
+        return ans;
     }
 }

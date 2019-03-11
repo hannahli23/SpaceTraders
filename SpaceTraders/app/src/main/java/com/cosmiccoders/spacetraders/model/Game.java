@@ -1,7 +1,6 @@
 package com.cosmiccoders.spacetraders.model;
 
 import com.cosmiccoders.spacetraders.entity.Player;
-import com.cosmiccoders.spacetraders.entity.Ship;
 
 import java.util.ArrayList;
 import java.util.List;

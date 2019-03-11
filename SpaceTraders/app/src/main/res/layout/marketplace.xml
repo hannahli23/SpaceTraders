@@ -30,8 +30,6 @@
         android:layout_width="174dp"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        tools:layoutManager="GridLayoutManager"
-        tools:listitem="@layout/recycler_view_item"
-        tools:spanCount="5" />
+        tools:listitem="@layout/recycler_view_item" />
 </LinearLayout>
 

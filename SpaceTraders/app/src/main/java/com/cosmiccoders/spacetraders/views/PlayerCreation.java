@@ -12,12 +12,12 @@ import android.widget.TextView;
 
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
-import com.cosmiccoders.spacetraders.entity.Ship;
+import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
+import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
 import com.cosmiccoders.spacetraders.R;
-import com.cosmiccoders.spacetraders.entity.ShipTypes;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
@@ -214,7 +214,7 @@ public class PlayerCreation extends AppCompatActivity {
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             player = new Player();
-            ship = new Ship();
+            ship = new Gnat();
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
 
@@ -225,11 +225,9 @@ public class PlayerCreation extends AppCompatActivity {
                 ship.setName(shipName);
             } else if(name.isEmpty() && !shipName.isEmpty()) {
                 ship.setName(shipName);
-            } else if(!name.isEmpty() && shipName.isEmpty()) {
+            } else if(!name.isEmpty()) {
                 player.setName(name);
             }
-
-            ship.setShipType(ShipTypes.GNAT);
 
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
@@ -238,12 +236,12 @@ public class PlayerCreation extends AppCompatActivity {
 
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
-            player.setShip(ship);
+            shipViewModel.setMainShip(ship);
 
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
 
-            Log.i("MyActivity", playerViewModel.getPlayer().toString());
+            Log.i("MyActivity", playerViewModel.toString());
 
             Button btn = (Button) findViewById(R.id.create_button);
 

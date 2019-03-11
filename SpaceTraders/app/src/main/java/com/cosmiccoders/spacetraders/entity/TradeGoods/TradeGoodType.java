@@ -1,4 +1,4 @@
-package com.cosmiccoders.spacetraders.entity;
+package com.cosmiccoders.spacetraders.entity.TradeGoods;
 
 public enum TradeGoodType {
     WATER,
