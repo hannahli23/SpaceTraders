@@ -11,7 +11,7 @@ public class TradeGood {
     private int mtlu; // Minimum Tech Level to Use this resource (You can't sell on planets
                         // below this level)
 
-    private TechLevel ttp; // Tech Level which produces the most of this item
+    private int ttp; // Tech Level which produces the most of this item
 
     private int ipl; // Price increase per tech level
 
@@ -34,14 +34,14 @@ public class TradeGood {
 
     private int basePrice;
 
-    public TradeGood(String name, int basePrice, PlanetResources cr, TechLevel ttp) {
+    public TradeGood(String name, int basePrice, PlanetResources cr, int ttp) {
         this.name = name;
         this.basePrice = basePrice;
         this.cr = cr;
         this.ttp = ttp;
     }
 
-    public TradeGood(int mtlp, int mtlu, TechLevel ttp, int ipl, int var, int ie, PlanetResources cr,
+    public TradeGood(int mtlp, int mtlu, int ttp, int ipl, int var, int ie, PlanetResources cr,
                      PlanetResources er, int mtl, int mth) {
         this.mtlp = mtl;
         this.mtlu = mtlu;
@@ -57,7 +57,7 @@ public class TradeGood {
 
     public String getName() {return name;}
 
-    public TechLevel getTtp() {return ttp;}
+    public int getTtp() {return ttp;}
 
     public int getBasePrice() {return basePrice;}
 
