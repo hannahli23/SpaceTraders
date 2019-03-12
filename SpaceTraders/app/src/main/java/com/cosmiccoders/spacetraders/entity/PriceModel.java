@@ -40,5 +40,23 @@ public interface PriceModel {
         }
     };
 
+    public HashMap<String, Integer> MarketInterface (HashMap<String, List> tradeGoods, PlanetResources planet,) {
+            HashMap<String, Integer> prices = new HashMap<>();
+            for (String key: tradeGoods.keySet()) {
+                if (planet.TechLevel < key[0]) {
+                    prices.put(key, null);
+                    return;
+                }
+                if (planet.TechLevel < key[1]) {
+                    prices.put(key, null);
+                    return;
+                }
+                int above = planet.TechLevel - key[0];
+                int price = key[3] + (key[4]*above);
+                prices.put(key, price);
+            }
+            return prices;
+    }
+
 
 }

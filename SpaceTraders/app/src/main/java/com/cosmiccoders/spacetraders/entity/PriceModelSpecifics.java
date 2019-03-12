@@ -1,5 +1,6 @@
 package com.cosmiccoders.spacetraders.entity;
-package com.cosmiccoders.spacetraders.entity.PriceModel;
+
+import com.cosmiccoders.spacetraders.entity.PriceModel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,7 @@ public class PriceModelSpecifics {
     on the planet that is put into it.
      */
 
-    void ThisFunction (HashMap<String, List> tradeGoods, Planet planet,) {
+    HashMap<String, Integer> ThisFunction (HashMap<String, List> tradeGoods, Planet planet,) {
         HashMap<String, Integer> prices = new HashMap<String, Integer>();
         for (key in tradeGoods){
             if (planet.TechLevel < key[0]) {
@@ -27,5 +28,6 @@ public class PriceModelSpecifics {
             int price = key[3] + (key[4]*above);
             prices.put(key, price);
         }
+        return prices;
     }
 }
