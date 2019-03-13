@@ -1,10 +1,13 @@
 package com.cosmiccoders.spacetraders.entity;
 
+import com.cosmiccoders.spacetraders.entity.TechLevel;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public interface PriceModel {
+public class PriceModel {
     List<String> WaterList = Arrays.asList("0", "0", "2", "30", "3", "4", "DROUGHT",
             "LOTSOFWATER", "DESERT", "30", "50");
     List<String> FursList = Arrays.asList("0", "0", "0", "250", "10", "10", "COLD",
@@ -40,20 +43,23 @@ public interface PriceModel {
         }
     };
 
-    public HashMap<String, Integer> MarketInterface (HashMap<String, List> tradeGoods, PlanetResources planet,) {
+    HashMap<String, Integer> MarketGoods (PlanetResources resource, TechLevel level) {
+
             HashMap<String, Integer> prices = new HashMap<>();
-            for (String key: tradeGoods.keySet()) {
-                if (planet.TechLevel < key[0]) {
-                    prices.put(key, null);
-                    return;
-                }
-                if (planet.TechLevel < key[1]) {
-                    prices.put(key, null);
-                    return;
-                }
-                int above = planet.TechLevel - key[0];
-                int price = key[3] + (key[4]*above);
-                prices.put(key, price);
+            for (Map.Entry<String, List> entry: tradeGoods.entrySet()) {
+                List<String> firstElement= entry.getValue();
+                int zero = Integer.parseInt(firstElement.get(0));
+                int first = Integer.parseInt(firstElement.get(1));
+                int third = Integer.parseInt(firstElement.get(3));
+                int fourth = Integer.parseInt(firstElement.get(4));
+                if (level < zero) {
+                    prices.put(entry.getKey(), null);
+                } else if (level < first) {
+                    prices.put(entry.getKey(), null);
+                } else {
+                    int above = level - zero;
+                    int price = third + (fourth*above);
+                    prices.put(entry.getKey(), price);
             }
             return prices;
     }
