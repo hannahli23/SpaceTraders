@@ -18,7 +18,7 @@ public class MarketPlace extends AppCompatActivity{
     }
 
     public void onBuy(View view) {
-        Button btn = (Button) findViewById(R.id.homeButton);
+        Button btn = (Button) findViewById(R.id.buyPageButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +29,7 @@ public class MarketPlace extends AppCompatActivity{
     }
 
     public void onSell(View view) {
-        Button btn = (Button) findViewById(R.id.homeButton);
+        Button btn = (Button) findViewById(R.id.sellPageButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

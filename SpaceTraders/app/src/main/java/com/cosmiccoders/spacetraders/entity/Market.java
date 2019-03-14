@@ -9,13 +9,19 @@ import java.util.List;
 
 public class Market extends PriceModel{
     private Map<String, Integer> goodList;
+    private Map<String, Boolean> canSell;
 
     public Market(PlanetResources pr, TechLevel tl) {
         goodList = MarketGoods(pr, tl);
+        canSell = checkCanSell(tl);
     }
 
     public Map<String, Integer> getGoodList() {
         return goodList;
+    }
+
+    public Boolean getCanSell(String good) {
+        return canSell.get(good);
     }
 
     public int getPrice(String good) {

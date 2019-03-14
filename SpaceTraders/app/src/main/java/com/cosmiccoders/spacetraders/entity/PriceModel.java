@@ -72,5 +72,17 @@ public class PriceModel {
             return prices;
     }
 
-
+    public HashMap<String, Boolean> checkCanSell(TechLevel level) {
+        HashMap<String, Boolean> canSell = new HashMap<>();
+        for (Map.Entry<String, List> entry: tradeGoods.entrySet()) {
+            List<String> firstElement= entry.getValue();
+            int minTechU = Integer.parseInt(firstElement.get(1));
+            if(level.getRepresentation() < minTechU) {
+                canSell.put(entry.getKey(), false);
+            } else {
+                canSell.put(entry.getKey(), true);
+            }
+        }
+        return canSell;
+    }
 }

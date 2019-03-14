@@ -1,5 +1,7 @@
 package com.cosmiccoders.spacetraders.entity;
 
+import android.util.Log;
+
 import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
 
 import java.util.HashMap;
@@ -13,10 +15,12 @@ public class CargoHold {
     public CargoHold(int max) {
         this.max = max;
         inventory = new HashMap<>();
+        currSize = 0;
     }
 
     public boolean putCheck(int amount) {
         if (currSize + amount >= max) {
+            Log.i("Check size",  (currSize + amount) + "");
             return false;
         } else {
             return true;
@@ -25,6 +29,7 @@ public class CargoHold {
     public void putItem(String good, int amount) {
         if (inventory.containsKey(good)) {
             int temp = inventory.get(good);
+            temp += amount;
             inventory.put(good, temp);
         } else {
             inventory.put(good, 1);
@@ -34,7 +39,7 @@ public class CargoHold {
 
     public boolean takeCheck(String good, int amount) {
         if(inventory.containsKey(good)) {
-            return inventory.get(good) > amount;
+            return inventory.get(good) >= amount;
         } else {
             return false;
         }
@@ -55,6 +60,14 @@ public class CargoHold {
     public int getCurrSize() { return currSize; }
 
     public Map<String, Integer> getInventory() { return inventory; }
+
+    public int getNumOfItem(String good) {
+        if(inventory.containsKey(good)) {
+            return inventory.get(good);
+        } else {
+            return 0;
+        }
+    }
 
     public String toString() {
         String result = "You have: ";

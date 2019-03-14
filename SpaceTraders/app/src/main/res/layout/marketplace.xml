@@ -7,15 +7,17 @@
     android:paddingRight="16dp" >
 
     <Button
-        android:id="@+id/Buy"
+        android:id="@+id/buyPageButton"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
+        android:onClick="onBuy"
         android:text="Buy" />
 
     <Button
-        android:id="@+id/Sell"
+        android:id="@+id/sellPageButton"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:onClick="onSell"
         android:text="Sell" />
 </LinearLayout>

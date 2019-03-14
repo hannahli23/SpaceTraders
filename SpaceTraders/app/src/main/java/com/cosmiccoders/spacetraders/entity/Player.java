@@ -88,8 +88,12 @@ public class Player {
     public void setCurrency(int curr) { currency = curr; }
 
     public boolean checkCurrency(int amount) {
-        return amount < currency;
+        return amount <= currency;
     }
+
+    public void pay(int amount) { currency -= amount; }
+
+    public void getPaid(int amount) {currency += amount; }
 
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
