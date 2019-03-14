@@ -25,6 +25,12 @@
         <activity
             android:name=".views.MarketPlace">
         </activity>
+        <activity
+            android:name=".views.Buy">
+        </activity>
+        <activity
+            android:name=".views.Sell">
+        </activity>
     </application>
 
 </manifest>
