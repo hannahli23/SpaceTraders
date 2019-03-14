@@ -15,14 +15,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Robots"
         android:onClick="sell"
+        android:text="Robots"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/firearms"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintVertical_bias="0.382" />
 
     <Button
         android:id="@+id/food"
@@ -57,9 +57,10 @@
         android:text="Water"
         app:layout_constraintBottom_toBottomOf="@+id/furs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toEndOf="@+id/robots"
-        app:layout_constraintTop_toTopOf="@+id/ore" />
+        app:layout_constraintTop_toTopOf="@+id/ore"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/medicine"
@@ -104,13 +105,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Games"
         android:onClick="sell"
+        android:text="Games"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/firearms" />
 
@@ -124,14 +125,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Narcotics"
         android:onClick="sell"
+        android:text="Narcotics"
         app:layout_constraintBottom_toTopOf="@+id/robots"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firearms"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.793" />
 
     <Button
         android:id="@+id/furs"
@@ -147,10 +148,10 @@
         android:text="Furs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/robots"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <Button
         android:id="@+id/ore"
@@ -209,27 +210,23 @@
         android:id="@+id/n_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginBottom="20dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/narcotics"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/narcotics"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/r_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/robots"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/robots" />
 
     <TextView
         android:id="@+id/fur_price"
@@ -278,12 +275,14 @@
         android:id="@+id/m_price"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/medicine"
-        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
