@@ -87,6 +87,10 @@ public class Player {
 
     public void setCurrency(int curr) { currency = curr; }
 
+    public boolean checkCurrency(int amount) {
+        return amount < currency;
+    }
+
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }

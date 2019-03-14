@@ -31,6 +31,11 @@ public class Model {
     private void registerInteractors() {
         interactorMap.put("Player", new PlayerInteractor(myRepository));
         interactorMap.put("Ship", new ShipInteractor(myRepository));
+        interactorMap.put("Planet", new PlanetInteractor(myRepository));
+    }
+
+    public PlanetInteractor getPlanetInteractor() {
+        return (PlanetInteractor) interactorMap.get("Planet");
     }
     public PlayerInteractor getPlayerInteractors() {
         return (PlayerInteractor) interactorMap.get("Player");

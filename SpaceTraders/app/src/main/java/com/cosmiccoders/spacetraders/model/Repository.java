@@ -1,6 +1,7 @@
 package com.cosmiccoders.spacetraders.model;
 
 
+import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
@@ -31,6 +32,8 @@ class Repository {
     /** gets the main ship you're using now **/
     private Ship mainShip;
 
+    private PlanetTemp planet;
+
     /**
      * Make a new Repository object
      */
@@ -44,6 +47,7 @@ class Repository {
      */
     public Player getPlayer() { return player;}
 
+    public PlanetTemp getPlanet() {return planet;}
     /**
      * get all the ships in the system
      */
@@ -66,6 +70,10 @@ class Repository {
         player.setSkills(Skills.ENGINEER, p.getSkill(Skills.ENGINEER));
         player.setSkills(Skills.FIGHTER, p.getSkill(Skills.FIGHTER));
         player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));
+    }
+
+    public void setPlanet(PlanetTemp planet) {
+        this.planet = planet;
     }
 
     public void addShip(Ship ship) {

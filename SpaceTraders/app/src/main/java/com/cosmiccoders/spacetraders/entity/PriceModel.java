@@ -1,6 +1,7 @@
 package com.cosmiccoders.spacetraders.entity;
 
 import com.cosmiccoders.spacetraders.entity.TechLevel;
+import com.cosmiccoders.spacetraders.model.Interactor;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,23 +44,30 @@ public class PriceModel {
         }
     };
 
-    HashMap<String, Integer> MarketGoods (PlanetResources resource, TechLevel level) {
-
+    public HashMap<String, Integer> MarketGoods(PlanetResources resource, TechLevel level) {
             HashMap<String, Integer> prices = new HashMap<>();
             for (Map.Entry<String, List> entry: tradeGoods.entrySet()) {
                 List<String> firstElement= entry.getValue();
-                int zero = Integer.parseInt(firstElement.get(0));
-                int first = Integer.parseInt(firstElement.get(1));
-                int third = Integer.parseInt(firstElement.get(3));
-                int fourth = Integer.parseInt(firstElement.get(4));
-                if (level < zero) {
-                    prices.put(entry.getKey(), null);
-                } else if (level < first) {
-                    prices.put(entry.getKey(), null);
-                } else {
-                    int above = level - zero;
-                    int price = third + (fourth*above);
-                    prices.put(entry.getKey(), price);
+                int minTechP = Integer.parseInt(firstElement.get(0));
+                int minTechU = Integer.parseInt(firstElement.get(1));
+                int base = Integer.parseInt(firstElement.get(3));
+                int pricePerTech = Integer.parseInt(firstElement.get(4));
+                int var = Integer.parseInt(firstElement.get(5))/100;
+                String radicalUp = firstElement.get(6);
+                String cr = firstElement.get(7);
+
+                if(level.getRepresentation() >= minTechP) {
+                    if(resource.getRepresentation() == radicalUp) {
+                        base *= (1+var);
+                    } else if (resource.getRepresentation() == cr) {
+                        base *= (1-var);
+                    }
+                    for(int i = 0; i < level.getRepresentation(); i++) {
+                        base *= pricePerTech;
+                    }
+
+                    prices.put(entry.getKey(), (Integer) base);
+                }
             }
             return prices;
     }

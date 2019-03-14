@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CargoHold {
     private int max;
-    private Map<TradeGood, Integer> inventory;
+    private Map<String, Integer> inventory;
     private int currSize;
 
     public CargoHold(int max) {
@@ -15,11 +15,14 @@ public class CargoHold {
         inventory = new HashMap<>();
     }
 
-    public void putItem(TradeGood good, int amount) {
-        if ((currSize + amount) >= max) {
-            //place some error here
-            return;
+    public boolean putCheck(int amount) {
+        if (currSize + amount >= max) {
+            return false;
+        } else {
+            return true;
         }
+    }
+    public void putItem(String good, int amount) {
         if (inventory.containsKey(good)) {
             int temp = inventory.get(good);
             inventory.put(good, temp);
@@ -29,22 +32,21 @@ public class CargoHold {
         currSize += amount;
     }
 
-    public void takeItem(TradeGood good, int amount) {
-        if (inventory.containsKey(good)) {
-            int temp = inventory.get(good);
-            if(amount < temp) {
-                inventory.put(good, temp - amount);
-                currSize -= amount;
-            } else if (amount == temp) {
-                inventory.remove(good);
-                currSize -= amount;
-            } else {
-                // error message for when you don't have enough items
-                return;
-            }
+    public boolean takeCheck(String good, int amount) {
+        if(inventory.containsKey(good)) {
+            return inventory.get(good) > amount;
         } else {
-            //give an error message for the item does not exist
-            return;
+            return false;
+        }
+    }
+    public void takeItem(String good, int amount) {
+        int temp = inventory.get(good);
+        if(amount < temp) {
+            inventory.put(good, temp - amount);
+            currSize -= amount;
+        } else {
+            inventory.remove(good);
+            currSize -= amount;
         }
     }
 
@@ -52,5 +54,5 @@ public class CargoHold {
 
     public int getCurrSize() { return currSize; }
 
-    public Map<TradeGood, Integer> getInventory() { return inventory; }
+    public Map<String, Integer> getInventory() { return inventory; }
 }

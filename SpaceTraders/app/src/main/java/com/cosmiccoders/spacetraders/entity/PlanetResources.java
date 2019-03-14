@@ -2,24 +2,27 @@ package com.cosmiccoders.spacetraders.entity;
 
 public enum PlanetResources {
        // public void naturalResources () {
-    NO_SPECIAL_RESOURCES(0),
-    MINERAL_RICH(1),
-    MINERAL_POOR(2),
-    DESERT(3),
-    LOTS_OF_WATER(4),
-    RICH_SOIL(5),
-    POOR_SOIL(6),
-    RICH_FAUNA(7),
-    LIFELESS(8),
-    WEIRD_MUSHROOMS(9),
-    LOTS_OF_HERBS(10),
-    ARTISITC(11),
-    WAR_LIKE(12);
+    NO_SPECIAL_RESOURCES("NOSPECIALRESOURCES"),
+    MINERAL_RICH("MINERALRICH"),
+    MINERAL_POOR("MINERALPOOR"),
+    DESERT("DESERT"),
+    LOTS_OF_WATER("LOTSOFWATER"),
+    RICH_SOIL("RICHSOIL"),
+    POOR_SOIL("POORSOIL"),
+    RICH_FAUNA("RICHFAUNA"),
+    LIFELESS("LIFELESS"),
+    WEIRD_MUSHROOMS("WEIRDMUSHROOMS"),
+    LOTS_OF_HERBS("LOTSOFHERBS"),
+    ARTISITC("ARTISITIC"),
+    WAR_LIKE("WARLIKE");
 
-    private final int resources;
-    PlanetResources(int resources) {
+    private final String resources;
+    PlanetResources(String resources) {
         this.resources = resources;
     }
 
+    public String getRepresentation() {
+        return resources;
+    }
 }
 

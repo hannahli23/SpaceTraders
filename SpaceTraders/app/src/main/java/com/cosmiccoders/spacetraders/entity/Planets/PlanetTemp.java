@@ -19,12 +19,14 @@ public abstract class PlanetTemp {
         this.location = temp;
         this.techLevel = techLevel;
         this.planetResources = planetResources;
+        market = new Market(planetResources, techLevel);
     }
 
     public String getName() {return name;}
     public int[] getLocation() {return location;}
     public TechLevel getTechLevel() {return techLevel;}
     public PlanetResources getPlanetResources() {return planetResources;}
+    public Market getMarket() { return market;}
 
     public String toString() {
         return "This is planet " + getName() + " which is located at (" + getLocation()[0] + ", "

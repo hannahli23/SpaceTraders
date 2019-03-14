@@ -14,4 +14,8 @@ public enum TechLevel {
     private final int code;
 
     TechLevel(int code) { this.code = code; }
+
+    public int getRepresentation() {
+        return code;
+    }
 }
