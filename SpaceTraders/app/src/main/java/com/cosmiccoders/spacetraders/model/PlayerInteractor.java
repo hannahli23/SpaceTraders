@@ -16,4 +16,6 @@ public class PlayerInteractor extends Interactor{
         getRepo().updatePlayer(p);
         Log.i("APP", "Interactor: updating player: " + p);
     }
+
+    public String toString() { return getRepo().toString();}
 }

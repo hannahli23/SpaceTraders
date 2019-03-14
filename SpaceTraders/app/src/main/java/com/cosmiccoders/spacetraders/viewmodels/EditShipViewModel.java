@@ -25,5 +25,5 @@ public class EditShipViewModel extends AndroidViewModel {
 
     public void setMainShip(Ship ship) { interactor.setMainShip(ship);}
 
-    public Ship getMainShip(Ship ship) { return interactor.getMainShip();}
+    public Ship getMainShip() { return interactor.getMainShip();}
 }

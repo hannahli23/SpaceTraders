@@ -1,10 +1,14 @@
 package com.cosmiccoders.spacetraders.model;
 
 
+import android.util.Log;
+
+import com.cosmiccoders.spacetraders.entity.Planets.Andromeda;
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
+import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +78,7 @@ class Repository {
 
     public void setPlanet(PlanetTemp planet) {
         this.planet = planet;
+        //Log.i("Set", toPlanetString());
     }
 
     public void addShip(Ship ship) {

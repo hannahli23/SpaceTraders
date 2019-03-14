@@ -21,4 +21,13 @@ public class Market extends PriceModel{
     public int getPrice(String good) {
         return goodList.get(good);
     }
+
+    public String toString() {
+        String result = "";
+        for (Map.Entry<String, Integer> entry: goodList.entrySet()) {
+            result = result + entry.getKey() + " " + entry.getValue() +"\n";
+        }
+        return result;
+    }
+
 }

@@ -18,5 +18,4 @@ public class GetSetPlanetViewModel extends AndroidViewModel{
 
     public void setPlanet(PlanetTemp planet) {interactor.setPlanet(planet);}
     public PlanetTemp getPlanet() {return interactor.getPlanet();}
-
 }

@@ -27,11 +27,9 @@ public abstract class PlanetTemp {
     public TechLevel getTechLevel() {return techLevel;}
     public PlanetResources getPlanetResources() {return planetResources;}
     public Market getMarket() { return market;}
-
     public String toString() {
         return "This is planet " + getName() + " which is located at (" + getLocation()[0] + ", "
                 + getLocation()[1]+"). It is has a tech level of " + getTechLevel()
                 + " and its planet resources are " + getPlanetResources();
     }
-
 }

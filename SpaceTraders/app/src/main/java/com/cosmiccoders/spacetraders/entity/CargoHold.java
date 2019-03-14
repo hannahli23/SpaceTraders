@@ -55,4 +55,16 @@ public class CargoHold {
     public int getCurrSize() { return currSize; }
 
     public Map<String, Integer> getInventory() { return inventory; }
+
+    public String toString() {
+        String result = "You have: ";
+        if(currSize == 0) {
+            return "There's nothing here";
+        } else {
+            for (Map.Entry<String, Integer> entry: inventory.entrySet()) {
+               result = result + entry.getValue() + " " + entry.getKey() +"\n";
+            }
+        }
+        return result;
+    }
 }

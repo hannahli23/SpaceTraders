@@ -240,6 +240,7 @@ public class PlayerCreation extends AppCompatActivity {
 
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
+            shipViewModel.setMainShip(ship);
 
             Log.i("MyActivity", playerViewModel.toString());
 
