@@ -27,11 +27,6 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
 
-    private TextView playerName;
-
-    private RadioGroup radioGroup;
-    private RadioButton radioButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +80,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 Log.i("Market", planetViewModel.getPlanet().getMarket().toString());
             }
         });
+    }
+
+    public void onSavePressed(View view) {
+
     }
 
 }

@@ -259,7 +259,7 @@ public class PlayerCreation extends AppCompatActivity {
     }
 
     public void onExitPressed(View view) {
-        Button changeButton = (Button) findViewById(R.id.exit_button);
+        Button changeButton = (Button) findViewById(R.id.save_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

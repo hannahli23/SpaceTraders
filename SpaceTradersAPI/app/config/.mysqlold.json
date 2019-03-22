@@ -1,0 +1,15 @@
+// {
+//   connectionLimit : 10,
+//   host            : 'localhost',
+//   user            : 'root',
+//   password        : 'test',
+//   database        : 'world'
+// }
+
+//sql server db config --working, in C:\tech\myAPI\mssqlapi\app\config\index.js
+// dbconfig: {
+//     user: 'testSEC',
+//     password: 'testsec', //process.env.mspass
+//     server: 'vws12c10\\itinfrastructure', 
+//     database: 'cocdbmgmt'
+// }

@@ -1,0 +1,51 @@
+{
+  "name": "mssqlapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app/index.js",
+    "api": "nodemon ./app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpeng2003/cocdb.git"
+  },
+  "keywords": [
+    "testapi"
+  ],
+  "author": "bp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fpeng2003/cocdb/issues"
+  },
+  "homepage": "https://github.com/fpeng2003/cocdb#readme",
+  "dependencies": {
+    "activedirectory": "^0.7.2",
+    "async": "^2.1.2",
+    "body-parser": "^1.16.1",
+    "colors": "^1.1.2",
+    "cors": "^2.8.4",
+    "ejs": "^2.6.1",
+    "express": "^4.14.0",
+    "group-array": "^0.3.3",
+    "jwt-simple": "^0.5.0",
+    "moment": "^2.15.0",
+    "mssql": "^4.1.0",
+    "mysql": "^2.15.0",
+    "node-async-loop": "^1.2.2",
+    "node-cmd": "^3.0.0",
+    "node-jsxml": "^0.9.0",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0",
+    "passport-jwt": "^2.1.0",
+    "passport-local": "^1.0.0",
+    "promise": "^7.1.1",
+    "promise-mysql": "^3.2.1",
+    "winston": "2.3.0",
+    "winston-daily-rotate-file": "1.4.2",
+    "winstond": "0.0.2",
+    "xml2json": "^0.11.0"
+  }
+}
