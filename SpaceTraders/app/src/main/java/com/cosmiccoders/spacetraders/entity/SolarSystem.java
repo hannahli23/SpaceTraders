@@ -13,7 +13,7 @@ public class SolarSystem {
     public SolarSystem() {
         solarSystem = new HashMap<>();
 
-        solarSystem.put("StartingPlanet", new StartingPlanet());
+        /*solarSystem.put("StartingPlanet", new StartingPlanet());
         solarSystem.put("Andromeda", new Andromeda());
         solarSystem.put("Baratas", new Baratas());
         solarSystem.put("Cornholio", new Cornholio());
@@ -22,7 +22,11 @@ public class SolarSystem {
         solarSystem.put("Omphalos", new Omphalos());
         solarSystem.put("Titikaka", new Titikaka());
         solarSystem.put("Red Dwarf", new RedDwarf());
-        solarSystem.put("Blue Dwarf", new BlueDwarf());
+        solarSystem.put("Blue Dwarf", new BlueDwarf());*/
+    }
+
+    public void setPlanet(PlanetTemp planet) {
+        solarSystem.put(planet.getName(), planet);
     }
 
     public PlanetTemp getPlanet(String name) {

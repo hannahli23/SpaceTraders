@@ -10,11 +10,10 @@ import android.widget.Button;
 
 import com.cosmiccoders.spacetraders.R;
 
-import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
+import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.SolarSystem;
-import com.cosmiccoders.spacetraders.model.PlanetInteractor;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -22,7 +21,8 @@ import java.util.Map;
 public class GeneratingUniverse extends AppCompatActivity {
 
     private SolarSystem solarSystem;
-    private GetSetPlanetViewModel planetInteractor;
+    private GetSetPlanetViewModel planetViewModel;
+    private ViewAddSolarSystemViewModel solarSystemViewModel;
     private PlanetTemp planetTemp;
 
     @Override
@@ -30,20 +30,28 @@ public class GeneratingUniverse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generating_universe);
 
-        planetInteractor = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
 
-        solarSystem = new SolarSystem();
+        //solarSystem = new SolarSystem();
+        PlanetTemp test = new Kravat();
+        solarSystemViewModel.setPlanetSS(new StartingPlanet());
+        solarSystemViewModel.setPlanetSS(new Andromeda());
+        solarSystemViewModel.setPlanetSS(new Baratas());
+        solarSystemViewModel.setPlanetSS(new Cornholio());
+        solarSystemViewModel.setPlanetSS(new Drax());
+        solarSystemViewModel.setPlanetSS(test);
+        solarSystemViewModel.setPlanetSS(new Omphalos());
+        solarSystemViewModel.setPlanetSS(new Titikaka());
+        solarSystemViewModel.setPlanetSS(new RedDwarf());
+        solarSystemViewModel.setPlanetSS(new BlueDwarf());
 
-        Iterator it = solarSystem.getPlanetMap().entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            Log.i("Generating Solar System",
-                    solarSystem.getPlanet((String) pair.getKey()).toString());
-            it.remove();
+        for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
+            Log.i("Planet name", entry.getKey());
+            Log.i("Test", entry.getValue().toString());
         }
-        planetTemp = new StartingPlanet();
-        planetInteractor.setPlanet(planetTemp);
-        Log.i("Test", planetInteractor.getPlanet().toString());
+        planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
+        Log.i("Test", planetViewModel.getPlanet().toString());
     }
 
     public void onContinuePressed(View view) {

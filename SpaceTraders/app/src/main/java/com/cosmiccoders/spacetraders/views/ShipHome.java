@@ -11,7 +11,6 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.RadioGroup;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.PopupMenu;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
-import com.cosmiccoders.spacetraders.viewmodels.EditShipHomeViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 

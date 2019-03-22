@@ -1,5 +1,7 @@
 package com.cosmiccoders.spacetraders.model;
 
+import com.cosmiccoders.spacetraders.entity.SolarSystem;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +34,7 @@ public class Model {
         interactorMap.put("Player", new PlayerInteractor(myRepository));
         interactorMap.put("Ship", new ShipInteractor(myRepository));
         interactorMap.put("Planet", new PlanetInteractor(myRepository));
+        interactorMap.put("SolarSystem", new SolarSystemInteractor(myRepository));
     }
 
     public PlanetInteractor getPlanetInteractor() {
@@ -43,5 +46,9 @@ public class Model {
 
     public ShipInteractor getShipInteractors() {
         return (ShipInteractor) interactorMap.get("Ship");
+    }
+
+    public SolarSystemInteractor getSolarSystemInteractors() {
+        return (SolarSystemInteractor) interactorMap.get("SolarSystem");
     }
 }

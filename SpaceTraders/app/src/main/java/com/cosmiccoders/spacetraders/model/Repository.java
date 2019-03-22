@@ -3,8 +3,8 @@ package com.cosmiccoders.spacetraders.model;
 
 import android.util.Log;
 
-import com.cosmiccoders.spacetraders.entity.Planets.Andromeda;
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
+import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
@@ -12,6 +12,7 @@ import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class is an abstraction of the data storage for the business classes
@@ -27,6 +28,16 @@ class Repository {
         return next_id++;
     }
 
+    /**
+     * Make a new Repository object
+     */
+    public Repository() {
+        allShips = new ArrayList<>();
+    }
+
+
+
+    //ALL THE DIFFERENT COMPONENTS ARE HERE
     /** all the players known in the application */
     private Player player;
 
@@ -38,31 +49,23 @@ class Repository {
 
     private PlanetTemp planet;
 
-    /**
-     * Make a new Repository object
-     */
-    public Repository() {
-        allShips = new ArrayList<>();
-    }
+    private SolarSystem solarSystem = new SolarSystem();
 
+
+
+    //PLAYER FUNCTIONS
     /**
      * get the player
      * @return the player of the game
      */
     public Player getPlayer() { return player;}
 
-    public PlanetTemp getPlanet() {return planet;}
-    /**
-     * get all the ships in the system
-     */
-    public List<Ship> getAllShips() {return allShips; }
-
     /** add a new player to the game
      *
      * @param player the player to add
      */
     public void addPlayer(Player player) {
-        int id = Repository.getNextUniqueID();
+        //int id = Repository.getNextUniqueID();
         this.player = player;
     }
 
@@ -76,10 +79,49 @@ class Repository {
         player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));
     }
 
+    public String toString() {
+        String ans = "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
+                + " which is a " + mainShip.getShipType() + " type ship. \n You have "
+                + player.getSkill(Skills.PILOT) + "points, "
+                + player.getSkill(Skills.ENGINEER) + "points, "
+                + player.getSkill(Skills.FIGHTER) + "points, and "
+                + player.getSkill(Skills.TRADER) + "points in the skills "
+                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
+                + player.getCurrency() + " and you are playing on " + player.getDifficulty() + " mode.";
+
+        return ans;
+    }
+
+
+    //Solar System Functions
+    public void setPlanetSS(PlanetTemp planet) {
+        solarSystem.setPlanet(planet);
+    }
+
+    public Map<String, PlanetTemp> getPlanetMap() {
+        return solarSystem.getPlanetMap();
+    }
+
+    public PlanetTemp getPlanet(String name) {
+        return solarSystem.getPlanet(name);
+    }
+
+
+    //PLANET FUNCTIONS
+    public PlanetTemp getPlanet() {return planet;}
+
     public void setPlanet(PlanetTemp planet) {
         this.planet = planet;
-        //Log.i("Set", toPlanetString());
     }
+
+
+
+    //SHIP FUNCTIONS
+    /**
+     * get all the ships in the system
+     */
+    public List<Ship> getAllShips() {return allShips; }
+
 
     public void addShip(Ship ship) {
         int id = Repository.getNextUniqueID();
@@ -98,17 +140,4 @@ class Repository {
     public void setMainShip(Ship ship) { mainShip = ship; }
 
     public Ship getMainShip() { return mainShip; }
-
-    public String toString() {
-        String ans = "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
-                + " which is a " + mainShip.getShipType() + " type ship. \n You have "
-                + player.getSkill(Skills.PILOT) + "points, "
-                + player.getSkill(Skills.ENGINEER) + "points, "
-                + player.getSkill(Skills.FIGHTER) + "points, and "
-                + player.getSkill(Skills.TRADER) + "points in the skills "
-                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
-                + player.getCurrency() + " and you are playing on " + player.getDifficulty() + " mode.";
-
-        return ans;
-    }
 }

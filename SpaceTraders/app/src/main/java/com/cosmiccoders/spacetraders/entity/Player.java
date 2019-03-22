@@ -10,19 +10,20 @@ public class Player {
     /**
      * Creating all the necessary fields for a player
      * String name = name of player
-     * All int values refer to the skills of the player
+     * int currency = the amount of money the player currently has
      * Difficulty refers the the difficulty level that the player selected
+     * The EnumMap skillsPoints maps each skill point to the number of points in each category
      **/
     private int id;
     private String name;
     private int currency;
     private Difficulty difficulty;
-    private Ship ship;
-
-    private List<TradeGood> tradeGoods;
 
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
 
+    /**
+     * A empty constructor for player with default values
+     */
     public Player() {
         this("Gran", 0, 0, 0, 0,
                 1000, Difficulty.EASY);
@@ -87,12 +88,27 @@ public class Player {
 
     public void setCurrency(int curr) { currency = curr; }
 
+    /**
+     * This function checks if the currency you currently have is greater
+     * or equal to the amount we want to check it against
+     * @param amount
+     * @return whether or not you have enough money
+     */
     public boolean checkCurrency(int amount) {
         return amount <= currency;
     }
 
+    /**
+     * This function takes a certain amount of money out of your currency
+     * @param amount is the amount of money we want to take away from our
+     *               current amount
+     */
     public void pay(int amount) { currency -= amount; }
 
+    /**
+     * This function puts a certain amout of monday into your current currency
+     * @param amount is the amount of money we want to store in your money stores
+     */
     public void getPaid(int amount) {currency += amount; }
 
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
