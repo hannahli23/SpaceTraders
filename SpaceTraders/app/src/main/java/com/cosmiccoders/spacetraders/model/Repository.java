@@ -80,7 +80,7 @@ class Repository {
     }
 
     public String toString() {
-        String ans = "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
+        return "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
                 + " which is a " + mainShip.getShipType() + " type ship. \n You have "
                 + player.getSkill(Skills.PILOT) + "points, "
                 + player.getSkill(Skills.ENGINEER) + "points, "
@@ -89,7 +89,7 @@ class Repository {
                 + "pilot, engineer, fighter, trader respectively. \n You currently have $"
                 + player.getCurrency() + " and you are playing on " + player.getDifficulty() + " mode.";
 
-        return ans;
+        //return ans;
     }
 
 

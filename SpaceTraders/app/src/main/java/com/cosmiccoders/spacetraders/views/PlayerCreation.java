@@ -40,9 +40,6 @@ public class PlayerCreation extends AppCompatActivity {
     private EditText nameField;
     private EditText shipField;
 
-    private Player player;
-    private Ship ship;
-
     private Spinner majorSpinner;
 
     @Override
@@ -213,8 +210,8 @@ public class PlayerCreation extends AppCompatActivity {
     }
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
-            player = new Player();
-            ship = new Gnat();
+            Player player = new Player();
+            Ship ship = new Gnat();
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
 

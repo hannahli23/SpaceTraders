@@ -11,5 +11,4 @@ public enum TradeGoodType {
     MACHINES,
     NARCOTICS,
     ROBOTS
-    ;
 }

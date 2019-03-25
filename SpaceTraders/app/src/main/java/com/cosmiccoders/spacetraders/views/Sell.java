@@ -22,7 +22,6 @@ import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 public class Sell extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
-    private GetSetPlanetViewModel planetViewModel;
 
     private Market market;
     @Override
@@ -31,7 +30,7 @@ public class Sell extends AppCompatActivity {
         setContentView(R.layout.sell);
 
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
-        planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         market = planetViewModel.getPlanet().getMarket();
 

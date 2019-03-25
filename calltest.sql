@@ -44,11 +44,11 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS insert_items//
 CREATE PROCEDURE insert_items(
-IN p_amount INT(12),
+IN p_name VARCHAR(80),
 IN p_cargohold_id INT(11)
 )
 BEGIN
-INSERT INTO spacetraders.cargo_items(curr_amount, cargohold_id) VALUES(p_amount, p_cargohold_id);
+INSERT INTO spacetraders.cargo_items(item_name, cargohold_id) VALUES(p_name, p_cargohold_id);
 END //
 DELIMITER ;
 
@@ -57,7 +57,7 @@ DELIMITER ;
 CALL insert_player('Hannah', 2000);
 CALL insert_ship('Gransleuth', 'Bumblebee', 1);
 CALL insert_cargohold(22, 1);
-CALL insert_items(22, 1);
+CALL insert_items("Berries", 1);
 
 
 -- -----------------------------------------------------
@@ -75,4 +75,58 @@ CREATE PROCEDURE GetAllPlayers()
 	END //
 DELIMITER ;
 
-CALL GetAllPlayers()
+CALL GetAllPlayers();
+
+-- -----------------------------------------------------
+
+-- Update
+
+-- -----------------------------------------------------
+use spacetraders;
+DELIMITER //
+DROP PROCEDURE IF EXISTS UpdatePlayer//
+
+CREATE PROCEDURE UpdatePlayer(IN p_user_id INT(12),
+							IN p_username VARCHAR(80))
+	BEGIN
+		UPDATE person
+        SET username = p_username
+        WHERE user_id = p_user_id;
+	END //
+DELIMITER ;
+
+CALL UpdatePlayer(1, "TESTINGTEST");
+
+-- -----------------------------------------------------
+
+-- Delete
+
+-- -----------------------------------------------------
+use spacetraders;
+DELIMITER //
+DROP PROCEDURE IF EXISTS DeletePlayer//
+
+CREATE PROCEDURE DeletePlayer(IN p_user_id INT(12))
+	BEGIN
+		DELETE FROM person
+        WHERE user_id = pGetCargoHoldGetCargoHold_user_id;
+	END //
+DELIMITER ;
+
+-- -----------------------------------------------------
+
+-- Delete
+
+-- -----------------------------------------------------
+use spacetraders;
+DELIMITER //
+DROP PROCEDURE IF EXISTS GetPlayer//
+
+CREATE PROCEDURE GetPlayer(IN p_user_id INT(12))
+	BEGIN
+		Select * FROM person
+        WHERE user_id = p_user_id;
+	END //
+DELIMITER ;
+
+CALL GetPlayer(1);

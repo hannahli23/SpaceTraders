@@ -1,9 +1,8 @@
 const express = require('express');
-const getPlayer = require('./getPlayer');
-const postPlayer = require('./postPlayer');
-const putPlayer = require('./putPlayer');
-const deletePlayer = require('./deletePlayer');
-const getPlayerById = require('./getPlayerById')
+const getCargoHold = require('./getCargoHold');
+const postCargoHold = require('./postCargoHold');
+const putCargoHold = require('./putCargoHold');
+const deleteCargoHold = require('./deleteCargoHold');
 const passport = require('passport');
 
 module.exports = (function(){
@@ -23,13 +22,12 @@ module.exports = (function(){
 
 
      
-    api.route('/').get(getPlayer)
-        //  .get(passport.authenticate('jwt', {session: false}),getDoc)
+    api.route('/').get(getCargoHold)
+    api.route('/').post(postCargoHold)
+    api.route('/').put(putCargoHold)
+    api.route('/').delete(deleteCargoHold)
 
-    api.route('/').post(postPlayer)
-    api.route('/').put(putPlayer)
-    api.route('/').delete(deletePlayer)
-    api.route('/id/:user_id').get(getPlayerById)
+    //  .get(passport.authenticate('jwt', {session: false}),getDoc)
     //     .post(passport.authenticate('jwt', {session: false}),postDoc) 
 
       

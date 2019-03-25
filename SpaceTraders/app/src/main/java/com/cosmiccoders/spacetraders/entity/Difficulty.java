@@ -14,4 +14,6 @@ public enum Difficulty {
         this.difficulty = difficulty;
     }
 
+    public String getRepresentation(){ return difficulty; }
+
 }

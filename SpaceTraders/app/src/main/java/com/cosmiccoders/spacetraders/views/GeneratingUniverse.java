@@ -21,8 +21,6 @@ import java.util.Map;
 public class GeneratingUniverse extends AppCompatActivity {
 
     private SolarSystem solarSystem;
-    private GetSetPlanetViewModel planetViewModel;
-    private ViewAddSolarSystemViewModel solarSystemViewModel;
     private PlanetTemp planetTemp;
 
     @Override
@@ -30,8 +28,8 @@ public class GeneratingUniverse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generating_universe);
 
-        planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
-        solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        ViewAddSolarSystemViewModel solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
 
         //solarSystem = new SolarSystem();
         PlanetTemp test = new Kravat();

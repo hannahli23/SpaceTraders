@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const config = require('../../config');
 let dbconfig = config.dbconfig;
 
-var sql = "CALL insert_player(?,?)"; // Full name of stored procedure
+var sql = "CALL insert_ship(?,?,?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
         //logger.debug('COC_Postcocdbinfo is starting');
@@ -26,8 +26,9 @@ module.exports = function(req, res, next) {
             console.log('get req post body is ');
              
             pool.getConnection(function(err, connection) {
-                console.log('get req post body is ' + reqBody.username);
-                console.log('get req post body is ' + reqBody.currency);
+                console.log('get req post body is ' + reqBody.ship_name);
+                console.log('get req post body is ' + reqBody.ship_type);
+                console.log('get req post body is ' + reqBody.user_id);
 			    if (err) {
                     console.log(err);
                     res.status(500).send(err);
@@ -35,10 +36,11 @@ module.exports = function(req, res, next) {
                     connection.release();
 			        return reject(err);
 			    }
-			    console.log('get req post body is '+ reqBody.username);
-                console.log('get req post body is '+ reqBody.currency);
+			    console.log('get req post body is ' + reqBody.ship_name);
+                console.log('get req post body is ' + reqBody.ship_type);
+                console.log('get req post body is ' + reqBody.user_id);
 
-			    connection.query(sql,[reqBody.username,reqBody.currency], function(err, results, fields) {
+			    connection.query(sql,[reqBody.ship_name, reqBody.ship_type, reqBody.user_id], function(err, results, fields) {
                     if (err) {
                         return reject(err);
                     }

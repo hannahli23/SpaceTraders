@@ -5,13 +5,13 @@ const mysql = require('mysql');
 const config = require('../../config');
 let dbconfig = config.dbconfig;
 
-var sql = "CALL insert_player(?,?)"; // Full name of stored procedure
+var sql = "CALL GetPlayer(?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
         //logger.debug('COC_Postcocdbinfo is starting');
 
             var reqBody = req.body;
-            var reqParams = req.params;
+            var reqParams = req.params.user_id;
 
             var pool  = mysql.createPool({
                 connectionLimit : 10,
@@ -22,12 +22,9 @@ module.exports = function(req, res, next) {
             });
 
         return new Promise(function (resolve, reject){ 
-            // var pool  = mysql.createPool(dbconfig);
-            console.log('get req post body is ');
              
             pool.getConnection(function(err, connection) {
-                console.log('get req post body is ' + reqBody.username);
-                console.log('get req post body is ' + reqBody.currency);
+                console.log('get req post body is ' + reqParams);
 			    if (err) {
                     console.log(err);
                     res.status(500).send(err);
@@ -35,16 +32,13 @@ module.exports = function(req, res, next) {
                     connection.release();
 			        return reject(err);
 			    }
-			    console.log('get req post body is '+ reqBody.username);
-                console.log('get req post body is '+ reqBody.currency);
+			    console.log('get req post body is '+ reqParams);
 
-			    connection.query(sql,[reqBody.username,reqBody.currency], function(err, results, fields) {
+			    connection.query(sql,reqParams, function(err, results, fields) {
                     if (err) {
                         return reject(err);
                     }
-                    console.log('changed ' + results.changedRows + ' rows');
-                    console.log(results.insertId);
-                    res.send(results.changedRows + '   ' + results.insertId);
+                    res.send(res.send(results[0]));
                     //Return the connection to the pool
                     connection.release();
                     
@@ -53,4 +47,3 @@ module.exports = function(req, res, next) {
           }); 
       });  
 }
-
