@@ -47,6 +47,17 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         });
     }
 
+
+    public void onMapPressed(View view) {
+        Button btn2 = (Button) findViewById(R.id.view_map_button);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ShipHome.this, Map.class));
+            }
+        });
+    }
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
@@ -80,10 +91,6 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 Log.i("Market", planetViewModel.getPlanet().getMarket().toString());
             }
         });
-    }
-
-    public void onSavePressed(View view) {
-
     }
 
 }
