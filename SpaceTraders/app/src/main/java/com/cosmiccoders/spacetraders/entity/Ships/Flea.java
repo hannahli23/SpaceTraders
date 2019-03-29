@@ -4,6 +4,7 @@ public class Flea extends Ship {
     public Flea() {
         super("Flea", 1, 3,
                 0, 0, 0,
-                0, 20, true);
+                0, 20, true,
+                8);
     }
 }
