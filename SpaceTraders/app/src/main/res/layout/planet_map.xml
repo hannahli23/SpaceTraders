@@ -18,21 +18,27 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="408dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="410dp" />
-a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/planet1"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="500dp"
         android:alpha="0.8"
         android:text="Planet1"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="500dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/planet2_button"
@@ -41,21 +47,27 @@ a
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="152dp"
+        android:layout_marginLeft="152dp"
+        android:layout_marginTop="220dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="225dp" />
-    a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/planet2"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="320dp"
         android:alpha="0.8"
         android:text="Planet2"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/planet3_button"
@@ -64,21 +76,27 @@ a
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="4dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="0dp" />
-    a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/planet3"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginLeft="212dp"
+        android:layout_marginTop="108dp"
         android:alpha="0.8"
         android:text="Planet3"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="210dp"
-        tools:layout_editor_absoluteY="100dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/planet4_button"
@@ -87,21 +105,28 @@ a
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="200dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="276dp"
-        tools:layout_editor_absoluteY="200dp" />
-    a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/planet4"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginLeft="272dp"
+        android:layout_marginTop="264dp"
         android:alpha="0.8"
         android:text="Planet4"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="273dp"
-        tools:layout_editor_absoluteY="258dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/planet5_button"
@@ -110,21 +135,27 @@ a
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="632dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="635dp" />
-    a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/planet5"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="696dp"
         android:alpha="0.8"
         android:text="Planet5"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="695dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/planet6_button"
@@ -133,21 +164,27 @@ a
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="500dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="500dp" />
-    a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/planet6"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginTop="536dp"
         android:alpha="0.8"
         android:text="Planet6"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="530dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/planet7_button"
@@ -156,20 +193,83 @@ a
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
+        android:layout_marginStart="292dp"
+        android:layout_marginLeft="292dp"
+        android:layout_marginTop="436dp"
         android:text=""
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="435dp" />
-    a
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/planet7"
         android:layout_width="45dp"
         android:layout_height="0dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginLeft="348dp"
+        android:layout_marginTop="560dp"
         android:alpha="0.8"
         android:text="Planet7"
         android:textColor="#FFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="350dp"
-        tools:layout_editor_absoluteY="550dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="67dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="272dp"
+        android:layout_marginTop="672dp"
+        android:alpha="0.8"
+        android:text="Location:"
+        android:textColor="#FFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/location_tag"
+        android:layout_width="148dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="305dp"
+        android:layout_marginLeft="272dp"
+        android:layout_marginTop="672dp"
+        android:alpha="0.8"
+        android:text="current location"
+        android:textColor="#FFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fuel"
+        android:layout_width="67dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="264dp"
+        android:layout_marginTop="684dp"
+        android:alpha="0.8"
+        android:text="Fuel:"
+        android:textColor="#FFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fuel_amount"
+        android:layout_width="89dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="264dp"
+        android:layout_marginTop="684dp"
+        android:alpha="0.8"
+        android:text="amount of fuel"
+        android:textColor="#FFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
