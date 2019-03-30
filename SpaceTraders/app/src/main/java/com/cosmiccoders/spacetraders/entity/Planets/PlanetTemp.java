@@ -2,6 +2,7 @@ package com.cosmiccoders.spacetraders.entity.Planets;
 
 import com.cosmiccoders.spacetraders.entity.Market;
 import com.cosmiccoders.spacetraders.entity.PlanetResources;
+import com.cosmiccoders.spacetraders.entity.ShipYard;
 import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public abstract class PlanetTemp {
@@ -9,8 +10,8 @@ public abstract class PlanetTemp {
     private int[] location;
     private TechLevel techLevel;
     private PlanetResources planetResources;
-
     private Market market;
+    private ShipYard shipYard;
 
     protected PlanetTemp(String name, int x, int y, TechLevel techLevel,
                          PlanetResources planetResources) {
@@ -23,10 +24,12 @@ public abstract class PlanetTemp {
     }
 
     public String getName() {return name;}
-    public int[] getLocation() {return location;}
+    public int[] getLocation() { return location; }
     public TechLevel getTechLevel() {return techLevel;}
     public PlanetResources getPlanetResources() {return planetResources;}
     public Market getMarket() { return market;}
+    public ShipYard getShipYard() { return shipYard; }
+
     public String toString() {
         return "This is planet " + getName() + " which is located at (" + getLocation()[0] + ", "
                 + getLocation()[1]+"). It is has a tech level of " + getTechLevel()

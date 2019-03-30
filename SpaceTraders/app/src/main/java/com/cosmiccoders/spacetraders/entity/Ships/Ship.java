@@ -2,6 +2,7 @@ package com.cosmiccoders.spacetraders.entity.Ships;
 
 import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
+import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 
 public class Ship {
     private String name;
@@ -19,7 +20,9 @@ public class Ship {
 
     private int fuelPrice; // 1-8 tokens
     private boolean fullFuelTank = true;
-    private PlanetTemp location;
+    private PlanetTemp currPlanet;
+
+    private ShortRangeChart shortRangeChart;
 
     public Ship(String shipType, int hullStrength, int numOfCargoBays,
                 int numOfWeaponSlots, int numOfShieldSlots, int numOfGadgetSlots,
@@ -65,6 +68,8 @@ public class Ship {
 
     public CargoHold getCargoHold() { return cargoHold; }
 
+    public PlanetTemp getCurrPlanet() { return currPlanet; }
+
     public void setName(String name) { this.name = name; }
 
     public void setId(int id) {this.id = id; }
@@ -97,6 +102,10 @@ public class Ship {
 
     public void setFullFuelTank(boolean fullFuelTank) {
         this.fullFuelTank = fullFuelTank;
+    }
+
+    public void setPlanet(PlanetTemp currPlanet) {
+        this.currPlanet = currPlanet;
     }
 
     public void travel() {
