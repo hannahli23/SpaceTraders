@@ -28,12 +28,12 @@ public class CargoHold {
     }
 
     /**
-     * Check to see if the amount of items you want to put int your cargoHold can actualy fit
+     * Check to see if the amount of items you want to put into your cargoHold can actually fit
      * @param amount
-     * @return whether or not the amount of items will fit
+     * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
-        if (currSize + amount >= max) {
+        if (currSize + amount > max) {
             Log.i("Check size",  (currSize + amount) + "");
             return false;
         } else {

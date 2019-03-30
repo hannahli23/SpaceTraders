@@ -292,6 +292,34 @@
         app:layout_constraintStart_toEndOf="@+id/subtract_engineer"
         app:layout_constraintTop_toBottomOf="@+id/add_fighter" />
 
+<<<<<<< HEAD
+    <RadioButton
+        android:id="@+id/radio_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="checkButton"
+        android:text="Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/radio_three"
+        app:layout_constraintEnd_toStartOf="@+id/radio_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radio_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radio_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:onClick="checkButton"
+        android:text="Hard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/radio_two"
+        app:layout_constraintTop_toTopOf="parent" />
+=======
+>>>>>>> b3a26e53d87864caaf5a5ba69eaa38f940e7154a
 
     <TextView
         android:id="@+id/pilot_points"

@@ -1,6 +1,7 @@
 package com.cosmiccoders.spacetraders.entity.Ships;
 
 import com.cosmiccoders.spacetraders.entity.CargoHold;
+import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 
 public class Ship {
     private String name;
@@ -13,12 +14,16 @@ public class Ship {
     private int numOfShieldSlots; // 0-3
     private int numOfGadgetSlots; // 0-3
     private int numOfCrewQuarters; // 0-3
-    private int maxTravelRange; // 13-20 parsecs
+    private int maxTravelRange; // 13-20 parsecs (Fuel capability)
     private boolean escapePod; // Has one or doesn't
+
+    private int fuelPrice; // 1-8 tokens
+    private boolean fullFuelTank = true;
+    private PlanetTemp location;
 
     public Ship(String shipType, int hullStrength, int numOfCargoBays,
                 int numOfWeaponSlots, int numOfShieldSlots, int numOfGadgetSlots,
-                int numOfCrewQuarters, int maxTravelRange, boolean escapePod) {
+                int numOfCrewQuarters, int maxTravelRange, boolean escapePod, int fuelPrice) {
         this.shipType = shipType;
         this.hullStrength = hullStrength;
         this.numOfWeaponSlots = numOfWeaponSlots;
@@ -27,6 +32,7 @@ public class Ship {
         this.numOfCrewQuarters = numOfCrewQuarters;
         this.maxTravelRange = maxTravelRange;
         this.escapePod = escapePod;
+        this.fuelPrice = fuelPrice;
 
         cargoHold = new CargoHold(numOfCargoBays);
     }
@@ -50,6 +56,12 @@ public class Ship {
     public int getNumOfCrewQuarters() { return numOfCrewQuarters; }
 
     public int getMaxTravelRange() { return maxTravelRange; }
+
+    public boolean getEscapePod() { return escapePod; }
+
+    public int getFuelPrice() { return fuelPrice; }
+
+    public boolean getFullFuelTank() { return fullFuelTank; }
 
     public CargoHold getCargoHold() { return cargoHold; }
 
@@ -81,5 +93,13 @@ public class Ship {
 
     public void setMaxTravelRange(int maxTravelRange) {
         this.maxTravelRange = maxTravelRange;
+    }
+
+    public void setFullFuelTank(boolean fullFuelTank) {
+        this.fullFuelTank = fullFuelTank;
+    }
+
+    public void travel() {
+        fullFuelTank = false;
     }
 }

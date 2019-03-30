@@ -18,8 +18,8 @@ public class Player {
     private String name;
     private int currency;
     private Difficulty difficulty;
-
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
+    private Ship ship;
 
     /**
      * A empty constructor for player with default values
@@ -83,6 +83,10 @@ public class Player {
     public Difficulty getDifficulty() { return difficulty; }
 
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
+
+    public Ship getShip() {
+        return ship;
+    }
 
     public void setName(String name) { this.name = name; }
 
