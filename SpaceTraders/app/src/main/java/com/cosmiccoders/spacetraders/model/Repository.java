@@ -7,6 +7,7 @@ import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
+import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
@@ -36,7 +37,6 @@ class Repository {
     }
 
 
-
     //ALL THE DIFFERENT COMPONENTS ARE HERE
     /** all the players known in the application */
     private Player player;
@@ -51,6 +51,7 @@ class Repository {
 
     private SolarSystem solarSystem = new SolarSystem();
 
+    //Add short range chart
 
 
     //PLAYER FUNCTIONS
@@ -92,6 +93,7 @@ class Repository {
         //return ans;
     }
 
+    //Short Range Functions
 
     //Solar System Functions
     public void setPlanetSS(PlanetTemp planet) {
