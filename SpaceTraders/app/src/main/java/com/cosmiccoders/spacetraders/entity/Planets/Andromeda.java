@@ -5,7 +5,7 @@ import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public class Andromeda extends PlanetTemp {
     public Andromeda() {
-        super("Andromeda", 99, 99, TechLevel.RENAISSANCE,
+        super("andromeda", 99, 99, TechLevel.RENAISSANCE,
                 PlanetResources.LOTS_OF_WATER);
     }
 }
