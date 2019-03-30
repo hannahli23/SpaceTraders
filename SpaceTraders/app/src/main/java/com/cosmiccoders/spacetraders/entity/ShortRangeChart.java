@@ -29,4 +29,8 @@ public class ShortRangeChart {
                 + Math.pow((y1-y2), 2));
         return distance;
     }
+
+    public List<PlanetTemp> getPlanetsInRange() {
+        return planetsInRange;
+    }
 }
