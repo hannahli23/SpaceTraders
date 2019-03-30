@@ -4,6 +4,7 @@ const postItem = require('./postItem');
 const putItem = require('./putItem');
 const deleteItem = require('./deleteItem');
 const passport = require('passport');
+const getItemsById = require('./getItemById');
 
 module.exports = (function(){
     console.log('got AMCDB Route');
@@ -26,6 +27,7 @@ module.exports = (function(){
     api.route('/').post(postItem)
     api.route('/').put(putItem)
     api.route('/').delete(deleteItem)
+    api.route('/id/:user_id').get(getItemsById)
 
     //  .get(passport.authenticate('jwt', {session: false}),getDoc)
     //     .post(passport.authenticate('jwt', {session: false}),postDoc) 

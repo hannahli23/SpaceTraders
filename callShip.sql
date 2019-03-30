@@ -50,3 +50,19 @@ CREATE PROCEDURE DeleteShip(IN p_ship_id INT(12))
         WHERE ship_id = p_ship_id;
 	END //
 DELIMITER ;
+
+-- -----------------------------------------------------
+
+-- Get a ship
+
+-- -----------------------------------------------------
+use spacetraders;
+DELIMITER //
+DROP PROCEDURE IF EXISTS GetPlayer//
+
+CREATE PROCEDURE GetPlayer(IN p_user_id INT(12))
+	BEGIN
+		Select * FROM ship
+        WHERE user_id = p_user_id;
+	END //
+DELIMITER ;

@@ -68,3 +68,21 @@ CREATE PROCEDURE GetCargoItem(IN p_cargo_item_id INT(12))
 DELIMITER ;
 
 CALL GetCargoItem(1);
+
+-- -----------------------------------------------------
+
+-- Get items
+
+-- -----------------------------------------------------
+use spacetraders;
+DELIMITER //
+DROP PROCEDURE IF EXISTS GetCargoItems//
+
+CREATE PROCEDURE GetCargoItems(IN p_user_id INT(12))
+	BEGIN
+		Select * FROM cargo_items
+        WHERE user_id = p_user_id;
+	END //
+DELIMITER ;
+
+CALL GetCargoItems(1)

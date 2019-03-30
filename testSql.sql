@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`cargo_hold` (
 	cargohold_id INT(11) NOT NULL AUTO_INCREMENT primary key,
     maxsize INT(3) NOT NULL DEFAULT 0,
     curr_size INT(11) NOT NULL DEFAULT 0,
-    ship_id INT(12) NOT NULL,
-    FOREIGN KEY(ship_id) REFERENCES ship(ship_id)
+    user_id INT(12) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES spacetraders.person(user_id)
 );
 
 -- -----------------------------------------------------
@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`cargo_items` (
 	cargo_item_id INT(11) NOT NULL AUTO_INCREMENT primary key,
 	item_name VARCHAR(50) NOT NULL DEFAULT 'item name',
     curr_amount INT(11) NOT NULL DEFAULT 0,
-    cargohold_id INT(12) NOT NULL,
-    FOREIGN KEY(cargohold_id) REFERENCES cargo_hold(cargohold_id)
+    user_id INT(12) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES spacetraders.person(user_id)
 );
 
 

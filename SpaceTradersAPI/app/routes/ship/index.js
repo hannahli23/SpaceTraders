@@ -3,6 +3,7 @@ const getShip = require('./getShip');
 const postShip = require('./postShip');
 const putShip = require('./putShip');
 const deleteShip = require('./deleteShip');
+const getShipById = require('./getShipById')
 const passport = require('passport');
 
 module.exports = (function(){
@@ -26,6 +27,7 @@ module.exports = (function(){
     api.route('/').post(postShip)
     api.route('/').put(putShip)
     api.route('/').delete(deleteShip)
+    api.route('/id/:user_id').get(getShipById);
 
     //  .get(passport.authenticate('jwt', {session: false}),getDoc)
     //     .post(passport.authenticate('jwt', {session: false}),postDoc) 

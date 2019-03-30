@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const config = require('../../config');
 let dbconfig = config.dbconfig;
 
-var sql = "CALL GetPlayer(?)"; // Full name of stored procedure
+var sql = "CALL GetAShip(?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
         //logger.debug('COC_Postcocdbinfo is starting');

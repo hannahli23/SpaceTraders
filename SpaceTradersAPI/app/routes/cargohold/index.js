@@ -3,6 +3,7 @@ const getCargoHold = require('./getCargoHold');
 const postCargoHold = require('./postCargoHold');
 const putCargoHold = require('./putCargoHold');
 const deleteCargoHold = require('./deleteCargoHold');
+const getCargoHoldById = require('./getCargoHoldById');
 const passport = require('passport');
 
 module.exports = (function(){
@@ -26,6 +27,7 @@ module.exports = (function(){
     api.route('/').post(postCargoHold)
     api.route('/').put(putCargoHold)
     api.route('/').delete(deleteCargoHold)
+    api.route('/id/:user_id').get(getCargoHoldById)
 
     //  .get(passport.authenticate('jwt', {session: false}),getDoc)
     //     .post(passport.authenticate('jwt', {session: false}),postDoc) 
