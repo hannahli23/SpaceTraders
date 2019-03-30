@@ -3,6 +3,7 @@ package com.cosmiccoders.spacetraders.entity.Planets;
 import com.cosmiccoders.spacetraders.entity.Market;
 import com.cosmiccoders.spacetraders.entity.PlanetResources;
 import com.cosmiccoders.spacetraders.entity.ShipYard;
+import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 public abstract class PlanetTemp {

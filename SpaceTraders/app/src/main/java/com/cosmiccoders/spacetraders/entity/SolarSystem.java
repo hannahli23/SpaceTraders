@@ -14,7 +14,7 @@ public class SolarSystem {
         solarSystem = new HashMap<>();
 
         /*solarSystem.put("StartingPlanet", new StartingPlanet());
-        solarSystem.put("Andromeda", new Andromeda());
+        solarSystem.put("andromeda", new andromeda());
         solarSystem.put("Baratas", new Baratas());
         solarSystem.put("Cornholio", new Cornholio());
         solarSystem.put("Drax", new Drax());
