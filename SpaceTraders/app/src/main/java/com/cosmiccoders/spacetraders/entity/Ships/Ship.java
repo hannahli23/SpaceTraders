@@ -20,7 +20,7 @@ public class Ship {
 
     private int fuelPrice; // 1-8 tokens
     private boolean fullFuelTank = true;
-    private PlanetTemp currPlanet;
+    //private PlanetTemp currPlanet;
 
     private ShortRangeChart shortRangeChart;
 
@@ -68,7 +68,7 @@ public class Ship {
 
     public CargoHold getCargoHold() { return cargoHold; }
 
-    public PlanetTemp getCurrPlanet() { return currPlanet; }
+    //public PlanetTemp getCurrPlanet() { return currPlanet; }
 
     public void setName(String name) { this.name = name; }
 
@@ -104,9 +104,9 @@ public class Ship {
         this.fullFuelTank = fullFuelTank;
     }
 
-    public void setPlanet(PlanetTemp currPlanet) {
-        this.currPlanet = currPlanet;
-    }
+    //public void setPlanet(PlanetTemp currPlanet) {
+        //this.currPlanet = currPlanet;
+    //}
 
     public void travel() {
         fullFuelTank = false;

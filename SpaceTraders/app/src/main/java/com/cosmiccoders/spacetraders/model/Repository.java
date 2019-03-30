@@ -37,7 +37,6 @@ class Repository {
     }
 
 
-
     //ALL THE DIFFERENT COMPONENTS ARE HERE
     /** all the players known in the application */
     private Player player;
@@ -52,6 +51,7 @@ class Repository {
 
     private SolarSystem solarSystem = new SolarSystem();
 
+    //Add short range chart
 
 
     //PLAYER FUNCTIONS
@@ -93,6 +93,7 @@ class Repository {
         //return ans;
     }
 
+    //Short Range Functions
 
     //Solar System Functions
     public void setPlanetSS(PlanetTemp planet) {
