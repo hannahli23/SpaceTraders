@@ -7,6 +7,7 @@ import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
+import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
@@ -140,4 +141,11 @@ class Repository {
     public void setMainShip(Ship ship) { mainShip = ship; }
 
     public Ship getMainShip() { return mainShip; }
+
+
+    //CHECK THIS
+    public void initializeChart(Ship ship, planet, solarSystem) {
+        ShortRangeChart myChart = new ShortRangeChart(mainShip, planet, solarSystem);
+
+        }
 }
