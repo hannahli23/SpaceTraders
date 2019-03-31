@@ -145,8 +145,8 @@ class Repository {
 
 
     //CHECK THIS
-    public void initializeChart(Ship ship, planet, solarSystem) {
-        ShortRangeChart myChart = new ShortRangeChart(mainShip, planet, solarSystem);
+   // public void initializeChart(Ship ship, planet, solarSystem) {
+       // ShortRangeChart myChart = new ShortRangeChart(mainShip, planet, solarSystem);
 
-        }
+       // }
 }
