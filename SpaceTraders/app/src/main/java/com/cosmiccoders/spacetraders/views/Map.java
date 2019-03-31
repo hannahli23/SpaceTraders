@@ -63,6 +63,10 @@ public class Map extends AppCompatActivity {
                         planetViewModel.setPlanetDestination(solarSystem.getPlanet("Rolling Hills"));
                         Log.i("TestingHome", planetViewModel.getPlanetDestination().toString());
                         break;
+                    case R.id.titikaka:
+                        planetViewModel.setPlanetDestination(solarSystem.getPlanet("Titikaka"));
+                        Log.i("TestingHome", planetViewModel.getPlanetDestination().toString());
+                        break;
                 }
 
                 startActivity(new Intent(Map.this, PlanetIntro.class));
