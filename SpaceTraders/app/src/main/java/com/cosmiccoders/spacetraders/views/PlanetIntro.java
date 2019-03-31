@@ -45,4 +45,14 @@ public class PlanetIntro extends AppCompatActivity{
         planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
 
     }
+
+    public void onBackPressed(View view) {
+        Button btn2 = (Button) findViewById(R.id.back);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PlanetIntro.this, Map.class));
+            }
+        });
+    }
 }
