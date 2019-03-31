@@ -1,6 +1,7 @@
 package com.cosmiccoders.spacetraders.model;
 
 
+import android.media.Image;
 import android.util.Log;
 
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
@@ -48,6 +49,8 @@ class Repository {
     private Ship mainShip;
 
     private PlanetTemp planet;
+
+    private PlanetTemp wantToGo;
 
     private SolarSystem solarSystem = new SolarSystem();
 
@@ -116,6 +119,9 @@ class Repository {
         this.planet = planet;
     }
 
+    public void setPlanetDestination(PlanetTemp planet) { this.wantToGo = planet; }
+
+    public PlanetTemp getPlanetDestination() { return wantToGo; }
 
 
     //SHIP FUNCTIONS
