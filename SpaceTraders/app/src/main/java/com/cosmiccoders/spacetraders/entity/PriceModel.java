@@ -58,12 +58,12 @@ public class PriceModel {
 
                 if(level.getRepresentation() >= minTechP) {
                     if(resource.getRepresentation() == radicalUp) {
-                        base *= (1+var);
+                        base += (1+var);
                     } else if (resource.getRepresentation() == cr) {
-                        base *= (1-var);
+                        base += (1-var);
                     }
                     for(int i = 0; i < level.getRepresentation(); i++) {
-                        base *= pricePerTech;
+                        base += pricePerTech;
                     }
 
                     prices.put(entry.getKey(), (Integer) base);
