@@ -12,7 +12,7 @@
     android:paddingBottom="10dp">
 
     <Button
-        android:id="@+id/planet1_button"
+        android:id="@+id/bluedwaf"
         android:layout_width="48dp"
         android:layout_height="90dp"
         android:layout_alignParentStart="false"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/planet2_button"
+        android:id="@+id/andromeda"
         android:layout_width="48dp"
         android:layout_height="90dp"
         android:layout_alignParentStart="false"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/planet3_button"
+        android:id="@+id/drax"
         android:layout_width="57dp"
         android:layout_height="95dp"
         android:layout_alignParentStart="false"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/planet4_button"
+        android:id="@+id/titikaka"
         android:layout_width="30dp"
         android:layout_height="55dp"
         android:layout_alignParentStart="false"
@@ -129,7 +129,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/planet5_button"
+        android:id="@+id/kravat"
         android:layout_width="35dp"
         android:layout_height="60dp"
         android:layout_alignParentStart="false"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/planet6_button"
+        android:id="@+id/cornholio"
         android:layout_width="20dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="false"
@@ -187,7 +187,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/planet7_button"
+        android:id="@+id/baratas"
         android:layout_width="100dp"
         android:layout_height="110dp"
         android:layout_alignParentStart="false"

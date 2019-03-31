@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`ship` (
     gadget_slots INT(11) NOT NULL DEFAULT 2,
     crew_quarters INT(11) NOT NULL DEFAULT 2,
     travel_range INT(11) NOT NULL DEFAULT 2,
+    fuel INT(11) NOT NULL DEFAULT 0,
     escape_pod VARCHAR(50) NOT NULL DEFAULT 'true',
     user_id INT(12) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES spacetraders.person(user_id)
