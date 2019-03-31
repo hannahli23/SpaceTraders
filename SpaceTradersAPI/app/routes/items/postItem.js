@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const config = require('../../config');
 let dbconfig = config.dbconfig;
 
-var sql = "CALL insert_items(?,?)"; // Full name of stored procedure
+var sql = "CALL insert_items(?,?,?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
         //logger.debug('COC_Postcocdbinfo is starting');
@@ -38,7 +38,7 @@ module.exports = function(req, res, next) {
 			    console.log('get req post body is ' + reqBody.item_name);
                 console.log('get req post body is ' + reqBody.cargohold_id);
 
-			    connection.query(sql,[reqBody.item_name,reqBody.cargohold_id], function(err, results, fields) {
+			    connection.query(sql,[reqBody.item_name, reqBody.curr_amount, reqBody.user_id], function(err, results, fields) {
                     if (err) {
                         return reject(err);
                     }

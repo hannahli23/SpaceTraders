@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const config = require('../../config');
 let dbconfig = config.dbconfig;
 
-var sql = "CALL insert_ship(?,?,?)"; // Full name of stored procedure
+var sql = "CALL insert_ship(?,?,?,?,?,?,?,?,?,?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
         //logger.debug('COC_Postcocdbinfo is starting');
@@ -40,12 +40,17 @@ module.exports = function(req, res, next) {
                 console.log('get req post body is ' + reqBody.ship_type);
                 console.log('get req post body is ' + reqBody.user_id);
 
-			    connection.query(sql,[reqBody.ship_name, reqBody.ship_type, reqBody.user_id], function(err, results, fields) {
+                connection.query(sql,[reqBody.ship_name, reqBody.ship_type,
+                    reqBody.hull_strength, reqBody.weapon_slots, reqBody.shield_slots,
+                    reqBody.gadget_slots, reqBody.crew_quarters, reqBody.travel_range,
+                    reqBody.escape_pod, reqBody.user_id], function(err, results, fields) {
                     if (err) {
+                        console.log('dslkfmldsk');
+                        console.log(err);
                         return reject(err);
                     }
                     console.log('changed ' + results.changedRows + ' rows');
-                    console.log(results.insertId);
+                    //console.log(results.insertId);
                     res.send(results.changedRows + '   ' + results.insertId);
                     //Return the connection to the pool
                     connection.release();

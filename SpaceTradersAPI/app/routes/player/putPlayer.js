@@ -7,7 +7,7 @@ const config = require('../../config');
 let dbconfig = config.dbconfig;
 
 // var sql = 'SELECT * FROM city';
-var sql = "CALL UpdatePlayer(?, ?)"; // Full name of stored procedure
+var sql = "CALL UpdatePlayer(?,?,?,?,?,?,?,?,?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
     //logger.debug('COC_Postcocdbinfo is starting');
@@ -39,12 +39,16 @@ module.exports = function(req, res, next) {
             console.log('get req post body is ' + reqBody.user_id);
             console.log('get req post body is ' + reqBody.username);
 
-            connection.query(sql,[reqBody.user_id,reqBody.username], function(err, results, fields) {
+            connection.query(sql,[reqBody.user_id, reqBody.player_name,
+                reqBody.currency, reqBody.difficulty, reqBody.fighter_points,
+                reqBody.trader_points, reqBody.engineer_points, reqBody.pilot_points,
+                reqBody.curr_planet], function(err, results, fields) {
                 if (err) {
                     return reject(err);
                 }
                 console.log('changed ' + results.changedRows + ' rows');
                 //Return the connection to the pool
+                res.send(results.changedRows + '   ' + results.insertId);
                 connection.release();
                 
                 resolve();
