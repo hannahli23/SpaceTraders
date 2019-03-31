@@ -18,7 +18,7 @@ public class Ship {
     private int maxTravelRange; // 13-20 parsecs (Fuel capability)
     private boolean escapePod; // Has one or doesn't
 
-    private int fuelPrice; // 1-8 tokens
+    private int fuel; // 1-8 tokens
     private boolean fullFuelTank = true;
     //private PlanetTemp currPlanet;
 
@@ -35,7 +35,7 @@ public class Ship {
         this.numOfCrewQuarters = numOfCrewQuarters;
         this.maxTravelRange = maxTravelRange;
         this.escapePod = escapePod;
-        this.fuelPrice = fuelPrice;
+        this.fuel= maxTravelRange;
 
         cargoHold = new CargoHold(numOfCargoBays);
     }
@@ -62,7 +62,7 @@ public class Ship {
 
     public boolean getEscapePod() { return escapePod; }
 
-    public int getFuelPrice() { return fuelPrice; }
+    public int getFuel() { return fuel; }
 
     public boolean getFullFuelTank() { return fullFuelTank; }
 
@@ -103,6 +103,10 @@ public class Ship {
     public void setFullFuelTank(boolean fullFuelTank) {
         this.fullFuelTank = fullFuelTank;
     }
+
+    public void takeAwayFromFeul(int amount) { fuel = fuel - amount; }
+
+    public boolean checkEnoughFuel(int amount) { return amount <= fuel; }
 
     //public void setPlanet(PlanetTemp currPlanet) {
         //this.currPlanet = currPlanet;
