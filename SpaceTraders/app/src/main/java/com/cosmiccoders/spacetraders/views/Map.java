@@ -56,7 +56,7 @@ public class Map extends AppCompatActivity {
                         Log.i("TestingBaratas", planetViewModel.getPlanetDestination().toString());
                         break;
                     case R.id.andromeda:
-                        planetViewModel.setPlanetDestination(solarSystem.getPlanet("Andromeda"));
+                        planetViewModel.setPlanetDestination(solarSystem.getPlanet("andromeda"));
                         Log.i("TestingA", planetViewModel.getPlanetDestination().toString());
                         break;
                     case R.id.rollingHills:
