@@ -85,7 +85,8 @@ class Repository {
 
     public String toString() {
         return "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
-                + " which is a " + mainShip.getShipType() + " type ship. \n You have "
+                + " which is a " + mainShip.getShipType() + " type ship which has " + mainShip.getFuel()
+                + " fuel. \n You have "
                 + player.getSkill(Skills.PILOT) + "points, "
                 + player.getSkill(Skills.ENGINEER) + "points, "
                 + player.getSkill(Skills.FIGHTER) + "points, and "
