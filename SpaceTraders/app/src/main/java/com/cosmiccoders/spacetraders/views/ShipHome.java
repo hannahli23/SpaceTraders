@@ -17,6 +17,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.cosmiccoders.spacetraders.R;
+import com.cosmiccoders.spacetraders.entity.ShipYard;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
@@ -39,6 +40,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
+    private ShipYard shipYard;
 
     RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
@@ -54,6 +56,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         requestQueue = Volley.newRequestQueue(this);
+        shipYard = new ShipYard();
 
         Button btn = (Button) findViewById(R.id.go_places);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +91,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 return true;
             case R.id.go_ship:
                 //Log.i("Testing", planetViewModel.getPlanet().toString());
+                shipYard.sellFuel(playerViewModel.getPlayer(), shipViewModel.getMainShip());
                 return true;
             case R.id.go_bank:
                 // do your code
