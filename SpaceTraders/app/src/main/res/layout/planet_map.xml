@@ -308,10 +308,9 @@
         android:layout_height="31dp"
         android:layout_marginStart="250dp"
         android:layout_marginLeft="272dp"
-        android:layout_marginTop="672dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="72dp"
         android:alpha="0.8"
         android:text="Location:"
         android:textColor="#FFF"
@@ -319,53 +318,53 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/location_tag"
         android:layout_width="148dp"
         android:layout_height="31dp"
-        android:layout_marginStart="305dp"
-        android:layout_marginLeft="272dp"
-        android:layout_marginTop="672dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginBottom="72dp"
         android:alpha="0.8"
         android:text="current location"
         android:textColor="#FFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/fuel"
         android:layout_width="67dp"
         android:layout_height="31dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginLeft="264dp"
-        android:layout_marginTop="684dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginLeft="252dp"
+        android:layout_marginBottom="52dp"
         android:alpha="0.8"
         android:text="Fuel:"
         android:textColor="#FFF"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/fuel_amount"
         android:layout_width="89dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginLeft="264dp"
-        android:layout_marginTop="684dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginLeft="288dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
         android:alpha="0.8"
         android:text="amount of fuel"
         android:textColor="#FFF"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
