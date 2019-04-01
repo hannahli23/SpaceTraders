@@ -11,7 +11,7 @@ public class ShipYard {
     public void sellFuel(Player player, Ship ship) {
         if (!ship.getFullFuelTank()) {
             if (player.checkCurrency(10)) {
-                ship.setFullFuelTank(true);
+                ship.setFullFuelTank();
                 int newCurrency = player.getCurrency() - 10;
                 player.setCurrency(newCurrency);
             }

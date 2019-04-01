@@ -100,8 +100,8 @@ public class Ship {
         this.maxTravelRange = maxTravelRange;
     }
 
-    public void setFullFuelTank(boolean fullFuelTank) {
-        this.fullFuelTank = fullFuelTank;
+    public void setFullFuelTank() {
+        fuel = maxTravelRange;
     }
 
     public void takeAwayFromFeul(int amount) { fuel = fuel - amount; }
