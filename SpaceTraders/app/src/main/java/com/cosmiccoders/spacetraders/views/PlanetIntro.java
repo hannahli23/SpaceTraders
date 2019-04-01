@@ -74,11 +74,12 @@ public class PlanetIntro extends AppCompatActivity{
                 Integer integer_use = (shortRangeChart.distance(go.getLocation(), planetViewModel.getPlanet().getLocation()));
                 if(integer_use > shipViewModel.getMainShip().getFuel()) {
                     Log.i("Error:", "Theres not enough fuel!");
+                } else {
+                    shipViewModel.getMainShip().takeAwayFromFeul(integer_use);
+                    planetViewModel.setPlanet(planetViewModel.getPlanetDestination());
+                    //moving to ship home
+                    startActivity(new Intent(PlanetIntro.this, ShipHome.class));
                 }
-                shipViewModel.getMainShip().takeAwayFromFeul(integer_use);
-                planetViewModel.setPlanet(planetViewModel.getPlanetDestination());
-                //moving to ship home
-                startActivity(new Intent(PlanetIntro.this, ShipHome.class));
             }
         });
 
