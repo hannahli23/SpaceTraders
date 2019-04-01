@@ -1,6 +1,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,8 +14,11 @@
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
         android:text="Congratulations! You have successfully initiated your journey as a Space Trader. Click on the buttons below for playing options."
+        android:textColor="#FFFF"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +37,8 @@
         android:layout_marginRight="1dp"
         android:layout_marginBottom="8dp"
         android:text="View Map!"
+        android:textColor="#000000"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.67"
@@ -56,6 +62,8 @@
         android:layout_marginBottom="8dp"
         android:onClick="onExitPressed"
         android:text="Exit"
+        android:textColor="#000000"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view_map_button"
         app:layout_constraintHorizontal_bias="1.0"
@@ -71,6 +79,8 @@
         android:layout_marginLeft="48dp"
         android:layout_marginTop="100dp"
         android:text="YOUR SHIP"
+        android:textColor="#FFFF"
+
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"
@@ -92,12 +102,14 @@
         android:layout_marginBottom="8dp"
         android:onClick="onSave"
         android:text="Sell Goods"
+        android:textColor="#000000"
+
         app:layout_constraintBottom_toBottomOf="@+id/view_map_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.046" />
 
     <Button
         android:id="@+id/view_goods_button"
@@ -108,12 +120,14 @@
         android:layout_alignParentTop="false"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="156dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="View Goods"
+        android:textColor="#000000"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -132,9 +146,11 @@
         android:layout_marginBottom="8dp"
         android:onClick="viewStats"
         android:text="View Stats"
+        android:textColor="#000000"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/go_places"
-        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_goods_button"
         app:layout_constraintVertical_bias="0.0" />
@@ -153,12 +169,14 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="Travel"
+        android:textColor="#000000"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ship"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.013" />
 
 
 </android.support.constraint.ConstraintLayout>

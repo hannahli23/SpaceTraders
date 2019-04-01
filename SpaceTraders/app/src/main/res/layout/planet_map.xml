@@ -38,16 +38,20 @@
     <TextView
         android:id="@+id/planet1"
         android:layout_width="45dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="500dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="188dp"
         android:alpha="0.8"
         android:text="Planet1"
         android:textColor="#FFF"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/andromeda"
@@ -76,14 +80,18 @@
     <TextView
         android:id="@+id/planet2"
         android:layout_width="45dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="320dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="276dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:alpha="0.8"
         android:text="Planet2"
         android:textColor="#FFF"
         android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,16 +122,23 @@
     <TextView
         android:id="@+id/planet3"
         android:layout_width="45dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginLeft="212dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginLeft="208dp"
         android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:alpha="0.8"
         android:text="Planet3"
         android:textColor="#FFF"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001" />
 
     <Button
         android:id="@+id/titikaka"
@@ -153,16 +168,20 @@
     <TextView
         android:id="@+id/planet4"
         android:layout_width="45dp"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="272dp"
         android:layout_marginLeft="272dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="312dp"
         android:alpha="0.8"
         android:text="Planet4"
         android:textColor="#FFF"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/kravat"
@@ -188,16 +207,16 @@
     <TextView
         android:id="@+id/planet5"
         android:layout_width="45dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="696dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="36dp"
         android:alpha="0.8"
         android:text="Planet5"
         android:textColor="#FFF"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/rollingHills"
@@ -229,16 +248,17 @@
         android:layout_height="28dp"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="536dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="108dp"
         android:alpha="0.8"
         android:text="Planet6"
         android:textColor="#FFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/baratas"
@@ -270,16 +290,17 @@
         android:layout_height="43dp"
         android:layout_marginStart="348dp"
         android:layout_marginLeft="348dp"
-        android:layout_marginTop="560dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="84dp"
         android:alpha="0.8"
         android:text="Planet7"
         android:textColor="#FFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/location"
@@ -288,12 +309,19 @@
         android:layout_marginStart="250dp"
         android:layout_marginLeft="272dp"
         android:layout_marginTop="672dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:alpha="0.8"
         android:text="Location:"
         android:textColor="#FFF"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
 
     <TextView
         android:id="@+id/location_tag"
