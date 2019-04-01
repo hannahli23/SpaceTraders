@@ -64,7 +64,7 @@ public class Ship {
 
     public int getFuel() { return fuel; }
 
-    public boolean getFullFuelTank() { return fullFuelTank; }
+    public boolean getFullFuelTank() { return fuel == maxTravelRange; }
 
     public CargoHold getCargoHold() { return cargoHold; }
 
