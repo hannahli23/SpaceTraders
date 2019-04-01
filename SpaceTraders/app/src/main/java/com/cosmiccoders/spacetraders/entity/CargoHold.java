@@ -33,7 +33,7 @@ public class CargoHold {
      * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
-        if (currSize + amount > max) {
+        if (currSize + amount >= max) {
             Log.i("Check size",  (currSize + amount) + "");
             return false;
         } else {
