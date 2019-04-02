@@ -12,7 +12,7 @@
     android:paddingBottom="10dp">
 
     <Button
-        android:id="@+id/bluedwaf"
+        android:id="@+id/bluedwarf"
         android:layout_width="48dp"
         android:layout_height="90dp"
         android:layout_alignParentStart="false"

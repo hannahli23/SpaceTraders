@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class PriceModel {
     List<String> WaterList = Arrays.asList("0", "0", "2", "30", "3", "4", "DROUGHT",
@@ -46,6 +47,8 @@ public class PriceModel {
 
     public HashMap<String, Integer> MarketGoods(PlanetResources resource, TechLevel level) {
             HashMap<String, Integer> prices = new HashMap<>();
+            int pick = new Random().nextInt(PlanetResources.values().length);
+            PlanetResources temp = PlanetResources.values()[pick];
             for (Map.Entry<String, List> entry: tradeGoods.entrySet()) {
                 List<String> firstElement= entry.getValue();
                 int minTechP = Integer.parseInt(firstElement.get(0));
@@ -66,7 +69,7 @@ public class PriceModel {
                         base += pricePerTech;
                     }
 
-                    prices.put(entry.getKey(), (Integer) base);
+                    prices.put(entry.getKey(), base);
                 }
             }
             return prices;
