@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.cosmiccoders.spacetraders.R;
+import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
@@ -17,6 +18,7 @@ import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
 import java.util.List;
+import java.util.Random;
 
 
 public class PlanetIntro extends AppCompatActivity{
@@ -33,6 +35,26 @@ public class PlanetIntro extends AppCompatActivity{
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
     private ShortRangeChart shortRangeChart;
+
+    public void loseMoney(int randNum) {
+        if (randNum <= 40) {
+            if (playerViewModel.getPlayer().getCurrency() > 50) {
+                playerViewModel.getPlayer().pay(50);
+            }
+        }
+    }
+
+    public void gainMoney(int randNum) {
+        if (randNum > 40 && randNum < 60) {
+            playerViewModel.getPlayer().getPaid(30);
+        }
+    }
+
+    public void yaThatSucks(int randNum) {
+        if (randNum == 98) {
+            playerViewModel.getPlayer().setDifficulty(Difficulty.IMPOSSIBLE);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +73,11 @@ public class PlanetIntro extends AppCompatActivity{
         TextView planetInfo = (TextView) findViewById(R.id.planetInfo);
         planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
         shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),planetViewModel.getPlanet(), solarSystem.getPlanetMap());
+        Random rand = new Random();
+        final int randNum = rand.nextInt(100) + 1;
+        loseMoney(randNum);
+        gainMoney(randNum);
+        yaThatSucks(randNum);
     }
     public void onBackPressed(View view) {
         Button btn2 = (Button) findViewById(R.id.back);
