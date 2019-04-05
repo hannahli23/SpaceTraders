@@ -222,8 +222,11 @@ public class PlayerCreation extends AppCompatActivity {
                 ship.setName(shipName);
             } else if(name.isEmpty() && !shipName.isEmpty()) {
                 ship.setName(shipName);
-            } else if(!name.isEmpty()) {
+            } else if(!name.isEmpty() && shipName.isEmpty()) {
                 player.setName(name);
+                ship.setName("Grancypher");
+            } else {
+                ship.setName("Grancypher");
             }
 
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));

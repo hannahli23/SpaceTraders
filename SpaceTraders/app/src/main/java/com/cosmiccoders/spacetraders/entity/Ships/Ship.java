@@ -104,6 +104,8 @@ public class Ship {
         fuel = maxTravelRange;
     }
 
+    public void setFuel(int amount) { fuel = amount; }
+
     public void takeAwayFromFeul(int amount) { fuel = fuel - amount; }
 
     public boolean checkEnoughFuel(int amount) { return amount <= fuel; }

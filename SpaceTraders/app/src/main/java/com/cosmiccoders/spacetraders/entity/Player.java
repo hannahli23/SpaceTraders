@@ -123,4 +123,17 @@ public class Player {
         this.id = id;
     }
 
+    public String toString2() {
+        return "You are " + getName()
+                + ". \n You have "
+                + getSkill(Skills.PILOT) + "points, "
+                + getSkill(Skills.ENGINEER) + "points, "
+                + getSkill(Skills.FIGHTER) + "points, and "
+                + getSkill(Skills.TRADER) + "points in the skills "
+                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
+                + getCurrency() + " and you are playing on " + getDifficulty() + " mode.";
+
+        //return ans;
+    }
+
 }

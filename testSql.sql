@@ -27,7 +27,7 @@ USE `spacetraders` ;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `spacetraders`.`person`;
 CREATE TABLE IF NOT EXISTS `spacetraders`.`person` (
-	user_id INT(11) NOT NULL AUTO_INCREMENT,
+	user_id INT(11) NOT NULL,
     username  NVARCHAR(50)  NOT NULL DEFAULT 'UsTest',
     pass_word VARCHAR(50) NOT NULL DEFAULT 'Test',
     player_name VARCHAR(50) NOT NULL DEFAULT 'Gran',

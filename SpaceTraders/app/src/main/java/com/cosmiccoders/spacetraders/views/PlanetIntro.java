@@ -35,6 +35,7 @@ public class PlanetIntro extends AppCompatActivity{
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
     private ShortRangeChart shortRangeChart;
+    private Random rand;
 
     public void loseMoney(int randNum) {
         if (randNum <= 40) {
@@ -73,11 +74,7 @@ public class PlanetIntro extends AppCompatActivity{
         TextView planetInfo = (TextView) findViewById(R.id.planetInfo);
         planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
         shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),planetViewModel.getPlanet(), solarSystem.getPlanetMap());
-        Random rand = new Random();
-        final int randNum = rand.nextInt(100) + 1;
-        loseMoney(randNum);
-        gainMoney(randNum);
-        yaThatSucks(randNum);
+        rand = new Random();
     }
     public void onBackPressed(View view) {
         Button btn2 = (Button) findViewById(R.id.back);
@@ -104,6 +101,10 @@ public class PlanetIntro extends AppCompatActivity{
                 } else {
                     shipViewModel.getMainShip().takeAwayFromFeul(integer_use);
                     planetViewModel.setPlanet(planetViewModel.getPlanetDestination());
+                    final int randNum = rand.nextInt(100) + 1;
+                    loseMoney(randNum);
+                    gainMoney(randNum);
+                    yaThatSucks(randNum);
                     //moving to ship home
                     startActivity(new Intent(PlanetIntro.this, ShipHome.class));
                 }

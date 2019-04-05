@@ -91,7 +91,11 @@ public class CargoHold {
 
     public int getCurrSize() { return currSize; }
 
+    public void setCurrSize(int amount) {currSize = amount; }
+
     public Map<String, Integer> getInventory() { return inventory; }
+
+    public void setInventory(Map<String, Integer> newInventory) {inventory = newInventory;}
 
     /**
      * This function tells us how much of an item we have
