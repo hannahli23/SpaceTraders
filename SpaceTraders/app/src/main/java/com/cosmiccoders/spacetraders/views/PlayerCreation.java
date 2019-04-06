@@ -10,6 +10,12 @@ import android.widget.EditText;
 import android.arch.lifecycle.ViewModelProviders;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
@@ -21,6 +27,10 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class PlayerCreation extends AppCompatActivity {
 
@@ -41,6 +51,11 @@ public class PlayerCreation extends AppCompatActivity {
     private EditText shipField;
 
     private Spinner majorSpinner;
+
+    private RequestQueue requestQueue;
+
+    String baseUrl = "http://10.0.2.2:9080/myapi";
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +81,7 @@ public class PlayerCreation extends AppCompatActivity {
 
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        requestQueue = Volley.newRequestQueue(this);
     }
 
     public void onSubtractPressed(View view) {
@@ -228,7 +244,8 @@ public class PlayerCreation extends AppCompatActivity {
             } else {
                 ship.setName("Grancypher");
             }
-
+            TextView user_id = findViewById(R.id.user_id);
+            player.setId(Integer.parseInt(user_id.getText().toString()));
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
             player.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
@@ -242,20 +259,23 @@ public class PlayerCreation extends AppCompatActivity {
             shipViewModel.addShip(ship);
             shipViewModel.setMainShip(ship);
 
-            Log.i("MyActivity", playerViewModel.toString());
-
-            Button btn = (Button) findViewById(R.id.create_button);
-
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(PlayerCreation.this, GeneratingUniverse.class));
-                }
-            });
-
+            addPlayer();
+            addShip();
+            addCargoHold();
         } else {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }
+    }
+
+    public void onNextPress(View v) {
+        Button btn = (Button) findViewById(R.id.next_button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PlayerCreation.this, GeneratingUniverse.class));
+            }
+        });
     }
 
     public void onExitPressed(View view) {
@@ -269,5 +289,105 @@ public class PlayerCreation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void addPlayer(){
+        this.url = this.baseUrl + "/player";
+
+        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
+        // that expects a JSON Array Response.
+        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("player_name", playerViewModel.getPlayer().getName());
+        params.put("currency", playerViewModel.getPlayer().getCurrency());
+        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
+        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
+        params.put("curr_planet", "");
+        JSONObject postparams = new JSONObject(params);
+        Log.i("Test", postparams.toString());
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("Volley", "You did it!");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Volley", error.toString());
+                    }
+                });
+        requestQueue.add(jsonObjReq);
+    }
+
+    public void addShip(){
+        this.url = "http://10.0.2.2:9080/myapi/ship";
+
+        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
+        // that expects a JSON Array Response.
+        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("ship_name", shipViewModel.getMainShip().getShipName());
+        params.put("ship_type", "Gnat");
+        params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
+        params.put("weapon_slots", shipViewModel.getMainShip().getNumOfWeaponSlots());
+        params.put("shield_slots", shipViewModel.getMainShip().getNumOfShieldSlots());
+        params.put("gadget_slots", shipViewModel.getMainShip().getNumOfGadgetSlots());
+        params.put("crew_quarters", shipViewModel.getMainShip().getNumOfCrewQuarters());
+        params.put("travel_range", shipViewModel.getMainShip().getMaxTravelRange());
+        params.put("escape_pod", "false");
+        params.put("fuel", shipViewModel.getMainShip().getFuel());
+        params.put("user_id", playerViewModel.getPlayer().getId());
+
+        JSONObject postparams = new JSONObject(params);
+        Log.i("Test", postparams.toString());
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("Volley Ship", "You did it!");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Volley Ship", error.toString());
+                    }
+                });
+        requestQueue.add(jsonObjReq);
+    }
+
+    public void addCargoHold(){
+        this.url = "http://10.0.2.2:9080/myapi/cargohold";
+
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
+        params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
+        params.put("user_id", playerViewModel.getPlayer().getId());
+
+        JSONObject postparams = new JSONObject(params);
+        Log.i("Test", postparams.toString());
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("Volley Ship", "You did it!");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Volley Ship", error.toString());
+                    }
+                });
+        requestQueue.add(jsonObjReq);
     }
 }

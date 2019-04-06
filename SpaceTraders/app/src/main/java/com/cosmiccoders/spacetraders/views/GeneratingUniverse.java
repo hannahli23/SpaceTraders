@@ -23,6 +23,7 @@ public class GeneratingUniverse extends AppCompatActivity {
     private SolarSystem solarSystem;
     private PlanetTemp planetTemp;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

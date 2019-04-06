@@ -30,6 +30,26 @@
 
     </EditText>
 
+    <EditText
+        android:id="@+id/user_id"
+        android:layout_width="121dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Enter an ID"
+        android:inputType="textPersonName"
+
+        android:textColor="#FFF"
+        android:textColorHint="#FFF"
+        app:layout_constraintEnd_toStartOf="@+id/ship_field"
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+    </EditText>
+
     <TextView
         android:id="@+id/info"
         android:layout_width="wrap_content"
@@ -403,17 +423,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/Next"
+        android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="272dp"
+        android:alpha="0.8"
         android:background="#37AEE4"
         android:backgroundTint="#C0C0C0"
-        android:textColor="#000"
+        android:onClick="onNextPress"
         android:text="Next Page"
-        android:alpha="0.8"
+        android:textColor="#000"
         app:layout_constraintEnd_toStartOf="@+id/create_button"
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toEndOf="@+id/save_button"

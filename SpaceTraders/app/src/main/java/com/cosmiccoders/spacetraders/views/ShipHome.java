@@ -139,10 +139,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 //loadCargoHold();
                 //loadItem();
 
-                //updateAPlayer();
-                //updateAShip();
-                //updateACargoHold();
-                //updateItems();
+                updateAPlayer();
+                updateAShip();
+                updateACargoHold();
+                updateItems();
 
                 //addPlayer();
                 //addCargoHold();
@@ -378,7 +378,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("user_id", 5);
+        params.put("user_id", playerViewModel.getPlayer().getId());
         params.put("player_name", playerViewModel.getPlayer().getName());
         params.put("currency", playerViewModel.getPlayer().getCurrency());
         params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
@@ -415,7 +415,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         HashMap<String, Object> params = new HashMap<String, Object>();
         params.put("ship_name", shipViewModel.getMainShip().getShipName());
         params.put("fuel", shipViewModel.getMainShip().getFuel());
-        params.put("user_id", 5);
+        params.put("user_id", playerViewModel.getPlayer().getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -441,7 +441,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         HashMap<String, Object> params = new HashMap<String, Object>();
         params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("user_id", 5);
+        params.put("user_id", playerViewModel.getPlayer().getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -574,7 +574,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         this.url = "http://10.0.2.2:9080/myapi/items/delete";
 
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("user_id", 5);
+        params.put("user_id", playerViewModel.getPlayer().getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -603,7 +603,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             HashMap<String, Object> params = new HashMap<String, Object>();
             params.put("item_name", entry.getKey());
             params.put("curr_amount", entry.getValue());
-            params.put("user_id", 1);
+            params.put("user_id", playerViewModel.getPlayer().getId());
 
             JSONObject postparams = new JSONObject(params);
             Log.i("Test", postparams.toString());

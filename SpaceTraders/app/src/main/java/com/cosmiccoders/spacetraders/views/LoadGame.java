@@ -67,8 +67,8 @@ public class LoadGame extends AppCompatActivity {
     RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
-    String baseUrl = "http://10.0.2.2:9080/myapi";
-    String url;
+    private String baseUrl = "http://10.0.2.2:9080/myapi";
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,13 +106,21 @@ public class LoadGame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 TextView id = findViewById(R.id.id_field);
-                if(isNumeric(id.toString())) {
-                    int user_id = Integer.parseInt(id.toString());
+                if(!id.getText().toString().matches(".*[a-zA-Z]+.*")) {
+                    Log.i("Test", id.getText().toString());
+                    int user_id = Integer.parseInt(id.getText().toString());
                     loadPlayer(user_id);
                     loadShip(user_id);
                     loadCargoHold(user_id);
                     loadItem(user_id);
-                    Log.i("Testing", playerViewModel.toString());
+                    testPlayer.setId(user_id);
+                    playerViewModel.addPlayer(testPlayer);
+                    shipViewModel.setMainShip(testShip);
+                    Log.i("Test Load P", playerViewModel.toString());
+                    Log.i("Test Load Ship", shipViewModel.getMainShip().getCargoHold().toString());
+
+                    startActivity(new Intent(LoadGame.this, ShipHome.class));
+
                 } else {
                     Log.i("Error", "The user id you have entered is not valid!");
                 }
@@ -123,9 +131,9 @@ public class LoadGame extends AppCompatActivity {
 
     public Boolean isNumeric(String str) {
         char[] chars = str.toCharArray();
-
         for (char c : chars) {
             if(Character.isLetter(c)) {
+                Log.i("Numeric", "There is a letter");
                 return false;
             }
         }
@@ -212,8 +220,8 @@ public class LoadGame extends AppCompatActivity {
                                     JSONObject jsonObj = response.getJSONObject(i);
                                     String shipname = jsonObj.get("ship_name").toString();
                                     int fuel = jsonObj.getInt("fuel");
-                                    shipViewModel.getMainShip().setFuel(fuel);
-                                    shipViewModel.getMainShip().setName(shipname);
+                                    testShip.setName(shipname);
+                                    testShip.setFuel(fuel);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -263,8 +271,8 @@ public class LoadGame extends AppCompatActivity {
                                     JSONObject jsonObj = response.getJSONObject(i);
                                     int max = jsonObj.getInt("maxsize");
                                     int curr = jsonObj.getInt("curr_size");
-
-                                    shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
+                                    testShip.getCargoHold().setCurrSize(curr);
+                                    //shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -318,7 +326,7 @@ public class LoadGame extends AppCompatActivity {
                                 }
                                 Log.i("Testing", i+"");
                             }
-                            shipViewModel.getMainShip().getCargoHold().setInventory(temp);
+                            testShip.getCargoHold().setInventory(temp);
                         } else {
                             // The user didn't have any repos.
                         }
