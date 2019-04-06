@@ -10,16 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.cosmiccoders.spacetraders.R;
-import com.cosmiccoders.spacetraders.entity.Difficulty;
-import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
-import java.util.Random;
-
-public class Map extends AppCompatActivity {
+public class MapPage extends AppCompatActivity {
     private ViewAddSolarSystemViewModel solarSystem;
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
@@ -81,7 +77,7 @@ public class Map extends AppCompatActivity {
                         break;
                 }
 
-                startActivity(new Intent(Map.this, PlanetIntro.class));
+                startActivity(new Intent(MapPage.this, PlanetIntro.class));
 
             }
         });

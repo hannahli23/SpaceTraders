@@ -33,12 +33,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
         android:layout_marginTop="251dp"
-        android:layout_marginEnd="273dp"
-        android:layout_marginRight="273dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginRight="251dp"
         android:layout_marginBottom="394dp"
+        android:onClick="onLoadPageClick"
         android:text="Load Game" />
 
     <Button
@@ -57,5 +58,6 @@
         android:layout_marginEnd="69dp"
         android:layout_marginRight="69dp"
         android:layout_marginBottom="393dp"
+        android:onClick="onCreatePageClick"
         android:text="Create Game" />
 </RelativeLayout>

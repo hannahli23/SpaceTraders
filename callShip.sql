@@ -47,10 +47,10 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS DeleteShip//
 
-CREATE PROCEDURE DeleteShip(IN p_ship_id INT(12))
+CREATE PROCEDURE DeleteShip(IN p_user_id INT(12))
 	BEGIN
 		DELETE FROM ship
-        WHERE ship_id = p_ship_id;
+        WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 

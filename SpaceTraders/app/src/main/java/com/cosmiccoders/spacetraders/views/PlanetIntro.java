@@ -81,7 +81,7 @@ public class PlanetIntro extends AppCompatActivity{
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PlanetIntro.this, Map.class));
+                startActivity(new Intent(PlanetIntro.this, MapPage.class));
             }
         });
     }

@@ -45,13 +45,14 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS DeleteCargoItem//
 
-CREATE PROCEDURE DeleteCargoItem(IN p_user_id INT(12))
+CREATE PROCEDURE DeleteCargoItem(IN p_user_id INT(11))
 	BEGIN
 		DELETE FROM cargo_items
         WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 
+CALL DeleteCargoItem(5);
 -- -----------------------------------------------------
 
 -- Select one cargohold

@@ -83,11 +83,12 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
 
     public void onMapPressed(View view) {
-        Button btn2 = (Button) findViewById(R.id.view_map_button);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        Button btn = (Button) findViewById(R.id.view_map_button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ShipHome.this, Map.class));
+                startActivity(new Intent(ShipHome.this, MapPage.class));
             }
         });
     }

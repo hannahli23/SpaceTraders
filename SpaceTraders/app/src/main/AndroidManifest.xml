@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".views.PlayerCreation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".views.GeneratingUniverse">
@@ -26,16 +21,27 @@
             android:name=".views.MarketPlace">
         </activity>
         <activity
+            android:name=".views.LoadGame">
+        </activity>
+        <activity
             android:name=".views.Buy">
         </activity>
         <activity
             android:name=".views.Sell">
         </activity>
         <activity
-            android:name=".views.Map">
+            android:name=".views.MapPage">
         </activity>
         <activity
             android:name=".views.PlanetIntro">
+        </activity>
+        <activity
+            android:name=".views.StartPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
