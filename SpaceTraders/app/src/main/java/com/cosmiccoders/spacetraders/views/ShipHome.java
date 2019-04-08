@@ -134,20 +134,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadPlayer();
-                //loadShip();
-                //loadCargoHold();
-                //loadItem();
-
                 updateAPlayer();
                 updateAShip();
                 updateACargoHold();
                 updateItems();
-
-                //addPlayer();
-                //addCargoHold();
-                //addShip();
-                //addItems();
             }
         });
     }

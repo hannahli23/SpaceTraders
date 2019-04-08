@@ -39,21 +39,24 @@ public class PlanetIntro extends AppCompatActivity{
 
     public void loseMoney(int randNum) {
         if (randNum <= 40) {
-            if (playerViewModel.getPlayer().getCurrency() > 50) {
+            if (playerViewModel.getPlayer().getCurrency() >= 50) {
                 playerViewModel.getPlayer().pay(50);
+                Log.i("Test", "You've lost money!");
             }
         }
     }
 
     public void gainMoney(int randNum) {
         if (randNum > 40 && randNum < 60) {
-            playerViewModel.getPlayer().getPaid(30);
+            playerViewModel.getPlayer().getPaid(3000);
+            Log.i("Test", "You've gained money!");
         }
     }
 
     public void yaThatSucks(int randNum) {
         if (randNum == 98) {
             playerViewModel.getPlayer().setDifficulty(Difficulty.IMPOSSIBLE);
+            Log.i("Test", "Level Set on Impossible!!");
         }
     }
 
@@ -64,6 +67,7 @@ public class PlanetIntro extends AppCompatActivity{
         solarSystem = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
         //changing the textview to change with the click
         TextView text = (TextView) findViewById(R.id.planetName);
         text.setText(planetViewModel.getPlanetDestination().getName());
