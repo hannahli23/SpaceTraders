@@ -1,6 +1,5 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Planets.*;
 
 import java.util.HashMap;

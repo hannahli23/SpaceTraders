@@ -17,7 +17,6 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
 public class MapPage extends AppCompatActivity {
     private ViewAddSolarSystemViewModel solarSystem;
-    private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
 
@@ -27,7 +26,7 @@ public class MapPage extends AppCompatActivity {
         setContentView(R.layout.planet_map);
         solarSystem = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
-        shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        EditShipViewModel shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
 
         TextView location = findViewById(R.id.location_tag);
         TextView fuel = findViewById(R.id.fuel_amount);
@@ -36,7 +35,7 @@ public class MapPage extends AppCompatActivity {
     }
 
     public void onPlanetPress(View v) {
-        Button change = (Button) findViewById(v.getId());
+        Button change = findViewById(v.getId());
         Log.i("Try", "trial");
         change.setOnClickListener(new View.OnClickListener() {
             @Override

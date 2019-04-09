@@ -1,12 +1,12 @@
 package com.cosmiccoders.spacetraders.entity;
 
 import com.cosmiccoders.spacetraders.entity.TechLevel;
-import com.cosmiccoders.spacetraders.model.Interactor;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class PriceModel {
@@ -60,9 +60,9 @@ public class PriceModel {
                 String cr = firstElement.get(7);
 
                 if(level.getRepresentation() >= minTechP) {
-                    if(resource.getRepresentation() == radicalUp) {
+                    if(resource.getRepresentation()== radicalUp) {
                         base += (1+var);
-                    } else if (resource.getRepresentation() == cr) {
+                    } else if (resource.getRepresentation()==cr) {
                         base += (1-var);
                     }
                     for(int i = 0; i < level.getRepresentation(); i++) {

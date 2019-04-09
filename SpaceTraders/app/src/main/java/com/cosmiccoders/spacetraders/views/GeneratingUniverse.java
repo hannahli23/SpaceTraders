@@ -15,7 +15,6 @@ import com.cosmiccoders.spacetraders.entity.SolarSystem;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class GeneratingUniverse extends AppCompatActivity {
@@ -54,7 +53,7 @@ public class GeneratingUniverse extends AppCompatActivity {
     }
 
     public void onContinuePressed(View view) {
-        Button btn = (Button) findViewById(R.id.homeButton);
+        Button btn = findViewById(R.id.homeButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

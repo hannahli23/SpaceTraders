@@ -1,7 +1,5 @@
 package com.cosmiccoders.spacetraders.model;
 
-import com.cosmiccoders.spacetraders.entity.SolarSystem;
-
 import java.util.HashMap;
 import java.util.Map;
 

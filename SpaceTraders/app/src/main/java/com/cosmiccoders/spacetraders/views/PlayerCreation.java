@@ -63,7 +63,7 @@ public class PlayerCreation extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         majorSpinner = findViewById(R.id.spinner);
-        majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this,
+        majorSpinner.setAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Difficulty.values()));
 
         shipField = findViewById(R.id.ship_field);
@@ -85,7 +85,7 @@ public class PlayerCreation extends AppCompatActivity {
     }
 
     public void onSubtractPressed(View view) {
-        Button change = (Button) findViewById(view.getId());
+        Button change = findViewById(view.getId());
         int temp = 0;
         switch(view.getId()) {
             case R.id.subtract_pilot:
@@ -100,7 +100,7 @@ public class PlayerCreation extends AppCompatActivity {
             case R.id.subtract_engineer:
                 temp = R.id.engineer_points;
         }
-        final TextView changeText = (TextView) findViewById(temp);
+        final TextView changeText = findViewById(temp);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,7 +166,7 @@ public class PlayerCreation extends AppCompatActivity {
     }
 
     public void onAddPressed(View view) {
-        Button change = (Button) findViewById(view.getId());
+        Button change = findViewById(view.getId());
         int temp = 0;
         switch(view.getId()) {
             case R.id.add_pilot:
@@ -182,7 +182,7 @@ public class PlayerCreation extends AppCompatActivity {
                 temp = R.id.engineer_points;
         }
 
-        final TextView changeText = (TextView) findViewById(temp);
+        final TextView changeText = findViewById(temp);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,7 +238,7 @@ public class PlayerCreation extends AppCompatActivity {
                 ship.setName(shipName);
             } else if(name.isEmpty() && !shipName.isEmpty()) {
                 ship.setName(shipName);
-            } else if(!name.isEmpty() && shipName.isEmpty()) {
+            } else if(!name.isEmpty()) {
                 player.setName(name);
                 ship.setName("Grancypher");
             } else {
@@ -254,21 +254,20 @@ public class PlayerCreation extends AppCompatActivity {
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
             shipViewModel.setMainShip(ship);
-
             playerViewModel.addPlayer(player);
             shipViewModel.addShip(ship);
             shipViewModel.setMainShip(ship);
 
-            addPlayer();
-            addShip();
-            addCargoHold();
+            //addPlayer();
+            //addShip();
+            //addCargoHold();
         } else {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }
     }
 
     public void onNextPress(View v) {
-        Button btn = (Button) findViewById(R.id.next_button);
+        Button btn = findViewById(R.id.next_button);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,7 +278,7 @@ public class PlayerCreation extends AppCompatActivity {
     }
 
     public void onExitPressed(View view) {
-        Button changeButton = (Button) findViewById(R.id.save_button);
+        Button changeButton = findViewById(R.id.save_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -297,7 +296,7 @@ public class PlayerCreation extends AppCompatActivity {
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", playerViewModel.getPlayer().getId());
         params.put("player_name", playerViewModel.getPlayer().getName());
         params.put("currency", playerViewModel.getPlayer().getCurrency());
@@ -332,7 +331,7 @@ public class PlayerCreation extends AppCompatActivity {
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("ship_name", shipViewModel.getMainShip().getShipName());
         params.put("ship_type", "Gnat");
         params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
@@ -367,7 +366,7 @@ public class PlayerCreation extends AppCompatActivity {
     public void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
         params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
         params.put("user_id", playerViewModel.getPlayer().getId());

@@ -1,14 +1,9 @@
 package com.cosmiccoders.spacetraders.model;
 
 
-import android.media.Image;
-import android.util.Log;
-
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.entity.SolarSystem;
 

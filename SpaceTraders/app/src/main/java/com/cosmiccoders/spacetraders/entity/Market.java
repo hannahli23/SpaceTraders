@@ -1,7 +1,5 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
 import java.util.Map;
 
 /**

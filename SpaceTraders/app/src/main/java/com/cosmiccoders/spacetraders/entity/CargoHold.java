@@ -2,8 +2,6 @@ package com.cosmiccoders.spacetraders.entity;
 
 import android.util.Log;
 
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +11,7 @@ public class CargoHold {
      * inventory is a map that maps the name of a good to how much of the good you have
      * currSize is the current amount of items in your ship
      */
-    private int max;
+    private final int max;
     private Map<String, Integer> inventory;
     private int currSize;
 

@@ -1,10 +1,8 @@
 package com.cosmiccoders.spacetraders.entity;
 
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
 
 import java.util.EnumMap;
-import java.util.List;
 
 public class Player {
     /**

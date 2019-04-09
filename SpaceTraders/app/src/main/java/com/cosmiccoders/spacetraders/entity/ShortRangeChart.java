@@ -2,7 +2,6 @@ package com.cosmiccoders.spacetraders.entity;
 
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
 import java.util.ArrayList;
 import java.util.List;

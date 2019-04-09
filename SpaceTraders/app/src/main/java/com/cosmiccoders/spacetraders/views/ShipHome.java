@@ -3,8 +3,6 @@ package com.cosmiccoders.spacetraders.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,7 +67,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue = Volley.newRequestQueue(this);
         shipYard = new ShipYard();
 
-        Button btn = (Button) findViewById(R.id.go_places);
+        Button btn = findViewById(R.id.go_places);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,12 +81,25 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
 
     public void onMapPressed(View view) {
-        Button btn = (Button) findViewById(R.id.view_map_button);
+        Button btn = findViewById(R.id.view_map_button);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ShipHome.this, MapPage.class));
+            }
+        });
+    }
+
+    public void onExitPressed(View v) {
+        Button changeButton = findViewById(R.id.save_button);
+        changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }
@@ -117,7 +128,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
     public void viewStats(View view) {
-        Button changeButton = (Button) findViewById(R.id.view_stats_button);
+        Button changeButton = findViewById(R.id.view_stats_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +141,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
     public void onSave(View view) {
-        Button changeButton = (Button) findViewById(R.id.sell_goods_button);
+        Button changeButton = findViewById(R.id.sell_goods_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -367,7 +378,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", playerViewModel.getPlayer().getId());
         params.put("player_name", playerViewModel.getPlayer().getName());
         params.put("currency", playerViewModel.getPlayer().getCurrency());
@@ -402,7 +413,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("ship_name", shipViewModel.getMainShip().getShipName());
         params.put("fuel", shipViewModel.getMainShip().getFuel());
         params.put("user_id", playerViewModel.getPlayer().getId());
@@ -429,7 +440,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     public void updateACargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
         params.put("user_id", playerViewModel.getPlayer().getId());
 
@@ -465,7 +476,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", 1);
         params.put("player_name", playerViewModel.getPlayer().getName());
         params.put("currency", playerViewModel.getPlayer().getCurrency());
@@ -500,7 +511,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("ship_name", shipViewModel.getMainShip().getShipName());
         params.put("ship_type", "Gnat");
         params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
@@ -535,7 +546,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     public void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
         params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
         params.put("user_id", 1);
@@ -563,7 +574,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     public void deleteItems() {
         this.url = "http://10.0.2.2:9080/myapi/items/delete";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", playerViewModel.getPlayer().getId());
 
         JSONObject postparams = new JSONObject(params);
@@ -588,9 +599,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     public void addItems() {
         this.url = "http://10.0.2.2:9080/myapi/items";
         Map<String, Integer> inventory = shipViewModel.getMainShip().getCargoHold().getInventory();
-        if(inventory.size() == 0) {return;}
+        if(inventory.isEmpty()) {return;}
         for (java.util.Map.Entry<String, Integer> entry: inventory.entrySet()) {
-            HashMap<String, Object> params = new HashMap<String, Object>();
+            HashMap<String, Object> params = new HashMap<>();
             params.put("item_name", entry.getKey());
             params.put("curr_amount", entry.getValue());
             params.put("user_id", playerViewModel.getPlayer().getId());

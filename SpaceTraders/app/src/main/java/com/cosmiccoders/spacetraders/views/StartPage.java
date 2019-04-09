@@ -18,7 +18,7 @@ public class StartPage extends AppCompatActivity {
     }
 
     public void onLoadPageClick(View v) {
-        Button btn = (Button) findViewById(R.id.load);
+        Button btn = findViewById(R.id.load);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +29,7 @@ public class StartPage extends AppCompatActivity {
     }
 
     public void onCreatePageClick(View v) {
-        Button btn = (Button) findViewById(R.id.create);
+        Button btn = findViewById(R.id.create);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

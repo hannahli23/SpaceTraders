@@ -6,9 +6,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import android.view.View;
 import android.os.Bundle;
 
@@ -41,7 +38,7 @@ public class Sell extends AppCompatActivity {
         TextView text;
         int numItem = 0;
 
-        text = (TextView) findViewById(R.id.w_price);
+        text = findViewById(R.id.w_price);
         if(market.getCanSell("Water")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Water");
             text.setText("You have " + numItem + " water(s)");
@@ -49,7 +46,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable for sale");
         }
 
-        text = (TextView) findViewById(R.id.fa_price);
+        text = findViewById(R.id.fa_price);
         if(market.getCanSell("Firearms")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Firearms");
             text.setText("You have " + numItem + " firearm(s)");
@@ -57,7 +54,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.g_price);
+        text = findViewById(R.id.g_price);
         if(market.getCanSell("Games")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Games");
             text.setText("You have " + numItem + " game(s)");
@@ -65,7 +62,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.n_price);
+        text = findViewById(R.id.n_price);
         if(market.getCanSell("Narcotics")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Narcotics");
             text.setText("You have " + numItem + " narcotic(s)");
@@ -73,7 +70,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.r_price);
+        text = findViewById(R.id.r_price);
         if(market.getCanSell("Robots")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Robots");
             text.setText("You have " + numItem + " robot(s)");
@@ -81,7 +78,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.fur_price);
+        text = findViewById(R.id.fur_price);
         if(market.getCanSell("Furs")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Furs");
             text.setText("You have " + numItem + " fur(s)");
@@ -89,7 +86,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.o_price);
+        text = findViewById(R.id.o_price);
         if(market.getCanSell("Ore")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Ore");
             text.setText("You have " + numItem + " Ore(s)");
@@ -97,7 +94,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.food_price);
+        text = findViewById(R.id.food_price);
         if(market.getCanSell("Food")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Food");
             text.setText("You have " + numItem + " food");
@@ -105,7 +102,7 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.m_price);
+        text = findViewById(R.id.m_price);
         if(market.getCanSell("Medicine")) {
             numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem("Medicine");
             text.setText("You have " + numItem + " medicine");
@@ -115,7 +112,7 @@ public class Sell extends AppCompatActivity {
     }
 
     public void sell(View view) {
-        final Button change = (Button) findViewById(view.getId());
+        final Button change = findViewById(view.getId());
         int temp = 0;
         switch(view.getId()) {
             case R.id.water:
@@ -147,7 +144,7 @@ public class Sell extends AppCompatActivity {
                 break;
 
         }
-        final TextView changeText = (TextView) findViewById(temp);
+        final TextView changeText = findViewById(temp);
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

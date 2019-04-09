@@ -6,9 +6,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import android.view.View;
 import android.os.Bundle;
 
@@ -43,7 +40,7 @@ public class Buy extends AppCompatActivity {
         TextView text;
         String price = "";
 
-        text = (TextView) findViewById(R.id.w_price);
+        text = findViewById(R.id.w_price);
         if(market.getGoodList().containsKey("Water")) {
             price = market.getPrice("Water") + "";
             text.setText("Water costs:" + price);
@@ -51,7 +48,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.fa_price);
+        text = findViewById(R.id.fa_price);
         if(market.getGoodList().containsKey("Firearms")) {
             price = market.getPrice("Firearms") + "";
             text.setText("Firearms cost:" + price);
@@ -59,7 +56,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.g_price);
+        text = findViewById(R.id.g_price);
         if(market.getGoodList().containsKey("Games")) {
             price = market.getPrice("Games") + "";
             text.setText("Games cost:" + price);
@@ -67,7 +64,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.n_price);
+        text = findViewById(R.id.n_price);
         if(market.getGoodList().containsKey("Narcotics")) {
             price = market.getPrice("Narcotics") + "";
             text.setText("Narcotics cost:" + price);
@@ -75,7 +72,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.r_price);
+        text = findViewById(R.id.r_price);
         if(market.getGoodList().containsKey("Robots")) {
             price = market.getPrice("Robots") + "";
             text.setText("Robots cost:" + price);
@@ -83,7 +80,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.fur_price);
+        text = findViewById(R.id.fur_price);
         if(market.getGoodList().containsKey("Furs")) {
             price = market.getPrice("Furs") + "";
             text.setText("Fur costs:" + price);
@@ -91,7 +88,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.o_price);
+        text = findViewById(R.id.o_price);
         if(market.getGoodList().containsKey("Ore")) {
             price = market.getPrice("Ore") + "";
             text.setText("An ore costs:" + price);
@@ -99,7 +96,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.food_price);
+        text = findViewById(R.id.food_price);
         if(market.getGoodList().containsKey("Food")) {
             price = market.getPrice("Food") + "";
             text.setText("Food costs:" + price);
@@ -107,7 +104,7 @@ public class Buy extends AppCompatActivity {
             text.setText("This item is unavailable");
         }
 
-        text = (TextView) findViewById(R.id.m_price);
+        text = findViewById(R.id.m_price);
         if(market.getGoodList().containsKey("Medicine")) {
             price = market.getPrice("Medicine") + "";
             text.setText("Medicine costs:" + price);
@@ -117,7 +114,7 @@ public class Buy extends AppCompatActivity {
     }
 
     public void buy(View view) {
-        Button change = (Button) findViewById(view.getId());
+        Button change = findViewById(view.getId());
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override

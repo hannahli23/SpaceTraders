@@ -9,29 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
-import com.cosmiccoders.spacetraders.entity.Planets.Andromeda;
-import com.cosmiccoders.spacetraders.entity.Planets.Baratas;
-import com.cosmiccoders.spacetraders.entity.Planets.BlueDwarf;
-import com.cosmiccoders.spacetraders.entity.Planets.Cornholio;
-import com.cosmiccoders.spacetraders.entity.Planets.Drax;
-import com.cosmiccoders.spacetraders.entity.Planets.Kravat;
-import com.cosmiccoders.spacetraders.entity.Planets.Omphalos;
-import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Planets.RedDwarf;
-import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
-import com.cosmiccoders.spacetraders.entity.Planets.Titikaka;
+import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.ShipYard;
 import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
@@ -45,7 +31,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.Response;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
@@ -101,7 +86,7 @@ public class LoadGame extends AppCompatActivity {
     }
 
     public void onLoadClicked(View v) {
-        Button changeButton = (Button) findViewById(R.id.load_button);
+        Button changeButton = findViewById(R.id.load_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
