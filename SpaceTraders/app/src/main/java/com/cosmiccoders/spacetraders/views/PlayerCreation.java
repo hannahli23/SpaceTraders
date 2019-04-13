@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
@@ -27,6 +28,7 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 
 import org.json.JSONObject;
 
@@ -36,6 +38,7 @@ public class PlayerCreation extends AppCompatActivity {
 
     private EditAddPlayerViewModel playerViewModel;
     private EditShipViewModel shipViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
 
     private TextView pilotSkills;
     private TextView fighterSkills;
@@ -81,6 +84,8 @@ public class PlayerCreation extends AppCompatActivity {
 
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
+
         requestQueue = Volley.newRequestQueue(this);
     }
 
@@ -337,17 +342,17 @@ public class PlayerCreation extends AppCompatActivity {
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
-        params.put("ship_name", shipViewModel.getMainShip().getShipName());
+        params.put("ship_name", shipViewModel.getShipName());
         params.put("ship_type", "Gnat");
-        params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
-        params.put("weapon_slots", shipViewModel.getMainShip().getNumOfWeaponSlots());
-        params.put("shield_slots", shipViewModel.getMainShip().getNumOfShieldSlots());
-        params.put("gadget_slots", shipViewModel.getMainShip().getNumOfGadgetSlots());
-        params.put("crew_quarters", shipViewModel.getMainShip().getNumOfCrewQuarters());
-        params.put("travel_range", shipViewModel.getMainShip().getMaxTravelRange());
+        params.put("hull_strength", shipViewModel.getHullStrength());
+        params.put("weapon_slots", shipViewModel.getNumOfWeaponSlots());
+        params.put("shield_slots", shipViewModel.getNumOfShieldSlots());
+        params.put("gadget_slots", shipViewModel.getNumOfGadgetSlots());
+        params.put("crew_quarters", shipViewModel.getNumOfCrewQuarters());
+        params.put("travel_range", shipViewModel.getMaxTravelRange());
         params.put("escape_pod", "false");
-        params.put("fuel", shipViewModel.getMainShip().getFuel());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("fuel", shipViewModel.getFuel());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -372,9 +377,9 @@ public class PlayerCreation extends AppCompatActivity {
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
         HashMap<String, Object> params = new HashMap<>();
-        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("curr_size", cargoHoldViewModel.getCurrSize());
+        params.put("maxsize", cargoHoldViewModel.getMax());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.cosmiccoders.spacetraders.R;
+import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.Player;
@@ -20,6 +21,7 @@ import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 import org.json.JSONArray;
@@ -44,11 +46,12 @@ public class LoadGame extends AppCompatActivity {
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
     private ViewAddSolarSystemViewModel solarSystemViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
     //private ShipYard shipYard;
 
     private Player testPlayer;
     private Ship testShip;
-
+    private CargoHold cargoHold;
     RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
@@ -63,6 +66,8 @@ public class LoadGame extends AppCompatActivity {
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
+
         requestQueue = Volley.newRequestQueue(this);
 
         testPlayer = new Player();
@@ -108,7 +113,7 @@ public class LoadGame extends AppCompatActivity {
                     playerViewModel.addPlayer(testPlayer);
                     shipViewModel.setMainShip(testShip);
                     Log.i("Test Load P", playerViewModel.toString());
-                    Log.i("Test Load Ship", shipViewModel.getMainShip().getCargoHold().toString());
+                    Log.i("Test Load Ship", cargoHoldViewModel.toString());
 
                     startActivity(new Intent(LoadGame.this, ShipHome.class));
 
@@ -262,6 +267,8 @@ public class LoadGame extends AppCompatActivity {
                                     JSONObject jsonObj = response.getJSONObject(i);
                                     //int max = jsonObj.getInt("maxsize");
                                     int curr = jsonObj.getInt("curr_size");
+                                    //cargoHold = testShip.getCargoHold();
+                                    //cargoHold.setCurrSize(curr);
                                     testShip.getCargoHold().setCurrSize(curr);
                                     //shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
                                 } catch (JSONException e) {

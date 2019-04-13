@@ -30,7 +30,7 @@ public class MapPage extends AppCompatActivity {
         TextView location = findViewById(R.id.location_tag);
         TextView fuel = findViewById(R.id.fuel_amount);
         location.setText(planetViewModel.getPlanet().getName());
-        fuel.setText(shipViewModel.getMainShip().getFuel()+"");
+        fuel.setText(shipViewModel.getFuel()+"");
     }
 
     public void onPlanetPress(View v) {

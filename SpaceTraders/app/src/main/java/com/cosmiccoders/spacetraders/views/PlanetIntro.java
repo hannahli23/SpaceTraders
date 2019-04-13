@@ -40,14 +40,14 @@ public class PlanetIntro extends AppCompatActivity{
 
     public void gainMoney(int randNum) {
         if ((randNum > 40) && (randNum < 60)) {
-            playerViewModel.getPlayer().getPaid(3000);
+            playerViewModel.getPaid(3000);
             Log.i("Test", "You've gained money!");
         }
     }
 
     public void yaThatSucks(int randNum) {
         if (randNum == 98) {
-            playerViewModel.getPlayer().setDifficulty(Difficulty.IMPOSSIBLE);
+            playerViewModel.setDifficulty(Difficulty.IMPOSSIBLE);
             Log.i("Test", "Level Set on Impossible!!");
         }
     }
@@ -85,7 +85,7 @@ public class PlanetIntro extends AppCompatActivity{
 
     public void changeText() {
         TextView text = findViewById(R.id.planetName);
-        text.setText(planetViewModel.getPlanetDestination().getName());
+        text.setText(planetViewModel.getPlanet().getName());
     }
 
     public void setWelcome() {
@@ -123,10 +123,10 @@ public class PlanetIntro extends AppCompatActivity{
                     Log.i("Error!!!", "This planet is not in range!!~!~!");
                 }
                 int integer_use = (shortRangeChart.distance(go.getLocation(), planetViewModel.getPlanet().getLocation()));
-                if(integer_use > shipViewModel.getMainShip().getFuel()) {
+                if(integer_use > shipViewModel.getFuel()) {
                     Log.i("Error:", "Theres not enough fuel!");
                 } else {
-                    shipViewModel.getMainShip().takeAwayFromFeul(integer_use);
+                    shipViewModel.takeAwayFromFeul(integer_use);
                     planetViewModel.setPlanet(planetViewModel.getPlanetDestination());
                     final int randNum = rand.nextInt(100) + 1;
                     loseMoney(randNum);

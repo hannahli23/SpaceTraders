@@ -14,11 +14,13 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Market;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 public class Buy extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
 
     private Market market;
 
@@ -31,6 +33,7 @@ public class Buy extends AppCompatActivity {
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
         GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
 
         market = planetViewModel.getPlanet().getMarket();
         changePrices();
@@ -122,8 +125,8 @@ public class Buy extends AppCompatActivity {
             int price = market.getGoodList().get(item);
             if(performChecks(1, price)) {
                 playerViewModel.pay(price);
-                shipViewModel.getMainShip().getCargoHold().putItem(item, 1);
-                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
+                cargoHoldViewModel.putItem(item, 1);
+                Log.i("Test buy", cargoHoldViewModel.toString());
                 Log.i("Testing sell", playerViewModel.getCurrency()+"");
             } else {
                 Log.i("Test buy", "Oh no something went wrong :(((");
@@ -133,7 +136,7 @@ public class Buy extends AppCompatActivity {
 
     private boolean performChecks(int itemNum, int amount) {
         boolean one = playerViewModel.checkCurrency(amount);
-        boolean two = shipViewModel.getMainShip().getCargoHold().putCheck(itemNum);
+        boolean two = cargoHoldViewModel.putCheck(itemNum);
         if(!one) {
             Log.i("Buy performance check", "You don't have enough money!!!");
         }

@@ -33,6 +33,7 @@ public class Model {
         interactorMap.put("Ship", new ShipInteractor(myRepository));
         interactorMap.put("Planet", new PlanetInteractor(myRepository));
         interactorMap.put("SolarSystem", new SolarSystemInteractor(myRepository));
+        interactorMap.put("CargoHold", new CargoHoldInteractor(myRepository));
     }
 
     public PlanetInteractor getPlanetInteractor() {
@@ -48,5 +49,9 @@ public class Model {
 
     public SolarSystemInteractor getSolarSystemInteractors() {
         return (SolarSystemInteractor) interactorMap.get("SolarSystem");
+    }
+
+    public CargoHoldInteractor getCargoHoldInteractors() {
+        return (CargoHoldInteractor) interactorMap.get("CargoHold");
     }
 }

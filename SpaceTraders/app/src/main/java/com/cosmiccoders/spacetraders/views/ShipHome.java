@@ -20,6 +20,7 @@ import com.cosmiccoders.spacetraders.entity.ShipYard;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 import org.json.JSONArray;
@@ -43,6 +44,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
     private ViewAddSolarSystemViewModel solarSystemViewModel;
     private ShipYard shipYard;
 
@@ -63,6 +65,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
         requestQueue = Volley.newRequestQueue(this);
         shipYard = new ShipYard();
 
@@ -133,7 +136,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             public void onClick(View v) {
                 Log.i("Player", playerViewModel.toString());
                 Log.i("Planet", planetViewModel.getPlanet().toString());
-                Log.i("Ship", shipViewModel.getMainShip().getCargoHold().toString());
+                Log.i("Ship", cargoHoldViewModel.toString());
                 Log.i("Market", planetViewModel.getPlanet().getMarket().toString());
             }
         });
@@ -241,8 +244,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     JSONObject jsonObj = response.getJSONObject(i);
                                     String shipname = jsonObj.get("ship_name").toString();
                                     int fuel = jsonObj.getInt("fuel");
-                                    shipViewModel.getMainShip().setFuel(fuel);
-                                    shipViewModel.getMainShip().setName(shipname);
+                                    shipViewModel.setFuel(fuel);
+                                    shipViewModel.setName(shipname);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -293,7 +296,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     int max = jsonObj.getInt("maxsize");
                                     int curr = jsonObj.getInt("curr_size");
 
-                                    shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
+                                    cargoHoldViewModel.setCurrSize(curr);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -347,7 +350,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                 }
                                 Log.i("Testing", i+"");
                             }
-                            shipViewModel.getMainShip().getCargoHold().setInventory(temp);
+                            cargoHoldViewModel.setInventory(temp);
                         } else {
                             // The user didn't have any repos.
                         }
@@ -375,14 +378,14 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
-        params.put("user_id", playerViewModel.getPlayer().getId());
-        params.put("player_name", playerViewModel.getPlayer().getName());
-        params.put("currency", playerViewModel.getPlayer().getCurrency());
-        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
-        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
-        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
-        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
-        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
+        params.put("user_id", playerViewModel.getId());
+        params.put("player_name", playerViewModel.getName());
+        params.put("currency", playerViewModel.getCurrency());
+        params.put("difficulty", playerViewModel.getDifficulty().getRepresentation());
+        params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
         params.put("curr_planet", planetViewModel.getPlanet().getName());
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -410,9 +413,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
-        params.put("ship_name", shipViewModel.getMainShip().getShipName());
-        params.put("fuel", shipViewModel.getMainShip().getFuel());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("ship_name", shipViewModel.getShipName());
+        params.put("fuel", shipViewModel.getFuel());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -437,8 +440,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
         HashMap<String, Object> params = new HashMap<>();
-        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("curr_size", cargoHoldViewModel.getCurrSize());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -474,13 +477,13 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", 1);
-        params.put("player_name", playerViewModel.getPlayer().getName());
-        params.put("currency", playerViewModel.getPlayer().getCurrency());
-        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
-        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
-        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
-        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
-        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
+        params.put("player_name", playerViewModel.getName());
+        params.put("currency", playerViewModel.getCurrency());
+        params.put("difficulty", playerViewModel.getDifficulty().getRepresentation());
+        params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
         params.put("curr_planet", planetViewModel.getPlanet().getName());
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -508,16 +511,16 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
-        params.put("ship_name", shipViewModel.getMainShip().getShipName());
+        params.put("ship_name", shipViewModel.getShipName());
         params.put("ship_type", "Gnat");
-        params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
-        params.put("weapon_slots", shipViewModel.getMainShip().getNumOfWeaponSlots());
-        params.put("shield_slots", shipViewModel.getMainShip().getNumOfShieldSlots());
-        params.put("gadget_slots", shipViewModel.getMainShip().getNumOfGadgetSlots());
-        params.put("crew_quarters", shipViewModel.getMainShip().getNumOfCrewQuarters());
-        params.put("travel_range", shipViewModel.getMainShip().getMaxTravelRange());
+        params.put("hull_strength", shipViewModel.getHullStrength());
+        params.put("weapon_slots", shipViewModel.getNumOfWeaponSlots());
+        params.put("shield_slots", shipViewModel.getNumOfShieldSlots());
+        params.put("gadget_slots", shipViewModel.getNumOfGadgetSlots());
+        params.put("crew_quarters", shipViewModel.getNumOfCrewQuarters());
+        params.put("travel_range", shipViewModel.getMaxTravelRange());
         params.put("escape_pod", "false");
-        params.put("fuel", shipViewModel.getMainShip().getFuel());
+        params.put("fuel", shipViewModel.getFuel());
         params.put("user_id", 1);
 
         JSONObject postparams = new JSONObject(params);
@@ -543,8 +546,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
         HashMap<String, Object> params = new HashMap<>();
-        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
+        params.put("curr_size", cargoHoldViewModel.getCurrSize());
+        params.put("maxsize", cargoHoldViewModel.getMax());
         params.put("user_id", 1);
 
         JSONObject postparams = new JSONObject(params);
@@ -571,7 +574,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         this.url = "http://10.0.2.2:9080/myapi/items/delete";
 
         HashMap<String, Object> params = new HashMap<>();
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -594,13 +597,13 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
     public void addItems() {
         this.url = "http://10.0.2.2:9080/myapi/items";
-        Map<String, Integer> inventory = shipViewModel.getMainShip().getCargoHold().getInventory();
+        Map<String, Integer> inventory = cargoHoldViewModel.getInventory();
         if(inventory.isEmpty()) {return;}
         for (java.util.Map.Entry<String, Integer> entry: inventory.entrySet()) {
             HashMap<String, Object> params = new HashMap<>();
             params.put("item_name", entry.getKey());
             params.put("curr_amount", entry.getValue());
-            params.put("user_id", playerViewModel.getPlayer().getId());
+            params.put("user_id", playerViewModel.getId());
 
             JSONObject postparams = new JSONObject(params);
             Log.i("Test", postparams.toString());
