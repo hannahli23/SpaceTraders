@@ -69,13 +69,6 @@ class Repository {
     }
 
     public void updatePlayer(Player p) {
-        /*player.setName(p.getName());
-        player.setCurrency(p.getCurrency());
-        player.setDifficulty(p.getDifficulty());
-        player.setSkills(Skills.PILOT, p.getSkill(Skills.PILOT));
-        player.setSkills(Skills.ENGINEER, p.getSkill(Skills.ENGINEER));
-        player.setSkills(Skills.FIGHTER, p.getSkill(Skills.FIGHTER));
-        player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));*/
         player = p;
     }
 
@@ -149,22 +142,10 @@ class Repository {
     }
 
     public void updateShip(Ship s) {
-        /*for (Ship ship: allShips) {
-            if (ship.getId() == s.getId()) {
-                ship.setName(s.getShipName());
-            }
-        }*/
         mainShip = s;
     }
 
     public void setMainShip(Ship ship) { mainShip = ship; }
 
     public Ship getMainShip() { return mainShip; }
-
-
-    //CHECK THIS
-   // public void initializeChart(Ship ship, planet, solarSystem) {
-       // ShortRangeChart myChart = new ShortRangeChart(mainShip, planet, solarSystem);
-
-       // }
 }

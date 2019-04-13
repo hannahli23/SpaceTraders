@@ -112,8 +112,6 @@ public class Sell extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int price = 0;
-                int num = 0;
                 switch(v.getId()){
                     case R.id.water:
                         sellHelper(changeText, "Water");
