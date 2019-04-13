@@ -29,7 +29,7 @@ public class PlanetIntro extends AppCompatActivity{
     private ViewAddSolarSystemViewModel solarSystem;
     private Random rand;
 
-    public void loseMoney(int randNum) {
+    private void loseMoney(int randNum) {
         if (randNum <= 99) {
             if (playerViewModel.getCurrency() >= 50) {
                 playerViewModel.pay(50);
@@ -38,14 +38,14 @@ public class PlanetIntro extends AppCompatActivity{
         }
     }
 
-    public void gainMoney(int randNum) {
+    private void gainMoney(int randNum) {
         if ((randNum > 40) && (randNum < 60)) {
             playerViewModel.getPaid(3000);
             Log.i("Test", "You've gained money!");
         }
     }
 
-    public void yaThatSucks(int randNum) {
+    private void yaThatSucks(int randNum) {
         if (randNum == 98) {
             playerViewModel.setDifficulty(Difficulty.IMPOSSIBLE);
             Log.i("Test", "Level Set on Impossible!!");
@@ -83,22 +83,22 @@ public class PlanetIntro extends AppCompatActivity{
         rand = new Random();
     }
 
-    public void changeText() {
+    private void changeText() {
         TextView text = findViewById(R.id.planetName);
         text.setText(planetViewModel.getPlanet().getName());
     }
 
-    public void setWelcome() {
+    private void setWelcome() {
         TextView welcomeMessage = findViewById(R.id.welcomeMessage);
         welcomeMessage.setText("Welcome to " + planetViewModel.getPlanetDestination().getName());
     }
 
-    public void setInfo() {
+    private void setInfo() {
         TextView planetInfo = findViewById(R.id.planetInfo);
         planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
     }
 
-    public void setShortRange() {
+    private void setShortRange() {
         shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),planetViewModel.getPlanet(), solarSystem.getPlanetMap());
 
     }

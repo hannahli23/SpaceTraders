@@ -71,7 +71,7 @@ public class MapPage extends AppCompatActivity {
         });
     }
 
-    public void onPressedHelper(String name) {
+    private void onPressedHelper(String name) {
         planetViewModel.setPlanetDestination(solarSystem.getPlanet(name));
         Log.i("Testing"+name, planetViewModel.getPlanetDestination().toString());
     }

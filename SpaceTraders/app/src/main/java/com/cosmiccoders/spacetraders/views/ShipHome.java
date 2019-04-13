@@ -51,11 +51,11 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private Player testPlayer;
     //private Ship testShip;
 
-    RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
+    private RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
-    String baseUrl = "http://10.0.2.2:9080/myapi/player";
-    String url;
+    private String baseUrl = "http://10.0.2.2:9080/myapi/player";
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -371,7 +371,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(arrReq);
     }
 
-    public void updateAPlayer(){
+    private void updateAPlayer(){
         this.url = this.baseUrl;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
@@ -406,7 +406,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-    public void updateAShip(){
+    private void updateAShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
@@ -436,7 +436,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-    public void updateACargoHold(){
+    private void updateACargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
         HashMap<String, Object> params = new HashMap<>();
@@ -462,7 +462,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-    public void updateItems(){
+    private void updateItems(){
         deleteItems();
         addItems();
     }
@@ -570,7 +570,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
 
-    public void deleteItems() {
+    private void deleteItems() {
         this.url = "http://10.0.2.2:9080/myapi/items/delete";
 
         HashMap<String, Object> params = new HashMap<>();
@@ -595,7 +595,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-    public void addItems() {
+    private void addItems() {
         this.url = "http://10.0.2.2:9080/myapi/items";
         Map<String, Integer> inventory = cargoHoldViewModel.getInventory();
         if(inventory.isEmpty()) {return;}

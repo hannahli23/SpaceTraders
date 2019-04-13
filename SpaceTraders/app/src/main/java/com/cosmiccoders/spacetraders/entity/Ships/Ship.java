@@ -22,9 +22,9 @@ public class Ship {
 
     private ShortRangeChart shortRangeChart;
 
-    public Ship(String shipType, int hullStrength, int numOfCargoBays,
-                int numOfWeaponSlots, int numOfShieldSlots, int numOfGadgetSlots,
-                int numOfCrewQuarters, int maxTravelRange, boolean escapePod, int fuelPrice) {
+    Ship(String shipType, int hullStrength, int numOfCargoBays,
+         int numOfWeaponSlots, int numOfShieldSlots, int numOfGadgetSlots,
+         int numOfCrewQuarters, int maxTravelRange, boolean escapePod, int fuelPrice) {
         this.shipType = shipType;
         this.hullStrength = hullStrength;
         this.numOfWeaponSlots = numOfWeaponSlots;

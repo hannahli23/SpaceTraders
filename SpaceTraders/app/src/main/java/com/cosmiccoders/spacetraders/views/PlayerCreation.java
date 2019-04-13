@@ -57,8 +57,8 @@ public class PlayerCreation extends AppCompatActivity {
 
     private RequestQueue requestQueue;
 
-    String baseUrl = "http://10.0.2.2:9080/myapi";
-    String url;
+    private String baseUrl = "http://10.0.2.2:9080/myapi";
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -260,7 +260,7 @@ public class PlayerCreation extends AppCompatActivity {
         }
     }
 
-    public void setNames(Player player, Ship ship) {
+    private void setNames(Player player, Ship ship) {
         String name = nameField.getText().toString();
         String shipName = shipField.getText().toString();
         if (!name.isEmpty() && !shipName.isEmpty()) {
@@ -338,9 +338,6 @@ public class PlayerCreation extends AppCompatActivity {
     public void addShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
-        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
-        // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("ship_name", shipViewModel.getShipName());
         params.put("ship_type", "Gnat");

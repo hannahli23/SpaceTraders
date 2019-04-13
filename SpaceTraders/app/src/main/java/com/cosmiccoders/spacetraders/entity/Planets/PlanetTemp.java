@@ -12,8 +12,8 @@ public abstract class PlanetTemp {
     private Market market;
     //private ShipYard shipYard;
 
-    protected PlanetTemp(String name, int x, int y, TechLevel techLevel,
-                         PlanetResources planetResources) {
+    PlanetTemp(String name, int x, int y, TechLevel techLevel,
+               PlanetResources planetResources) {
         this.name = name;
         int[] temp = {x, y};
         this.location = temp;

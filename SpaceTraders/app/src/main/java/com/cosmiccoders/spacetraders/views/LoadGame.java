@@ -52,7 +52,7 @@ public class LoadGame extends AppCompatActivity {
     private Player testPlayer;
     private Ship testShip;
     private CargoHold cargoHold;
-    RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
+    private RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
     private String baseUrl = "http://10.0.2.2:9080/myapi";
@@ -80,19 +80,19 @@ public class LoadGame extends AppCompatActivity {
         setMainPlanet();
     }
 
-    public void setMainPlanet() {
+    private void setMainPlanet() {
         planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
         Log.i("Test", planetViewModel.getPlanet().toString());
     }
 
-    public void printPlanets() {
+    private void printPlanets() {
         for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
             Log.i("Planet name", entry.getKey());
             Log.i("Test", entry.getValue().toString());
         }
     }
 
-    public void addPlanets() {
+    private void addPlanets() {
         solarSystemViewModel.setSolarSystem();
     }
 
@@ -137,7 +137,7 @@ public class LoadGame extends AppCompatActivity {
         return true;
     }
 
-    public void loadPlayer(int user_id) {
+    private void loadPlayer(int user_id) {
         this.url = this.baseUrl + "/player/id/" + user_id;
 
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
@@ -197,7 +197,7 @@ public class LoadGame extends AppCompatActivity {
         requestQueue.add(arrReq);
     }
 
-    public void loadShip(int user_id){
+    private void loadShip(int user_id){
         this.url = baseUrl + "/ship/id/" + user_id;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
@@ -248,7 +248,7 @@ public class LoadGame extends AppCompatActivity {
         requestQueue.add(arrReq);
     }
 
-    public void loadCargoHold(int user_id) {
+    private void loadCargoHold(int user_id) {
         this.url = baseUrl + "/cargohold/id/" + user_id;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
@@ -301,7 +301,7 @@ public class LoadGame extends AppCompatActivity {
         requestQueue.add(arrReq);
     }
 
-    public void loadItem(int user_id) {
+    private void loadItem(int user_id) {
         this.url = baseUrl + "/items/id/" + user_id;
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {

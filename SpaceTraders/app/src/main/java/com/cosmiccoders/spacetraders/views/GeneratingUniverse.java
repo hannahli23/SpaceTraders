@@ -39,19 +39,19 @@ public class GeneratingUniverse extends AppCompatActivity {
         setMainPlanet();
     }
 
-    public void setMainPlanet() {
+    private void setMainPlanet() {
         planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
         Log.i("Test", planetViewModel.getPlanet().toString());
     }
 
-    public void printPlanets() {
+    private void printPlanets() {
         for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
             Log.i("Planet name", entry.getKey());
             Log.i("Test", entry.getValue().toString());
         }
     }
 
-    public void addPlanets() {
+    private void addPlanets() {
         /*PlanetTemp test = new Kravat();
         solarSystemViewModel.setPlanetSS(new StartingPlanet());
         solarSystemViewModel.setPlanetSS(new Andromeda());

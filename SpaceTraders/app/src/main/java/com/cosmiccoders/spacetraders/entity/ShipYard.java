@@ -18,7 +18,7 @@ public class ShipYard {
         }
     }
 
-    public void fillTank(Ship ship) {
+    private void fillTank(Ship ship) {
         ship.setFullFuelTank();
     }
 
