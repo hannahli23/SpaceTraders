@@ -118,13 +118,13 @@ public class Buy extends AppCompatActivity {
     }
 
     public void buyHelper(String item) {
-        if(market.getGoodList().containsKey("Water")) {
+        if(market.getGoodList().containsKey(item)) {
             int price = market.getGoodList().get(item);
             if(performChecks(1, price)) {
-                playerViewModel.getPlayer().pay(price);
+                playerViewModel.pay(price);
                 shipViewModel.getMainShip().getCargoHold().putItem(item, 1);
                 Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
+                Log.i("Testing sell", playerViewModel.getCurrency()+"");
             } else {
                 Log.i("Test buy", "Oh no something went wrong :(((");
             }
@@ -132,7 +132,7 @@ public class Buy extends AppCompatActivity {
     }
 
     private boolean performChecks(int itemNum, int amount) {
-        boolean one = playerViewModel.getPlayer().checkCurrency(amount);
+        boolean one = playerViewModel.checkCurrency(amount);
         boolean two = shipViewModel.getMainShip().getCargoHold().putCheck(itemNum);
         if(!one) {
             Log.i("Buy performance check", "You don't have enough money!!!");

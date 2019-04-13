@@ -16,6 +16,7 @@ import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
+@SuppressWarnings("ALL")
 public class Sell extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
@@ -150,7 +151,7 @@ public class Sell extends AppCompatActivity {
         int price;
         if(performChecks(1, item)) {
             price = market.getPrice(item);
-            playerViewModel.getPlayer().getPaid(price);
+            playerViewModel.getPaid(price);
             shipViewModel.getMainShip().getCargoHold().takeItem(item, 1);
 
             setResults(item, changeText);
@@ -158,7 +159,7 @@ public class Sell extends AppCompatActivity {
     }
 
     public void setResults(String item, TextView changeText) {
-        Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
+        Log.i("Testing sell", playerViewModel.getCurrency()+"");
         Log.i("Testing sell", shipViewModel.getMainShip().getCargoHold().toString());
 
         int num = shipViewModel.getMainShip().getCargoHold().getNumOfItem(item);

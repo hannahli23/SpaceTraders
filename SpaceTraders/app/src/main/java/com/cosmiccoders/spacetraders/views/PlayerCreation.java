@@ -302,14 +302,14 @@ public class PlayerCreation extends AppCompatActivity {
         // that expects a JSON Array Response.
         // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
-        params.put("user_id", playerViewModel.getPlayer().getId());
-        params.put("player_name", playerViewModel.getPlayer().getName());
-        params.put("currency", playerViewModel.getPlayer().getCurrency());
-        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
-        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
-        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
-        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
-        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
+        params.put("user_id", playerViewModel.getId());
+        params.put("player_name", playerViewModel.getName());
+        params.put("currency", playerViewModel.getCurrency());
+        params.put("difficulty", playerViewModel.getDifficulty().getRepresentation());
+        params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
         params.put("curr_planet", "");
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());

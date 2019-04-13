@@ -31,8 +31,8 @@ public class PlanetIntro extends AppCompatActivity{
 
     public void loseMoney(int randNum) {
         if (randNum <= 99) {
-            if (playerViewModel.getPlayer().getCurrency() >= 50) {
-                playerViewModel.getPlayer().pay(50);
+            if (playerViewModel.getCurrency() >= 50) {
+                playerViewModel.pay(50);
                 Log.i("Test", "You've lost money!");
             }
         }

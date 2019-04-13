@@ -155,9 +155,6 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     public void loadPlayer() {
         this.url = this.baseUrl + "/id/5";
 
-        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
-        // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
