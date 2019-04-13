@@ -38,76 +38,39 @@ public class Buy extends AppCompatActivity {
 
     public void changePrices() {
         TextView text;
-        String price = "";
-
         text = findViewById(R.id.w_price);
-        if(market.getGoodList().containsKey("Water")) {
-            price = market.getPrice("Water") + "";
-            text.setText("Water costs:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Water");
 
         text = findViewById(R.id.fa_price);
-        if(market.getGoodList().containsKey("Firearms")) {
-            price = market.getPrice("Firearms") + "";
-            text.setText("Firearms cost:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Firearms");
 
         text = findViewById(R.id.g_price);
-        if(market.getGoodList().containsKey("Games")) {
-            price = market.getPrice("Games") + "";
-            text.setText("Games cost:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Games");
 
         text = findViewById(R.id.n_price);
-        if(market.getGoodList().containsKey("Narcotics")) {
-            price = market.getPrice("Narcotics") + "";
-            text.setText("Narcotics cost:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Narcotics");
 
         text = findViewById(R.id.r_price);
-        if(market.getGoodList().containsKey("Robots")) {
-            price = market.getPrice("Robots") + "";
-            text.setText("Robots cost:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Robots");
 
         text = findViewById(R.id.fur_price);
-        if(market.getGoodList().containsKey("Furs")) {
-            price = market.getPrice("Furs") + "";
-            text.setText("Fur costs:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Furs");
 
         text = findViewById(R.id.o_price);
-        if(market.getGoodList().containsKey("Ore")) {
-            price = market.getPrice("Ore") + "";
-            text.setText("An ore costs:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Ore");
 
         text = findViewById(R.id.food_price);
-        if(market.getGoodList().containsKey("Food")) {
-            price = market.getPrice("Food") + "";
-            text.setText("Food costs:" + price);
-        } else {
-            text.setText("This item is unavailable");
-        }
+        changeText(text, "Food");
 
         text = findViewById(R.id.m_price);
-        if(market.getGoodList().containsKey("Medicine")) {
-            price = market.getPrice("Medicine") + "";
-            text.setText("Medicine costs:" + price);
+        changeText(text, "Medicine");
+    }
+
+    public void changeText(TextView text, String item) {
+        String price;
+        if(market.getGoodList().containsKey(item)) {
+            price = market.getPrice(item) + "";
+            text.setText(item + " costs:" + price);
         } else {
             text.setText("This item is unavailable");
         }
@@ -122,127 +85,50 @@ public class Buy extends AppCompatActivity {
                 int price = 0;
                 switch(v.getId()){
                     case R.id.water:
-                        if(market.getGoodList().containsKey("Water")) {
-                            //price = market.getGoodList().get("Water");
-                            price = 10;
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Water", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Water");
                         break;
                     case R.id.robots:
-                        if(market.getGoodList().containsKey("Robots")) {
-                            price = market.getGoodList().get("Robots");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Robots", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Robots");
                         break;
                     case R.id.food:
-                        if(market.getGoodList().containsKey("Food")) {
-                            price = market.getGoodList().get("Food");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Food", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Food");
                         break;
                     case R.id.games:
-                        if(market.getGoodList().containsKey("Games")) {
-                            price = market.getGoodList().get("Games");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Games", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Games");
                         break;
                     case R.id.firearms:
-                        if(market.getGoodList().containsKey("Firearms")) {
-                            price = market.getGoodList().get("Firearms");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Firearms", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Firearms");
                         break;
                     case R.id.ore:
-                        if(market.getGoodList().containsKey("Ore")) {
-                            price = market.getGoodList().get("Ore");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Ore", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Ore");
                         break;
                     case R.id.narcotics:
-                        if(market.getGoodList().containsKey("Narcotics")) {
-                            price = market.getGoodList().get("Narcotics");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Narcotics", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Narcotics");
                         break;
                     case R.id.furs:
-                        if(market.getGoodList().containsKey("Furs")) {
-                            price = market.getGoodList().get("Furs");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Furs", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Furs");
                         break;
                     case R.id.medicine:
-                        if(market.getGoodList().containsKey("Medicine")) {
-                            price = market.getGoodList().get("Medicine");
-                            if(performChecks(1, price)) {
-                                playerViewModel.getPlayer().pay(price);
-                                shipViewModel.getMainShip().getCargoHold().putItem("Medicine", 1);
-                                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
-                                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
-                            } else {
-                                Log.i("Test buy", "Oh no something went wrong :(((");
-                            }
-                        }
+                        buyHelper("Medicine");
                         break;
 
                 }
             }
         });
+    }
+
+    public void buyHelper(String item) {
+        if(market.getGoodList().containsKey("Water")) {
+            int price = market.getGoodList().get(item);
+            if(performChecks(1, price)) {
+                playerViewModel.getPlayer().pay(price);
+                shipViewModel.getMainShip().getCargoHold().putItem(item, 1);
+                Log.i("Test buy", shipViewModel.getMainShip().getCargoHold().toString());
+                Log.i("Testing sell", playerViewModel.getPlayer().getCurrency()+"");
+            } else {
+                Log.i("Test buy", "Oh no something went wrong :(((");
+            }
+        }
     }
 
     private boolean performChecks(int itemNum, int amount) {

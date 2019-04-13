@@ -231,19 +231,8 @@ public class PlayerCreation extends AppCompatActivity {
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
 
-            String name = nameField.getText().toString();
-            String shipName = shipField.getText().toString();
-            if (!name.isEmpty() && !shipName.isEmpty()) {
-                player.setName(name);
-                ship.setName(shipName);
-            } else if(name.isEmpty() && !shipName.isEmpty()) {
-                ship.setName(shipName);
-            } else if(!name.isEmpty()) {
-                player.setName(name);
-                ship.setName("Grancypher");
-            } else {
-                ship.setName("Grancypher");
-            }
+            setNames(player, ship);
+
             TextView user_id = findViewById(R.id.user_id);
             player.setId(Integer.parseInt(user_id.getText().toString()));
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
@@ -255,14 +244,30 @@ public class PlayerCreation extends AppCompatActivity {
 
             shipViewModel.setMainShip(ship);
             playerViewModel.addPlayer(player);
-            shipViewModel.addShip(ship);
-            shipViewModel.setMainShip(ship);
+            //shipViewModel.addShip(ship);
+            //shipViewModel.setMainShip(ship);
 
             //addPlayer();
             //addShip();
             //addCargoHold();
         } else {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
+        }
+    }
+
+    public void setNames(Player player, Ship ship) {
+        String name = nameField.getText().toString();
+        String shipName = shipField.getText().toString();
+        if (!name.isEmpty() && !shipName.isEmpty()) {
+            player.setName(name);
+            ship.setName(shipName);
+        } else if(name.isEmpty() && !shipName.isEmpty()) {
+            ship.setName(shipName);
+        } else if(!name.isEmpty()) {
+            player.setName(name);
+            ship.setName("Grancypher");
+        } else {
+            ship.setName("Grancypher");
         }
     }
 

@@ -1,7 +1,5 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-
 import java.util.EnumMap;
 
 public class Player {
@@ -17,7 +15,7 @@ public class Player {
     private int currency;
     private Difficulty difficulty;
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
-    private Ship ship;
+    //private Ship ship;
 
     /**
      * A empty constructor for player with default values
@@ -82,9 +80,9 @@ public class Player {
 
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
 
-    public Ship getShip() {
-        return ship;
-    }
+    //public Ship getShip() {
+    //    return ship;
+    //}
 
     public void setName(String name) { this.name = name; }
 
@@ -119,6 +117,15 @@ public class Player {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean manipulateCurrency() {
+        if (checkCurrency(10)) {
+            int newCurrency = getCurrency() - 10;
+            setCurrency(newCurrency);
+            return true;
+        }
+        return false;
     }
 
     public String toString2() {

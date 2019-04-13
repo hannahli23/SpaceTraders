@@ -2,6 +2,7 @@ package com.cosmiccoders.spacetraders.entity;
 
 import android.util.Log;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class CargoHold {
      * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
-        if (currSize + amount >= max) {
+        if ((currSize + amount) >= max) {
             Log.i("Check size",  (currSize + amount) + "");
             return false;
         } else {
@@ -91,7 +92,7 @@ public class CargoHold {
 
     public void setCurrSize(int amount) {currSize = amount; }
 
-    public Map<String, Integer> getInventory() { return inventory; }
+    public Map<String, Integer> getInventory() { return Collections.unmodifiableMap(inventory); }
 
     public void setInventory(Map<String, Integer> newInventory) {inventory = newInventory;}
 
@@ -108,6 +109,7 @@ public class CargoHold {
         }
     }
 
+    @Override
     public String toString() {
         String result = "You have: ";
         if(currSize == 0) {

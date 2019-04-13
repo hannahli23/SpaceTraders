@@ -1,14 +1,12 @@
 package com.cosmiccoders.spacetraders.model;
 
-import java.util.List;
-
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 
 public class ShipInteractor extends Interactor{
 
     public ShipInteractor(Repository repo) {super(repo);}
 
-    public List<Ship> getAllShips() { return getRepo().getAllShips(); }
+    //public List<Ship> getAllShips() { return getRepo().getAllShips(); }
 
     public void addShip(Ship ship) { getRepo().addShip(ship);}
 

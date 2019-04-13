@@ -15,7 +15,7 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.Player;
-import com.cosmiccoders.spacetraders.entity.ShipYard;
+//import com.cosmiccoders.spacetraders.entity.ShipYard;
 import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
@@ -44,7 +44,7 @@ public class LoadGame extends AppCompatActivity {
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
     private ViewAddSolarSystemViewModel solarSystemViewModel;
-    private ShipYard shipYard;
+    //private ShipYard shipYard;
 
     private Player testPlayer;
     private Ship testShip;
@@ -68,21 +68,27 @@ public class LoadGame extends AppCompatActivity {
         testPlayer = new Player();
         testShip = new Gnat();
 
-        solarSystemViewModel.setPlanetSS(new StartingPlanet());
-        solarSystemViewModel.setPlanetSS(new Andromeda());
-        solarSystemViewModel.setPlanetSS(new Baratas());
-        solarSystemViewModel.setPlanetSS(new Cornholio());
-        solarSystemViewModel.setPlanetSS(new Drax());
-        solarSystemViewModel.setPlanetSS(new Kravat());
-        solarSystemViewModel.setPlanetSS(new Omphalos());
-        solarSystemViewModel.setPlanetSS(new Titikaka());
-        solarSystemViewModel.setPlanetSS(new RedDwarf());
-        solarSystemViewModel.setPlanetSS(new BlueDwarf());
+        addPlanets();
 
-        /*for (MapPage.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
+        printPlanets();
+
+        setMainPlanet();
+    }
+
+    public void setMainPlanet() {
+        planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
+        Log.i("Test", planetViewModel.getPlanet().toString());
+    }
+
+    public void printPlanets() {
+        for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
             Log.i("Planet name", entry.getKey());
             Log.i("Test", entry.getValue().toString());
-        }*/
+        }
+    }
+
+    public void addPlanets() {
+        solarSystemViewModel.setSolarSystem();
     }
 
     public void onLoadClicked(View v) {
@@ -146,7 +152,7 @@ public class LoadGame extends AppCompatActivity {
                                     int pp = jsonObj.getInt("pilot_points");
                                     String currPlanet = jsonObj.get("curr_planet").toString();
 
-                                    Difficulty d;
+                                    Difficulty d = Difficulty.NORMAL;
                                     switch(difficulty){
                                         case "easy":
                                             d = Difficulty.EASY;
@@ -156,7 +162,7 @@ public class LoadGame extends AppCompatActivity {
                                             break;
                                         case "hard":
                                             d = Difficulty.HARD;
-                                        default:
+                                        case "normal":
                                             d = Difficulty.NORMAL;
                                     }
                                     testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);
@@ -254,7 +260,7 @@ public class LoadGame extends AppCompatActivity {
                                 try {
                                     // For each repo, add a new line to our repo list.
                                     JSONObject jsonObj = response.getJSONObject(i);
-                                    int max = jsonObj.getInt("maxsize");
+                                    //int max = jsonObj.getInt("maxsize");
                                     int curr = jsonObj.getInt("curr_size");
                                     testShip.getCargoHold().setCurrSize(curr);
                                     //shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);

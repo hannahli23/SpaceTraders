@@ -26,6 +26,7 @@ public class PlanetIntro extends AppCompatActivity{
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
     private ShortRangeChart shortRangeChart;
+    private ViewAddSolarSystemViewModel solarSystem;
     private Random rand;
 
     public void loseMoney(int randNum) {
@@ -38,7 +39,7 @@ public class PlanetIntro extends AppCompatActivity{
     }
 
     public void gainMoney(int randNum) {
-        if (randNum > 40 && randNum < 60) {
+        if ((randNum > 40) && (randNum < 60)) {
             playerViewModel.getPlayer().getPaid(3000);
             Log.i("Test", "You've gained money!");
         }
@@ -63,22 +64,45 @@ public class PlanetIntro extends AppCompatActivity{
          * the short range chart
          * So is the check passes you should 1) reset main planet 2) naivgate to the shiphome page
          */
-        ViewAddSolarSystemViewModel solarSystem = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        solarSystem = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
+
         //changing the textview to change with the click
-        TextView text = findViewById(R.id.planetName);
-        text.setText(planetViewModel.getPlanetDestination().getName());
+        changeText();
+
         //setting welcome message
-        TextView welcomeMessage = findViewById(R.id.welcomeMessage);
-        welcomeMessage.setText("Welcome to " + planetViewModel.getPlanetDestination().getName());
+        setWelcome();
+
         //setting planet info
-        TextView planetInfo = findViewById(R.id.planetInfo);
-        planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
-        shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),planetViewModel.getPlanet(), solarSystem.getPlanetMap());
+        setInfo();
+
+        setShortRange();
+
         rand = new Random();
     }
+
+    public void changeText() {
+        TextView text = findViewById(R.id.planetName);
+        text.setText(planetViewModel.getPlanetDestination().getName());
+    }
+
+    public void setWelcome() {
+        TextView welcomeMessage = findViewById(R.id.welcomeMessage);
+        welcomeMessage.setText("Welcome to " + planetViewModel.getPlanetDestination().getName());
+    }
+
+    public void setInfo() {
+        TextView planetInfo = findViewById(R.id.planetInfo);
+        planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
+    }
+
+    public void setShortRange() {
+        shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),planetViewModel.getPlanet(), solarSystem.getPlanetMap());
+
+    }
+
     public void onBackPressed(View view) {
         Button btn2 = findViewById(R.id.back);
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +137,5 @@ public class PlanetIntro extends AppCompatActivity{
                 }
             }
         });
-
     }
 }

@@ -4,6 +4,7 @@ import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,6 @@ public class ShortRangeChart {
     }
 
     public List<PlanetTemp> getPlanetsInRange() {
-        return planetsInRange;
+        return Collections.unmodifiableList(planetsInRange);
     }
 }

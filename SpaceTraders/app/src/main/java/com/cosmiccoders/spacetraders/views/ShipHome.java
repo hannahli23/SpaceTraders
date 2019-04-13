@@ -17,7 +17,6 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.ShipYard;
-import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
@@ -48,7 +47,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private ShipYard shipYard;
 
     private Player testPlayer;
-    private Ship testShip;
+    //private Ship testShip;
 
     RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
@@ -179,7 +178,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     int pp = jsonObj.getInt("pilot_points");
                                     String currPlanet = jsonObj.get("curr_planet").toString();
 
-                                    Difficulty d;
+                                    Difficulty d = Difficulty.NORMAL;
                                     switch(difficulty){
                                         case "easy":
                                             d = Difficulty.EASY;
@@ -189,7 +188,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                             break;
                                         case "hard":
                                             d = Difficulty.HARD;
-                                        default:
+                                        case "normal":
                                             d = Difficulty.NORMAL;
                                     }
                                     testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);

@@ -24,4 +24,6 @@ public class ViewAddSolarSystemViewModel extends AndroidViewModel {
     public Map<String, PlanetTemp> getPlanetMap() { return interactor.getPlanetMap(); }
 
     public PlanetTemp getPlanet(String name) { return interactor.getPlanet(name); }
+
+    public void setSolarSystem() { interactor.setSolarSystem(); }
 }

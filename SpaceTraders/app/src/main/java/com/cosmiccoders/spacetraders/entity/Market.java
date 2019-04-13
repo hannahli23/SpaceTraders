@@ -1,5 +1,6 @@
 package com.cosmiccoders.spacetraders.entity;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -28,7 +29,7 @@ public class Market extends PriceModel{
      *         an integer which is the goods price
      */
     public Map<String, Integer> getGoodList() {
-        return goodList;
+        return Collections.unmodifiableMap(goodList);
     }
 
     /**
