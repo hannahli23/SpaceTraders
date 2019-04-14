@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents the ship's cargo inventory
+ */
 public class CargoHold {
     /**
      * int max is the max storage capacity of the ship
@@ -28,7 +31,7 @@ public class CargoHold {
 
     /**
      * Check to see if the amount of items you want to put into your cargoHold can actually fit
-     * @param amount
+     * @param amount number of items you want to put into your cargoHold
      * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
@@ -86,14 +89,34 @@ public class CargoHold {
         }
     }
 
+    /**
+     * Gets the maximum storage capacity of the ship
+     * @return int the max storage capacity of the ship
+     */
     public int getMax() { return max; }
 
+    /**
+     * Gets the current number of items in the ship
+     * @return int the current number of items in the ship
+     */
     public int getCurrSize() { return currSize; }
 
+    /**
+     * Sets currSize equal to input amount
+     * @param amount the value to set currSize to
+     */
     public void setCurrSize(int amount) {currSize = amount; }
 
+    /**
+     * Gets the ship's current inventory
+     * @return Map<String,Integer> a map of the ship's current inventory
+     */
     public Map<String, Integer> getInventory() { return Collections.unmodifiableMap(inventory); }
 
+    /**
+     * Sets the ship's inventory to the input inventory
+     * @param newInventory the map of the inventory to assign to the ship
+     */
     public void setInventory(Map<String, Integer> newInventory) {inventory = newInventory;}
 
     /**

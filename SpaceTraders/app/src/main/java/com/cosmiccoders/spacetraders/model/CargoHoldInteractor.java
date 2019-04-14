@@ -12,12 +12,17 @@ public class CargoHoldInteractor extends Interactor{
     private Ship ship;
     private CargoHold cargoHold;
     private Repository repo;
+
+    /**
+     * Constructor for CargoHoldInteractor - calls constructor of superclass, Interactor
+     * @param repo the current repository
+     */
     public CargoHoldInteractor(Repository repo) {super(repo);}
 
     /**
      * Calls CargoHold's putCheck method which checks to see if the amount
      * of items you want to put into your cargoHold can actually fit
-     * @param amount
+     * @param amount number of items you want to put into your cargoHold
      * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
