@@ -19,6 +19,9 @@ import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 import java.util.Map;
 
+/**
+ * This class represents the buying activity within the market
+ */
 public class Buy extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
@@ -42,6 +45,9 @@ public class Buy extends AppCompatActivity {
         changePrices();
     }
 
+    /**
+     * Changes the displayed prices of all goods
+     */
     public void changePrices() {
         TextView text;
         text = findViewById(R.id.w_price);
@@ -72,6 +78,12 @@ public class Buy extends AppCompatActivity {
         changeText(text, "Medicine");
     }
 
+    /**
+     * Finds the price of the input good, converts it to a string, and displays it to the user.
+     * If the good is not found, tells the user that the good is unavailable.
+     * @param text the text that you are displaying back to the user
+     * @param item the good whose cost to display
+     */
     public void changeText(TextView text, String item) {
         String price;
         Map<String, Integer> goodList = market.getGoodList();
@@ -83,6 +95,10 @@ public class Buy extends AppCompatActivity {
         }
     }
 
+    /**
+     * Carries out the purchase made by a player
+     * @param view the current view
+     */
     public void buy(View view) {
         Button change = findViewById(view.getId());
 
@@ -124,6 +140,10 @@ public class Buy extends AppCompatActivity {
         });
     }
 
+    /**
+     * Helper method for main buy method
+     * @param item the item to buy
+     */
     public void buyHelper(String item) {
         Map<String, Integer> goodList = market.getGoodList();
         if(goodList.containsKey(item)) {
@@ -139,6 +159,11 @@ public class Buy extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks to see if the player has enough money and space in their cargo to buy the item
+     * @param itemNum the number of the item to buy
+     * @param amount the price of the item
+     */
     private boolean performChecks(int itemNum, int amount) {
         boolean one = playerViewModel.checkCurrency(amount);
         boolean two = cargoHoldViewModel.putCheck(itemNum);

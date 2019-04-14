@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * This class as a Market for the player which is used in the PlanetTemp Class
+ * This class is a Market for the player which is used in the PlanetTemp Class
  */
 public class Market extends PriceModel{
     /** The goodlist is for the goods available on each planet

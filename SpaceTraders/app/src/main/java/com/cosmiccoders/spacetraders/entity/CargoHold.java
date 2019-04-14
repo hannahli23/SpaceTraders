@@ -98,7 +98,7 @@ public class CargoHold {
 
     /**
      * This function tells us how much of an item we have
-     * @param good
+     * @param good the good to get the amount of
      * @return the amount of a good we have
      */
     public int getNumOfItem(String good) {
