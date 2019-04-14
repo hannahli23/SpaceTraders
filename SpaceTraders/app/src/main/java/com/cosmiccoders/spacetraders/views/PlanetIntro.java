@@ -120,7 +120,7 @@ public class PlanetIntro extends AppCompatActivity{
                 PlanetTemp go = planetViewModel.getPlanetDestination();
                 List list = shortRangeChart.getPlanetsInRange();
                 if(!list.contains(go)) {
-                    Log.i("Error!!!", "This planet is not in range!!~!~!");
+                    Log.i("Error!!!", "This planet is not in range!");
                 }
                 int integer_use = (shortRangeChart.distance(go.getLocation(), planetViewModel.getPlanet().getLocation()));
                 if(integer_use > shipViewModel.getFuel()) {
