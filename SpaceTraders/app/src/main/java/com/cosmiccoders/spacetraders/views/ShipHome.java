@@ -135,6 +135,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             @Override
             public void onClick(View v) {
                 Log.i("Player", playerViewModel.toString());
+                Log.i("Player", playerViewModel.getId()+"");
                 Log.i("Planet", planetViewModel.getPlanet().toString());
                 Log.i("Ship", cargoHoldViewModel.toString());
                 Log.i("Market", planetViewModel.getPlanet().getMarket().toString());

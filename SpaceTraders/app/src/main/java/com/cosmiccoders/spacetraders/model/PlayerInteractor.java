@@ -9,92 +9,115 @@ import com.cosmiccoders.spacetraders.entity.Skills;
 public class PlayerInteractor extends Interactor{
 
     private Player player;
+    private Repository repo;
 
     public PlayerInteractor(Repository repo) {
         super(repo);
 
         //repo = getRepo();
-        player = getRepo().getPlayer();
+        //player = getRepo().getPlayer();
     }
 
     public Player getPlayer() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player;
     }
 
-    public void addPlayer (Player p) { getRepo().addPlayer(p);}
+    public void addPlayer (Player p) {
+        repo = getRepo();
+        repo.addPlayer(p);}
 
     public void updatePlayer (Player p) {
-        getRepo().updatePlayer(p);
+        repo = getRepo();
+        repo.updatePlayer(p);
         Log.i("APP", "Interactor: updating player: " + p);
     }
 
-    public String toString() { return getRepo().toString(); }
+    public String toString() {
+        repo = getRepo();
+        return repo.toString(); }
 
     public int getId() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.getId(); }
 
 
     public String getName() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.getName();
     }
 
     public int getCurrency() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.getCurrency();
     }
 
     public Difficulty getDifficulty() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.getDifficulty(); }
 
     public int getSkill(Skills skill) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.getSkill(skill);  }
 
     public void setName(String name) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         player.setName(name); }
 
     public void setCurrency(int curr) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         player.setCurrency(curr); }
 
     public boolean checkCurrency(int amount) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.checkCurrency(amount);
     }
 
     public void pay(int amount) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         player.pay(amount); }
 
     public void getPaid(int amount) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         player.getPaid(amount); }
 
     public void setDifficulty(Difficulty difficulty) {
-        player = getRepo().getPlayer();
-        player.setDifficulty(difficulty); }
+        repo = getRepo();
+        player = repo.getPlayer();
+        player.setDifficulty(difficulty);
+    }
 
-       public void setSkills(Skills skill, int points) {
-           player = getRepo().getPlayer();
-           player.setSkills(skill, points); }
+    public void setSkills(Skills skill, int points) {
+        repo = getRepo();
+        player = repo.getPlayer();
+        player.setSkills(skill, points); }
 
     public void setId(int id) {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         player.setId(id);
     }
 
     public boolean manipulateCurrency() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.manipulateCurrency();
     }
 
     public String toString2() {
-        player = getRepo().getPlayer();
+        repo = getRepo();
+        player = repo.getPlayer();
         return player.toString2();
     }
 }

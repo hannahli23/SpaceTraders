@@ -72,6 +72,7 @@ public class LoadGame extends AppCompatActivity {
 
         testPlayer = new Player();
         testShip = new Gnat();
+        cargoHold = new CargoHold(20);
 
         addPlanets();
 
@@ -109,10 +110,10 @@ public class LoadGame extends AppCompatActivity {
                     loadShip(user_id);
                     loadCargoHold(user_id);
                     loadItem(user_id);
-                    testPlayer.setId(user_id);
-                    playerViewModel.addPlayer(testPlayer);
+                    //playerViewModel.updatePlayer(testPlayer);
+                    //playerViewModel.setId(user_id);
                     shipViewModel.setMainShip(testShip);
-                    Log.i("Test Load P", playerViewModel.toString());
+
                     Log.i("Test Load Ship", cargoHoldViewModel.toString());
 
                     startActivity(new Intent(LoadGame.this, ShipHome.class));
@@ -137,7 +138,7 @@ public class LoadGame extends AppCompatActivity {
         return true;
     }
 
-    private void loadPlayer(int user_id) {
+    private void loadPlayer(final int user_id) {
         this.url = this.baseUrl + "/player/id/" + user_id;
 
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
@@ -172,9 +173,14 @@ public class LoadGame extends AppCompatActivity {
                                     }
                                     testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);
                                     playerViewModel.updatePlayer(testPlayer);
+                                    playerViewModel.setId(user_id);
                                     planetViewModel.setPlanet(solarSystemViewModel.getPlanet(currPlanet));
-                                    Log.i("Test", playerViewModel.toString());
-                                    Log.i("Test", planetViewModel.getPlanet().toString());
+
+                                    Log.i("Player", playerViewModel.getId()+"");
+                                    Log.i("Test Load P", playerViewModel.toString());
+
+                                    //Log.i("Test", playerViewModel.toString());
+                                    //Log.i("Test", planetViewModel.getPlanet().toString());
                                 } catch (JSONException e) {
                                     Log.e("Volley", "Invalid JSON Object.");
                                 }
@@ -269,7 +275,7 @@ public class LoadGame extends AppCompatActivity {
                                     int curr = jsonObj.getInt("curr_size");
                                     //cargoHold = testShip.getCargoHold();
                                     //cargoHold.setCurrSize(curr);
-                                    testShip.getCargoHold().setCurrSize(curr);
+                                    cargoHold.setCurrSize(curr);
                                     //shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
@@ -324,7 +330,7 @@ public class LoadGame extends AppCompatActivity {
                                 }
                                 Log.i("Testing", i+"");
                             }
-                            testShip.getCargoHold().setInventory(temp);
+                            cargoHold.setInventory(temp);
                         } else {
                             // The user didn't have any repos.
                         }

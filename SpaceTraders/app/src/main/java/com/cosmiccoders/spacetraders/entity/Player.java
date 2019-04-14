@@ -95,13 +95,7 @@ public class Player {
      * @return The players skill points
      */
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
-    /**
-     * This function returns the player's ship
-     * @return The ship that the player has
-     */
-    public Ship getShip() {
-        return ship;
-    }
+
     /**
      * This function returns the name of a player
      * @return The player's name
@@ -151,6 +145,7 @@ public class Player {
      * @param points is the amount of points we want to give to a skill
      */
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
+
     /**
      * This function sets the user's ID
      * @param id The id of the player
