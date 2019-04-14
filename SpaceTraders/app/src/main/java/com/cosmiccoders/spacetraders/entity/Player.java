@@ -74,22 +74,47 @@ public class Player {
         this.currency = currency;
         this.difficulty = difficulty;
     }
-
+    /**
+     * This function returns the ID of a player
+     * @return The players ID
+     */
     public int getId() { return id; }
+    /**
+     * This function returns the name of a player
+     * @return The players name
+     */
     public String getName() { return name; }
-
+    /**
+     * This function returns the currency a player has
+     * @return The players currency
+     */
     public int getCurrency() { return currency; }
-
+    /**
+     * This function returns the difficulty chosen by a player
+     * @return The players chosen difficulty
+     */
     public Difficulty getDifficulty() { return difficulty; }
-
+    /**
+     * This function returns the skill points of a player
+     * @return The players skill points
+     */
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
-
+    /**
+     * This function returns the player's ship
+     * @return The ship that the player has
+     */
     public Ship getShip() {
         return ship;
     }
-
+    /**
+     * This function returns the name of a player
+     * @return The player's name
+     */
     public void setName(String name) { this.name = name; }
-
+    /**
+     * This function returns the currency of a player
+     * @return The player's name
+     */
     public void setCurrency(int curr) { currency = curr; }
 
     /**
@@ -115,10 +140,22 @@ public class Player {
      */
     public void getPaid(int amount) {currency += amount; }
 
+    /**
+     * This function determines the difficulty of the game, as set by the player
+     * @param difficulty The difficulty of the game
+     */
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
-
+    /**
+     * This function determines the amount of skill points the player has per
+     * skill
+     * @param skill The specific skill a player can have
+     * @param points The amount of  points in a skill set a user can have
+     */
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
-
+    /**
+     * This function sets the user's ID
+     * @param id The id of the player
+     */
     public void setId(int id) {
         this.id = id;
     }
