@@ -1,7 +1,6 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -26,11 +25,11 @@ public class Market extends PriceModel{
 
     /**
      * This function returns the goodList
-     * @return a Map<String, Integer> which has a String as the good name and
+     * @return a MapPage<String, Integer> which has a String as the good name and
      *         an integer which is the goods price
      */
     public Map<String, Integer> getGoodList() {
-        return goodList;
+        return Collections.unmodifiableMap(goodList);
     }
 
     /**

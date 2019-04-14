@@ -101,9 +101,9 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="onSave"
-        android:text="Sell Goods"
-        android:textColor="#000000"
+        android:text="Save Game"
 
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/view_map_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.754"

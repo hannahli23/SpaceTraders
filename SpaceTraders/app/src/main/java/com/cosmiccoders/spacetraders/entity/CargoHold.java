@@ -2,8 +2,7 @@ package com.cosmiccoders.spacetraders.entity;
 
 import android.util.Log;
 
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,7 @@ public class CargoHold {
      * inventory is a map that maps the name of a good to how much of the good you have
      * currSize is the current amount of items in your ship
      */
-    private int max;
+    private final int max;
     private Map<String, Integer> inventory;
     private int currSize;
 
@@ -33,7 +32,7 @@ public class CargoHold {
      * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
-        if (currSize + amount >= max) {
+        if ((currSize + amount) >= max) {
             Log.i("Check size",  (currSize + amount) + "");
             return false;
         } else {
@@ -91,7 +90,11 @@ public class CargoHold {
 
     public int getCurrSize() { return currSize; }
 
-    public Map<String, Integer> getInventory() { return inventory; }
+    public void setCurrSize(int amount) {currSize = amount; }
+
+    public Map<String, Integer> getInventory() { return Collections.unmodifiableMap(inventory); }
+
+    public void setInventory(Map<String, Integer> newInventory) {inventory = newInventory;}
 
     /**
      * This function tells us how much of an item we have
@@ -106,6 +109,7 @@ public class CargoHold {
         }
     }
 
+    @Override
     public String toString() {
         String result = "You have: ";
         if(currSize == 0) {

@@ -6,12 +6,9 @@ const config = require('../../config');
 // let dbconfig = config.dbconfig;
 let dbconfig = config.dbconfig;
 
-// var sql = 'SELECT * FROM city';
 var sql = "CALL DeleteCargoItem(?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
-    //logger.debug('COC_Postcocdbinfo is starting');
-
         var reqBody = req.body;
         var reqParams = req.params;
 
@@ -22,12 +19,9 @@ module.exports = function(req, res, next) {
             password        : '123',
             database        : 'spacetraders'
         });
-    return new Promise(function (resolve, reject){ 
-        // var pool  = mysql.createPool(dbconfig);
-        console.log('get req post body is ');
-         
+    return new Promise(function (resolve, reject){   
         pool.getConnection(function(err, connection) {
-            console.log('get req post body is ' + reqBody.cargo_item_id);
+            console.log('hmmmmmmmmmmmmmmmm ' + reqBody.user_id);
             if (err) {
                 console.log(err);
                 res.status(500).send(err);
@@ -35,15 +29,14 @@ module.exports = function(req, res, next) {
                 connection.release();
                 return reject(err);
             }
-            console.log('get req post body is ' + reqBody.cargo_item_id);
-
-            connection.query(sql,[reqBody.cargo_item_id], function(err, results, fields) {
+            connection.query(sql,[reqBody.user_id], function(err, results, fields) {
                 if (err) {
                     return reject(err);
                 }
                 console.log('changed ' + results.changedRows + ' rows');
                 //Return the connection to the pool
                 connection.release();
+                res.send('changed ' + results.changedRows + ' rows')
                 
                 resolve();
               });

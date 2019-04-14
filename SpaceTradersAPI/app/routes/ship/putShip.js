@@ -7,7 +7,7 @@ const config = require('../../config');
 let dbconfig = config.dbconfig;
 
 // var sql = 'SELECT * FROM city';
-var sql = "CALL UpdateShip(?, ?)"; // Full name of stored procedure
+var sql = "CALL UpdateShip(?, ?, ?)"; // Full name of stored procedure
 
 module.exports = function(req, res, next) {
     //logger.debug('COC_Postcocdbinfo is starting');
@@ -27,8 +27,8 @@ module.exports = function(req, res, next) {
         console.log('get req post body is ');
          
         pool.getConnection(function(err, connection) {
-            console.log('get req post body is ' + reqBody.ship_id);
-            console.log('get req post body is ' + reqBody.ship_name);
+            console.log('putShip ' + reqBody.user_id);
+            console.log('putShip ' + reqBody.ship_name);
             if (err) {
                 console.log(err);
                 res.status(500).send(err);
@@ -36,15 +36,16 @@ module.exports = function(req, res, next) {
                 connection.release();
                 return reject(err);
             }
-            console.log('get req post body is ' + reqBody.ship_id);
-            console.log('get req post body is ' + reqBody.ship_name);
+            console.log('putShip ' + reqBody.user_id);
+            console.log('putShip ' + reqBody.ship_name);
 
-            connection.query(sql,[reqBody.ship_id, reqBody.ship_name], function(err, results, fields) {
+            connection.query(sql,[reqBody.user_id, reqBody.fuel, reqBody.ship_name], function(err, results, fields) {
                 if (err) {
                     return reject(err);
                 }
                 console.log('changed ' + results.changedRows + ' rows');
                 //Return the connection to the pool
+                res.send(results.changedRows + '   ' + results.insertId);
                 connection.release();
                 
                 resolve();

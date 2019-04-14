@@ -11,28 +11,48 @@ import android.widget.Button;
 import com.cosmiccoders.spacetraders.R;
 
 import com.cosmiccoders.spacetraders.entity.Planets.*;
-import com.cosmiccoders.spacetraders.entity.SolarSystem;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class GeneratingUniverse extends AppCompatActivity {
 
-    private SolarSystem solarSystem;
-    private PlanetTemp planetTemp;
+    //private SolarSystem solarSystem;
+    //private PlanetTemp planetTemp;
+    private ViewAddSolarSystemViewModel solarSystemViewModel;
+    private GetSetPlanetViewModel planetViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generating_universe);
 
-        GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
-        ViewAddSolarSystemViewModel solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
 
         //solarSystem = new SolarSystem();
-        PlanetTemp test = new Kravat();
+        addPlanets();
+
+        printPlanets();
+
+        setMainPlanet();
+    }
+
+    private void setMainPlanet() {
+        planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
+        Log.i("Test", planetViewModel.getPlanet().toString());
+    }
+
+    private void printPlanets() {
+        for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
+            Log.i("Planet name", entry.getKey());
+            Log.i("Test", entry.getValue().toString());
+        }
+    }
+
+    private void addPlanets() {
+        /*PlanetTemp test = new Kravat();
         solarSystemViewModel.setPlanetSS(new StartingPlanet());
         solarSystemViewModel.setPlanetSS(new Andromeda());
         solarSystemViewModel.setPlanetSS(new Baratas());
@@ -42,18 +62,12 @@ public class GeneratingUniverse extends AppCompatActivity {
         solarSystemViewModel.setPlanetSS(new Omphalos());
         solarSystemViewModel.setPlanetSS(new Titikaka());
         solarSystemViewModel.setPlanetSS(new RedDwarf());
-        solarSystemViewModel.setPlanetSS(new BlueDwarf());
-
-        for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
-            Log.i("Planet name", entry.getKey());
-            Log.i("Test", entry.getValue().toString());
-        }
-        planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
-        Log.i("Test", planetViewModel.getPlanet().toString());
+        solarSystemViewModel.setPlanetSS(new BlueDwarf());*/
+        solarSystemViewModel.setSolarSystem();
     }
 
     public void onContinuePressed(View view) {
-        Button btn = (Button) findViewById(R.id.homeButton);
+        Button btn = findViewById(R.id.homeButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

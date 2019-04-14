@@ -24,16 +24,19 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS UpdateShip//
 
-CREATE PROCEDURE UpdateShip(IN p_ship_id INT(12),
-							IN p_ship_name VARCHAR(80))
+CREATE PROCEDURE UpdateShip(
+IN p_user_id INT(12),
+IN p_fuel INT(12),
+IN p_ship_name VARCHAR(80))
 	BEGIN
 		UPDATE ship
-        SET ship_name= p_ship_name
-        WHERE ship_id = p_ship_id;
+        SET ship_name = p_ship_name,
+        fuel = p_fuel
+        WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 
-CALL UpdateShip(1, "TESTINGTEST");
+CALL UpdateShip(1, 20, "TESTINGTEST");
 
 -- -----------------------------------------------------
 
@@ -44,10 +47,10 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS DeleteShip//
 
-CREATE PROCEDURE DeleteShip(IN p_ship_id INT(12))
+CREATE PROCEDURE DeleteShip(IN p_user_id INT(12))
 	BEGIN
 		DELETE FROM ship
-        WHERE ship_id = p_ship_id;
+        WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 

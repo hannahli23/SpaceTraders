@@ -1,14 +1,14 @@
 package com.cosmiccoders.spacetraders.entity;
 
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Planets.*;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SolarSystem {
 
-    Map<String, PlanetTemp> solarSystem;
+    private Map<String, PlanetTemp> solarSystem;
 
     public SolarSystem() {
         solarSystem = new HashMap<>();
@@ -34,6 +34,6 @@ public class SolarSystem {
     }
 
     public Map<String, PlanetTemp> getPlanetMap() {
-        return solarSystem;
+        return Collections.unmodifiableMap(solarSystem);
     }
 }

@@ -24,12 +24,13 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS UpdateCargoItems//
 
-CREATE PROCEDURE UpdateCargoItems(IN p_cargo_item_id INT(12),
-							IN p_curr_amount VARCHAR(80))
+CREATE PROCEDURE UpdateCargoItems(
+IN p_item_name VARCHAR(80),
+IN p_user_id INT(12),
+IN p_curr_amount VARCHAR(80))
 	BEGIN
-		UPDATE cargo_items
-        SET curr_amount = p_curr_amount
-        WHERE cargo_item_id = p_cargo_item_id;
+		CALL DeleteCargoItem(p_user_id);
+        CALL insert_items(p_item_name, p_curr_amount, p_user_id);
 	END //
 DELIMITER ;
 
@@ -44,13 +45,14 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS DeleteCargoItem//
 
-CREATE PROCEDURE DeleteCargoItem(IN p_cargo_item_id INT(12))
+CREATE PROCEDURE DeleteCargoItem(IN p_user_id INT(11))
 	BEGIN
 		DELETE FROM cargo_items
-        WHERE cargo_item_id = p_cargo_item_id;
+        WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 
+CALL DeleteCargoItem(5);
 -- -----------------------------------------------------
 
 -- Select one cargohold

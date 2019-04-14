@@ -26,8 +26,7 @@ module.exports = function(req, res, next) {
             console.log('get req post body is ');
              
             pool.getConnection(function(err, connection) {
-                console.log('get req post body is ' + reqBody.item_name);
-                console.log('get req post body is ' + reqBody.cargohold_id);
+                console.log('postItem ' + reqBody.item_name);
 			    if (err) {
                     console.log(err);
                     res.status(500).send(err);
@@ -35,8 +34,7 @@ module.exports = function(req, res, next) {
                     connection.release();
 			        return reject(err);
 			    }
-			    console.log('get req post body is ' + reqBody.item_name);
-                console.log('get req post body is ' + reqBody.cargohold_id);
+			    console.log('postItem ' + reqBody.item_name);
 
 			    connection.query(sql,[reqBody.item_name, reqBody.curr_amount, reqBody.user_id], function(err, results, fields) {
                     if (err) {

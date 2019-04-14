@@ -1,10 +1,6 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
 import java.util.EnumMap;
-import java.util.List;
 
 public class Player {
     /**
@@ -19,7 +15,7 @@ public class Player {
     private int currency;
     private Difficulty difficulty;
     private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
-    private Ship ship;
+    //private Ship ship;
 
     /**
      * A empty constructor for player with default values
@@ -110,6 +106,7 @@ public class Player {
      * This function returns the name of a player
      * @return The player's name
      */
+
     public void setName(String name) { this.name = name; }
     /**
      * This function returns the currency of a player
@@ -140,16 +137,18 @@ public class Player {
      */
     public void getPaid(int amount) {currency += amount; }
 
+
     /**
-     * This function determines the difficulty of the game, as set by the player
-     * @param difficulty The difficulty of the game
+     * This function determines the difficulty of the game
+     * This function sets a difficulty to a player
+     * @param difficulty is the difficulty the player
      */
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
+
     /**
-     * This function determines the amount of skill points the player has per
-     * skill
-     * @param skill The specific skill a player can have
-     * @param points The amount of  points in a skill set a user can have
+     * This function sets an amount of points for a skill
+     * @param skill is the skill that we want to append to
+     * @param points is the amount of points we want to give to a skill
      */
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
     /**
@@ -158,6 +157,34 @@ public class Player {
      */
     public void setId(int id) {
         this.id = id;
+    }
+    /**
+     * This function changes the currency of the player
+     * @return A boolean to change the players currency
+     */
+    public boolean manipulateCurrency() {
+        if (checkCurrency(10)) {
+            int newCurrency = getCurrency() - 10;
+            setCurrency(newCurrency);
+            return true;
+        }
+        return false;
+    }
+    /**
+     * This function changes values to be of type String
+     * @return A string representation of the data
+     */
+    public String toString2() {
+        return "You are " + getName()
+                + ". \n You have "
+                + getSkill(Skills.PILOT) + "points, "
+                + getSkill(Skills.ENGINEER) + "points, "
+                + getSkill(Skills.FIGHTER) + "points, and "
+                + getSkill(Skills.TRADER) + "points in the skills "
+                + "pilot, engineer, fighter, trader respectively. \n You currently have $"
+                + getCurrency() + " and you are playing on " + getDifficulty() + " mode.";
+
+        //return ans;
     }
 
 }

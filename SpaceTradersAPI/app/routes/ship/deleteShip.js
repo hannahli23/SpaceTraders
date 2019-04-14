@@ -27,7 +27,7 @@ module.exports = function(req, res, next) {
         console.log('get req post body is ');
          
         pool.getConnection(function(err, connection) {
-            console.log('get req post body is ' + reqBody.ship_id);
+            console.log('get req post body is ' + reqBody.user_id);
             if (err) {
                 console.log(err);
                 res.status(500).send(err);
@@ -35,16 +35,15 @@ module.exports = function(req, res, next) {
                 connection.release();
                 return reject(err);
             }
-            console.log('get req post body is ' + reqBody.ship_id);
+            console.log('get req post body is ' + reqBody.user_id);
 
-            connection.query(sql,[reqBody.ship_id], function(err, results, fields) {
+            connection.query(sql,[reqBody.user_id], function(err, results, fields) {
                 if (err) {
                     return reject(err);
                 }
-                console.log('changed ' + results.changedRows + ' rows');
                 //Return the connection to the pool
                 connection.release();
-                
+                res.send('changed ' + results.changedRows + ' rows')
                 resolve();
               });
       }); 

@@ -5,7 +5,6 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.SolarSystem;
 import com.cosmiccoders.spacetraders.model.Model;
 import com.cosmiccoders.spacetraders.model.SolarSystemInteractor;
 
@@ -25,4 +24,6 @@ public class ViewAddSolarSystemViewModel extends AndroidViewModel {
     public Map<String, PlanetTemp> getPlanetMap() { return interactor.getPlanetMap(); }
 
     public PlanetTemp getPlanet(String name) { return interactor.getPlanet(name); }
+
+    public void setSolarSystem() { interactor.setSolarSystem(); }
 }

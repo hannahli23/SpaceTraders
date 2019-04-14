@@ -8,33 +8,35 @@ import android.widget.Button;
 
 import com.cosmiccoders.spacetraders.R;
 
-public class MarketPlace extends AppCompatActivity{
+public class StartPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.marketplace);
+        setContentView(R.layout.loading_page);
+
     }
 
-    public void onBuy(View view) {
-        Button btn = findViewById(R.id.buyPageButton);
+    public void onLoadPageClick(View v) {
+        Button btn = findViewById(R.id.load);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MarketPlace.this, Buy.class));
+                startActivity(new Intent(StartPage.this, LoadGame.class));
             }
         });
     }
 
-    public void onSell(View view) {
-        Button btn = findViewById(R.id.sellPageButton);
+    public void onCreatePageClick(View v) {
+        Button btn = findViewById(R.id.create);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MarketPlace.this, Sell.class));
+                startActivity(new Intent(StartPage.this, PlayerCreation.class));
             }
         });
     }
+
 }

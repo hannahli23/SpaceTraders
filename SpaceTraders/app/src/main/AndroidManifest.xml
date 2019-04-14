@@ -2,19 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cosmiccoders.spacetraders">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".views.PlayerCreation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".views.GeneratingUniverse">
@@ -26,18 +23,28 @@
             android:name=".views.MarketPlace">
         </activity>
         <activity
+            android:name=".views.LoadGame">
+        </activity>
+        <activity
             android:name=".views.Buy">
         </activity>
         <activity
             android:name=".views.Sell">
         </activity>
         <activity
-            android:name=".views.Map">
+            android:name=".views.MapPage">
         </activity>
         <activity
             android:name=".views.PlanetIntro">
         </activity>
+        <activity
+            android:name=".views.StartPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
 </manifest>

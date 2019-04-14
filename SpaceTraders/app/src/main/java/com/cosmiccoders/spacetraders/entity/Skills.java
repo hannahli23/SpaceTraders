@@ -7,7 +7,7 @@ public enum Skills {
     ENGINEER("engineer")
     ;
 
-    private final String skill;
+    private String skill;
 
     Skills(String skill) {
         this.skill = skill;

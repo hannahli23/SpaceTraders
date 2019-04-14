@@ -24,16 +24,18 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS UpdateCargoHold//
 
-CREATE PROCEDURE UpdateCargoHold(IN p_cargohold_id INT(12),
-							IN p_curr_size VARCHAR(80))
+CREATE PROCEDURE UpdateCargoHold(
+IN p_user_id INT(12),
+IN p_curr_size VARCHAR(80)
+)
 	BEGIN
 		UPDATE cargo_hold
         SET curr_size = p_curr_size
-        WHERE cargohold_id = p_cargohold_id;
+        WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 
-CALL UpdateCargoHold(1, 20);
+CALL UpdateCargoHold(5, 45);
 
 -- -----------------------------------------------------
 
@@ -44,10 +46,10 @@ use spacetraders;
 DELIMITER //
 DROP PROCEDURE IF EXISTS DeleteCargoHold//
 
-CREATE PROCEDURE DeleteCargoHold(IN p_cargohold_id INT(12))
+CREATE PROCEDURE DeleteCargoHold(IN p_user_id INT(12))
 	BEGIN
 		DELETE FROM cargo_hold
-        WHERE cargohold_id = p_cargohold_id;
+        WHERE user_id = p_user_id;
 	END //
 DELIMITER ;
 
@@ -68,3 +70,21 @@ CREATE PROCEDURE GetCargoHold(IN p_cargohold_id INT(12))
 DELIMITER ;
 
 CALL GetCargoHold(1);
+
+-- -----------------------------------------------------
+
+-- Get a cargohold
+
+-- -----------------------------------------------------
+use spacetraders;
+DELIMITER //
+DROP PROCEDURE IF EXISTS GetACargoHold//
+
+CREATE PROCEDURE GetACargoHold(IN p_user_id INT(12))
+	BEGIN
+		Select * FROM cargo_hold
+        WHERE user_id = p_user_id;
+	END //
+DELIMITER ;
+
+CALL GetACargoHold(1)

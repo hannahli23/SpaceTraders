@@ -26,7 +26,7 @@ module.exports = (function(){
     api.route('/').get(getItem)
     api.route('/').post(postItem)
     api.route('/').put(putItem)
-    api.route('/').delete(deleteItem)
+    api.route('/delete').post(deleteItem)
     api.route('/id/:user_id').get(getItemsById)
 
     //  .get(passport.authenticate('jwt', {session: false}),getDoc)
