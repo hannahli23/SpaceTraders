@@ -22,7 +22,8 @@ class Repository {
     private static int next_id = 1;
 
     private static int getNextUniqueID() {
-        return next_id = next_id + 1;
+        next_id = next_id + 1;
+        return next_id;
     }
 
     /**

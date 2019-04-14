@@ -3,7 +3,7 @@ package com.cosmiccoders.spacetraders.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Model {
+public final class Model {
 
     /** the data repository */
     private Repository myRepository;
