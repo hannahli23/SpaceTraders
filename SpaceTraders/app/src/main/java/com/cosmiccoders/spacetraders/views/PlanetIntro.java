@@ -99,7 +99,8 @@ public class PlanetIntro extends AppCompatActivity{
     }
 
     private void setShortRange() {
-        shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),planetViewModel.getPlanet(), solarSystem.getPlanetMap());
+        shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),
+                planetViewModel.getPlanet(), solarSystem.getPlanetMap());
 
     }
 
@@ -122,7 +123,8 @@ public class PlanetIntro extends AppCompatActivity{
                 if(!list.contains(go)) {
                     Log.i("Error!!!", "This planet is not in range!");
                 }
-                int integer_use = (shortRangeChart.distance(go.getLocation(), planetViewModel.getPlanet().getLocation()));
+                int integer_use = (shortRangeChart.distance(go.getLocation(),
+                        planetViewModel.getPlanet().getLocation()));
                 if(integer_use > shipViewModel.getFuel()) {
                     Log.i("Error:", "Theres not enough fuel!");
                 } else {

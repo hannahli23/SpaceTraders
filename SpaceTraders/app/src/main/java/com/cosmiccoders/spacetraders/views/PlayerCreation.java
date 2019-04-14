@@ -243,7 +243,8 @@ public class PlayerCreation extends AppCompatActivity {
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
             player.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
-            player.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+            player.setSkills(Skills.ENGINEER,
+                    Integer.parseInt(engineerSkills.getText().toString()));
 
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
@@ -305,7 +306,8 @@ public class PlayerCreation extends AppCompatActivity {
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", playerViewModel.getId());
         params.put("player_name", playerViewModel.getName());

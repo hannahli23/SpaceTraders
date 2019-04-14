@@ -31,7 +31,8 @@ public class Buy extends AppCompatActivity {
 
 
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
-        GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        GetSetPlanetViewModel planetViewModel =
+                ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
 

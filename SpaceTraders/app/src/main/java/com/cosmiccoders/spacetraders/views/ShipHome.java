@@ -192,9 +192,11 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                         case "normal":
                                             d = Difficulty.NORMAL;
                                     }
-                                    testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);
+                                    testPlayer = new Player(player_name, pp, fp, tp,
+                                            ep, currency, d);
                                     playerViewModel.updatePlayer(testPlayer);
-                                    planetViewModel.setPlanet(solarSystemViewModel.getPlanet(currPlanet));
+                                    planetViewModel.setPlanet(solarSystemViewModel.getPlanet(
+                                            currPlanet));
                                     Log.i("Test", playerViewModel.toString());
                                     Log.i("Test", planetViewModel.getPlanet().toString());
                                 } catch (JSONException e) {
@@ -216,7 +218,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                     public void onErrorResponse(VolleyError error) {
                         // If there a HTTP error then add a note to our repo list.
                         //setRepoListText("The ID you are trying to find does not exist!");
-                        Log.i("Test rest api", "The ID you are trying to find does not exist!");
+                        Log.i("Test rest api", "The ID you are trying to " +
+                                "find does not exist!");
                         Log.e("Volley", error.toString());
                     }
                 }
@@ -231,7 +234,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend readng the office docs:
+        // https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -282,7 +286,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend readng the office docs:
+        // https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -377,7 +382,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", playerViewModel.getId());
         params.put("player_name", playerViewModel.getName());
@@ -412,7 +418,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("ship_name", shipViewModel.getShipName());
         params.put("fuel", shipViewModel.getFuel());
@@ -475,7 +482,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", 1);
         params.put("player_name", playerViewModel.getName());
@@ -510,7 +518,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         HashMap<String, Object> params = new HashMap<>();
         params.put("ship_name", shipViewModel.getShipName());
         params.put("ship_type", "Gnat");

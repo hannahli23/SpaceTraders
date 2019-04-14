@@ -171,10 +171,12 @@ public class LoadGame extends AppCompatActivity {
                                         case "normal":
                                             d = Difficulty.NORMAL;
                                     }
-                                    testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);
+                                    testPlayer = new Player(player_name,
+                                            pp, fp, tp, ep, currency, d);
                                     playerViewModel.updatePlayer(testPlayer);
                                     playerViewModel.setId(user_id);
-                                    planetViewModel.setPlanet(solarSystemViewModel.getPlanet(currPlanet));
+                                    planetViewModel.setPlanet(
+                                            solarSystemViewModel.getPlanet(currPlanet));
 
                                     Log.i("Player", playerViewModel.getId()+"");
                                     Log.i("Test Load P", playerViewModel.toString());
@@ -208,7 +210,8 @@ public class LoadGame extends AppCompatActivity {
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -259,7 +262,8 @@ public class LoadGame extends AppCompatActivity {
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend
+        // reading the office docs: https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override

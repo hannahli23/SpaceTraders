@@ -27,7 +27,8 @@ public class Sell extends AppCompatActivity {
         setContentView(R.layout.sell);
 
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
-        GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
+        GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(
+                GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         market = planetViewModel.getPlanet().getMarket();
 

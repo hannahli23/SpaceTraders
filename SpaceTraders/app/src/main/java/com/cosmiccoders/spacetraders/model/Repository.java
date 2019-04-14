@@ -74,14 +74,16 @@ class Repository {
 
     public String toString() {
         return "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
-                + " which is a " + mainShip.getShipType() + " type ship which has " + mainShip.getFuel()
+                + " which is a " + mainShip.getShipType() + " type ship which has "
+                + mainShip.getFuel()
                 + " fuel. \n You have "
                 + player.getSkill(Skills.PILOT) + "points, "
                 + player.getSkill(Skills.ENGINEER) + "points, "
                 + player.getSkill(Skills.FIGHTER) + "points, and "
                 + player.getSkill(Skills.TRADER) + "points in the skills "
                 + "pilot, engineer, fighter, trader respectively. \n You currently have $"
-                + player.getCurrency() + " and you are playing on " + player.getDifficulty() + " mode.";
+                + player.getCurrency() + " and you are playing on " + player.getDifficulty()
+                + " mode.";
 
         //return ans;
     }

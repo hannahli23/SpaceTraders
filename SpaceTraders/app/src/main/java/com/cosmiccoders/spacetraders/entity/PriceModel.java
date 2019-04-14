@@ -24,12 +24,12 @@ class PriceModel {
             "WARLIKE", "never", "600", "1100");
     private List<String> MedicineList = Arrays.asList("4", "1", "6", "650", "-20", "10", "PLAGUE",
             "LOTSOFHERBS", "never", "400", "700");
-    private List<String> MachinesList = Arrays.asList("4", "3", "5", "900", "-30", "5", "LACKOFWORKERS",
-            "never", "never", "600", "800");
-    private List<String> NarcoticsList = Arrays.asList("5", "0", "5", "3500", "-125", "150", "BOREDOM",
-            "WEIRDMUSHROOMS", "never", "2000", "3000");
-    private List<String> RobotsList = Arrays.asList("6", "4", "7", "5000", "-150", "100", "LACKOFWORKERS",
-            "never", "never", "3500", "5000");
+    private List<String> MachinesList = Arrays.asList("4", "3", "5", "900", "-30", "5",
+            "LACKOFWORKERS", "never", "never", "600", "800");
+    private List<String> NarcoticsList = Arrays.asList("5", "0", "5", "3500", "-125", "150",
+            "BOREDOM", "WEIRDMUSHROOMS", "never", "2000", "3000");
+    private List<String> RobotsList = Arrays.asList("6", "4", "7", "5000", "-150", "100",
+            "LACKOFWORKERS", "never", "never", "3500", "5000");
     private Map<String, List> tradeGoods = new HashMap<String, List>() {
         {
             put("Water", WaterList);

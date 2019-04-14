@@ -16,7 +16,8 @@ public class ShortRangeChart {
         int[] currLocation = mainPlanet.getLocation();
         planetsInRange = new ArrayList<>();
         for (Map.Entry<String, PlanetTemp> entry: solarSystem.entrySet()) {
-            if (distance(currLocation, entry.getValue().getLocation()) <= ship.getMaxTravelRange()) {
+            if (distance(currLocation, entry.getValue().getLocation()) <=
+                    ship.getMaxTravelRange()) {
                 planetsInRange.add(entry.getValue());
             }
         }
