@@ -111,8 +111,17 @@ public class Player {
      */
     public void getPaid(int amount) {currency += amount; }
 
+    /**
+     * This function sets a difficulty to a player
+     * @param difficulty is the difficulty the player
+     */
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
+    /**
+     * This function sets an amount of points for a skill
+     * @param skill is the skill that we want to append to
+     * @param points is the amount of points we want to give to a skill
+     */
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
 
     public void setId(int id) {

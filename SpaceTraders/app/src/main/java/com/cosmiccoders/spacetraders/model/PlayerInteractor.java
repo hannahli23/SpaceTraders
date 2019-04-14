@@ -14,7 +14,7 @@ public class PlayerInteractor extends Interactor{
         super(repo);
 
         //repo = getRepo();
-        //player = repo.getPlayer();
+        player = getRepo().getPlayer();
     }
 
     public Player getPlayer() {

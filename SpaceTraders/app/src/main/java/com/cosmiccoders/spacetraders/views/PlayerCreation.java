@@ -252,9 +252,9 @@ public class PlayerCreation extends AppCompatActivity {
             //shipViewModel.addShip(ship);
             //shipViewModel.setMainShip(ship);
 
-            //addPlayer();
-            //addShip();
-            //addCargoHold();
+            addPlayer();
+            addShip();
+            addCargoHold();
         } else {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }
