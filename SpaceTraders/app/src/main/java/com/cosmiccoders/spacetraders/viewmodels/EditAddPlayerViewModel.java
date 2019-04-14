@@ -32,6 +32,7 @@ public class EditAddPlayerViewModel extends AndroidViewModel {
 
     public int getId() { return interactor.getId(); }
 
+    public String getRepresentation() { return interactor.getRepresentation(); }
 
     public String getName() { return interactor.getName(); }
 

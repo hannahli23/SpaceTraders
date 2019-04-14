@@ -90,6 +90,12 @@ public class Player {
      * @return The players chosen difficulty
      */
     public Difficulty getDifficulty() { return difficulty; }
+
+    /**
+     * This function returns the representation of the difficulty chosen by a player
+     * @return the string representation of the difficulty
+     */
+    public String getRepresentation() { return difficulty.getRepresentation(); }
     /**
      * This function returns the skill points of a player
      * @return The players skill points
@@ -165,6 +171,7 @@ public class Player {
         }
         return false;
     }
+
     /**
      * This function changes values to be of type String
      * @return A string representation of the data
