@@ -17,6 +17,8 @@ import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
+import java.util.Map;
+
 public class Buy extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
@@ -72,7 +74,8 @@ public class Buy extends AppCompatActivity {
 
     public void changeText(TextView text, String item) {
         String price;
-        if(market.getGoodList().containsKey(item)) {
+        Map<String, Integer> goodList = market.getGoodList();
+        if(goodList.containsKey(item)) {
             price = market.getPrice(item) + "";
             text.setText(item + " costs:" + price);
         } else {
@@ -122,8 +125,9 @@ public class Buy extends AppCompatActivity {
     }
 
     public void buyHelper(String item) {
-        if(market.getGoodList().containsKey(item)) {
-            int price = market.getGoodList().get(item);
+        Map<String, Integer> goodList = market.getGoodList();
+        if(goodList.containsKey(item)) {
+            int price = goodList.get(item);
             if(performChecks(1, price)) {
                 playerViewModel.pay(price);
                 cargoHoldViewModel.putItem(item, 1);

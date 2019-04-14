@@ -388,7 +388,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         params.put("user_id", playerViewModel.getId());
         params.put("player_name", playerViewModel.getName());
         params.put("currency", playerViewModel.getCurrency());
-        params.put("difficulty", playerViewModel.getDifficulty().getRepresentation());
+        params.put("difficulty", playerViewModel.getRepresentation());
         params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
         params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
         params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
@@ -488,7 +488,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         params.put("user_id", 1);
         params.put("player_name", playerViewModel.getName());
         params.put("currency", playerViewModel.getCurrency());
-        params.put("difficulty", playerViewModel.getDifficulty().getRepresentation());
+        params.put("difficulty", playerViewModel.getRepresentation());
         params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
         params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
         params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));

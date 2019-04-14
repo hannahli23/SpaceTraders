@@ -34,6 +34,12 @@ public class PlayerInteractor extends Interactor{
         Log.i("APP", "Interactor: updating player: " + p);
     }
 
+    public String getRepresentation() {
+        repo = getRepo();
+        player = repo.getPlayer();
+        return player.getRepresentation();
+    }
+
     public String toString() {
         repo = getRepo();
         return repo.toString(); }

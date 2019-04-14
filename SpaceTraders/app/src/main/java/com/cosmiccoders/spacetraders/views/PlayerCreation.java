@@ -229,6 +229,7 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
+
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             Player player = new Player();
@@ -301,7 +302,7 @@ public class PlayerCreation extends AppCompatActivity {
         });
     }
 
-    public void addPlayer(){
+    private void addPlayer(){
         this.url = this.baseUrl + "/player";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
@@ -312,7 +313,7 @@ public class PlayerCreation extends AppCompatActivity {
         params.put("user_id", playerViewModel.getId());
         params.put("player_name", playerViewModel.getName());
         params.put("currency", playerViewModel.getCurrency());
-        params.put("difficulty", playerViewModel.getDifficulty().getRepresentation());
+        params.put("difficulty", playerViewModel.getRepresentation());
         params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
         params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
         params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
@@ -337,7 +338,7 @@ public class PlayerCreation extends AppCompatActivity {
         requestQueue.add(jsonObjReq);
     }
 
-    public void addShip(){
+    private void addShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
         HashMap<String, Object> params = new HashMap<>();
@@ -372,7 +373,7 @@ public class PlayerCreation extends AppCompatActivity {
         requestQueue.add(jsonObjReq);
     }
 
-    public void addCargoHold(){
+    private void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
         HashMap<String, Object> params = new HashMap<>();

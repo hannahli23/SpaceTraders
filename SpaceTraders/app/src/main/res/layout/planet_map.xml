@@ -10,7 +10,8 @@
     android:paddingLeft="10dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    tools:ignore="Overdraw">
 
     <Button
         android:id="@+id/bluedwarf"
@@ -34,7 +35,8 @@
         app:layout_constraintHorizontal_bias="0.006"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659" />
+        app:layout_constraintVertical_bias="0.659"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/planet1"
@@ -76,7 +78,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
+        app:layout_constraintVertical_bias="0.336"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/planet2"
@@ -118,7 +121,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/planet3"
@@ -163,7 +167,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.309"
+        tools:targetApi="lollipop" />
 
 
     <TextView
@@ -203,7 +208,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.902" />
+        app:layout_constraintVertical_bias="0.902"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/planet5"
@@ -241,7 +247,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.739" />
+        app:layout_constraintVertical_bias="0.739"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/planet6"
@@ -283,7 +290,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.722"
+        tools:targetApi="lollipop" />
 
     <TextView
         android:id="@+id/planet7"
