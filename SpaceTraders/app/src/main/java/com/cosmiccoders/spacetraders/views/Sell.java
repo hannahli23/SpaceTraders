@@ -11,16 +11,20 @@ import android.os.Bundle;
 
 
 import com.cosmiccoders.spacetraders.R;
+import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Market;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 public class Sell extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
 
     private Market market;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,9 @@ public class Sell extends AppCompatActivity {
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
         GetSetPlanetViewModel planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
         market = planetViewModel.getPlanet().getMarket();
+
 
         changeNum();
     }
@@ -68,7 +74,7 @@ public class Sell extends AppCompatActivity {
     private void changeText(TextView text, String item) {
         int numItem;
         if(market.getCanSell(item)) {
-            numItem = shipViewModel.getMainShip().getCargoHold().getNumOfItem(item);
+            numItem = cargoHoldViewModel.getNumOfItem(item);
             text.setText("You have " + numItem + " " + item+ "(s)");
         } else {
             text.setText("This item is unavailable for sale");
@@ -151,7 +157,7 @@ public class Sell extends AppCompatActivity {
         if(performChecks(1, item)) {
             price = market.getPrice(item);
             playerViewModel.getPaid(price);
-            shipViewModel.getMainShip().getCargoHold().takeItem(item, 1);
+            cargoHoldViewModel.takeItem(item, 1);
 
             setResults(item, changeText);
         }
@@ -159,14 +165,14 @@ public class Sell extends AppCompatActivity {
 
     private void setResults(String item, TextView changeText) {
         Log.i("Testing sell", playerViewModel.getCurrency()+"");
-        Log.i("Testing sell", shipViewModel.getMainShip().getCargoHold().toString());
+        Log.i("Testing sell", cargoHoldViewModel.toString());
 
-        int num = shipViewModel.getMainShip().getCargoHold().getNumOfItem(item);
+        int num = cargoHoldViewModel.getNumOfItem(item);
         changeText.setText("You have " + num + " " +item+ "(s)");
     }
 
     private boolean performChecks(int itemNum, String good) {
-        boolean one = shipViewModel.getMainShip().getCargoHold().takeCheck(good, itemNum);
+        boolean one = cargoHoldViewModel.takeCheck(good, itemNum);
         boolean two = market.getCanSell(good);
         if(!one) {
             Log.i("Performance check", ":(( You do not have enough " + good);
