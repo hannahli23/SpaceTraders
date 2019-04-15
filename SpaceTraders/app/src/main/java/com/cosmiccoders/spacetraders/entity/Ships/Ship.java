@@ -214,16 +214,14 @@ public class Ship {
     //public void setPlanet(PlanetTemp currPlanet) {
         //this.currPlanet = currPlanet;
     //}
-<<<<<<< HEAD
     /**
      * Sets the ship's fullFuelTank to flase
      */
     public void travel() {
         boolean fullFuelTank = false;
-=======
+    }
 
     public void travel(int distance) {
         fuel = fuel - distance;
->>>>>>> d1c207c3a91756de181cd1f564fe492a7f818c91
     }
 }

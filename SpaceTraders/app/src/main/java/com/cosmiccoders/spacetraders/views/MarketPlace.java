@@ -14,10 +14,6 @@ import com.cosmiccoders.spacetraders.R;
 public class MarketPlace extends AppCompatActivity{
 
     @Override
-    /**
-     * This function creates the planets and universe
-     * @param savedInstanceState The current state
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.marketplace);
