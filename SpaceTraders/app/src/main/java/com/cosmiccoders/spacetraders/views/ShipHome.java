@@ -81,7 +81,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         });
     }
 
-
+    /**
+     * This function makes things happen when the map button is pressed
+     * @param view The current view of the game
+     */
     public void onMapPressed(View view) {
         Button btn = findViewById(R.id.view_map_button);
 
@@ -92,7 +95,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             }
         });
     }
-
+    /**
+     * This function makes things happen when the exit button is pressed
+     * @param v the current view of the game
+     */
     public void onExitPressed(View v) {
         Button changeButton = findViewById(R.id.save_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +134,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 return false;
         }
     }
-
+    /**
+     * This function makes the stats of the player show up
+     * @param view The current view of the game
+     */
     public void viewStats(View view) {
         Button changeButton = findViewById(R.id.view_stats_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +151,10 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             }
         });
     }
-
+    /**
+     * This function saves the game when the save button is pressed
+     * @param view the current view of the game
+     */
     public void onSave(View view) {
         Button changeButton = findViewById(R.id.sell_goods_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +167,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             }
         });
     }
-
+    /**
+     * This function loads the game when the load button is pressed
+     */
     public void loadPlayer() {
         this.url = this.baseUrl + "/id/5";
 
@@ -228,7 +242,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the ship when the load button is pressed
+     */
     public void loadShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship/id/1";
 
@@ -280,7 +296,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the cargo hold when the load button is pressed
+     */
     public void loadCargoHold() {
         this.url = "http://10.0.2.2:9080/myapi/cargohold/id/5";
 
@@ -332,7 +350,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the items when the load button is pressed
+     */
     public void loadItem() {
         this.url = "http://10.0.2.2:9080/myapi/items/id/5";
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
@@ -376,7 +396,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function updates the players information
+     */
     private void updateAPlayer(){
         this.url = this.baseUrl;
 
@@ -412,7 +434,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function updates the ship information
+     */
     private void updateAShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
@@ -443,7 +467,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function updates the cargo hold the player has
+     */
     private void updateACargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
@@ -469,14 +495,18 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function updates the players items
+     */
     private void updateItems(){
         deleteItems();
         addItems();
     }
 
 
-
+    /**
+     * This function adds the player in the database
+     */
     public void addPlayer(){
         this.url = this.baseUrl;
 
@@ -512,7 +542,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function adds information about the ship
+     */
     public void addShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
@@ -551,7 +583,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function adds the cargo hold information to the database
+     */
     public void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
@@ -579,7 +613,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-
+    /**
+     * This function deletes items from the database
+     */
     private void deleteItems() {
         this.url = "http://10.0.2.2:9080/myapi/items/delete";
 
@@ -605,6 +641,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
+    /**
+     * This function adds items to the database
+     */
     private void addItems() {
         this.url = "http://10.0.2.2:9080/myapi/items";
         Map<String, Integer> inventory = cargoHoldViewModel.getInventory();

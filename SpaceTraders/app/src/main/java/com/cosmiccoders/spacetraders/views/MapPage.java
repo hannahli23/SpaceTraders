@@ -23,10 +23,11 @@ public class MapPage extends AppCompatActivity {
     private GetSetPlanetViewModel planetViewModel;
 
     @Override
-    /**
-     * This function creates the planets and universe
-     * @param savedInstanceState The current state
+    /*
+      This function creates the planets and universe
+      @param savedInstanceState The current state
      */
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_map);

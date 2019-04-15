@@ -215,12 +215,16 @@ public class Ship {
         //this.currPlanet = currPlanet;
     //}
     /**
-     * Sets the ship's fullFuelTank to flase
+     * Sets the ship's fullFuelTank to false
      */
     public void travel() {
         boolean fullFuelTank = false;
     }
 
+    /**
+     * moves the ship a given distance
+     * @param distance the amount to move the ship by
+     */
     public void travel(int distance) {
         fuel = fuel - distance;
     }

@@ -3,7 +3,6 @@ package com.cosmiccoders.spacetraders.model;
 import com.cosmiccoders.spacetraders.entity.Market;
 import com.cosmiccoders.spacetraders.entity.PlanetResources;
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 /**
@@ -36,6 +35,7 @@ public class PlanetInteractor extends Interactor {
         repo = getRepo();
         return repo.getPlanet();
     }
+
 
      /** Sets the input planet's destination
      * @param planet the planet whose destination to set
@@ -93,7 +93,6 @@ public class PlanetInteractor extends Interactor {
     public Market getMarket() {
         repo = getRepo();
         return repo.getMarket();}
-    //public ShipYard getShipYard() { return shipYard; }
 
     public String toPlanetString() {
         repo = getRepo();

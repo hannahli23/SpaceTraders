@@ -10,13 +10,19 @@ import com.cosmiccoders.spacetraders.R;
 
 public class StartPage extends AppCompatActivity {
 
-    @Override
+    /*
+       This function makes everything upon pressing the create button
+       @param savedInstanceState The state of the saved game
+      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading_page);
 
     }
-
+    /**
+     * This function loads the page once the player clicks the load button
+     * @param v The games current view
+     */
     public void onLoadPageClick(View v) {
         Button btn = findViewById(R.id.load);
 
@@ -27,7 +33,10 @@ public class StartPage extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function creates the page once the create button is clicked
+     * @param v The games current view
+     */
     public void onCreatePageClick(View v) {
         Button btn = findViewById(R.id.create);
 

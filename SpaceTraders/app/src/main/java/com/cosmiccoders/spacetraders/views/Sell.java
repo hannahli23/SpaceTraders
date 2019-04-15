@@ -18,6 +18,9 @@ import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
+/**
+ * class to handle the sale of an item
+ */
 public class Sell extends AppCompatActivity {
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
@@ -26,10 +29,11 @@ public class Sell extends AppCompatActivity {
     private Market market;
 
     @Override
-    /**
-     * This function makes everything upon pressing the create button
-     * @param savedInstanceState The state of the saved game
+    /*
+      This function makes everything upon pressing the create button
+      @param savedInstanceState The state of the saved game
      */
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sell);

@@ -15,6 +15,9 @@ import org.junit.Test;
  */
 public class SellFuelUnitTest {
 
+    /**
+     * Local unit test that tests the sellFuel method in the ShipYard class
+     */
     @Test
     public void TestSellFuel() {
         ShipYard testShipYard = new ShipYard();
