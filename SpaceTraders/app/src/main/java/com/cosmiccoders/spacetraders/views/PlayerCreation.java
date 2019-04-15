@@ -61,6 +61,10 @@ public class PlayerCreation extends AppCompatActivity {
     private String url;
 
     @Override
+    /**
+     * This function makes everything upon pressing the create button
+     * @param savedInstanceState The state of the saved game
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -88,7 +92,10 @@ public class PlayerCreation extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
     }
-
+    /**
+     * This function decrements items when the subtract button is pressed
+     * @param view The games current view
+     */
     public void onSubtractPressed(View view) {
         Button change = findViewById(view.getId());
         int temp = 0;
@@ -169,7 +176,10 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function adds to items when the add button is pressed
+     * @param view The games current view
+     */
     public void onAddPressed(View view) {
         Button change = findViewById(view.getId());
         int temp = 0;
@@ -229,7 +239,10 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function allows things to happen when the create button is pressed
+     * @param view The games current view
+     */
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             Player player = new Player();
@@ -261,7 +274,11 @@ public class PlayerCreation extends AppCompatActivity {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }
     }
-
+    /**
+     * This function sets the names of the ship
+     * @param player The current player playing the game
+     * @param ship The ship that will have a name set
+     */
     private void setNames(Player player, Ship ship) {
         String name = nameField.getText().toString();
         String shipName = shipField.getText().toString();
@@ -277,7 +294,10 @@ public class PlayerCreation extends AppCompatActivity {
             ship.setName("Grancypher");
         }
     }
-
+    /**
+     * This function allows things to happen when the next button is pressed
+     * @param v The current view
+     */
     public void onNextPress(View v) {
         Button btn = findViewById(R.id.next_button);
 
@@ -288,7 +308,10 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function exits the game upon pressing exit
+     * @param view The currentview
+     */
     public void onExitPressed(View view) {
         Button changeButton = findViewById(R.id.save_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -301,7 +324,9 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function adds info to the player
+     */
     private void addPlayer(){
         this.url = this.baseUrl + "/player";
 
@@ -337,7 +362,9 @@ public class PlayerCreation extends AppCompatActivity {
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function adds info to the players ship
+     */
     private void addShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
@@ -372,7 +399,9 @@ public class PlayerCreation extends AppCompatActivity {
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function adds info to the players cargo hold
+     */
     private void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 

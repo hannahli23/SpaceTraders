@@ -43,14 +43,21 @@ public class PlanetIntro extends AppCompatActivity{
             }
         }
     }
-
+    /**
+     * This function makes the player gain money
+     * @param randNum A randomly generated number that will determine how much money the player
+     *                gains
+     */
     private void gainMoney(int randNum) {
         if ((randNum > 40) && (randNum < 60)) {
             playerViewModel.getPaid(3000);
             Log.i("Test", "You've gained money!");
         }
     }
-
+    /**
+     * This function sets the difficulty to impossible
+     * @param randNum A randomly generated number that will set the level on impossible
+     */
     private void yaThatSucks(int randNum) {
         if (randNum == 98) {
             playerViewModel.setDifficulty(Difficulty.IMPOSSIBLE);
@@ -59,6 +66,10 @@ public class PlanetIntro extends AppCompatActivity{
     }
 
     @Override
+    /**
+     * This function makes everything upon pressing the create button
+     * @param savedInstanceState The state of the saved game
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kravat);
@@ -88,22 +99,30 @@ public class PlanetIntro extends AppCompatActivity{
 
         rand = new Random();
     }
-
+    /**
+     * This function changes the name of the planets
+     */
     private void changeText() {
         TextView text = findViewById(R.id.planetName);
         text.setText(planetViewModel.getPlanet().getName());
     }
-
+    /**
+     * This function swets the welcome message of the planets
+     */
     private void setWelcome() {
         TextView welcomeMessage = findViewById(R.id.welcomeMessage);
         welcomeMessage.setText("Welcome to " + planetViewModel.getPlanetDestination().getName());
     }
-
+    /**
+     * This function sets the planets information
+     */
     private void setInfo() {
         TextView planetInfo = findViewById(R.id.planetInfo);
         planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
     }
-
+    /**
+     * This function sets the planets in the solar system
+     */
     private void setShortRange() {
         shortRangeChart = new ShortRangeChart(shipViewModel.getMainShip(),
                 planetViewModel.getPlanet(), solarSystem.getPlanetMap());
@@ -123,6 +142,10 @@ public class PlanetIntro extends AppCompatActivity{
             }
         });
     }
+    /**
+     * This function allows things to happen once the go button is pressed
+     * @param view The games current view
+     */
     public void onGoPressed(View view) {
         Button btn2 = findViewById(R.id.go_to_planet);
         btn2.setOnClickListener(new View.OnClickListener() {
