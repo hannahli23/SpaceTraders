@@ -20,7 +20,9 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * PlanetInto class
+ */
 public class PlanetIntro extends AppCompatActivity{
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
@@ -108,6 +110,10 @@ public class PlanetIntro extends AppCompatActivity{
 
     }
 
+    /**
+     * Goes back to the map page when back button is pressed
+     * @param view current view
+     */
     public void onBackPressed(View view) {
         Button btn2 = findViewById(R.id.back);
         btn2.setOnClickListener(new View.OnClickListener() {
