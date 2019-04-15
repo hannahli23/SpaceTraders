@@ -202,7 +202,7 @@ public class EditShipViewModel extends AndroidViewModel {
     }
 
     /**
-     * Sets the ship's maxiumum travel range to the input number
+     * Sets the ship's maximum travel range to the input number
      * @param maxTravelRange to assign to the ship
      */
     public void setMaxTravelRange(int maxTravelRange) {
