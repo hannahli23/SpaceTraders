@@ -72,6 +72,9 @@ public class CargoHold {
      * @return whether we can take out that amount of an item
      */
     public boolean takeCheck(String good, int amount) {
+        if(amount <= 0) {
+            throw new IllegalArgumentException("You cannot have 0 or a negative input");
+        }
         if (inventory.containsKey(good)) {
             return inventory.get(good) >= amount;
         } else {
