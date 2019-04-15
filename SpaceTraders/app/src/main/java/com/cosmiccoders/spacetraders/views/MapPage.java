@@ -27,6 +27,7 @@ public class MapPage extends AppCompatActivity {
       This function creates the planets and universe
       @param savedInstanceState The current state
      */
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_map);

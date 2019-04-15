@@ -10,6 +10,11 @@ public class ShipInteractor extends Interactor{
 
     private Ship ship;
     private Repository repo;
+
+    /**
+     * constructor for ShipInteractor - calls constructor of superclass
+     * @param repo the current repository
+     */
     public ShipInteractor(Repository repo) {super(repo);}
 
     //public List<Ship> getAllShips() { return getRepo().getAllShips(); }

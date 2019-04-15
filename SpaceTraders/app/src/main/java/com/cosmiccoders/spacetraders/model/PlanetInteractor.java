@@ -35,6 +35,7 @@ public class PlanetInteractor extends Interactor {
         return repo.getPlanet();
     }
 
+    /**
      * Sets the input planet's destination
      * @param planet the planet whose destination to set
      */
