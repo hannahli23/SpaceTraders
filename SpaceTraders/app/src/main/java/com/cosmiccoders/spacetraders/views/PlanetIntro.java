@@ -28,7 +28,11 @@ public class PlanetIntro extends AppCompatActivity{
     private ShortRangeChart shortRangeChart;
     private ViewAddSolarSystemViewModel solarSystem;
     private Random rand;
-
+    /**
+     * This function makes the player lose money
+     * @param randNum A randomly generated number that will determine how much money the player
+     *                loses
+     */
     private void loseMoney(int randNum) {
         if (randNum <= 99) {
             if (playerViewModel.getCurrency() >= 50) {
