@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -52,14 +53,16 @@ public class CargoHold {
      * @param amount is the amount of a good that we want to add
      */
     public void putItem(String good, int amount) {
-        if (inventory.containsKey(good)) {
+        if (inventory.containsKey(good) && putCheck(amount)) {
             int temp = inventory.get(good);
             temp += amount;
             inventory.put(good, temp);
-        } else {
-            inventory.put(good, 1);
+            currSize += amount;
+        } else if (putCheck(amount)){
+            inventory.put(good, amount);
+            currSize += amount;
         }
-        currSize += amount;
+
     }
 
     /**
@@ -123,7 +126,14 @@ public class CargoHold {
      * Sets the ship's inventory to the input inventory
      * @param newInventory the map of the inventory to assign to the ship
      */
-    public void setInventory(Map<String, Integer> newInventory) {inventory = newInventory;}
+    public void setInventory(Map<String, Integer> newInventory) {
+        inventory = newInventory;
+        int currAmount = 0;
+        for (Map.Entry<String, Integer> entry : newInventory.entrySet()) {
+            currAmount = currAmount + entry.getValue();
+        }
+        currSize = currAmount;
+    }
 
     /**
      * This function tells us how much of an item we have
