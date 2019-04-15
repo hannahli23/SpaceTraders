@@ -2,6 +2,9 @@ package com.cosmiccoders.spacetraders.entity;
 
 import java.util.EnumMap;
 
+/**
+ * class to represent a player
+ */
 public class Player {
     /**
      * Creating all the necessary fields for a player
@@ -98,17 +101,20 @@ public class Player {
     public String getRepresentation() { return difficulty.getRepresentation(); }
     /**
      * This function returns the skill points of a player
+     * @param skill the skill to get the points of
      * @return The players skill points
      */
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
 
     /**
-     * This function returns the name of a player
+     * This function sets the name of a player to the input name
+     * @param name the name to set the player's to
      */
-
     public void setName(String name) { this.name = name; }
+
     /**
-     * This function returns the currency of a player
+     * This function sets the currency of a player to the input currency
+     * @param curr the amount to set the player's currency to
      */
     public void setCurrency(int curr) { currency = curr; }
 
