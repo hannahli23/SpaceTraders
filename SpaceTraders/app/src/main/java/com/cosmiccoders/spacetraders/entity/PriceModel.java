@@ -18,11 +18,14 @@ class PriceModel {
             "RICHSOIL", "POORSOIL", "90", "160");
     private final List<String> OreList = Arrays.asList("2", "2", "3", "350", "20", "10", "WAR",
             "MINERALRICH", "MINERALPOOR", "350", "420");
-    private final List<String> GamesList = Arrays.asList("3", "1", "6", "250", "-10", "5", "BOREDOM",
+    private final List<String> GamesList = Arrays.asList("3", "1",
+            "6", "250", "-10", "5", "BOREDOM",
             "ARTISTIC", "never", "160", "270");
-    private final List<String> FireArmsList = Arrays.asList("3", "1", "5", "1250", "-75", "100", "WAR",
+    private final List<String> FireArmsList = Arrays.asList("3",
+            "1", "5", "1250", "-75", "100", "WAR",
             "WARLIKE", "never", "600", "1100");
-    private final List<String> MedicineList = Arrays.asList("4", "1", "6", "650", "-20", "10", "PLAGUE",
+    private final List<String> MedicineList = Arrays.asList("4", "1",
+            "6", "650", "-20", "10", "PLAGUE",
             "LOTSOFHERBS", "never", "400", "700");
     private final List<String> MachinesList = Arrays.asList("4", "3", "5", "900", "-30", "5",
             "LACKOFWORKERS", "never", "never", "600", "800");
