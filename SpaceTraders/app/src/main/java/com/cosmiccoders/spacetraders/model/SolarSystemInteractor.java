@@ -14,4 +14,6 @@ public class SolarSystemInteractor extends Interactor {
 
     public PlanetTemp getPlanet(String name) {return getRepo().getPlanet(name);}
 
+    public void setSolarSystem() { getRepo().setSolarSystem(); }
+
 }

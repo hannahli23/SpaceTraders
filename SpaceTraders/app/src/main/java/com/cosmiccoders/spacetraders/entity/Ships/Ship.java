@@ -1,7 +1,6 @@
 package com.cosmiccoders.spacetraders.entity.Ships;
 
 import com.cosmiccoders.spacetraders.entity.CargoHold;
-import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 
 public class Ship {
@@ -19,14 +18,13 @@ public class Ship {
     private boolean escapePod; // Has one or doesn't
 
     private int fuel; // 1-8 tokens
-    private boolean fullFuelTank = true;
     //private PlanetTemp currPlanet;
 
     private ShortRangeChart shortRangeChart;
 
-    public Ship(String shipType, int hullStrength, int numOfCargoBays,
-                int numOfWeaponSlots, int numOfShieldSlots, int numOfGadgetSlots,
-                int numOfCrewQuarters, int maxTravelRange, boolean escapePod, int fuelPrice) {
+    Ship(String shipType, int hullStrength, int numOfCargoBays,
+         int numOfWeaponSlots, int numOfShieldSlots, int numOfGadgetSlots,
+         int numOfCrewQuarters, int maxTravelRange, boolean escapePod, int fuelPrice) {
         this.shipType = shipType;
         this.hullStrength = hullStrength;
         this.numOfWeaponSlots = numOfWeaponSlots;
@@ -114,7 +112,7 @@ public class Ship {
         //this.currPlanet = currPlanet;
     //}
 
-    public void travel() {
-        fullFuelTank = false;
+    public void travel(int distance) {
+        fuel = fuel - distance;
     }
 }

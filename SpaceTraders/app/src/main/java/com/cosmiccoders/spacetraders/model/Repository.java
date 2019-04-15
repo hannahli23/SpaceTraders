@@ -1,14 +1,9 @@
 package com.cosmiccoders.spacetraders.model;
 
 
-import android.media.Image;
-import android.util.Log;
-
-import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
+import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
@@ -27,7 +22,8 @@ class Repository {
     private static int next_id = 1;
 
     private static int getNextUniqueID() {
-        return next_id++;
+        next_id = next_id + 1;
+        return next_id;
     }
 
     /**
@@ -74,25 +70,21 @@ class Repository {
     }
 
     public void updatePlayer(Player p) {
-        player.setName(p.getName());
-        player.setCurrency(p.getCurrency());
-        player.setDifficulty(p.getDifficulty());
-        player.setSkills(Skills.PILOT, p.getSkill(Skills.PILOT));
-        player.setSkills(Skills.ENGINEER, p.getSkill(Skills.ENGINEER));
-        player.setSkills(Skills.FIGHTER, p.getSkill(Skills.FIGHTER));
-        player.setSkills(Skills.TRADER, p.getSkill(Skills.TRADER));
+        player = p;
     }
 
     public String toString() {
         return "You are " + player.getName() + " who travels on the " + mainShip.getShipName()
-                + " which is a " + mainShip.getShipType() + " type ship which has " + mainShip.getFuel()
+                + " which is a " + mainShip.getShipType() + " type ship which has "
+                + mainShip.getFuel()
                 + " fuel. \n You have "
                 + player.getSkill(Skills.PILOT) + "points, "
                 + player.getSkill(Skills.ENGINEER) + "points, "
                 + player.getSkill(Skills.FIGHTER) + "points, and "
                 + player.getSkill(Skills.TRADER) + "points in the skills "
                 + "pilot, engineer, fighter, trader respectively. \n You currently have $"
-                + player.getCurrency() + " and you are playing on " + player.getDifficulty() + " mode.";
+                + player.getCurrency() + " and you are playing on " + player.getDifficulty()
+                + " mode.";
 
         //return ans;
     }
@@ -112,6 +104,20 @@ class Repository {
         return solarSystem.getPlanet(name);
     }
 
+    public void setSolarSystem() {
+        PlanetTemp test = new Kravat();
+        setPlanetSS(new StartingPlanet());
+        setPlanetSS(new Andromeda());
+        setPlanetSS(new Baratas());
+        setPlanetSS(new Cornholio());
+        setPlanetSS(new Drax());
+        setPlanetSS(test);
+        setPlanetSS(new Omphalos());
+        setPlanetSS(new Titikaka());
+        setPlanetSS(new RedDwarf());
+        setPlanetSS(new BlueDwarf());
+    }
+
 
     //PLANET FUNCTIONS
     public PlanetTemp getPlanet() {return planet;}
@@ -129,7 +135,7 @@ class Repository {
     /**
      * get all the ships in the system
      */
-    public List<Ship> getAllShips() {return allShips; }
+    //public List<Ship> getAllShips() {return allShips; }
 
 
     public void addShip(Ship ship) {
@@ -139,21 +145,10 @@ class Repository {
     }
 
     public void updateShip(Ship s) {
-        for (Ship ship: allShips) {
-            if (ship.getId() == s.getId()) {
-                ship.setName(s.getShipName());
-            }
-        }
+        mainShip = s;
     }
 
     public void setMainShip(Ship ship) { mainShip = ship; }
 
     public Ship getMainShip() { return mainShip; }
-
-
-    //CHECK THIS
-   // public void initializeChart(Ship ship, planet, solarSystem) {
-       // ShortRangeChart myChart = new ShortRangeChart(mainShip, planet, solarSystem);
-
-       // }
 }

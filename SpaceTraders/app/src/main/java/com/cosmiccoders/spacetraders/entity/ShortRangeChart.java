@@ -2,9 +2,9 @@ package com.cosmiccoders.spacetraders.entity;
 
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.SolarSystem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +16,8 @@ public class ShortRangeChart {
         int[] currLocation = mainPlanet.getLocation();
         planetsInRange = new ArrayList<>();
         for (Map.Entry<String, PlanetTemp> entry: solarSystem.entrySet()) {
-            if (distance(currLocation, entry.getValue().getLocation()) <= ship.getMaxTravelRange()) {
+            if (distance(currLocation, entry.getValue().getLocation()) <=
+                    ship.getMaxTravelRange()) {
                 planetsInRange.add(entry.getValue());
             }
         }
@@ -34,6 +35,6 @@ public class ShortRangeChart {
     }
 
     public List<PlanetTemp> getPlanetsInRange() {
-        return planetsInRange;
+        return Collections.unmodifiableList(planetsInRange);
     }
 }

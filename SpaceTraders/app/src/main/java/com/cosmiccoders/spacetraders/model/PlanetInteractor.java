@@ -1,7 +1,5 @@
 package com.cosmiccoders.spacetraders.model;
 
-import android.media.Image;
-
 import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 
 public class PlanetInteractor extends Interactor {
