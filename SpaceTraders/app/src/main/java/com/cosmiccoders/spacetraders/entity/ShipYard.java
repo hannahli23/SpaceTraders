@@ -13,7 +13,7 @@ public class ShipYard {
         if (!ship.getFullFuelTank()) {
             canFill = player.manipulateCurrency();
         }
-        if(canFill) {
+        if (canFill) {
             fillTank(ship);
         }
     }
