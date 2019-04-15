@@ -78,7 +78,7 @@ public class LoadGame extends AppCompatActivity {
 
         testPlayer = new Player();
         testShip = new Gnat();
-        cargoHold = new CargoHold(20);
+        //cargoHold = new CargoHold(20);
 
         addPlanets();
 
