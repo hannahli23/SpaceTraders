@@ -66,7 +66,7 @@ public class CargoHold {
      * @return whether we can take out that amount of an item
      */
     public boolean takeCheck(String good, int amount) {
-        if(inventory.containsKey(good)) {
+        if (inventory.containsKey(good)) {
             return inventory.get(good) >= amount;
         } else {
             return false;

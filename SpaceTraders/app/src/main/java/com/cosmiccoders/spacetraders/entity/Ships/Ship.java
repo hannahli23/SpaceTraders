@@ -112,7 +112,7 @@ public class Ship {
         //this.currPlanet = currPlanet;
     //}
 
-    public void travel() {
-        boolean fullFuelTank = false;
+    public void travel(int distance) {
+        fuel = fuel - distance;
     }
 }
