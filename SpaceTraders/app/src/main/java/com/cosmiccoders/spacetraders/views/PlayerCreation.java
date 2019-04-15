@@ -34,6 +34,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+/**
+ * class to configure the player upon creation
+ */
 public class PlayerCreation extends AppCompatActivity {
 
     private EditAddPlayerViewModel playerViewModel;
