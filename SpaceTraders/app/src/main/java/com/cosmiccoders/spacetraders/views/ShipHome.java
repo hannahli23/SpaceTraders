@@ -3,8 +3,6 @@ package com.cosmiccoders.spacetraders.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,10 +17,10 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.ShipYard;
-import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 import org.json.JSONArray;
@@ -41,22 +39,26 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * class representing the home page activity of a ship
+ */
 public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
     private ViewAddSolarSystemViewModel solarSystemViewModel;
     private ShipYard shipYard;
 
     private Player testPlayer;
-    private Ship testShip;
+    //private Ship testShip;
 
-    RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
+    private RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
-    String baseUrl = "http://10.0.2.2:9080/myapi/player";
-    String url;
+    private final String baseUrl = "http://10.0.2.2:9080/myapi/player";
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +68,11 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
         requestQueue = Volley.newRequestQueue(this);
         shipYard = new ShipYard();
 
-        Button btn = (Button) findViewById(R.id.go_places);
+        Button btn = findViewById(R.id.go_places);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,14 +84,33 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         });
     }
 
-
+    /**
+     * This function makes things happen when the map button is pressed
+     * @param view The current view of the game
+     */
     public void onMapPressed(View view) {
-        Button btn = (Button) findViewById(R.id.view_map_button);
+        Button btn = findViewById(R.id.view_map_button);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ShipHome.this, MapPage.class));
+            }
+        });
+    }
+    /**
+     * This function makes things happen when the exit button is pressed
+     * @param v the current view of the game
+     */
+    public void onExitPressed(View v) {
+        Button changeButton = findViewById(R.id.save_button);
+        changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }
@@ -115,22 +137,29 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 return false;
         }
     }
-
+    /**
+     * This function makes the stats of the player show up
+     * @param view The current view of the game
+     */
     public void viewStats(View view) {
-        Button changeButton = (Button) findViewById(R.id.view_stats_button);
+        Button changeButton = findViewById(R.id.view_stats_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Player", playerViewModel.toString());
-                Log.i("Planet", planetViewModel.getPlanet().toString());
-                Log.i("Ship", shipViewModel.getMainShip().getCargoHold().toString());
-                Log.i("Market", planetViewModel.getPlanet().getMarket().toString());
+                Log.i("Player", playerViewModel.toStringPlayer());
+                Log.i("Player", playerViewModel.getId()+"");
+                Log.i("Planet", planetViewModel.toPlanetString());
+                Log.i("Ship", cargoHoldViewModel.toString());
+                Log.i("Market", planetViewModel.getMarket().toString());
             }
         });
     }
-
+    /**
+     * This function saves the game when the save button is pressed
+     * @param view the current view of the game
+     */
     public void onSave(View view) {
-        Button changeButton = (Button) findViewById(R.id.sell_goods_button);
+        Button changeButton = findViewById(R.id.sell_goods_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,13 +170,12 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
             }
         });
     }
-
+    /**
+     * This function loads the game when the load button is pressed
+     */
     public void loadPlayer() {
         this.url = this.baseUrl + "/id/5";
 
-        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
-        // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -168,7 +196,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     int pp = jsonObj.getInt("pilot_points");
                                     String currPlanet = jsonObj.get("curr_planet").toString();
 
-                                    Difficulty d;
+                                    Difficulty d = Difficulty.NORMAL;
                                     switch(difficulty){
                                         case "easy":
                                             d = Difficulty.EASY;
@@ -178,14 +206,16 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                             break;
                                         case "hard":
                                             d = Difficulty.HARD;
-                                        default:
+                                        case "normal":
                                             d = Difficulty.NORMAL;
                                     }
-                                    testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);
+                                    testPlayer = new Player(player_name, pp, fp, tp,
+                                            ep, currency, d);
                                     playerViewModel.updatePlayer(testPlayer);
-                                    planetViewModel.setPlanet(solarSystemViewModel.getPlanet(currPlanet));
+                                    planetViewModel.setPlanet(solarSystemViewModel.getPlanet(
+                                            currPlanet));
                                     Log.i("Test", playerViewModel.toString());
-                                    Log.i("Test", planetViewModel.getPlanet().toString());
+                                    Log.i("Test", planetViewModel.toString());
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -205,7 +235,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                     public void onErrorResponse(VolleyError error) {
                         // If there a HTTP error then add a note to our repo list.
                         //setRepoListText("The ID you are trying to find does not exist!");
-                        Log.i("Test rest api", "The ID you are trying to find does not exist!");
+                        Log.i("Test rest api", "The ID you are trying to " +
+                                "find does not exist!");
                         Log.e("Volley", error.toString());
                     }
                 }
@@ -214,13 +245,16 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the ship when the load button is pressed
+     */
     public void loadShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship/id/1";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend readng the office docs:
+        // https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -234,8 +268,8 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     JSONObject jsonObj = response.getJSONObject(i);
                                     String shipname = jsonObj.get("ship_name").toString();
                                     int fuel = jsonObj.getInt("fuel");
-                                    shipViewModel.getMainShip().setFuel(fuel);
-                                    shipViewModel.getMainShip().setName(shipname);
+                                    shipViewModel.setFuel(fuel);
+                                    shipViewModel.setName(shipname);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -265,13 +299,16 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the cargo hold when the load button is pressed
+     */
     public void loadCargoHold() {
         this.url = "http://10.0.2.2:9080/myapi/cargohold/id/5";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend readng the office docs:
+        // https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -286,7 +323,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     int max = jsonObj.getInt("maxsize");
                                     int curr = jsonObj.getInt("curr_size");
 
-                                    shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
+                                    cargoHoldViewModel.setCurrSize(curr);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -316,7 +353,9 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the items when the load button is pressed
+     */
     public void loadItem() {
         this.url = "http://10.0.2.2:9080/myapi/items/id/5";
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
@@ -340,7 +379,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                 }
                                 Log.i("Testing", i+"");
                             }
-                            shipViewModel.getMainShip().getCargoHold().setInventory(temp);
+                            cargoHoldViewModel.setInventory(temp);
                         } else {
                             // The user didn't have any repos.
                         }
@@ -360,23 +399,26 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
-    public void updateAPlayer(){
+    /**
+     * This function updates the players information
+     */
+    private void updateAPlayer(){
         this.url = this.baseUrl;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("user_id", playerViewModel.getPlayer().getId());
-        params.put("player_name", playerViewModel.getPlayer().getName());
-        params.put("currency", playerViewModel.getPlayer().getCurrency());
-        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
-        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
-        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
-        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
-        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
-        params.put("curr_planet", planetViewModel.getPlanet().getName());
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("user_id", playerViewModel.getId());
+        params.put("player_name", playerViewModel.getName());
+        params.put("currency", playerViewModel.getCurrency());
+        params.put("difficulty", playerViewModel.getRepresentation());
+        params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
+        params.put("curr_planet", planetViewModel.getPlanetName());
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.PUT,
@@ -395,17 +437,20 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
-    public void updateAShip(){
+    /**
+     * This function updates the ship information
+     */
+    private void updateAShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("ship_name", shipViewModel.getMainShip().getShipName());
-        params.put("fuel", shipViewModel.getMainShip().getFuel());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("ship_name", shipViewModel.getShipName());
+        params.put("fuel", shipViewModel.getFuel());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -425,13 +470,15 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
-    public void updateACargoHold(){
+    /**
+     * This function updates the cargo hold the player has
+     */
+    private void updateACargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("curr_size", cargoHoldViewModel.getCurrSize());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -451,30 +498,35 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
-    public void updateItems(){
+    /**
+     * This function updates the players items
+     */
+    private void updateItems(){
         deleteItems();
         addItems();
     }
 
 
-
+    /**
+     * This function adds the player in the database
+     */
     public void addPlayer(){
         this.url = this.baseUrl;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<>();
         params.put("user_id", 1);
-        params.put("player_name", playerViewModel.getPlayer().getName());
-        params.put("currency", playerViewModel.getPlayer().getCurrency());
-        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
-        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
-        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
-        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
-        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
-        params.put("curr_planet", planetViewModel.getPlanet().getName());
+        params.put("player_name", playerViewModel.getName());
+        params.put("currency", playerViewModel.getCurrency());
+        params.put("difficulty", playerViewModel.getRepresentation());
+        params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
+        params.put("curr_planet", planetViewModel.getPlanetName());
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
@@ -493,24 +545,27 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function adds information about the ship
+     */
     public void addShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("ship_name", shipViewModel.getMainShip().getShipName());
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("ship_name", shipViewModel.getShipName());
         params.put("ship_type", "Gnat");
-        params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
-        params.put("weapon_slots", shipViewModel.getMainShip().getNumOfWeaponSlots());
-        params.put("shield_slots", shipViewModel.getMainShip().getNumOfShieldSlots());
-        params.put("gadget_slots", shipViewModel.getMainShip().getNumOfGadgetSlots());
-        params.put("crew_quarters", shipViewModel.getMainShip().getNumOfCrewQuarters());
-        params.put("travel_range", shipViewModel.getMainShip().getMaxTravelRange());
+        params.put("hull_strength", shipViewModel.getHullStrength());
+        params.put("weapon_slots", shipViewModel.getNumOfWeaponSlots());
+        params.put("shield_slots", shipViewModel.getNumOfShieldSlots());
+        params.put("gadget_slots", shipViewModel.getNumOfGadgetSlots());
+        params.put("crew_quarters", shipViewModel.getNumOfCrewQuarters());
+        params.put("travel_range", shipViewModel.getMaxTravelRange());
         params.put("escape_pod", "false");
-        params.put("fuel", shipViewModel.getMainShip().getFuel());
+        params.put("fuel", shipViewModel.getFuel());
         params.put("user_id", 1);
 
         JSONObject postparams = new JSONObject(params);
@@ -531,13 +586,15 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 });
         requestQueue.add(jsonObjReq);
     }
-
+    /**
+     * This function adds the cargo hold information to the database
+     */
     public void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("curr_size", cargoHoldViewModel.getCurrSize());
+        params.put("maxsize", cargoHoldViewModel.getMax());
         params.put("user_id", 1);
 
         JSONObject postparams = new JSONObject(params);
@@ -559,12 +616,14 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-
-    public void deleteItems() {
+    /**
+     * This function deletes items from the database
+     */
+    private void deleteItems() {
         this.url = "http://10.0.2.2:9080/myapi/items/delete";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -585,15 +644,18 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         requestQueue.add(jsonObjReq);
     }
 
-    public void addItems() {
+    /**
+     * This function adds items to the database
+     */
+    private void addItems() {
         this.url = "http://10.0.2.2:9080/myapi/items";
-        Map<String, Integer> inventory = shipViewModel.getMainShip().getCargoHold().getInventory();
-        if(inventory.size() == 0) {return;}
+        Map<String, Integer> inventory = cargoHoldViewModel.getInventory();
+        if(inventory.isEmpty()) {return;}
         for (java.util.Map.Entry<String, Integer> entry: inventory.entrySet()) {
-            HashMap<String, Object> params = new HashMap<String, Object>();
+            HashMap<String, Object> params = new HashMap<>();
             params.put("item_name", entry.getKey());
             params.put("curr_amount", entry.getValue());
-            params.put("user_id", playerViewModel.getPlayer().getId());
+            params.put("user_id", playerViewModel.getId());
 
             JSONObject postparams = new JSONObject(params);
             Log.i("Test", postparams.toString());

@@ -9,31 +9,19 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.cosmiccoders.spacetraders.R;
+import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
-import com.cosmiccoders.spacetraders.entity.Planets.Andromeda;
-import com.cosmiccoders.spacetraders.entity.Planets.Baratas;
-import com.cosmiccoders.spacetraders.entity.Planets.BlueDwarf;
-import com.cosmiccoders.spacetraders.entity.Planets.Cornholio;
-import com.cosmiccoders.spacetraders.entity.Planets.Drax;
-import com.cosmiccoders.spacetraders.entity.Planets.Kravat;
-import com.cosmiccoders.spacetraders.entity.Planets.Omphalos;
-import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
-import com.cosmiccoders.spacetraders.entity.Planets.RedDwarf;
-import com.cosmiccoders.spacetraders.entity.Planets.StartingPlanet;
-import com.cosmiccoders.spacetraders.entity.Planets.Titikaka;
+import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.Player;
-import com.cosmiccoders.spacetraders.entity.ShipYard;
+//import com.cosmiccoders.spacetraders.entity.ShipYard;
 import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 
 import org.json.JSONArray;
@@ -45,32 +33,38 @@ import com.android.volley.VolleyError;
 import com.android.volley.Response;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Class to load the game upon starting
+ */
 public class LoadGame extends AppCompatActivity {
 
     private EditShipViewModel shipViewModel;
     private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
     private ViewAddSolarSystemViewModel solarSystemViewModel;
-    private ShipYard shipYard;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
+    //private ShipYard shipYard;
 
     private Player testPlayer;
     private Ship testShip;
-
-    RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
+    //private CargoHold cargoHold;
+    private RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
-    private String baseUrl = "http://10.0.2.2:9080/myapi";
+    private final String baseUrl = "http://10.0.2.2:9080/myapi";
     private String url;
 
     @Override
+    /*
+      This function creates the planets and universe
+      @param savedInstanceState The current state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.load_game);
@@ -78,30 +72,49 @@ public class LoadGame extends AppCompatActivity {
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         solarSystemViewModel = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
+
         requestQueue = Volley.newRequestQueue(this);
 
         testPlayer = new Player();
         testShip = new Gnat();
+        //cargoHold = new CargoHold(20);
 
-        solarSystemViewModel.setPlanetSS(new StartingPlanet());
-        solarSystemViewModel.setPlanetSS(new Andromeda());
-        solarSystemViewModel.setPlanetSS(new Baratas());
-        solarSystemViewModel.setPlanetSS(new Cornholio());
-        solarSystemViewModel.setPlanetSS(new Drax());
-        solarSystemViewModel.setPlanetSS(new Kravat());
-        solarSystemViewModel.setPlanetSS(new Omphalos());
-        solarSystemViewModel.setPlanetSS(new Titikaka());
-        solarSystemViewModel.setPlanetSS(new RedDwarf());
-        solarSystemViewModel.setPlanetSS(new BlueDwarf());
+        addPlanets();
 
-        /*for (MapPage.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
+        printPlanets();
+
+        setMainPlanet();
+    }
+    /**
+     * This function sets the player's main planet
+     */
+    private void setMainPlanet() {
+        planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
+        Log.i("Test", planetViewModel.toPlanetString());
+    }
+    /**
+     * This function prints the planets in the solar system
+     */
+    private void printPlanets() {
+        for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
             Log.i("Planet name", entry.getKey());
             Log.i("Test", entry.getValue().toString());
-        }*/
+        }
+    }
+    /**
+     * This function adds planets to the solar system
+     */
+    private void addPlanets() {
+        solarSystemViewModel.setSolarSystem();
     }
 
+    /**
+     * Loads all elements of the game when load is clicked
+     * @param v current view
+     */
     public void onLoadClicked(View v) {
-        Button changeButton = (Button) findViewById(R.id.load_button);
+        Button changeButton = findViewById(R.id.load_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,11 +126,11 @@ public class LoadGame extends AppCompatActivity {
                     loadShip(user_id);
                     loadCargoHold(user_id);
                     loadItem(user_id);
-                    testPlayer.setId(user_id);
-                    playerViewModel.addPlayer(testPlayer);
+                    //playerViewModel.updatePlayer(testPlayer);
+                    //playerViewModel.setId(user_id);
                     shipViewModel.setMainShip(testShip);
-                    Log.i("Test Load P", playerViewModel.toString());
-                    Log.i("Test Load Ship", shipViewModel.getMainShip().getCargoHold().toString());
+
+                    //Log.i("Test Load Ship", cargoHoldViewModel.toString());
 
                     startActivity(new Intent(LoadGame.this, ShipHome.class));
 
@@ -129,19 +142,11 @@ public class LoadGame extends AppCompatActivity {
         });
     }
 
-    public Boolean isNumeric(String str) {
-        char[] chars = str.toCharArray();
-        for (char c : chars) {
-            if(Character.isLetter(c)) {
-                Log.i("Numeric", "There is a letter");
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public void loadPlayer(int user_id) {
+    /**
+     * This function loads the player of the game
+     * @param user_id The players ID that will be loaded upon their selection of load game
+     */
+    private void loadPlayer(final int user_id) {
         this.url = this.baseUrl + "/player/id/" + user_id;
 
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
@@ -161,7 +166,7 @@ public class LoadGame extends AppCompatActivity {
                                     int pp = jsonObj.getInt("pilot_points");
                                     String currPlanet = jsonObj.get("curr_planet").toString();
 
-                                    Difficulty d;
+                                    Difficulty d = Difficulty.NORMAL;
                                     switch(difficulty){
                                         case "easy":
                                             d = Difficulty.EASY;
@@ -171,14 +176,21 @@ public class LoadGame extends AppCompatActivity {
                                             break;
                                         case "hard":
                                             d = Difficulty.HARD;
-                                        default:
+                                        case "normal":
                                             d = Difficulty.NORMAL;
                                     }
-                                    testPlayer = new Player(player_name, pp, fp, tp, ep, currency, d);
+                                    testPlayer = new Player(player_name,
+                                            pp, fp, tp, ep, currency, d);
                                     playerViewModel.updatePlayer(testPlayer);
-                                    planetViewModel.setPlanet(solarSystemViewModel.getPlanet(currPlanet));
-                                    Log.i("Test", playerViewModel.toString());
-                                    Log.i("Test", planetViewModel.getPlanet().toString());
+                                    playerViewModel.setId(user_id);
+                                    planetViewModel.setPlanet(
+                                            solarSystemViewModel.getPlanet(currPlanet));
+
+                                    Log.i("Player", playerViewModel.getId()+"");
+                                    Log.i("Test Load P", playerViewModel.toString());
+
+                                    //Log.i("Test", playerViewModel.toString());
+                                    //Log.i("Test", planetViewModel.getPlanet().toString());
                                 } catch (JSONException e) {
                                     Log.e("Volley", "Invalid JSON Object.");
                                 }
@@ -200,13 +212,17 @@ public class LoadGame extends AppCompatActivity {
         );
         requestQueue.add(arrReq);
     }
-
-    public void loadShip(int user_id){
+    /**
+     * This function loads the ship of the player
+     * @param user_id The players ID number
+     */
+    private void loadShip(int user_id){
         this.url = baseUrl + "/ship/id/" + user_id;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -251,13 +267,17 @@ public class LoadGame extends AppCompatActivity {
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
-    public void loadCargoHold(int user_id) {
+    /**
+     * This function loads the cargo of the player
+     * @param user_id The players ID number
+     */
+    private void loadCargoHold(int user_id) {
         this.url = baseUrl + "/cargohold/id/" + user_id;
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
+        // To fully understand this, I'd recommend
+        // reading the office docs: https://developer.android.com/training/volley/index.html
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -269,9 +289,11 @@ public class LoadGame extends AppCompatActivity {
                                 try {
                                     // For each repo, add a new line to our repo list.
                                     JSONObject jsonObj = response.getJSONObject(i);
-                                    int max = jsonObj.getInt("maxsize");
+                                    //int max = jsonObj.getInt("maxsize");
                                     int curr = jsonObj.getInt("curr_size");
-                                    testShip.getCargoHold().setCurrSize(curr);
+                                    //cargoHold = testShip.getCargoHold();
+                                    //cargoHold.setCurrSize(curr);
+                                    cargoHoldViewModel.setCurrSize(curr);
                                     //shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
@@ -302,8 +324,11 @@ public class LoadGame extends AppCompatActivity {
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
-    public void loadItem(int user_id) {
+    /**
+     * This function loads the items the player has
+     * @param user_id The players ID number
+     */
+    private void loadItem(int user_id) {
         this.url = baseUrl + "/items/id/" + user_id;
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,
                 new Response.Listener<JSONArray>() {
@@ -326,7 +351,8 @@ public class LoadGame extends AppCompatActivity {
                                 }
                                 Log.i("Testing", i+"");
                             }
-                            testShip.getCargoHold().setInventory(temp);
+                            cargoHoldViewModel.setInventory(temp);
+                            //Log.i("CargoHold", cargoHoldViewModel.toString());
                         } else {
                             // The user didn't have any repos.
                         }

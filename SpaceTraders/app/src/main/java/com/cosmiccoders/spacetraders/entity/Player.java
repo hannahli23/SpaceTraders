@@ -1,11 +1,10 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.Ships.Ship;
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
 import java.util.EnumMap;
-import java.util.List;
 
+/**
+ * class to represent a player
+ */
 public class Player {
     /**
      * Creating all the necessary fields for a player
@@ -18,8 +17,8 @@ public class Player {
     private String name;
     private int currency;
     private Difficulty difficulty;
-    private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
-    private Ship ship;
+    private final EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
+    //private Ship ship;
 
     /**
      * A empty constructor for player with default values
@@ -74,28 +73,55 @@ public class Player {
         this.currency = currency;
         this.difficulty = difficulty;
     }
-
+    /**
+     * This function returns the ID of a player
+     * @return The players ID
+     */
     public int getId() { return id; }
+    /**
+     * This function returns the name of a player
+     * @return The players name
+     */
     public String getName() { return name; }
-
+    /**
+     * This function returns the currency a player has
+     * @return The players currency
+     */
     public int getCurrency() { return currency; }
-
+    /**
+     * This function returns the difficulty chosen by a player
+     * @return The players chosen difficulty
+     */
     public Difficulty getDifficulty() { return difficulty; }
 
+    /**
+     * This function returns the representation of the difficulty chosen by a player
+     * @return the string representation of the difficulty
+     */
+    public String getRepresentation() { return difficulty.getRepresentation(); }
+    /**
+     * This function returns the skill points of a player
+     * @param skill the skill to get the points of
+     * @return The players skill points
+     */
     public int getSkill(Skills skill) { return skillsPoints.get(skill); }
 
-    public Ship getShip() {
-        return ship;
-    }
-
+    /**
+     * This function sets the name of a player to the input name
+     * @param name the name to set the player's to
+     */
     public void setName(String name) { this.name = name; }
 
+    /**
+     * This function sets the currency of a player to the input currency
+     * @param curr the amount to set the player's currency to
+     */
     public void setCurrency(int curr) { currency = curr; }
 
     /**
      * This function checks if the currency you currently have is greater
      * or equal to the amount we want to check it against
-     * @param amount
+     * @param amount The amount of currency the player has
      * @return whether or not you have enough money
      */
     public boolean checkCurrency(int amount) {
@@ -110,19 +136,50 @@ public class Player {
     public void pay(int amount) { currency -= amount; }
 
     /**
-     * This function puts a certain amout of monday into your current currency
+     * This function puts a certain amount of money into your current currency
      * @param amount is the amount of money we want to store in your money stores
      */
     public void getPaid(int amount) {currency += amount; }
 
+
+    /**
+     * This function determines the difficulty of the game
+     * This function sets a difficulty to a player
+     * @param difficulty is the difficulty the player
+     */
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
+    /**
+     * This function sets an amount of points for a skill
+     * @param skill is the skill that we want to append to
+     * @param points is the amount of points we want to give to a skill
+     */
     public void setSkills(Skills skill, int points) { skillsPoints.put(skill, points); }
 
+    /**
+     * This function sets the user's ID
+     * @param id The id of the player
+     */
     public void setId(int id) {
         this.id = id;
     }
+    /**
+     * This function changes the currency of the player
+     * @return A boolean to change the players currency
+     */
+    public boolean manipulateCurrency() {
+        if (checkCurrency(10)) {
+            int newCurrency = getCurrency() - 10;
+            setCurrency(newCurrency);
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * This function changes values to be of type String
+     * @return A string representation of the data
+     */
     public String toString2() {
         return "You are " + getName()
                 + ". \n You have "

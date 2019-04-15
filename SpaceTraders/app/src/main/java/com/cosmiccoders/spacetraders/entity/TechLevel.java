@@ -1,5 +1,8 @@
 package com.cosmiccoders.spacetraders.entity;
 
+/**
+ * Enum representing the potential skills for a planet
+ */
 public enum TechLevel {
     ARGICULTURE(1),
     MEDIEVAL(2),
@@ -15,6 +18,10 @@ public enum TechLevel {
 
     TechLevel(int code) { this.code = code; }
 
+    /**
+     * Returns number representation of skill
+     * @return int the skill's code
+     */
     public int getRepresentation() {
         return code;
     }

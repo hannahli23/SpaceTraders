@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`person` (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `spacetraders`.`ship`;
 CREATE TABLE IF NOT EXISTS `spacetraders`.`ship` (
-	ship_id INT(11) NOT NULL AUTO_INCREMENT primary key,
     ship_name VARCHAR(50) NOT NULL DEFAULT 'Grancypher',
     ship_type VARCHAR(50) NOT NULL DEFAULT 'TESTING',
     hull_strength INT(3) NOT NULL DEFAULT 0,
@@ -60,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`ship` (
     travel_range INT(11) NOT NULL DEFAULT 2,
     fuel INT(11) NOT NULL DEFAULT 0,
     escape_pod VARCHAR(50) NOT NULL DEFAULT 'true',
-    user_id INT(12) NOT NULL,
+    user_id INT(12) NOT NULL primary key,
     FOREIGN KEY (user_id) REFERENCES spacetraders.person(user_id)
 );
 
@@ -71,10 +70,9 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`ship` (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `spacetraders`.`cargo_hold`;
 CREATE TABLE IF NOT EXISTS `spacetraders`.`cargo_hold` (
-	cargohold_id INT(11) NOT NULL AUTO_INCREMENT primary key,
     maxsize INT(3) NOT NULL DEFAULT 0,
     curr_size INT(11) NOT NULL DEFAULT 0,
-    user_id INT(12) NOT NULL,
+    user_id INT(12) NOT NULL primary key,
     FOREIGN KEY (user_id) REFERENCES spacetraders.person(user_id)
 );
 
@@ -85,10 +83,10 @@ CREATE TABLE IF NOT EXISTS `spacetraders`.`cargo_hold` (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `spacetraders`.`cargo_items`;
 CREATE TABLE IF NOT EXISTS `spacetraders`.`cargo_items` (
-	cargo_item_id INT(11) NOT NULL AUTO_INCREMENT primary key,
+	item_id INT(12) NOT NULL auto_increment primary key,
 	item_name VARCHAR(50) NOT NULL DEFAULT 'item name',
     curr_amount INT(11) NOT NULL DEFAULT 0,
-    user_id INT(12) NOT NULL,
+	user_id INT(12) NOT NULL,    
     FOREIGN KEY (user_id) REFERENCES spacetraders.person(user_id)
 );
 

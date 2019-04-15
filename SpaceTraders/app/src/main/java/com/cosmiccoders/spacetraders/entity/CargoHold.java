@@ -2,18 +2,20 @@ package com.cosmiccoders.spacetraders.entity;
 
 import android.util.Log;
 
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents the ship's cargo inventory
+ */
 public class CargoHold {
     /**
      * int max is the max storage capacity of the ship
      * inventory is a map that maps the name of a good to how much of the good you have
      * currSize is the current amount of items in your ship
      */
-    private int max;
+    private final int max;
     private Map<String, Integer> inventory;
     private int currSize;
 
@@ -29,11 +31,14 @@ public class CargoHold {
 
     /**
      * Check to see if the amount of items you want to put into your cargoHold can actually fit
-     * @param amount
+     * @param amount number of items you want to put into your cargoHold
      * @return boolean of whether or not the amount of items will fit
      */
     public boolean putCheck(int amount) {
-        if (currSize + amount >= max) {
+        if(amount <= 0 || amount > max) {
+            throw new IllegalArgumentException("Your input is not valid");
+        }
+        if ((currSize + amount) > max) {
             Log.i("Check size",  (currSize + amount) + "");
             return false;
         } else {
@@ -64,7 +69,7 @@ public class CargoHold {
      * @return whether we can take out that amount of an item
      */
     public boolean takeCheck(String good, int amount) {
-        if(inventory.containsKey(good)) {
+        if (inventory.containsKey(good)) {
             return inventory.get(good) >= amount;
         } else {
             return false;
@@ -87,19 +92,39 @@ public class CargoHold {
         }
     }
 
+    /**
+     * Gets the maximum storage capacity of the ship
+     * @return int the max storage capacity of the ship
+     */
     public int getMax() { return max; }
 
+    /**
+     * Gets the current number of items in the ship
+     * @return int the current number of items in the ship
+     */
     public int getCurrSize() { return currSize; }
 
+    /**
+     * Sets currSize equal to input amount
+     * @param amount the value to set currSize to
+     */
     public void setCurrSize(int amount) {currSize = amount; }
 
-    public Map<String, Integer> getInventory() { return inventory; }
+    /**
+     * Gets the ship's current inventory
+     * @return Map<String,Integer> a map of the ship's current inventory
+     */
+    public Map<String, Integer> getInventory() { return Collections.unmodifiableMap(inventory); }
 
+    /**
+     * Sets the ship's inventory to the input inventory
+     * @param newInventory the map of the inventory to assign to the ship
+     */
     public void setInventory(Map<String, Integer> newInventory) {inventory = newInventory;}
 
     /**
      * This function tells us how much of an item we have
-     * @param good
+     * @param good the good to get the amount of
      * @return the amount of a good we have
      */
     public int getNumOfItem(String good) {
@@ -110,6 +135,7 @@ public class CargoHold {
         }
     }
 
+    @Override
     public String toString() {
         String result = "You have: ";
         if(currSize == 0) {

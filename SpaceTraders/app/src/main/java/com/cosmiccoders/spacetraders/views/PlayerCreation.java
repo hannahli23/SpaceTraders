@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Gnat;
@@ -27,15 +28,20 @@ import com.cosmiccoders.spacetraders.R;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.viewmodels.EditAddPlayerViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
+import com.cosmiccoders.spacetraders.viewmodels.GetAddCargoHoldViewModel;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 
+/**
+ * class to configure the player upon creation
+ */
 public class PlayerCreation extends AppCompatActivity {
 
     private EditAddPlayerViewModel playerViewModel;
     private EditShipViewModel shipViewModel;
+    private GetAddCargoHoldViewModel cargoHoldViewModel;
 
     private TextView pilotSkills;
     private TextView fighterSkills;
@@ -54,16 +60,20 @@ public class PlayerCreation extends AppCompatActivity {
 
     private RequestQueue requestQueue;
 
-    String baseUrl = "http://10.0.2.2:9080/myapi";
-    String url;
+    private final String baseUrl = "http://10.0.2.2:9080/myapi";
+    private String url;
 
     @Override
+    /*
+      This function makes everything upon pressing the create button
+      @param savedInstanceState The state of the saved game
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         majorSpinner = findViewById(R.id.spinner);
-        majorSpinner.setAdapter(new ArrayAdapter<Difficulty>(this,
+        majorSpinner.setAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Difficulty.values()));
 
         shipField = findViewById(R.id.ship_field);
@@ -81,11 +91,16 @@ public class PlayerCreation extends AppCompatActivity {
 
         playerViewModel = ViewModelProviders.of(this).get(EditAddPlayerViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
+        cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
+
         requestQueue = Volley.newRequestQueue(this);
     }
-
+    /**
+     * This function decrements items when the subtract button is pressed
+     * @param view The games current view
+     */
     public void onSubtractPressed(View view) {
-        Button change = (Button) findViewById(view.getId());
+        Button change = findViewById(view.getId());
         int temp = 0;
         switch(view.getId()) {
             case R.id.subtract_pilot:
@@ -100,7 +115,7 @@ public class PlayerCreation extends AppCompatActivity {
             case R.id.subtract_engineer:
                 temp = R.id.engineer_points;
         }
-        final TextView changeText = (TextView) findViewById(temp);
+        final TextView changeText = findViewById(temp);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,9 +179,12 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function adds to items when the add button is pressed
+     * @param view The games current view
+     */
     public void onAddPressed(View view) {
-        Button change = (Button) findViewById(view.getId());
+        Button change = findViewById(view.getId());
         int temp = 0;
         switch(view.getId()) {
             case R.id.add_pilot:
@@ -182,7 +200,7 @@ public class PlayerCreation extends AppCompatActivity {
                 temp = R.id.engineer_points;
         }
 
-        final TextView changeText = (TextView) findViewById(temp);
+        final TextView changeText = findViewById(temp);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,6 +242,10 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
+    /**
+     * This function allows things to happen when the create button is pressed
+     * @param view The games current view
+     */
     public void onCreatePressed(View view) {
         if((ps + ts + es + fs) == 16 ) {
             Player player = new Player();
@@ -231,33 +253,22 @@ public class PlayerCreation extends AppCompatActivity {
             player.setCurrency(1000);
             player.setDifficulty(Difficulty.EASY);
 
-            String name = nameField.getText().toString();
-            String shipName = shipField.getText().toString();
-            if (!name.isEmpty() && !shipName.isEmpty()) {
-                player.setName(name);
-                ship.setName(shipName);
-            } else if(name.isEmpty() && !shipName.isEmpty()) {
-                ship.setName(shipName);
-            } else if(!name.isEmpty() && shipName.isEmpty()) {
-                player.setName(name);
-                ship.setName("Grancypher");
-            } else {
-                ship.setName("Grancypher");
-            }
+            setNames(player, ship);
+
             TextView user_id = findViewById(R.id.user_id);
             player.setId(Integer.parseInt(user_id.getText().toString()));
             player.setSkills(Skills.PILOT, Integer.parseInt(pilotSkills.getText().toString()));
             player.setSkills(Skills.FIGHTER, Integer.parseInt(fighterSkills.getText().toString()));
             player.setSkills(Skills.TRADER, Integer.parseInt(traderSkills.getText().toString()));
-            player.setSkills(Skills.ENGINEER, Integer.parseInt(engineerSkills.getText().toString()));
+            player.setSkills(Skills.ENGINEER,
+                    Integer.parseInt(engineerSkills.getText().toString()));
 
             player.setDifficulty((Difficulty) majorSpinner.getSelectedItem());
 
             shipViewModel.setMainShip(ship);
-
             playerViewModel.addPlayer(player);
-            shipViewModel.addShip(ship);
-            shipViewModel.setMainShip(ship);
+            //shipViewModel.addShip(ship);
+            //shipViewModel.setMainShip(ship);
 
             addPlayer();
             addShip();
@@ -266,9 +277,32 @@ public class PlayerCreation extends AppCompatActivity {
             Log.i("MyActivity", "Pleas make sure you've used all your skills!");
         }
     }
-
+    /**
+     * This function sets the names of the ship
+     * @param player The current player playing the game
+     * @param ship The ship that will have a name set
+     */
+    private void setNames(Player player, Ship ship) {
+        String name = nameField.getText().toString();
+        String shipName = shipField.getText().toString();
+        if (!name.isEmpty() && !shipName.isEmpty()) {
+            player.setName(name);
+            ship.setName(shipName);
+        } else if(name.isEmpty() && !shipName.isEmpty()) {
+            ship.setName(shipName);
+        } else if(!name.isEmpty()) {
+            player.setName(name);
+            ship.setName("Grancypher");
+        } else {
+            ship.setName("Grancypher");
+        }
+    }
+    /**
+     * This function allows things to happen when the next button is pressed
+     * @param v The current view
+     */
     public void onNextPress(View v) {
-        Button btn = (Button) findViewById(R.id.next_button);
+        Button btn = findViewById(R.id.next_button);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -277,9 +311,12 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function exits the game upon pressing exit
+     * @param view The currentview
+     */
     public void onExitPressed(View view) {
-        Button changeButton = (Button) findViewById(R.id.save_button);
+        Button changeButton = findViewById(R.id.save_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -290,22 +327,25 @@ public class PlayerCreation extends AppCompatActivity {
             }
         });
     }
-
-    public void addPlayer(){
+    /**
+     * This function adds info to the player
+     */
+    private void addPlayer(){
         this.url = this.baseUrl + "/player";
 
         // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
         // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("user_id", playerViewModel.getPlayer().getId());
-        params.put("player_name", playerViewModel.getPlayer().getName());
-        params.put("currency", playerViewModel.getPlayer().getCurrency());
-        params.put("difficulty", playerViewModel.getPlayer().getDifficulty().getRepresentation());
-        params.put("fighter_points", playerViewModel.getPlayer().getSkill(Skills.FIGHTER));
-        params.put("trader_points", playerViewModel.getPlayer().getSkill(Skills.TRADER));
-        params.put("engineer_points", playerViewModel.getPlayer().getSkill(Skills.ENGINEER));
-        params.put("pilot_points", playerViewModel.getPlayer().getSkill(Skills.PILOT));
+        // To fully understand this, I'd recommend reading the office docs:
+        // https://developer.android.com/training/volley/index.html
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("user_id", playerViewModel.getId());
+        params.put("player_name", playerViewModel.getName());
+        params.put("currency", playerViewModel.getCurrency());
+        params.put("difficulty", playerViewModel.getRepresentation());
+        params.put("fighter_points", playerViewModel.getSkill(Skills.FIGHTER));
+        params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
+        params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
+        params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
         params.put("curr_planet", "");
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -325,25 +365,24 @@ public class PlayerCreation extends AppCompatActivity {
                 });
         requestQueue.add(jsonObjReq);
     }
-
-    public void addShip(){
+    /**
+     * This function adds info to the players ship
+     */
+    private void addShip(){
         this.url = "http://10.0.2.2:9080/myapi/ship";
 
-        // Next, we create a new JsonArrayRequest. This will use Volley to make a HTTP request
-        // that expects a JSON Array Response.
-        // To fully understand this, I'd recommend readng the office docs: https://developer.android.com/training/volley/index.html
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("ship_name", shipViewModel.getMainShip().getShipName());
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("ship_name", shipViewModel.getShipName());
         params.put("ship_type", "Gnat");
-        params.put("hull_strength", shipViewModel.getMainShip().getHullStrength());
-        params.put("weapon_slots", shipViewModel.getMainShip().getNumOfWeaponSlots());
-        params.put("shield_slots", shipViewModel.getMainShip().getNumOfShieldSlots());
-        params.put("gadget_slots", shipViewModel.getMainShip().getNumOfGadgetSlots());
-        params.put("crew_quarters", shipViewModel.getMainShip().getNumOfCrewQuarters());
-        params.put("travel_range", shipViewModel.getMainShip().getMaxTravelRange());
+        params.put("hull_strength", shipViewModel.getHullStrength());
+        params.put("weapon_slots", shipViewModel.getNumOfWeaponSlots());
+        params.put("shield_slots", shipViewModel.getNumOfShieldSlots());
+        params.put("gadget_slots", shipViewModel.getNumOfGadgetSlots());
+        params.put("crew_quarters", shipViewModel.getNumOfCrewQuarters());
+        params.put("travel_range", shipViewModel.getMaxTravelRange());
         params.put("escape_pod", "false");
-        params.put("fuel", shipViewModel.getMainShip().getFuel());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        params.put("fuel", shipViewModel.getFuel());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
@@ -363,14 +402,16 @@ public class PlayerCreation extends AppCompatActivity {
                 });
         requestQueue.add(jsonObjReq);
     }
-
-    public void addCargoHold(){
+    /**
+     * This function adds info to the players cargo hold
+     */
+    private void addCargoHold(){
         this.url = "http://10.0.2.2:9080/myapi/cargohold";
 
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("curr_size", shipViewModel.getMainShip().getCargoHold().getCurrSize());
-        params.put("maxsize", shipViewModel.getMainShip().getCargoHold().getMax());
-        params.put("user_id", playerViewModel.getPlayer().getId());
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("curr_size", cargoHoldViewModel.getCurrSize());
+        params.put("maxsize", cargoHoldViewModel.getMax());
+        params.put("user_id", playerViewModel.getId());
 
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());

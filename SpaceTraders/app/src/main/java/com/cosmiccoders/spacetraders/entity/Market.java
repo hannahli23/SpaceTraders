@@ -1,18 +1,17 @@
 package com.cosmiccoders.spacetraders.entity;
 
-import com.cosmiccoders.spacetraders.entity.TradeGoods.TradeGood;
-
+import java.util.Collections;
 import java.util.Map;
 
 /**
- * This class as a Market for the player which is used in the PlanetTemp Class
+ * This class is a Market for the player which is used in the PlanetTemp Class
  */
 public class Market extends PriceModel{
     /** The goodlist is for the goods available on each planet
      *  The canSell is for the goods the player can sell
      */
-    private Map<String, Integer> goodList;
-    private Map<String, Boolean> canSell;
+    private final Map<String, Integer> goodList;
+    private final Map<String, Boolean> canSell;
 
     /**
      * This is the Market constructor
@@ -30,7 +29,7 @@ public class Market extends PriceModel{
      *         an integer which is the goods price
      */
     public Map<String, Integer> getGoodList() {
-        return goodList;
+        return Collections.unmodifiableMap(goodList);
     }
 
     /**
