@@ -14,12 +14,19 @@ import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
+/**
+ * class to configure the map page
+ */
 public class MapPage extends AppCompatActivity {
     private ViewAddSolarSystemViewModel solarSystem;
     //private EditAddPlayerViewModel playerViewModel;
     private GetSetPlanetViewModel planetViewModel;
 
     @Override
+    /**
+     * This function creates the planets and universe
+     * @param savedInstanceState The current state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_map);
@@ -33,6 +40,10 @@ public class MapPage extends AppCompatActivity {
         fuel.setText(shipViewModel.getFuel()+"");
     }
 
+    /**
+     * Travels to the planet that is clicked
+     * @param v current view
+     */
     public void onPlanetPress(View v) {
         Button change = findViewById(v.getId());
         Log.i("Try", "trial");
@@ -70,7 +81,10 @@ public class MapPage extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function is a helper method for the onPressed method
+     * @param name The planet name
+     */
     private void onPressedHelper(String name) {
         planetViewModel.setPlanetDestination(solarSystem.getPlanet(name));
         Log.i("Testing"+name, planetViewModel.getPlanetDestination().toString());

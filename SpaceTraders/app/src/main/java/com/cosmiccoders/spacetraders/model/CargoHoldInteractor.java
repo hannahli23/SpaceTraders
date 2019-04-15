@@ -72,7 +72,7 @@ public class CargoHoldInteractor extends Interactor{
 
     /**
      * Calls CargoHold's getMax method which gets the maximum storage capacity of the ship
-     * @return int the max storage capacity of the ship
+     * @return int the max storage capacity of the cargo hold
      */
     public int getMax() {
         repo = getRepo();
@@ -81,8 +81,9 @@ public class CargoHoldInteractor extends Interactor{
         return cargoHold.getMax(); }
 
     /**
-     * Calls CargoHold's getCurrSize method which gets the current number of items in the ship
-     * @return int the current number of items in the ship
+     * Calls CargoHold's getCurrSize method which gets the current
+     * number of items in the cargo hold
+     * @return int the current number of items in the cargo hold
      */
     public int getCurrSize() {
         repo = getRepo();
@@ -101,8 +102,8 @@ public class CargoHoldInteractor extends Interactor{
         cargoHold.setCurrSize(amount); }
 
     /**
-     * Calls CargoHold's getInventory method which gets the ship's current inventory
-     * @return Map<String,Integer> a map of the ship's current inventory
+     * Calls CargoHold's getInventory method which gets the caro hold's current inventory
+     * @return Map<String,Integer> a map of the cargo hold's current inventory
      */
     public Map<String, Integer> getInventory() {
         repo = getRepo();
@@ -111,8 +112,8 @@ public class CargoHoldInteractor extends Interactor{
         return cargoHold.getInventory(); }
 
     /**
-     * Calls CargoHold's setInventory method which sets the ship's inventory to the input inventory
-     * @param newInventory the map of the inventory to assign to the ship
+     * Calls CargoHold's setInventory method which sets the cargo hold's inventory to the input inventory
+     * @param newInventory the map of the inventory to assign to the cargo hold
      */
     public void setInventory(Map<String, Integer> newInventory) {
         repo = getRepo();
@@ -121,9 +122,10 @@ public class CargoHoldInteractor extends Interactor{
         cargoHold.setInventory(newInventory);}
 
     /**
-     * Calls CargoHold's getNumOfItem function which tells us how much of an item we have
+     * Calls CargoHold's getNumOfItem function which tells us how much of an item
+     * is in the cargo hold
      * @param good the good to get the amount of
-     * @return the amount of a good we have
+     * @return the amount of the good in the cargo hold
      */
     public int getNumOfItem(String good) {
         repo = getRepo();

@@ -39,7 +39,9 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Class to load the game upon starting
+ */
 public class LoadGame extends AppCompatActivity {
 
     private EditShipViewModel shipViewModel;
@@ -59,6 +61,10 @@ public class LoadGame extends AppCompatActivity {
     private String url;
 
     @Override
+    /**
+     * This function creates the planets and universe
+     * @param savedInstanceState The current state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.load_game);
@@ -80,23 +86,33 @@ public class LoadGame extends AppCompatActivity {
 
         setMainPlanet();
     }
-
+    /**
+     * This function sets the player's main planet
+     */
     private void setMainPlanet() {
         planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
         Log.i("Test", planetViewModel.getPlanet().toString());
     }
-
+    /**
+     * This function prints the planets in the solar system
+     */
     private void printPlanets() {
         for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
             Log.i("Planet name", entry.getKey());
             Log.i("Test", entry.getValue().toString());
         }
     }
-
+    /**
+     * This function adds planets to the solar system
+     */
     private void addPlanets() {
         solarSystemViewModel.setSolarSystem();
     }
 
+    /**
+     * Loads all elements of the game when load is clicked
+     * @param v current view
+     */
     public void onLoadClicked(View v) {
         Button changeButton = findViewById(R.id.load_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +142,11 @@ public class LoadGame extends AppCompatActivity {
         });
     }
 
+    /**
+     * checks if the input string is a number
+     * @param str the string to check
+     * @return boolean if the string is a number
+     */
     public Boolean isNumeric(String str) {
         char[] chars = str.toCharArray();
         for (char c : chars) {
@@ -137,7 +158,10 @@ public class LoadGame extends AppCompatActivity {
 
         return true;
     }
-
+    /**
+     * This function loads the player of the game
+     * @param user_id The players ID that will be loaded upon their selection of load game
+     */
     private void loadPlayer(final int user_id) {
         this.url = this.baseUrl + "/player/id/" + user_id;
 
@@ -204,7 +228,10 @@ public class LoadGame extends AppCompatActivity {
         );
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the ship of the player
+     * @param user_id The players ID number
+     */
     private void loadShip(int user_id){
         this.url = baseUrl + "/ship/id/" + user_id;
 
@@ -256,7 +283,10 @@ public class LoadGame extends AppCompatActivity {
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the cargo of the player
+     * @param user_id The players ID number
+     */
     private void loadCargoHold(int user_id) {
         this.url = baseUrl + "/cargohold/id/" + user_id;
 
@@ -310,7 +340,10 @@ public class LoadGame extends AppCompatActivity {
         // The request queue will automatically handle the request as soon as it can.
         requestQueue.add(arrReq);
     }
-
+    /**
+     * This function loads the items the player has
+     * @param user_id The players ID number
+     */
     private void loadItem(int user_id) {
         this.url = baseUrl + "/items/id/" + user_id;
         JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,

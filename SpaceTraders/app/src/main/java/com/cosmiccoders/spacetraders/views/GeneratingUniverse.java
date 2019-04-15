@@ -16,6 +16,9 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
 import java.util.Map;
 
+/**
+ * Class responsible for generating the universe
+ */
 public class GeneratingUniverse extends AppCompatActivity {
 
     //private SolarSystem solarSystem;
@@ -24,6 +27,10 @@ public class GeneratingUniverse extends AppCompatActivity {
     private GetSetPlanetViewModel planetViewModel;
 
     @Override
+    /**
+     * This function creates the planets and universe
+     * @param savedInstanceState The current state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generating_universe);
@@ -38,19 +45,25 @@ public class GeneratingUniverse extends AppCompatActivity {
 
         setMainPlanet();
     }
-
+    /**
+     * This function sets the planet of a player to be the main planet
+     */
     private void setMainPlanet() {
         planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
         Log.i("Test", planetViewModel.getPlanet().toString());
     }
-
+    /**
+     * This function prints the planet in the solar system
+     */
     private void printPlanets() {
         for (Map.Entry<String, PlanetTemp> entry : solarSystemViewModel.getPlanetMap().entrySet()) {
             Log.i("Planet name", entry.getKey());
             Log.i("Test", entry.getValue().toString());
         }
     }
-
+    /**
+     * This function adds planets to the solar system
+     */
     private void addPlanets() {
         /*PlanetTemp test = new Kravat();
         solarSystemViewModel.setPlanetSS(new StartingPlanet());
@@ -66,6 +79,10 @@ public class GeneratingUniverse extends AppCompatActivity {
         solarSystemViewModel.setSolarSystem();
     }
 
+    /**
+     * When homeButton is pressed, change to ship home page.
+     * @param view the current view
+     */
     public void onContinuePressed(View view) {
         Button btn = findViewById(R.id.homeButton);
 

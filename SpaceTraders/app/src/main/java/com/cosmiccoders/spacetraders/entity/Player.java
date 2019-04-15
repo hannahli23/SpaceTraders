@@ -104,20 +104,18 @@ public class Player {
 
     /**
      * This function returns the name of a player
-     * @return The player's name
      */
 
     public void setName(String name) { this.name = name; }
     /**
      * This function returns the currency of a player
-     * @return The player's name
      */
     public void setCurrency(int curr) { currency = curr; }
 
     /**
      * This function checks if the currency you currently have is greater
      * or equal to the amount we want to check it against
-     * @param amount
+     * @param amount The amount of currency the player has
      * @return whether or not you have enough money
      */
     public boolean checkCurrency(int amount) {
@@ -132,7 +130,7 @@ public class Player {
     public void pay(int amount) { currency -= amount; }
 
     /**
-     * This function puts a certain amout of monday into your current currency
+     * This function puts a certain amount of money into your current currency
      * @param amount is the amount of money we want to store in your money stores
      */
     public void getPaid(int amount) {currency += amount; }

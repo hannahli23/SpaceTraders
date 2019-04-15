@@ -4,6 +4,7 @@ import com.cosmiccoders.spacetraders.entity.Planets.PlanetTemp;
 
 import java.util.Map;
 
+
 public class SolarSystemInteractor extends Interactor {
 
     public SolarSystemInteractor(Repository repo) { super(repo);}
