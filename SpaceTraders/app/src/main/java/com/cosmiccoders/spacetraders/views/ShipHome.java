@@ -39,6 +39,9 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * class representing the home page activity of a ship
+ */
 public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     private EditShipViewModel shipViewModel;

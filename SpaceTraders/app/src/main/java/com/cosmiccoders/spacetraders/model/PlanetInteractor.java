@@ -94,21 +94,37 @@ public class PlanetInteractor extends Interactor {
         repo = getRepo();
         return repo.getMarket();}
 
+    /**
+     * This function returns the to string for a planet
+     * @return String the planet's to string
+     */
     public String toPlanetString() {
         repo = getRepo();
         return repo.toPlanetString();
     }
 
+    /**
+     * This function returns the destination name of the planet
+     * @return String the planet's destination
+     */
     public String getPlanetDesName() {
         repo = getRepo();
         return repo.getPlanetDesName();
     }
 
+    /**
+     * This function returns the to planet destination
+     * @return String the to planet destination
+     */
     public String toPlanetDesString() {
         repo = getRepo();
         return repo.toPlanetDesString();
     }
 
+    /**
+     * This function returns the coordinates of the planet's destination as an array
+     * @return int[] the coordinates of the planet's destination
+     */
     public int[] getDesLocation() {
         repo = getRepo();
         return repo.getDesLocation();

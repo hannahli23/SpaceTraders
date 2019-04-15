@@ -86,18 +86,34 @@ public class GetSetPlanetViewModel extends AndroidViewModel{
         return interactor.getMarket();}
     //public ShipYard getShipYard() { return shipYard; }
 
+    /**
+     * This function returns the to string for a planet
+     * @return String the planet's to string
+     */
     public String toPlanetString() {
         return interactor.toPlanetString();
     }
 
+    /**
+     * This function returns the destination name of the planet
+     * @return String the planet's destination
+     */
     public String getPlanetDestName() {
         return interactor.getPlanetDesName();
     }
 
+    /**
+     * This function returns the to planet destination
+     * @return String the to planet destination
+     */
     public String toPlanetDestString() {
         return interactor.toPlanetDesString();
     }
 
+    /**
+     * This function returns the coordinates of the planet's destination as an array
+     * @return int[] the coordinates of the planet's destination
+     */
     public int[] getDesLocation() {
         return interactor.getDesLocation();
     }

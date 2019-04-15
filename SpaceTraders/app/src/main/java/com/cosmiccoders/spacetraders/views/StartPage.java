@@ -8,6 +8,9 @@ import android.widget.Button;
 
 import com.cosmiccoders.spacetraders.R;
 
+/**
+ * Class representing the start page capabilities of the game
+ */
 public class StartPage extends AppCompatActivity {
 
     /*
