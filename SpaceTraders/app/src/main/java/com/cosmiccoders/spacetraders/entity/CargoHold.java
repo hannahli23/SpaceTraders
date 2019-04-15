@@ -86,9 +86,12 @@ public class CargoHold {
         if(amount < temp) {
             inventory.put(good, temp - amount);
             currSize -= amount;
-        } else {
+        } else if (amount == temp){
             inventory.remove(good);
             currSize -= amount;
+        } else {
+            inventory.remove(good);
+            currSize = 0;
         }
     }
 
