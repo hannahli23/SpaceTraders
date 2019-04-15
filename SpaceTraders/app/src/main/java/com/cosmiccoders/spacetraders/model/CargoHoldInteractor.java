@@ -112,7 +112,8 @@ public class CargoHoldInteractor extends Interactor{
         return cargoHold.getInventory(); }
 
     /**
-     * Calls CargoHold's setInventory method which sets the cargo hold's inventory to the input inventory
+     * Calls CargoHold's setInventory method which sets the cargo hold's
+     * inventory to the input inventory
      * @param newInventory the map of the inventory to assign to the cargo hold
      */
     public void setInventory(Map<String, Integer> newInventory) {

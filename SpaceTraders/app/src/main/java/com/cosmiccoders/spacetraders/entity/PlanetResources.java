@@ -1,5 +1,8 @@
 package com.cosmiccoders.spacetraders.entity;
 
+/**
+ * enum to represent the planet resources
+ */
 public enum PlanetResources {
        // public void naturalResources () {
     NO_SPECIAL_RESOURCES("NOSPECIALRESOURCES"),
@@ -21,6 +24,10 @@ public enum PlanetResources {
         this.resources = resources;
     }
 
+    /**
+     * Gets a string representation of the resource
+     * @return String the planet's resource
+     */
     public String getRepresentation() {
         return resources;
     }
