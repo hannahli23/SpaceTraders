@@ -26,9 +26,9 @@ public class Sell extends AppCompatActivity {
     private Market market;
 
     @Override
-    /**
-     * This function makes everything upon pressing the create button
-     * @param savedInstanceState The state of the saved game
+    /*
+      This function makes everything upon pressing the create button
+      @param savedInstanceState The state of the saved game
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

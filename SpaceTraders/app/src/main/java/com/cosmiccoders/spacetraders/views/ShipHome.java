@@ -58,10 +58,6 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private String url;
 
     @Override
-    /**
-     * This function makes everything upon pressing the create button
-     * @param savedInstanceState The state of the saved game
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ship_home);
@@ -117,11 +113,6 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     }
 
     @Override
-    /**
-     * This function makes things happen when the menu is clicked
-     * @param item The item that is being clicked on
-     * @return True or false depending on the result
-     */
     public boolean onMenuItemClick(MenuItem item) {
         Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
