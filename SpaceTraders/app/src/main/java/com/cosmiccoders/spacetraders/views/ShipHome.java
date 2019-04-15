@@ -54,7 +54,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
     private RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
-    private String baseUrl = "http://10.0.2.2:9080/myapi/player";
+    private final String baseUrl = "http://10.0.2.2:9080/myapi/player";
     private String url;
 
     @Override
@@ -134,11 +134,11 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Player", playerViewModel.toString());
+                Log.i("Player", playerViewModel.toStringPlayer());
                 Log.i("Player", playerViewModel.getId()+"");
-                Log.i("Planet", planetViewModel.getPlanet().toString());
+                Log.i("Planet", planetViewModel.toPlanetString());
                 Log.i("Ship", cargoHoldViewModel.toString());
-                Log.i("Market", planetViewModel.getPlanet().getMarket().toString());
+                Log.i("Market", planetViewModel.getMarket().toString());
             }
         });
     }
@@ -198,7 +198,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
                                     planetViewModel.setPlanet(solarSystemViewModel.getPlanet(
                                             currPlanet));
                                     Log.i("Test", playerViewModel.toString());
-                                    Log.i("Test", planetViewModel.getPlanet().toString());
+                                    Log.i("Test", planetViewModel.toString());
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
                                     Log.e("Volley", "Invalid JSON Object.");
@@ -393,7 +393,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
         params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
         params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
-        params.put("curr_planet", planetViewModel.getPlanet().getName());
+        params.put("curr_planet", planetViewModel.getPlanetName());
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.PUT,
@@ -493,7 +493,7 @@ public class ShipHome extends AppCompatActivity implements PopupMenu.OnMenuItemC
         params.put("trader_points", playerViewModel.getSkill(Skills.TRADER));
         params.put("engineer_points", playerViewModel.getSkill(Skills.ENGINEER));
         params.put("pilot_points", playerViewModel.getSkill(Skills.PILOT));
-        params.put("curr_planet", planetViewModel.getPlanet().getName());
+        params.put("curr_planet", planetViewModel.getPlanetName());
         JSONObject postparams = new JSONObject(params);
         Log.i("Test", postparams.toString());
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,

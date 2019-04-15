@@ -8,11 +8,11 @@ import com.cosmiccoders.spacetraders.entity.TechLevel;
  * This class is an abstract class to be used by the planet classes
  */
 public abstract class PlanetTemp {
-    private String name;
-    private int[] location;
-    private TechLevel techLevel;
-    private PlanetResources planetResources;
-    private Market market;
+    private final String name;
+    private final int[] location;
+    private final TechLevel techLevel;
+    private final PlanetResources planetResources;
+    private final Market market;
     //private ShipYard shipYard;
 
     /**

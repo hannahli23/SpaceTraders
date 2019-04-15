@@ -14,7 +14,7 @@ import com.cosmiccoders.spacetraders.entity.Ships.Ship;
  */
 public class EditShipViewModel extends AndroidViewModel {
 
-    private ShipInteractor interactor;
+    private final ShipInteractor interactor;
 
     /**
      * Constructor for EditShipViewModel - calls constructor of superclass

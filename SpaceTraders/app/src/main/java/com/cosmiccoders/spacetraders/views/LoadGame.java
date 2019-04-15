@@ -53,11 +53,11 @@ public class LoadGame extends AppCompatActivity {
 
     private Player testPlayer;
     private Ship testShip;
-    private CargoHold cargoHold;
+    //private CargoHold cargoHold;
     private RequestQueue requestQueue;  // This is our requests queue to process our HTTP requests.
 
     // This is the API base URL (GitHub API)
-    private String baseUrl = "http://10.0.2.2:9080/myapi";
+    private final String baseUrl = "http://10.0.2.2:9080/myapi";
     private String url;
 
     @Override
@@ -91,7 +91,7 @@ public class LoadGame extends AppCompatActivity {
      */
     private void setMainPlanet() {
         planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
-        Log.i("Test", planetViewModel.getPlanet().toString());
+        Log.i("Test", planetViewModel.toPlanetString());
     }
     /**
      * This function prints the planets in the solar system
@@ -130,7 +130,7 @@ public class LoadGame extends AppCompatActivity {
                     //playerViewModel.setId(user_id);
                     shipViewModel.setMainShip(testShip);
 
-                    Log.i("Test Load Ship", cargoHoldViewModel.toString());
+                    //Log.i("Test Load Ship", cargoHoldViewModel.toString());
 
                     startActivity(new Intent(LoadGame.this, ShipHome.class));
 
@@ -142,22 +142,6 @@ public class LoadGame extends AppCompatActivity {
         });
     }
 
-    /**
-     * checks if the input string is a number
-     * @param str the string to check
-     * @return boolean if the string is a number
-     */
-    public Boolean isNumeric(String str) {
-        char[] chars = str.toCharArray();
-        for (char c : chars) {
-            if(Character.isLetter(c)) {
-                Log.i("Numeric", "There is a letter");
-                return false;
-            }
-        }
-
-        return true;
-    }
     /**
      * This function loads the player of the game
      * @param user_id The players ID that will be loaded upon their selection of load game
@@ -309,7 +293,7 @@ public class LoadGame extends AppCompatActivity {
                                     int curr = jsonObj.getInt("curr_size");
                                     //cargoHold = testShip.getCargoHold();
                                     //cargoHold.setCurrSize(curr);
-                                    cargoHold.setCurrSize(curr);
+                                    cargoHoldViewModel.setCurrSize(curr);
                                     //shipViewModel.getMainShip().getCargoHold().setCurrSize(curr);
                                 } catch (JSONException e) {
                                     // If there is an error then output this to the logs.
@@ -367,7 +351,8 @@ public class LoadGame extends AppCompatActivity {
                                 }
                                 Log.i("Testing", i+"");
                             }
-                            cargoHold.setInventory(temp);
+                            cargoHoldViewModel.setInventory(temp);
+                            //Log.i("CargoHold", cargoHoldViewModel.toString());
                         } else {
                             // The user didn't have any repos.
                         }

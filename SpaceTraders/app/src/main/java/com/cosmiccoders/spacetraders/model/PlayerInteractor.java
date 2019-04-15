@@ -60,17 +60,8 @@ public class PlayerInteractor extends Interactor{
      */
     public String getRepresentation() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.getRepresentation();
+        return repo.getRepresentation();
     }
-
-    /**
-     * Gets the toString of the current repository
-     * @return String the string representation of the repository
-     */
-    public String toString() {
-        repo = getRepo();
-        return repo.toString(); }
 
     /**
      * Gets the current player's id
@@ -78,8 +69,7 @@ public class PlayerInteractor extends Interactor{
      */
     public int getId() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.getId(); }
+        return repo.getPlayerId(); }
 
     /**
      * Gets the current player's name
@@ -87,8 +77,7 @@ public class PlayerInteractor extends Interactor{
      */
     public String getName() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.getName();
+        return repo.getPlayerName();
     }
 
     /**
@@ -97,8 +86,7 @@ public class PlayerInteractor extends Interactor{
      */
     public int getCurrency() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.getCurrency();
+        return repo.getCurrency();
     }
 
     /**
@@ -107,8 +95,7 @@ public class PlayerInteractor extends Interactor{
      */
     public Difficulty getDifficulty() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.getDifficulty(); }
+        return repo.getDifficulty(); }
 
     /**
      * Gets the current player's skill
@@ -117,8 +104,7 @@ public class PlayerInteractor extends Interactor{
      */
     public int getSkill(Skills skill) {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.getSkill(skill);  }
+        return repo.getSkill(skill);  }
 
     /**
      * Sets the current player's name to the input name
@@ -126,8 +112,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void setName(String name) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.setName(name); }
+        repo.setPlayerName(name); }
 
     /**
      * Sets the current player's currency to the input currency
@@ -135,8 +120,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void setCurrency(int curr) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.setCurrency(curr); }
+        repo.setCurrency(curr); }
 
     /**
      * This function checks if the currency you currently have is greater
@@ -146,8 +130,7 @@ public class PlayerInteractor extends Interactor{
      */
     public boolean checkCurrency(int amount) {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.checkCurrency(amount);
+        return repo.checkCurrency(amount);
     }
 
     /**
@@ -157,8 +140,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void pay(int amount) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.pay(amount); }
+        repo.pay(amount); }
 
     /**
      * This function puts a certain amount of money into your current currency
@@ -166,8 +148,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void getPaid(int amount) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.getPaid(amount); }
+        repo.getPaid(amount); }
 
     /**
      * This function determines the difficulty of the game
@@ -176,8 +157,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void setDifficulty(Difficulty difficulty) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.setDifficulty(difficulty);
+        repo.setDifficulty(difficulty);
     }
 
     /**
@@ -187,8 +167,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void setSkills(Skills skill, int points) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.setSkills(skill, points); }
+        repo.setSkills(skill, points); }
 
     /**
      * This function sets the user's ID
@@ -196,8 +175,7 @@ public class PlayerInteractor extends Interactor{
      */
     public void setId(int id) {
         repo = getRepo();
-        player = repo.getPlayer();
-        player.setId(id);
+        repo.setId(id);
     }
 
     /**
@@ -206,17 +184,15 @@ public class PlayerInteractor extends Interactor{
      */
     public boolean manipulateCurrency() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.manipulateCurrency();
+        return repo.manipulateCurrency();
     }
 
     /**
      * This function changes values to be of type String
      * @return A string representation of the data
      */
-    public String toString2() {
+    public String toStringPlayer() {
         repo = getRepo();
-        player = repo.getPlayer();
-        return player.toString2();
+        return repo.toPlayerString();
     }
 }

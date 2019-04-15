@@ -100,21 +100,21 @@ public class PlanetIntro extends AppCompatActivity{
      */
     private void changeText() {
         TextView text = findViewById(R.id.planetName);
-        text.setText(planetViewModel.getPlanet().getName());
+        text.setText(planetViewModel.getPlanetName());
     }
     /**
      * This function swets the welcome message of the planets
      */
     private void setWelcome() {
         TextView welcomeMessage = findViewById(R.id.welcomeMessage);
-        welcomeMessage.setText("Welcome to " + planetViewModel.getPlanetDestination().getName());
+        welcomeMessage.setText("Welcome to " + planetViewModel.getPlanetDestName());
     }
     /**
      * This function sets the planets information
      */
     private void setInfo() {
         TextView planetInfo = findViewById(R.id.planetInfo);
-        planetInfo.setText("Planet Info: " + planetViewModel.getPlanetDestination().toString());
+        planetInfo.setText("Planet Info: " + planetViewModel.toPlanetDestString());
     }
     /**
      * This function sets the planets in the solar system
@@ -147,13 +147,12 @@ public class PlanetIntro extends AppCompatActivity{
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PlanetTemp go = planetViewModel.getPlanetDestination();
                 List list = shortRangeChart.getPlanetsInRange();
-                if(!list.contains(go)) {
+                if(!list.contains(planetViewModel.getPlanetDestination())) {
                     Log.i("Error!!!", "This planet is not in range!");
                 }
-                int integer_use = (shortRangeChart.distance(go.getLocation(),
-                        planetViewModel.getPlanet().getLocation()));
+                int integer_use = (shortRangeChart.distance(planetViewModel.getDesLocation(),
+                        planetViewModel.getLocation()));
                 if(integer_use > shipViewModel.getFuel()) {
                     Log.i("Error:", "Theres not enough fuel!");
                 } else {

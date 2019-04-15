@@ -13,7 +13,7 @@ import java.util.Map;
  * Class used to edit the cargo hold view model
  */
 public class GetAddCargoHoldViewModel extends AndroidViewModel {
-    private CargoHoldInteractor interactor;
+    private final CargoHoldInteractor interactor;
 
     /**
      * Constructor for GetAddCargoHoldViewModel - calls constructor of superclass

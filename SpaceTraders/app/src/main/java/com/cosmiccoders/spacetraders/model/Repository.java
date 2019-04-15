@@ -3,11 +3,14 @@ package com.cosmiccoders.spacetraders.model;
 
 import com.cosmiccoders.spacetraders.entity.CargoHold;
 import com.cosmiccoders.spacetraders.entity.Difficulty;
+import com.cosmiccoders.spacetraders.entity.Market;
+import com.cosmiccoders.spacetraders.entity.PlanetResources;
 import com.cosmiccoders.spacetraders.entity.Planets.*;
 import com.cosmiccoders.spacetraders.entity.Player;
 import com.cosmiccoders.spacetraders.entity.Ships.Ship;
 import com.cosmiccoders.spacetraders.entity.Skills;
 import com.cosmiccoders.spacetraders.entity.SolarSystem;
+import com.cosmiccoders.spacetraders.entity.TechLevel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +44,7 @@ class Repository {
     private Player player;
 
     /** all the ships in the game */
-    private List<Ship> allShips;
+    private final List<Ship> allShips;
 
     /** gets the main ship you're using now **/
     private Ship mainShip;
@@ -50,7 +53,7 @@ class Repository {
 
     private PlanetTemp wantToGo;
 
-    private SolarSystem solarSystem = new SolarSystem();
+    private final SolarSystem solarSystem = new SolarSystem();
 
     private CargoHold cargoHold;
 
@@ -259,6 +262,66 @@ class Repository {
     public void setPlanetDestination(PlanetTemp planet) { this.wantToGo = planet; }
 
     public PlanetTemp getPlanetDestination() { return wantToGo; }
+
+    /**
+     * This function returns the name of the planet
+     * @return The planet's name
+     */
+    public String getPlanetName() {
+        return planet.getName();}
+
+    /**
+     * This function returns the name of the planet
+     * @return The planet's name
+     */
+    public String getPlanetDesName() {
+        return wantToGo.getName();}
+    /**
+     * This function returns the coordinates of the location of the planet as an array
+     * @return int[] an array of the x and y coordinates of the planet's location
+     */
+    public int[] getLocation() { return planet.getLocation(); }
+
+    /**
+     * This function returns the coordinates of the location of the planet as an array
+     * @return int[] an array of the x and y coordinates of the planet's location
+     */
+    public int[] getDesLocation() { return wantToGo.getLocation(); }
+
+    /**
+     * This function returns the tech level of a planet
+     * @return TechLevel the planet's tech level
+     */
+    public TechLevel getTechLevel() {return planet.getTechLevel();}
+
+    /**
+     * This function returns the resources of a planet
+     * @return PlanetResources the planet's resources
+     */
+    public PlanetResources getPlanetResources() {return planet.getPlanetResources();}
+
+    /**
+     * This function returns the market of a player
+     * @return Market the planet's market
+     */
+    public Market getMarket() { return planet.getMarket();}
+    //public ShipYard getShipYard() { return shipYard; }
+
+    /**
+     * This function return the information for the following planet
+     * @return String representation of the planet
+     */
+    public String toPlanetString() {
+        return planet.toString();
+    }
+
+    /**
+     * This function return the information for the following planet
+     * @return String representation of the planet
+     */
+    public String toPlanetDesString() {
+        return wantToGo.toString();
+    }
 
 
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class SolarSystem {
 
-    private Map<String, PlanetTemp> solarSystem;
+    private final Map<String, PlanetTemp> solarSystem;
 
     public SolarSystem() {
         solarSystem = new HashMap<>();

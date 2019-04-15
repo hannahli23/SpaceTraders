@@ -53,8 +53,7 @@ public class ShipInteractor extends Interactor{
      */
     public String getShipName() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getShipName();
+        return repo.getShipName();
     }
 
     /**
@@ -63,8 +62,7 @@ public class ShipInteractor extends Interactor{
      */
     public String getShipType() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getShipType(); }
+        return repo.getShipType(); }
 
     /**
      * Gets the ship's id
@@ -72,8 +70,7 @@ public class ShipInteractor extends Interactor{
      */
     public int getId() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getId(); }
+        return repo.getShipId(); }
 
     /**
      * Gets the ship's hull strength
@@ -81,8 +78,7 @@ public class ShipInteractor extends Interactor{
      */
     public int getHullStrength() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getHullStrength(); }
+        return repo.getHullStrength(); }
 
     /**
      * Gets the ship's number of weapon slots
@@ -90,8 +86,7 @@ public class ShipInteractor extends Interactor{
      */
     public int getNumOfWeaponSlots() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getNumOfWeaponSlots(); }
+        return repo.getNumOfWeaponSlots(); }
 
     /**
      * Gets number of shield slots of the ship
@@ -99,8 +94,7 @@ public class ShipInteractor extends Interactor{
      */
     public int getNumOfShieldSlots() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getNumOfShieldSlots(); }
+        return repo.getNumOfShieldSlots(); }
 
     /**
      * Gets number of gadget slots of the ship
@@ -108,8 +102,7 @@ public class ShipInteractor extends Interactor{
      */
     public int getNumOfGadgetSlots() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getNumOfGadgetSlots(); }
+        return repo.getNumOfGadgetSlots(); }
 
     /**
      * Gets number of crew quarters of the ship
@@ -117,16 +110,15 @@ public class ShipInteractor extends Interactor{
      */
     public int getNumOfCrewQuarters() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getNumOfCrewQuarters(); }
+        return repo.getNumOfCrewQuarters(); }
 
     /**
      * Gets max travel range of the ship
      * @return int the ship's maximum travel range
      */
     public int getMaxTravelRange() {
-        ship = repo.getMainShip();
-        return ship.getMaxTravelRange(); }
+        repo = getRepo();
+        return repo.getMaxTravelRange(); }
 
     /**
      * Tells whether or not the ship has an escape pod
@@ -134,8 +126,7 @@ public class ShipInteractor extends Interactor{
      */
     public boolean getEscapePod() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getEscapePod(); }
+        return repo.getEscapePod(); }
 
     /**
      * Gets fuel level of the ship
@@ -143,8 +134,7 @@ public class ShipInteractor extends Interactor{
      */
     public int getFuel() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getFuel(); }
+        return repo.getFuel(); }
 
     /**
      * Tells whether or not the ships fuel tank is full
@@ -152,8 +142,7 @@ public class ShipInteractor extends Interactor{
      */
     public boolean getFullFuelTank() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getFullFuelTank(); }
+        return repo.getFullFuelTank(); }
 
     /**
      * Gets the ship's cargo hold
@@ -161,8 +150,7 @@ public class ShipInteractor extends Interactor{
      */
     public CargoHold getCargoHold() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.getCargoHold(); }
+        return repo.getCargoHold(); }
 
     //public PlanetTemp getCurrPlanet() { return currPlanet; }
 
@@ -172,8 +160,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setName(String name) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setName(name); }
+        repo.setShipName(name); }
 
     /**
      * Sets the ship's id to the input id
@@ -181,8 +168,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setId(int id) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setId(id); }
+        repo.setShipId(id); }
 
     /**
      * Sets the ship's hull strength to the input hull strength
@@ -190,8 +176,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setHullStrength(int hullStrength) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setHullStrength(hullStrength);
+        repo.setHullStrength(hullStrength);
     }
 
     // public void setNumOfCargoBays(int numOfCargoBays) { this.numOfCargoBays = numOfCargoBays; }
@@ -202,8 +187,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setNumOfWeaponSlots(int numOfWeaponSlots) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setNumOfWeaponSlots(numOfWeaponSlots);
+        repo.setNumOfWeaponSlots(numOfWeaponSlots);
     }
 
     /**
@@ -212,8 +196,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setNumOfShieldSlots(int numOfShieldSlots) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setNumOfShieldSlots(numOfShieldSlots);
+        repo.setNumOfShieldSlots(numOfShieldSlots);
     }
 
     /**
@@ -222,8 +205,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setNumOfGadgetSlots(int numOfGadgetSlots) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setNumOfGadgetSlots(numOfGadgetSlots);
+        repo.setNumOfGadgetSlots(numOfGadgetSlots);
     }
 
     /**
@@ -232,8 +214,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setNumOfCrewQuarters(int numOfCrewQuarters) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setNumOfCrewQuarters(numOfCrewQuarters);
+        repo.setNumOfCrewQuarters(numOfCrewQuarters);
     }
 
     /**
@@ -242,8 +223,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setMaxTravelRange(int maxTravelRange) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setMaxTravelRange(maxTravelRange);
+        repo.setMaxTravelRange(maxTravelRange);
     }
 
     /**
@@ -251,8 +231,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setFullFuelTank() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setFullFuelTank();
+        repo.setFullFuelTank();
     }
 
     /**
@@ -261,8 +240,7 @@ public class ShipInteractor extends Interactor{
      */
     public void setFuel(int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.setFuel(amount); }
+        repo.setFuel(amount); }
 
     /**
      * Decreases the ship's fuel level by the input amount
@@ -270,8 +248,7 @@ public class ShipInteractor extends Interactor{
      */
     public void takeAwayFromFeul(int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        ship.takeAwayFromFeul(amount); }
+        repo.takeAwayFromFeul(amount); }
 
     /**
      * Checks if the ship's fuel level is greater than or equal to the input amount
@@ -280,7 +257,6 @@ public class ShipInteractor extends Interactor{
      */
     public boolean checkEnoughFuel(int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        return ship.checkEnoughFuel(amount);
+        return repo.checkEnoughFuel(amount);
     }
 }

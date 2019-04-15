@@ -57,7 +57,7 @@ public class PlayerCreation extends AppCompatActivity {
 
     private RequestQueue requestQueue;
 
-    private String baseUrl = "http://10.0.2.2:9080/myapi";
+    private final String baseUrl = "http://10.0.2.2:9080/myapi";
     private String url;
 
     @Override

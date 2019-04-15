@@ -8,13 +8,13 @@ public class TradeGood {
 
     // below this level)
 
-    private int ttp; // Tech Level which produces the most of this item
+    private final int ttp; // Tech Level which produces the most of this item
 
     // below the base
 
     // price may increase astronomically
 
-    private PlanetResources cr; // When this condition is present, the price of this resource
+    private final PlanetResources cr; // When this condition is present, the price of this resource
                                 // is unusually low
 
     private String name;
@@ -33,21 +33,14 @@ public class TradeGood {
         // Minimum Tech Level to Produce this resource (You can't buy on planets
         int mtlp1 = mtl;
         // Minimum Tech Level to Use this resource (You can't sell on planets
-        int mtlu1 = mtlu;
         this.ttp = ttp;
         // Price increase per tech level
-        int ipl1 = ipl;
         // variance is the maximum percentage that the price can vary above or
-        int var1 = var;
         // Radical price increase event, when this even happens on a planet, the
-        int ie1 = ie;
         this.cr = cr;
         // When this condition is present, the resource is expensive
-        PlanetResources er1 = er;
         // Min price offered in space trade with random trader (not on a planet)
-        int mtl1 = mtl;
         // Max price offered in space trade with random trader (not on a planet)
-        int mth1 = mth;
     }
 
     public String getName() {return name;}

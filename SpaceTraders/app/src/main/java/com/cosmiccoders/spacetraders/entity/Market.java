@@ -10,8 +10,8 @@ public class Market extends PriceModel{
     /** The goodlist is for the goods available on each planet
      *  The canSell is for the goods the player can sell
      */
-    private Map<String, Integer> goodList;
-    private Map<String, Boolean> canSell;
+    private final Map<String, Integer> goodList;
+    private final Map<String, Boolean> canSell;
 
     /**
      * This is the Market constructor

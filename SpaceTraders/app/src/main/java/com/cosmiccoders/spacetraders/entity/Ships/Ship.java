@@ -8,17 +8,17 @@ import com.cosmiccoders.spacetraders.entity.ShortRangeChart;
  */
 public class Ship {
     private String name;
-    private String shipType;
+    private final String shipType;
     private int id;
     private int hullStrength; // 1 = Weak, 2 = Medium, 3 = Strong
     //private int numOfCargoBays; // 0-60
-    private CargoHold cargoHold;
+    private final CargoHold cargoHold;
     private int numOfWeaponSlots; // 0-3
     private int numOfShieldSlots; // 0-3
     private int numOfGadgetSlots; // 0-3
     private int numOfCrewQuarters; // 0-3
     private int maxTravelRange; // 13-20 parsecs (Fuel capability)
-    private boolean escapePod; // Has one or doesn't
+    private final boolean escapePod; // Has one or doesn't
 
     private int fuel; // 1-8 tokens
     //private PlanetTemp currPlanet;

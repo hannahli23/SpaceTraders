@@ -50,7 +50,7 @@ public class GeneratingUniverse extends AppCompatActivity {
      */
     private void setMainPlanet() {
         planetViewModel.setPlanet(solarSystemViewModel.getPlanet("Rolling Hills"));
-        Log.i("Test", planetViewModel.getPlanet().toString());
+        Log.i("Test", planetViewModel.toPlanetString());
     }
     /**
      * This function prints the planet in the solar system

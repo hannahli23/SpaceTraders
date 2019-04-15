@@ -15,7 +15,7 @@ import com.cosmiccoders.spacetraders.entity.Player;
  */
 public class EditAddPlayerViewModel extends AndroidViewModel {
 
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * Constructor for EditAddPlayerViewModel - calls constructor of superclass
@@ -52,7 +52,7 @@ public class EditAddPlayerViewModel extends AndroidViewModel {
      * Gets the toString of the player
      * @return String the toString of the player
      */
-    public String toString() { return interactor.toString();}
+    public String toStringPlayer() { return interactor.toStringPlayer();}
 
     /**
      * Gets the player's id
@@ -152,13 +152,5 @@ public class EditAddPlayerViewModel extends AndroidViewModel {
      */
     public boolean manipulateCurrency() {
         return interactor.manipulateCurrency();
-    }
-
-    /**
-     * To string for the player
-     * @return String the toString for the player
-     */
-    public String toString2() {
-        return interactor.toString2();
     }
 }

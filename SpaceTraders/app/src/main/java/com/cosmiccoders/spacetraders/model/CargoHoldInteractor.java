@@ -9,8 +9,8 @@ import java.util.Map;
  * This class is the interactor for a player's cargo hold
  */
 public class CargoHoldInteractor extends Interactor{
-    private Ship ship;
-    private CargoHold cargoHold;
+    //private Ship ship;
+    //private CargoHold cargoHold;
     private Repository repo;
 
     /**
@@ -27,9 +27,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public boolean putCheck(int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.putCheck(amount);
+        return repo.putCheck(amount);
     }
 
     /**
@@ -39,9 +37,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public void putItem(String good, int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        cargoHold.putItem(good, amount);
+        repo.putItem(good, amount);
     }
 
 
@@ -53,9 +49,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public boolean takeCheck(String good, int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.takeCheck(good, amount);
+        return repo.takeCheck(good, amount);
     }
 
     /**
@@ -65,9 +59,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public void takeItem(String good, int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        cargoHold.takeItem(good, amount);
+        repo.takeItem(good, amount);
     }
 
     /**
@@ -76,9 +68,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public int getMax() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.getMax(); }
+        return repo.getMax(); }
 
     /**
      * Calls CargoHold's getCurrSize method which gets the current
@@ -87,9 +77,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public int getCurrSize() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.getCurrSize(); }
+        return repo.getCurrSize(); }
 
     /**
      * Calls CargoHold's getCurrSize method which sets currSize equal to input amount
@@ -97,9 +85,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public void setCurrSize(int amount) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        cargoHold.setCurrSize(amount); }
+        repo.setCurrSize(amount); }
 
     /**
      * Calls CargoHold's getInventory method which gets the caro hold's current inventory
@@ -107,9 +93,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public Map<String, Integer> getInventory() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.getInventory(); }
+        return repo.getInventory(); }
 
     /**
      * Calls CargoHold's setInventory method which sets the cargo hold's
@@ -118,9 +102,7 @@ public class CargoHoldInteractor extends Interactor{
      */
     public void setInventory(Map<String, Integer> newInventory) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        cargoHold.setInventory(newInventory);}
+        repo.setInventory(newInventory);}
 
     /**
      * Calls CargoHold's getNumOfItem function which tells us how much of an item
@@ -130,16 +112,11 @@ public class CargoHoldInteractor extends Interactor{
      */
     public int getNumOfItem(String good) {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.getNumOfItem(good);
+        return repo.getNumOfItem(good);
     }
 
-    @Override
     public String toString() {
         repo = getRepo();
-        ship = repo.getMainShip();
-        cargoHold = ship.getCargoHold();
-        return cargoHold.toString();
+        return repo.toCargoHoldString();
     }
 }

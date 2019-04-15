@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class ShortRangeChart {
 
-    private List<PlanetTemp> planetsInRange;
+    private final List<PlanetTemp> planetsInRange;
 
     public ShortRangeChart(Ship ship, PlanetTemp mainPlanet, Map<String, PlanetTemp>solarSystem) {
         int[] currLocation = mainPlanet.getLocation();

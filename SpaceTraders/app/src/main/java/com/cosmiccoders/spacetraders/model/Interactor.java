@@ -5,7 +5,7 @@ package com.cosmiccoders.spacetraders.model;
  */
 public class Interactor {
 
-    private Repository myRepo;
+    private final Repository myRepo;
 
     protected Interactor(Repository repo) {myRepo = repo;}
 

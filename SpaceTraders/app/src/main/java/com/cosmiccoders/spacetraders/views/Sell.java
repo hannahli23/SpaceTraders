@@ -39,7 +39,7 @@ public class Sell extends AppCompatActivity {
                 GetSetPlanetViewModel.class);
         shipViewModel = ViewModelProviders.of(this).get(EditShipViewModel.class);
         cargoHoldViewModel = ViewModelProviders.of(this).get(GetAddCargoHoldViewModel.class);
-        market = planetViewModel.getPlanet().getMarket();
+        market = planetViewModel.getMarket();
 
 
         changeNum();

@@ -17,7 +17,7 @@ public class Player {
     private String name;
     private int currency;
     private Difficulty difficulty;
-    private EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
+    private final EnumMap<Skills, Integer> skillsPoints = new EnumMap<>(Skills.class);
     //private Ship ship;
 
     /**
