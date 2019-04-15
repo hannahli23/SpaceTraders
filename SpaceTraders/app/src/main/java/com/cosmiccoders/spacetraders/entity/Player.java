@@ -132,7 +132,7 @@ public class Player {
     public void pay(int amount) { currency -= amount; }
 
     /**
-     * This function puts a certain amout of monday into your current currency
+     * This function puts a certain amount of money into your current currency
      * @param amount is the amount of money we want to store in your money stores
      */
     public void getPaid(int amount) {currency += amount; }
