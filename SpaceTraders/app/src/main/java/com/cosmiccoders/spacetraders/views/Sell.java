@@ -26,6 +26,10 @@ public class Sell extends AppCompatActivity {
     private Market market;
 
     @Override
+    /**
+     * This function makes everything upon pressing the create button
+     * @param savedInstanceState The state of the saved game
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sell);
@@ -40,7 +44,9 @@ public class Sell extends AppCompatActivity {
 
         changeNum();
     }
-
+    /**
+     * This function changes the prices of items
+     */
     private void changeNum() {
         TextView text;
 
@@ -71,7 +77,11 @@ public class Sell extends AppCompatActivity {
         text = findViewById(R.id.m_price);
         changeText(text, "Medicine");
     }
-
+    /**
+     * This function makes everything upon pressing the create button
+     * @param text The text to be changed
+     * @param item The item whos text needs to be changed
+     */
     private void changeText(TextView text, String item) {
         int numItem;
         if(market.getCanSell(item)) {
@@ -81,7 +91,10 @@ public class Sell extends AppCompatActivity {
             text.setText("This item is unavailable for sale");
         }
     }
-
+    /**
+     * This function makes everything ready to be sold
+     * @param view The current view of the game
+     */
     public void sell(View view) {
         final Button change = findViewById(view.getId());
         int temp = 0;
@@ -152,7 +165,11 @@ public class Sell extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function is a helper to the sell method
+     * @param changeText The text to be changed
+     * @param item The item to be changed
+     */
     private void sellHelper(TextView changeText, String item) {
         int price;
         if(performChecks(1, item)) {
@@ -163,7 +180,11 @@ public class Sell extends AppCompatActivity {
             setResults(item, changeText);
         }
     }
-
+    /**
+     * This function shows the results of each test
+     * @param item The item to be tested
+     * @param changeText The text to be changed
+     */
     private void setResults(String item, TextView changeText) {
         Log.i("Testing sell", playerViewModel.getCurrency()+"");
         Log.i("Testing sell", cargoHoldViewModel.toString());
@@ -171,7 +192,12 @@ public class Sell extends AppCompatActivity {
         int num = cargoHoldViewModel.getNumOfItem(item);
         changeText.setText("You have " + num + " " +item+ "(s)");
     }
-
+    /**
+     * This function checks if the player has enough of an item to sell
+     * @param itemNum The amount of a good the player has
+     * @param good The good to be sold
+     * @return The result of the check
+     */
     private boolean performChecks(int itemNum, String good) {
         boolean one = cargoHoldViewModel.takeCheck(good, itemNum);
         boolean two = market.getCanSell(good);
