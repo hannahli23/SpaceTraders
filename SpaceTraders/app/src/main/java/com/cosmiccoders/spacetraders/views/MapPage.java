@@ -23,6 +23,10 @@ public class MapPage extends AppCompatActivity {
     private GetSetPlanetViewModel planetViewModel;
 
     @Override
+    /**
+     * This function creates the planets and universe
+     * @param savedInstanceState The current state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_map);
@@ -77,7 +81,10 @@ public class MapPage extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * This function is a helper method for the onPressed method
+     * @param name The planet name
+     */
     private void onPressedHelper(String name) {
         planetViewModel.setPlanetDestination(solarSystem.getPlanet(name));
         Log.i("Testing"+name, planetViewModel.getPlanetDestination().toString());

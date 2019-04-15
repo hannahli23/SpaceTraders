@@ -28,7 +28,11 @@ public class PlanetIntro extends AppCompatActivity{
     private ShortRangeChart shortRangeChart;
     private ViewAddSolarSystemViewModel solarSystem;
     private Random rand;
-
+    /**
+     * This function makes the player lose money
+     * @param randNum A randomly generated number that will determine how much money the player
+     *                loses
+     */
     private void loseMoney(int randNum) {
         if (randNum <= 99) {
             if (playerViewModel.getCurrency() >= 50) {
@@ -56,13 +60,13 @@ public class PlanetIntro extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kravat);
-        /**
-         * You're going to be changing the textviews in on  create based on whichever planet is set
-         * as the planet you want to go to
-         * and then you should also have a click method for the GO button
-         * And in the go button you should be checking if the planet you want to go to is in
-         * the short range chart
-         * So is the check passes you should 1) reset main planet 2) naivgate to the shiphome page
+        /*
+          You're going to be changing the textviews in on  create based on whichever planet is set
+          as the planet you want to go to
+          and then you should also have a click method for the GO button
+          And in the go button you should be checking if the planet you want to go to is in
+          the short range chart
+          So is the check passes you should 1) reset main planet 2) naivgate to the shiphome page
          */
         solarSystem = ViewModelProviders.of(this).get(ViewAddSolarSystemViewModel.class);
         planetViewModel = ViewModelProviders.of(this).get(GetSetPlanetViewModel.class);
