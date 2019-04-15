@@ -61,10 +61,6 @@ public class PlayerCreation extends AppCompatActivity {
     private String url;
 
     @Override
-    /**
-     * This function makes everything upon pressing the create button
-     * @param savedInstanceState The state of the saved game
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
