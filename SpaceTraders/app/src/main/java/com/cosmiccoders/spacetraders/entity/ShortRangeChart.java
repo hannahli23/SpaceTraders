@@ -22,6 +22,7 @@ public class ShortRangeChart {
         }
     }
 
+
     public int distance(int[] currLocation, int[] destination) {
         int x1 = currLocation[0];
         int x2 = destination[0];

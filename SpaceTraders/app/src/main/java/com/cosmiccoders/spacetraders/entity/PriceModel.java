@@ -45,6 +45,10 @@ public class PriceModel {
         }
     };
 
+    public HashMap<String, List> getTradeGoods() {
+        return tradeGoods;
+    }
+
     public HashMap<String, Integer> MarketGoods(PlanetResources resource, TechLevel level) {
             HashMap<String, Integer> prices = new HashMap<>();
             int pick = new Random().nextInt(PlanetResources.values().length);
@@ -78,7 +82,7 @@ public class PriceModel {
     public HashMap<String, Boolean> checkCanSell(TechLevel level) {
         HashMap<String, Boolean> canSell = new HashMap<>();
         for (Map.Entry<String, List> entry: tradeGoods.entrySet()) {
-            List<String> firstElement= entry.getValue();
+            List<String> firstElement = entry.getValue();
             int minTechU = Integer.parseInt(firstElement.get(1));
             if(level.getRepresentation() < minTechU) {
                 canSell.put(entry.getKey(), false);
