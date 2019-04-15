@@ -3,6 +3,9 @@ package com.cosmiccoders.spacetraders.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * main model class
+ */
 public final class Model {
 
     /** the data repository */
@@ -17,6 +20,10 @@ public final class Model {
      */
     private static Model instance = new Model();
 
+    /**
+     * returns the current instance of the model
+     * @return Model the instance
+     */
     public static Model getInstance() { return instance; }
 
     /**
@@ -36,21 +43,42 @@ public final class Model {
         interactorMap.put("CargoHold", new CargoHoldInteractor(myRepository));
     }
 
+    /**
+     * Returns the current PlanetInteractor
+     * @return  PlanetInteractor current PlanetInteractor
+     */
     public PlanetInteractor getPlanetInteractor() {
         return (PlanetInteractor) interactorMap.get("Planet");
     }
+
+    /**
+     * Returns the current PlayerInteractors
+     * @return PlayerInteractors current PlanetInteractor
+     */
     public PlayerInteractor getPlayerInteractors() {
         return (PlayerInteractor) interactorMap.get("Player");
     }
 
+    /**
+     * Returns the current ShipInteractors
+     * @return ShipInteractors current ShipInteractors
+     */
     public ShipInteractor getShipInteractors() {
         return (ShipInteractor) interactorMap.get("Ship");
     }
 
+    /**
+     * Returns the current SolarSystemInteractors
+     * @return SolarSystemInteractors current SolarSystemInteractors
+     */
     public SolarSystemInteractor getSolarSystemInteractors() {
         return (SolarSystemInteractor) interactorMap.get("SolarSystem");
     }
 
+    /**
+     * Returns the current CargoHoldInteractors
+     * @return CargoHoldInteractors current CargoHoldInteractors
+     */
     public CargoHoldInteractor getCargoHoldInteractors() {
         return (CargoHoldInteractor) interactorMap.get("CargoHold");
     }

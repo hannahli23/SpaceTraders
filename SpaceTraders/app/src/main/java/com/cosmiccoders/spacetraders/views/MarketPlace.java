@@ -8,6 +8,9 @@ import android.widget.Button;
 
 import com.cosmiccoders.spacetraders.R;
 
+/**
+ * class that configures market page
+ */
 public class MarketPlace extends AppCompatActivity{
 
     @Override
@@ -16,6 +19,10 @@ public class MarketPlace extends AppCompatActivity{
         setContentView(R.layout.marketplace);
     }
 
+    /**
+     * Moves to buy page when buy button is pressed
+     * @param view current view
+     */
     public void onBuy(View view) {
         Button btn = findViewById(R.id.buyPageButton);
 
@@ -27,6 +34,10 @@ public class MarketPlace extends AppCompatActivity{
         });
     }
 
+    /**
+     * Moves to sell page when sell button is pressed
+     * @param view current view
+     */
     public void onSell(View view) {
         Button btn = findViewById(R.id.sellPageButton);
 

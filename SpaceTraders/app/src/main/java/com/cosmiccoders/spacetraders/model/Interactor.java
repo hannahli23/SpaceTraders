@@ -1,5 +1,8 @@
 package com.cosmiccoders.spacetraders.model;
 
+/**
+ * Basic Interactor class
+ */
 public class Interactor {
 
     private Repository myRepo;

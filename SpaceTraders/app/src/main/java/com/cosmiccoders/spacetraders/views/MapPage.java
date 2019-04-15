@@ -14,6 +14,9 @@ import com.cosmiccoders.spacetraders.viewmodels.EditShipViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.GetSetPlanetViewModel;
 import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
+/**
+ * class to configure the map page
+ */
 public class MapPage extends AppCompatActivity {
     private ViewAddSolarSystemViewModel solarSystem;
     //private EditAddPlayerViewModel playerViewModel;
@@ -33,6 +36,10 @@ public class MapPage extends AppCompatActivity {
         fuel.setText(shipViewModel.getFuel()+"");
     }
 
+    /**
+     * Travels to the planet that is clicked
+     * @param v current view
+     */
     public void onPlanetPress(View v) {
         Button change = findViewById(v.getId());
         Log.i("Try", "trial");

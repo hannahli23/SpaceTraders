@@ -16,6 +16,9 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 
 import java.util.Map;
 
+/**
+ * Class responsible for generating the universe
+ */
 public class GeneratingUniverse extends AppCompatActivity {
 
     //private SolarSystem solarSystem;
@@ -66,6 +69,10 @@ public class GeneratingUniverse extends AppCompatActivity {
         solarSystemViewModel.setSolarSystem();
     }
 
+    /**
+     * When homeButton is pressed, change to ship home page.
+     * @param view the current view
+     */
     public void onContinuePressed(View view) {
         Button btn = findViewById(R.id.homeButton);
 

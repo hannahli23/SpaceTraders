@@ -39,7 +39,9 @@ import com.cosmiccoders.spacetraders.viewmodels.ViewAddSolarSystemViewModel;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Class to load the game upon starting
+ */
 public class LoadGame extends AppCompatActivity {
 
     private EditShipViewModel shipViewModel;
@@ -97,6 +99,10 @@ public class LoadGame extends AppCompatActivity {
         solarSystemViewModel.setSolarSystem();
     }
 
+    /**
+     * Loads all elements of the game when load is clicked
+     * @param v current view
+     */
     public void onLoadClicked(View v) {
         Button changeButton = findViewById(R.id.load_button);
         changeButton.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +132,11 @@ public class LoadGame extends AppCompatActivity {
         });
     }
 
+    /**
+     * checks if the input string is a number
+     * @param str the string to check
+     * @return boolean if the string is a number
+     */
     public Boolean isNumeric(String str) {
         char[] chars = str.toCharArray();
         for (char c : chars) {
