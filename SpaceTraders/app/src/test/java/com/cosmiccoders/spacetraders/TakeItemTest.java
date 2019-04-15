@@ -26,7 +26,6 @@ public class TakeItemTest {
     public void amountLess() {
         CargoHold test1 = new CargoHold(20);
         test1.setInventory(inven);
-        test1.setCurrSize(8);
         test1.takeItem("Firearms", 6);
         Assert.assertEquals(2.0, test1.getNumOfItem("Firearms"), 0.0);
         Assert.assertEquals(2.0, test1.getCurrSize(), 0.0);
@@ -40,7 +39,6 @@ public class TakeItemTest {
     public void amountEqual() {
         CargoHold test1 = new CargoHold(20);
         test1.setInventory(inven);
-        test1.setCurrSize(8);
         test1.takeItem("Firearms", 8);
         Assert.assertFalse(test1.getInventory().containsKey("Firearms"));
         Assert.assertEquals(0.0, test1.getCurrSize(), 0.0);
@@ -54,7 +52,6 @@ public class TakeItemTest {
     public void amountGreater() {
         CargoHold test1 = new CargoHold(20);
         test1.setInventory(inven);
-        test1.setCurrSize(8);
         test1.takeItem("Firearms", 15);
         Assert.assertFalse(test1.getInventory().containsKey("Firearms"));
         Assert.assertEquals(0.0, test1.getCurrSize(), 0.0);
