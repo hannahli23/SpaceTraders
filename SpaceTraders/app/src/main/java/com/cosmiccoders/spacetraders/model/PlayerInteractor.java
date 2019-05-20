@@ -9,7 +9,7 @@ import com.cosmiccoders.spacetraders.entity.Skills;
 /**
  * This class is the interactor for the players
  */
-public class PlayerInteractor extends Interactor{
+public class PlayerInteractor extends Interactor {
 
     private Player player;
     private Repository repo;
